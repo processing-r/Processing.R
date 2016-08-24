@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<project name="processing.r" default="install" basedir="./">
+    <property name="mode.name" value="processing.r" />
+    <!-- folder to install modes in (probably a folder called "modes" inside your sketchbook folder) -->
+    <property name="processing.modes" location="/Users/gaoce/Documents/Processing/modes" />
+    <!-- path to your processing executable. -->
+    <property name="processing.executable" location="/Applications/Processing.app/Contents/MacOS/Processing" />
+    <property name="processing" value="../processing" />
+    <!-- location of processing jars (core.jar, pde.jar, ..) -->
+    <property name="processing.classes.core" location="../processing/core/library/" />
+    <property name="processing.classes.pde" location="../processing/app/" />
+    <property name="renjin" value="lib/renjin-script-engine-0.8.2194-jar-with-dependencies.jar" />
+    <property name="java.target.version" value="1.8" />
+    <!-- Folder -->
+    <property name="src" value="src" />
+    <property name="build" value="build" />
+    <property name="bin" value="bin" />
+    <property name="dist" value="dist" />
+    <path id="library-classpath">
+        <fileset dir="${processing.classes.core}">
+            <include name="*.jar" />
+        </fileset>
+        <fileset dir="${processing.classes.pde}">
+            <include name="*.jar" />
+        </fileset>
+        <fileset dir="lib">
+            <include name="*.jar" />
+        </fileset>
+    </path>
+    <target name="build">
+        <propertyfile file="build.number" />
+        <!-- create the build.number file if it doesn't exist -->
+        <buildnumber file="build.number" />
+        <mkdir dir="${build}" />
+        <javac srcdir="${src}" destdir="${build}" debug="true" source="${java.target.version}" includeantruntime="false">
+            <classpath>
+                <path refid="library-classpath" />
+            </classpath>
+        </javac>
+    </target>
+    <target name="info">
+        <echo>This is the R mode for Processing, powered by github.com/gaocegege</echo>
+    </target>
+    <!-- - - - - - - - - - - - - - - - - - - - - - -
+        PACKAGE
+    - - - - - - - - - - - - - - - - - - - - - - - -->
+    <target name="package" depends="build">
+        <delete dir="${dist}" />
+        <property name="bundle" value="${dist}/${mode.name}" />
+        <mkdir dir="${bundle}" />
+        <mkdir dir="${bundle}/mode" />
+        <jar jarfile="${bundle}/mode/${mode.name}.jar" basedir="build" />
+        <!--zip destfile="${dist}/mode/${mode.name}.jar" excludes="**/*.MF">
+		    <zipgroupfileset dir="lib" includes="*.jar" />
+		</zip-->
+        <copy todir="${bundle}">
+            <fileset dir="resources/" />
+        </copy>
+        <copy todir="${bundle}/mode">
+            <fileset dir="lib/" />
+        </copy>
+        <replaceregexp file="${bundle}/mode.properties" flags="g" match="@@version@@" replace="${build.number}" />
+        <replaceregexp file="${bundle}/mode.properties" flags="g" match="@@pretty-version@@" replace="${release}" />
+    </target>
+    <!-- - - - - - - - - - - - - - - - - - - - - - -
+        INSTALL
+    - - - - - - - - - - - - - - - - - - - - - - - -->
+    <target name="install" depends="package">
+        <delete dir="${processing.modes}/${mode.name}" />
+        <copy todir="${processing.modes}/">
+            <fileset dir="${dist}" />
+        </copy>
+    </target>
+    <!-- - - - - - - - - - - - - - - - - - - - - - -
+        CLEAN
+    - - - - - - - - - - - - - - - - - - - - - - - -->
+    <target name="clean">
+        <delete dir="${build}" />
+        <delete dir="${dist}" />
+    </target>
+    <!-- - - - - - - - - - - - - - - - - - - - - - -
+        RUN
+    - - - - - - - - - - - - - - - - - - - - - - - -->
+    <target name="run" depends="install">
+        <exec executable="${processing.executable}" spawn="false" />
+    </target>
+</project>
