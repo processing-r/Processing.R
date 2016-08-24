@@ -12,6 +12,7 @@
     <property name="renjin" value="lib/renjin-script-engine-0.8.2194-jar-with-dependencies.jar" />
     <property name="java.target.version" value="1.8" />
     <!-- Folder -->
+    <property name="lib" value="lib" />
     <property name="src" value="src" />
     <property name="build" value="build" />
     <property name="bin" value="bin" />
@@ -27,6 +28,24 @@
             <include name="*.jar" />
         </fileset>
     </path>
+    <target name="try">
+        <propertyfile file="build.number" />
+        <!-- create the build.number file if it doesn't exist -->
+        <buildnumber file="build.number" />
+        <mkdir dir="${build}" />
+        <javac srcdir="${src}" destdir="${build}" debug="true" source="${java.target.version}" includeantruntime="false">
+            <classpath>
+                <path refid="library-classpath" />
+            </classpath>
+        </javac>
+        <jar jarfile="try/${mode.name}.jar" basedir="build">
+            <manifest>
+                <attribute name="Main-Class" value="rprocessing.TryRenjin" />
+            </manifest>
+            <zipgroupfileset dir="${lib}" includes="**/*.jar" />
+            <zipgroupfileset file="${corejar}"/>
+        </jar>
+    </target>
     <target name="build">
         <propertyfile file="build.number" />
         <!-- create the build.number file if it doesn't exist -->
@@ -51,8 +70,8 @@
         <mkdir dir="${bundle}/mode" />
         <jar jarfile="${bundle}/mode/${mode.name}.jar" basedir="build" />
         <!--zip destfile="${dist}/mode/${mode.name}.jar" excludes="**/*.MF">
-		    <zipgroupfileset dir="lib" includes="*.jar" />
-		</zip-->
+            <zipgroupfileset dir="lib" includes="*.jar" />
+        </zip-->
         <copy todir="${bundle}">
             <fileset dir="resources/" />
         </copy>
