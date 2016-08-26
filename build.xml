@@ -12,6 +12,7 @@
     <property name="renjin" value="lib/renjin-script-engine-0.8.2194-jar-with-dependencies.jar" />
     <property name="java.target.version" value="1.8" />
     <!-- Folder -->
+    <property name="try" value="try" />
     <property name="lib" value="lib" />
     <property name="src" value="src" />
     <property name="build" value="build" />
@@ -42,8 +43,8 @@
             <manifest>
                 <attribute name="Main-Class" value="rprocessing.TryRenjin" />
             </manifest>
+            <zipgroupfileset dir="${processing.classes.core}" includes="**/*.jar" />
             <zipgroupfileset dir="${lib}" includes="**/*.jar" />
-            <zipgroupfileset file="${corejar}"/>
         </jar>
     </target>
     <target name="build">
@@ -96,6 +97,7 @@
     <target name="clean">
         <delete dir="${build}" />
         <delete dir="${dist}" />
+        <delete dir="${try}" />
     </target>
     <!-- - - - - - - - - - - - - - - - - - - - - - -
         RUN
