@@ -4,3 +4,5 @@ dist/
 build/
 try/
 *.log
+.classpath
+.project
