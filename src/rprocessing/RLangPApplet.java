@@ -1,7 +1,6 @@
 package rprocessing;
 
 import javax.script.ScriptEngine;
-import javax.script.ScriptException;
 
 import processing.core.PApplet;
 
@@ -33,7 +32,14 @@ public class RLangPApplet extends PApplet {
         this.programText = programText;
     }
 
-    public void processSketch() throws ScriptException {
-        renjinEngine.eval(programText);
+    @Override
+    public void setup() {
+        //        try {
+        this.arc(0, 12, 12, 24, 34, 59);
+        //            this.renjinEngine.eval("typeof(a)");
+        //            this.renjinEngine.eval(programText);
+        //        } catch (ScriptException e) {
+        //            System.out.println(e);
+        //        }
     }
 }

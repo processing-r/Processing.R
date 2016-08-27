@@ -17,8 +17,10 @@ public class TryRenjin {
         if (engine == null) {
             throw new RuntimeException("Renjin Script Engine not found on the classpath.");
         }
-        RLangPApplet rp = new RLangPApplet(engine, "p.arc(50, 55, 50, 50, 0, HALF_PI)");
-        //        engine.put("p", rp);
+        RLangPApplet rp = new RLangPApplet(engine, "p$point(a, b)");
+        engine.put("p", rp);
+        engine.put("a", new Float(22));
+        engine.put("b", new Float(33));
         PApplet.runSketch(args, rp);
         rp.arc(50, 55, 50, 50, 0, 30);
         //        engine.eval("print(p.processSketch())");
