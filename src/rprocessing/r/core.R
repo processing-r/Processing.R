@@ -1,2 +1,3 @@
-import(processing.core.PApplet)
-arc = PApplet$arc
+point <- function(x, y) {
+    rlangApplet$point(x, y)
+}

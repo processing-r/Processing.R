@@ -1,8 +1,17 @@
-DS_Store
+# OS X
+.DS_Store
+
+# Eclipse
+.classpath
+.project
+
+# R Studio
+.RData
+.Rhistory
+
+# Processing.R
 bin/
 dist/
 build/
 try/
 *.log
-.classpath
-.project

@@ -4,6 +4,7 @@ import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 
 import processing.core.PApplet;
+import rprocessing.util.RScriptReader;
 import rprocessing.util.StreamPrinter;
 
 public class TryRenjin {
@@ -17,10 +18,10 @@ public class TryRenjin {
         if (engine == null) {
             throw new RuntimeException("Renjin Script Engine not found on the classpath.");
         }
-        RLangPApplet rp = new RLangPApplet(engine, "p$point(a, b)");
-        engine.put("p", rp);
-        engine.put("a", new Float(22));
-        engine.put("b", new Float(33));
+        RLangPApplet rp = new RLangPApplet(engine, "point(11, 22)");
+        engine.put("rlangApplet", rp);
+        System.out.println(RScriptReader.readResourceAsText(TryRenjin.class, "./r/core.R"));
+        engine.eval(RScriptReader.readResourceAsText(TryRenjin.class, "./r/core.R"));
         PApplet.runSketch(args, rp);
         rp.arc(50, 55, 50, 50, 0, 30);
         //        engine.eval("print(p.processSketch())");
