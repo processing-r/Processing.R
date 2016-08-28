@@ -8,22 +8,26 @@ import rprocessing.util.RScriptReader;
 import rprocessing.util.StreamPrinter;
 
 public class TryRenjin {
+    private static final String CORE_TEXT = RScriptReader.readResourceAsText(TryRenjin.class,
+                                              "./r/core.R");
+
     public static void main(String[] args) throws Exception {
         StreamPrinter a = new StreamPrinter(System.out);
-        // create a script engine manager:
+        // Create a script engine manager.
         ScriptEngineManager manager = new ScriptEngineManager();
-        // create a Renjin engine:
+        // Create a Renjin engine.
         ScriptEngine engine = manager.getEngineByName("Renjin");
-        // check if the engine has loaded correctly:
+        // Check if the engine has loaded correctly.
         if (engine == null) {
             throw new RuntimeException("Renjin Script Engine not found on the classpath.");
         }
-        RLangPApplet rp = new RLangPApplet(engine, "point(11, 22)");
-        engine.put("rlangApplet", rp);
-        System.out.println(RScriptReader.readResourceAsText(TryRenjin.class, "./r/core.R"));
-        engine.eval(RScriptReader.readResourceAsText(TryRenjin.class, "./r/core.R"));
+        // TODO: read the code.
+        RLangPApplet rp = new RLangPApplet(engine,
+            "posAX <- 11\nposAY <- 22\nposBX <- 33\nposBY <- 22\nprocessing$line(posAX, posAY, posBX, posBY)");
+        // Put RLangPApplet instance to R scope, and eval core.R.
+        engine.put("processing", rp);
+        engine.eval(CORE_TEXT);
+        // Run Sketch.
         PApplet.runSketch(args, rp);
-        rp.arc(50, 55, 50, 50, 0, 30);
-        //        engine.eval("print(p.processSketch())");
     }
 }

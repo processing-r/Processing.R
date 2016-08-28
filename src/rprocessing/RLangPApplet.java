@@ -37,6 +37,10 @@ public class RLangPApplet extends PApplet {
         super.point((float) x, (float) y);
     }
 
+    public void line(double posAX, double posAY, double posBX, double posBY) {
+        super.line((float) posAX, (float) posAY, (float) posBX, (float) posBY);
+    }
+
     @Override
     public void setup() {
         try {
