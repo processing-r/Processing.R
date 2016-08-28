@@ -8,6 +8,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 /**
  * RScriptReader
@@ -41,6 +43,10 @@ public class RScriptReader {
 
     public static String readText(final InputStream in) throws IOException {
         return new String(readFully(in), UTF8);
+    }
+
+    public static String readText(final Path path) throws IOException {
+        return new String(Files.readAllBytes(path), UTF8);
     }
 
     public static byte[] readFully(final InputStream in) throws IOException {

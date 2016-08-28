@@ -36,7 +36,7 @@
         <mkdir dir="${try}" />
         <jar jarfile="try/${mode.name}.jar" basedir="build">
             <manifest>
-                <attribute name="Main-Class" value="rprocessing.TryRenjin" />
+                <attribute name="Main-Class" value="rprocessing.Runner" />
             </manifest>
             <zipgroupfileset dir="${processing.classes.core}" includes="**/*.jar" />
             <zipgroupfileset dir="${lib}" includes="**/*.jar" />
