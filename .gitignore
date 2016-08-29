@@ -9,6 +9,9 @@
 .RData
 .Rhistory
 
+# Ant
+build.number
+
 # Processing.R
 bin/
 dist/
