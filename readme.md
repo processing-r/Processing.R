@@ -4,12 +4,9 @@ Something like [processing.py](https://github.com/jdf/processing.py)
 
 WIP now.
 
-## Roadmap
-
-* Support more functions
-* Add sketch
-
 ## Demo
+
+Run `ant try`, you will get a runner demo in `try/`, and run `java -jar ./try/processing.r.jar <your R script>`.
 
 ```
 posAX <- 11
