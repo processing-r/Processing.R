@@ -67,10 +67,8 @@ public class Runner {
         if (engine == null) {
             throw new RuntimeException("Renjin Script Engine not found on the classpath.");
         }
-        // TODO: read the code.
         RLangPApplet rp = new RLangPApplet(engine, sketch.getMainCode());
-        // Put RLangPApplet instance to R scope, and eval core.R.
-        engine.put("processing", rp);
+        rp.AddPAppletToRContext();
 
         try {
             engine.eval(CORE_TEXT);
