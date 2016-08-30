@@ -22,9 +22,7 @@ The output is:
 
 <img src="./docs/img/demo.png" height="200">
 
-## License
-
-MIT License
+## MIT License
 
 Copyright (c) 2016 Ce Gao
 
