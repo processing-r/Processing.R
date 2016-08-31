@@ -37,6 +37,12 @@ public class RLangPApplet extends PApplet {
     /** The name of processing's PApplet in R top context. */
     private static final String      PROCESSING_VAR_NAME = "processing";
 
+    private static final String      SETTINGS_NAME       = "settings";
+
+    private static final String      SETUP_NAME          = "setup";
+
+    private static final String      DRAW_NAME           = "draw";
+
     /** Program Code */
     private final String             programText;
 
@@ -46,8 +52,9 @@ public class RLangPApplet extends PApplet {
     public RLangPApplet(final ScriptEngine renjinEngine, final String programText) {
         this.renjinEngine = (RenjinScriptEngine) renjinEngine;
         this.programText = programText;
-        this.mode = this.detectMode();
         this.prePassCode();
+        // Detect the mode after pre-pass program code.
+        this.mode = this.detectMode();
     }
 
     /**
@@ -67,9 +74,13 @@ public class RLangPApplet extends PApplet {
     }
 
     /**
-     * TODO: Detect the mode.
+     * Detect the mode.
+     * After: prePassCode()
      */
     private Mode detectMode() {
+        if (isActiveMode()) {
+            return Mode.ACTIVE;
+        }
         return Mode.STATIC;
     }
 
@@ -82,13 +93,12 @@ public class RLangPApplet extends PApplet {
     }
 
     /**
-     * TODO: Evaluate settings before the main program.
      * @see processing.core.PApplet#settings()
      */
     @Override
     public void settings() {
-        Object obj = this.renjinEngine.get("settings");
-        if (obj.getClass() == Closure.class) {
+        Object obj = this.renjinEngine.get(SETTINGS_NAME);
+        if (obj.getClass().equals(Closure.class)) {
             ((Closure) obj).doApply(this.renjinEngine.getTopLevelContext());
         } else if (mode == Mode.STATIC) {
             // TODO: Implement Static Mode.
@@ -101,18 +111,16 @@ public class RLangPApplet extends PApplet {
      */
     @Override
     public void setup() {
+        wrapProcessingVariables();
         if (this.mode == Mode.STATIC) {
             try {
-                wrapProcessingVariables();
                 this.renjinEngine.eval(this.programText);
-                //                System.out.println(this.renjinEngine.getTopLevelContext().getEnvironment()
-                //                    .getVariable("settings"));
             } catch (ScriptException e) {
                 System.out.println(e);
             }
         } else if (this.mode == Mode.ACTIVE) {
-            Object obj = this.renjinEngine.get("setup");
-            if (obj.getClass() == Closure.class) {
+            Object obj = this.renjinEngine.get(SETUP_NAME);
+            if (obj.getClass().equals(Closure.class)) {
                 ((Closure) obj).doApply(this.renjinEngine.getTopLevelContext());
             }
         } else {
@@ -126,8 +134,8 @@ public class RLangPApplet extends PApplet {
      */
     @Override
     public void draw() {
-        Object obj = this.renjinEngine.get("draw");
-        if (obj.getClass() == Closure.class) {
+        Object obj = this.renjinEngine.get(DRAW_NAME);
+        if (obj.getClass().equals(Closure.class)) {
             ((Closure) obj).doApply(this.renjinEngine.getTopLevelContext());
         }
     }
@@ -135,6 +143,22 @@ public class RLangPApplet extends PApplet {
     /*
      * Helper functions
      */
+
+    /**
+     * Detect whether the program is in active mode.
+     * 
+     * @return
+     */
+    @SuppressWarnings("rawtypes")
+    private boolean isActiveMode() {
+        Class closureClass = Closure.class;
+        if (isSameClass(this.renjinEngine.get(SETTINGS_NAME), closureClass)
+            || isSameClass(this.renjinEngine.get(SETUP_NAME), closureClass)
+            || isSameClass(this.renjinEngine.get(DRAW_NAME), closureClass)) {
+            return true;
+        }
+        return false;
+    }
 
     /**
      * Set Environment variables in R top context.
@@ -148,6 +172,18 @@ public class RLangPApplet extends PApplet {
         this.renjinEngine.put("keyPressed", keyPressed);
         this.renjinEngine.put("frameCount", frameCount);
         this.renjinEngine.put("frameRate", frameRate);
+    }
+
+    /**
+     * Return whether the object has same class with clazz.
+     * 
+     * @param obj
+     * @param clazz
+     * @return
+     */
+    @SuppressWarnings("rawtypes")
+    private static boolean isSameClass(Object obj, Class clazz) {
+        return obj.getClass().equals(clazz);
     }
 
     /*
