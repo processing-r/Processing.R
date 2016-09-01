@@ -1,7 +1,3 @@
-/**
- * Alipay.com Inc.
- * Copyright (c) 2004-2016 All Rights Reserved.
- */
 package rprocessing.util;
 
 import java.io.ByteArrayOutputStream;
