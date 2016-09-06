@@ -11,6 +11,7 @@ import org.renjin.sexp.FunctionCall;
 import org.renjin.sexp.SEXP;
 
 import processing.core.PApplet;
+import rprocessing.util.Constant;
 
 /**
  * RlangPApplet
@@ -33,15 +34,6 @@ public class RLangPApplet extends PApplet {
     // All others are interpreted during construction in order to harvest method
     // definitions, which we then invoke during the run loop.
     private final Mode               mode;
-
-    /** The name of processing's PApplet in R top context. */
-    private static final String      PROCESSING_VAR_NAME = "processing";
-
-    private static final String      SETTINGS_NAME       = "settings";
-
-    private static final String      SETUP_NAME          = "setup";
-
-    private static final String      DRAW_NAME           = "draw";
 
     /** Program Code */
     private final String             programText;
@@ -79,6 +71,9 @@ public class RLangPApplet extends PApplet {
      */
     private Mode detectMode() {
         if (isActiveMode()) {
+            if (isMixMode()) {
+                return Mode.MIXED;
+            }
             return Mode.ACTIVE;
         }
         return Mode.STATIC;
@@ -89,7 +84,7 @@ public class RLangPApplet extends PApplet {
      * Notice: DO NOT do it in constructor.
      */
     public void AddPAppletToRContext() {
-        this.renjinEngine.put(PROCESSING_VAR_NAME, this);
+        this.renjinEngine.put(Constant.PROCESSING_VAR_NAME, this);
     }
 
     /**
@@ -97,7 +92,7 @@ public class RLangPApplet extends PApplet {
      */
     @Override
     public void settings() {
-        Object obj = this.renjinEngine.get(SETTINGS_NAME);
+        Object obj = this.renjinEngine.get(Constant.SETTINGS_NAME);
         if (obj.getClass().equals(Closure.class)) {
             ((Closure) obj).doApply(this.renjinEngine.getTopLevelContext());
         } else if (mode == Mode.STATIC) {
@@ -119,12 +114,12 @@ public class RLangPApplet extends PApplet {
                 System.out.println(e);
             }
         } else if (this.mode == Mode.ACTIVE) {
-            Object obj = this.renjinEngine.get(SETUP_NAME);
+            Object obj = this.renjinEngine.get(Constant.SETUP_NAME);
             if (obj.getClass().equals(Closure.class)) {
                 ((Closure) obj).doApply(this.renjinEngine.getTopLevelContext());
             }
         } else {
-            // TODO: implement MIX Mode.
+            System.out.println("The program is in mix mode now.");
         }
     }
 
@@ -134,7 +129,7 @@ public class RLangPApplet extends PApplet {
      */
     @Override
     public void draw() {
-        Object obj = this.renjinEngine.get(DRAW_NAME);
+        Object obj = this.renjinEngine.get(Constant.DRAW_NAME);
         if (obj.getClass().equals(Closure.class)) {
             ((Closure) obj).doApply(this.renjinEngine.getTopLevelContext());
         }
@@ -152,11 +147,27 @@ public class RLangPApplet extends PApplet {
     @SuppressWarnings("rawtypes")
     private boolean isActiveMode() {
         Class closureClass = Closure.class;
-        if (isSameClass(this.renjinEngine.get(SETTINGS_NAME), closureClass)
-            || isSameClass(this.renjinEngine.get(SETUP_NAME), closureClass)
-            || isSameClass(this.renjinEngine.get(DRAW_NAME), closureClass)) {
+        if (isSameClass(this.renjinEngine.get(Constant.SETTINGS_NAME), closureClass)
+            || isSameClass(this.renjinEngine.get(Constant.SETUP_NAME), closureClass)
+            || isSameClass(this.renjinEngine.get(Constant.DRAW_NAME), closureClass)) {
             return true;
         }
+        return false;
+    }
+
+    /**
+     * Detect whether the program is in mix mode.
+     * After: isActiveMode()
+     * 
+     * @return
+     */
+    @SuppressWarnings("rawtypes")
+    private boolean isMixMode() {
+        Class closureClass = Closure.class;
+        if (isSameClass(this.renjinEngine.get(Constant.SIZE_NAME), closureClass)) {
+            return true;
+        }
+
         return false;
     }
 
