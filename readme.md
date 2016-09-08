@@ -6,7 +6,15 @@ WIP now.
 
 ## Demo
 
-Run `ant try`, you will get a runner demo in `try/`, and run `java -jar ./try/processing.r.jar <your R script>`.
+### Editor
+
+<img src="./docs/img/editor.png" width="600">
+
+<img src="./docs/img/demo.gif" width="600">
+
+### Runner.jar
+
+Run `ant try`, you will get a runner demo in `try/`, and run `java -jar ./try/RLangMode.jar <your R script>`.
 
 ```
 posAX <- 11
