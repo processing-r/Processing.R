@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <project name="processing.r" default="install" basedir="./">
-    <property name="mode.name" value="processing.r" />
+    <property name="mode.name" value="RLangMode" />
     <!-- folder to install modes in (probably a folder called "modes" inside your sketchbook folder) -->
     <property name="processing.modes" location="/Users/gaoce/Documents/Processing/modes" />
     <!-- path to your processing executable. -->
@@ -75,8 +75,8 @@
         <copy todir="${bundle}/mode">
             <fileset dir="lib/" />
         </copy>
-        <replaceregexp file="${bundle}/mode.properties" flags="g" match="@@version@@" replace="${build.number}" />
-        <replaceregexp file="${bundle}/mode.properties" flags="g" match="@@pretty-version@@" replace="${release}" />
+        <replaceregexp file="${bundle}/mode.properties" flags="g" match="@@version@@" replace="11" />
+        <replaceregexp file="${bundle}/mode.properties" flags="g" match="@@pretty-version@@" replace="1" />
     </target>
     <!-- - - - - - - - - - - - - - - - - - - - - - -
         INSTALL

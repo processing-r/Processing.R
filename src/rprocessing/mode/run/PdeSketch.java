@@ -6,8 +6,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import processing.app.Base;
-import processing.app.Platform;
 import processing.app.Sketch;
 import processing.core.PApplet;
 import rprocessing.RunnableSketch;
@@ -23,7 +21,6 @@ import rprocessing.mode.DisplayType;
 @SuppressWarnings("serial")
 public class PdeSketch implements RunnableSketch, Serializable {
 
-    private final List<File>   libraryDirs;
     private final File         mainFile;
     private final String       mainCode;
     private final File         sketchHome;
@@ -45,12 +42,6 @@ public class PdeSketch implements RunnableSketch, Serializable {
         this.mainCode = sketch.getMainProgram();
         this.sketchHome = sketch.getFolder().getAbsoluteFile();
         this.realSketchPath = sketchPath;
-
-        final List<File> libraryDirs = new ArrayList<>();
-        libraryDirs.add(Platform.getContentFile("modes/java/libraries"));
-        libraryDirs.add(Base.getSketchbookLibrariesFolder());
-        libraryDirs.add(sketchPath);
-        this.libraryDirs = libraryDirs;
 
         final String[] codeFileNames = new String[sketch.getCodeCount()];
         for (int i = 0; i < codeFileNames.length; i++) {
