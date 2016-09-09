@@ -130,7 +130,7 @@ public class RLangEditor extends Editor {
 
             @Override
             public void actionPerformed(final ActionEvent e) {
-                Platform.openURL("http://github.com/gaocegege/Rrocessing.R");
+                Platform.openURL("http://github.com/gaocegege/Processing.R");
             }
         }));
         return menu;

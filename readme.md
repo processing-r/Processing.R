@@ -8,6 +8,8 @@ WIP now.
 
 ### Editor
 
+Change `processing.modes` in build.xml, and run `ant install`, you will get a mode in your `processing.modes`.
+
 <img src="./docs/img/editor.png" width="600">
 
 <img src="./docs/img/demo.gif" width="600">
