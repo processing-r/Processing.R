@@ -67,10 +67,14 @@ public class Runner {
         if (engine == null) {
             throw new RuntimeException("Renjin Script Engine not found on the classpath.");
         }
+        System.out.println(1);
         RLangPApplet rp = new RLangPApplet(engine, sketch.getMainCode());
+        System.out.println(1);
         rp.AddPAppletToRContext();
 
+        System.out.println(rp);
         try {
+            engine.eval("print(processing)");
             engine.eval(CORE_TEXT);
             // Run Sketch.
             PApplet.runSketch(args, rp);

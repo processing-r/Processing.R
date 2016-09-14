@@ -57,6 +57,7 @@ public class RLangPApplet extends PApplet {
         if (source.getClass().equals(ExpressionVector.class)) {
             ExpressionVector ev = (ExpressionVector) source;
             for (int i = 0; i < ev.length(); ++i) {
+                System.out.println(ev.get(i).getClass());
                 if (ev.get(i).getClass().equals(FunctionCall.class)) {
                     this.renjinEngine.getTopLevelContext().evaluate(ev.get(i),
                         this.renjinEngine.getTopLevelContext().getEnvironment());
@@ -66,9 +67,9 @@ public class RLangPApplet extends PApplet {
     }
 
     /**
-     * Detect the mode.
-     * After: prePassCode()
-     */
+       * Detect the mode.
+       * After: prePassCode()
+       */
     private Mode detectMode() {
         if (isActiveMode()) {
             if (isMixMode()) {
