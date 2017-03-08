@@ -1,14 +1,21 @@
-# R Mode for Processing
+# Processing.R [WIP]
 
-Something like [processing.py](https://github.com/jdf/processing.py)
+Processing.R is R mode in Processing, allows the users to write sketches in R
 
-WIP now.
+something like [processing.py](https://github.com/jdf/processing.py)
 
-## Demo
+Now Processing.R is still in early development stage, and now 
 
-### Editor
+### Editor Support
 
-Change `processing.modes` in build.xml, and run `ant install`, you will get a mode in your `processing.modes`.
+Change `processing.modes` in build.xml, and run `ant install`, you will get a mode in `processing/modes`.
+
+```xml
+<!-- folder to install modes in (probably a folder called "modes" inside your sketchbook folder) -->
+<property name="processing.modes" location="/Users/gaoce/Documents/Processing/modes" />
+<!-- path to your processing executable. -->
+<property name="processing.executable" location="/Applications/Processing.app/Contents/MacOS/Processing" />
+```
 
 <img src="./docs/img/editor.png" width="600">
 
@@ -16,7 +23,9 @@ Change `processing.modes` in build.xml, and run `ant install`, you will get a mo
 
 ### Runner.jar
 
-Run `ant try`, you will get a runner demo in `try/`, and run `java -jar ./try/RLangMode.jar <your R script>`.
+Processing.R offers a jar, which allows to have a try without the installation of Processing app. 
+
+Run `ant try`, you will get a runner in `try/`, and run `java -jar ./try/RLangMode.jar <your R script>`.
 
 ```
 posAX <- 11

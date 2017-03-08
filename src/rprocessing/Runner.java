@@ -14,6 +14,10 @@ import rprocessing.util.Printer;
 import rprocessing.util.RScriptReader;
 import rprocessing.util.StreamPrinter;
 
+/**
+ * R script runner
+ * @author github.com/gaocegege
+ */
 public class Runner {
 
     public static RunnableSketch sketch;
