@@ -1,40 +1,22 @@
-# Processing.R [WIP]
+<h1 align="center">
+    <img src="./docs/img/logo/logo.png" alt="logo" width="200">
+  <br>
+</h1>
 
-Processing.R allows the users to write Processing sketches in R.
+<h4 align="center">Processing.R allows the users to write Processing sketches in R.</h4>
 
 ***Notice: Now Processing.R is still in early development stage, not production ready!***
 
-### Editor Support
+## Installation
 
-Change `processing.modes` in build.xml, and run `ant install`, you will get a mode in `processing/modes`.
+See [the documentation about the installation](./docs/howto.md).
 
-```xml
-<!-- folder to install modes in (probably a folder called "modes" inside your sketchbook folder) -->
-<property name="processing.modes" location="/Users/<username>/Documents/Processing/modes" />
-<!-- path to your processing executable. -->
-<property name="processing.executable" location="/Applications/Processing.app/Contents/MacOS/Processing" />
-```
+## Feature Preview
 
-<img src="./docs/img/editor.png" width="600">
+<img src="./docs/img/editor.png" width="500">
 
-<img src="./docs/img/demo.gif" width="600">
+<img src="./docs/img/demo.gif" width="500">
 
-### Runner.jar
+## Useful Resources for Development
 
-Processing.R offers a jar, which allows to have a try without the installation of Processing app. 
-
-Run `ant try`, you will get a runner in `try/`, and run `java -jar ./try/RLangMode.jar <your R script>`.
-
-```r
-posAX <- 11
-posAY <- 22
-
-posBX <- 33
-posBY <- 22
-
-processing$line(posAX, posAY, posBX, posBY)
-```
-
-The output is:
-
-<img src="./docs/img/demo.png" height="200">
+See [references](./docs/references.md).
