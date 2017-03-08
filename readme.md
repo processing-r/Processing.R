@@ -12,7 +12,7 @@ Change `processing.modes` in build.xml, and run `ant install`, you will get a mo
 
 ```xml
 <!-- folder to install modes in (probably a folder called "modes" inside your sketchbook folder) -->
-<property name="processing.modes" location="/Users/gaoce/Documents/Processing/modes" />
+<property name="processing.modes" location="/Users/<username>/Documents/Processing/modes" />
 <!-- path to your processing executable. -->
 <property name="processing.executable" location="/Applications/Processing.app/Contents/MacOS/Processing" />
 ```
@@ -27,7 +27,7 @@ Processing.R offers a jar, which allows to have a try without the installation o
 
 Run `ant try`, you will get a runner in `try/`, and run `java -jar ./try/RLangMode.jar <your R script>`.
 
-```
+```r
 posAX <- 11
 posAY <- 22
 
