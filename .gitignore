@@ -18,6 +18,7 @@ dist/
 build/
 try/
 *.log
+build.xml
 
 # Demo
 *.mov

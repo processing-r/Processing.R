@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<project name="processing.r" default="install" basedir="./">
+    <property name="mode.name" value="RLangMode" />
+    <!-- folder to install modes in (probably a folder called "modes" inside your sketchbook folder) -->
+    <property name="processing.modes" location="@@modes@@" />
+    <!-- path to your processing executable. -->
+    <property name="processing.executable" location="@@executable@@" />
+    <property name="processing" value="@@processing@@" />
+    <!-- location of processing jars (core.jar, pde.jar, ..) -->
+    <property name="processing.classes.core" location="@@core@@" />
+    <property name="processing.classes.pde" location="@@pde@@" />
+    <property name="renjin" value="@@renjin@@" />
+    <property name="java.target.version" value="1.8" />
+    <!-- Folder -->
+    <property name="try" value="try" />
+    <property name="lib" value="lib" />
+    <property name="src" value="src" />
+    <property name="build" value="build" />
+    <property name="bin" value="bin" />
+    <property name="dist" value="dist" />
+    <path id="library-classpath">
+        <fileset dir="${processing.classes.core}">
+            <include name="*.jar" />
+        </fileset>
+        <fileset dir="${processing.classes.pde}">
+            <include name="*.jar" />
+        </fileset>
+        <fileset dir="lib">
+            <include name="*.jar" />
+        </fileset>
+    </path>
+    <target name="try" depends="build">
+        <propertyfile file="build.number" />
+        <!-- create the build.number file if it doesn't exist -->
+        <buildnumber file="build.number" />
+        <mkdir dir="${try}" />
+        <jar jarfile="try/${mode.name}.jar" basedir="build">
+            <manifest>
+                <attribute name="Main-Class" value="rprocessing.Runner" />
+            </manifest>
+            <zipgroupfileset dir="${processing.classes.core}" includes="**/*.jar" />
+            <zipgroupfileset dir="${lib}" includes="**/*.jar" />
+        </jar>
+    </target>
+    <target name="build">
+        <mkdir dir="build" />
+        <javac destdir="build" includeantruntime="false">
+            <src path="src" />
+            <classpath>
+                <path refid="library-classpath" />
+            </classpath>
+        </javac>
+        <copy todir="build">
+            <fileset dir="src" excludes="**/*.java" />
+        </copy>
+    </target>
+    <target name="info">
+        <echo>This is the R mode for Processing, powered by github.com/gaocegege</echo>
+    </target>
+    <!-- - - - - - - - - - - - - - - - - - - - - - -
+        PACKAGE
+    - - - - - - - - - - - - - - - - - - - - - - - -->
+    <target name="package" depends="build">
+        <delete dir="${dist}" />
+        <property name="bundle" value="${dist}/${mode.name}" />
+        <mkdir dir="${bundle}" />
+        <mkdir dir="${bundle}/mode" />
+        <jar jarfile="${bundle}/mode/${mode.name}.jar" basedir="build" />
+        <!--zip destfile="${dist}/mode/${mode.name}.jar" excludes="**/*.MF">
+            <zipgroupfileset dir="lib" includes="*.jar" />
+        </zip-->
+        <copy todir="${bundle}">
+            <fileset dir="resources/" />
+        </copy>
+        <copy todir="${bundle}/mode">
+            <fileset dir="lib/" />
+        </copy>
+        <replaceregexp file="${bundle}/mode.properties" flags="g" match="@@version@@" replace="11" />
+        <replaceregexp file="${bundle}/mode.properties" flags="g" match="@@pretty-version@@" replace="1" />
+    </target>
+    <!-- - - - - - - - - - - - - - - - - - - - - - -
+        INSTALL
+    - - - - - - - - - - - - - - - - - - - - - - - -->
+    <target name="install" depends="package">
+        <delete dir="${processing.modes}/${mode.name}" />
+        <copy todir="${processing.modes}/">
+            <fileset dir="${dist}" />
+        </copy>
+    </target>
+    <!-- - - - - - - - - - - - - - - - - - - - - - -
+        CLEAN
+    - - - - - - - - - - - - - - - - - - - - - - - -->
+    <target name="clean">
+        <delete dir="${build}" />
+        <delete dir="${dist}" />
+        <delete dir="${try}" />
+    </target>
+    <!-- - - - - - - - - - - - - - - - - - - - - - -
+        RUN
+    - - - - - - - - - - - - - - - - - - - - - - - -->
+    <target name="run" depends="install">
+        <exec executable="${processing.executable}" spawn="false" />
+    </target>
+</project>
