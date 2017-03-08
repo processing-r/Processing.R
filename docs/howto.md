@@ -1,15 +1,16 @@
 # HOWTO
 
+## Requirements
+
+* Clone [processing/processing](https://github.com/processing/processing)
+* Install JDK 1.8
+* Install Processing app
+
 ### Editor Support
 
-Change `processing.modes` in build.xml, and run `ant install`, you will get a mode in `processing/modes`.
-
-```xml
-<!-- folder to install modes in (probably a folder called "modes" inside your sketchbook folder) -->
-<property name="processing.modes" location="/Users/<username>/Documents/Processing/modes" />
-<!-- path to your processing executable. -->
-<property name="processing.executable" location="/Applications/Processing.app/Contents/MacOS/Processing" />
-```
+* Replace paths in `./scripts/generate-ant-file.sh` with the paths in your environment.
+* Run `./scripts/generate-ant-file.sh` to get a valid build.xml
+* Run `ant install`, you will get a mode in `processing/modes`.
 
 <img src="./docs/img/editor.png" width="600">
 

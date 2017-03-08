@@ -1,0 +1,16 @@
+language: java
+sudo: false
+
+jdk:
+  - oraclejdk8
+
+before_install:
+  - git clone --depth 1 https://github.com/processing/processing $HOME/processing
+  - .ci/init.sh
+
+install:
+  - ant info
+  - ant try
+
+script:
+  - echo "No test now."
