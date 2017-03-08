@@ -1,10 +1,8 @@
 # Processing.R [WIP]
 
-Processing.R is R mode in Processing, allows the users to write sketches in R
+Processing.R allows the users to write Processing sketches in R.
 
-something like [processing.py](https://github.com/jdf/processing.py)
-
-Now Processing.R is still in early development stage, and now 
+***Notice: Now Processing.R is still in early development stage, not production ready!***
 
 ### Editor Support
 
