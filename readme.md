@@ -5,7 +5,9 @@
 
 <h4 align="center">Processing.R allows the users to write Processing sketches in R.</h4>
 
-***Notice: Now Processing.R is still in early development stage, not production ready!***
+[![Build Status](https://travis-ci.org/gaocegege/Processing.R.svg?branch=master)](https://travis-ci.org/gaocegege/Processing.R)
+
+Now Processing.R is still in early development stage, not production ready. Welcome to report bugs to [issues](https://github.com/gaocegege/Processing.R/issues)!
 
 ## Installation
 
