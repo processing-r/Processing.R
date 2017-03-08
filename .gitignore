@@ -21,3 +21,6 @@ try/
 
 # Demo
 *.mov
+
+# IDEA
+.idea/
