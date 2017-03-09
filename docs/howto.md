@@ -1,6 +1,14 @@
 # HOWTO
 
-## Requirements
+## Play with Docker
+
+* `docker build . -t processing.r`
+* `docker run processing.r`
+* Open the link of NoVNC in a web browser and the default password is `process`. Input it in the URL and play with Processing.R in a desktop environment:)
+
+See [the demo in vimeo :)](https://vimeo.com/207571123)
+
+## In Your Native Environment
 
 * Clone [processing/processing](https://github.com/processing/processing)
 * Install JDK 1.8
@@ -12,9 +20,9 @@
 * Run `./scripts/generate-ant-file.sh` to get a valid build.xml
 * Run `ant install`, you will get a mode in `processing/modes`.
 
-<img src="./docs/img/editor.png" width="600">
+<img src="./img/editor.png" width="600">
 
-<img src="./docs/img/demo.gif" width="600">
+<img src="./img/demo.gif" width="600">
 
 ### Runner.jar
 
@@ -34,4 +42,4 @@ processing$line(posAX, posAY, posBX, posBY)
 
 The output is:
 
-<img src="./docs/img/demo.png" height="200">
+<img src="./img/demo.png" height="200">
