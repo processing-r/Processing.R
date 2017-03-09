@@ -2,7 +2,7 @@
 
 ## Play with Docker
 
-* `docker build . -t processing.r`
+* `docker build . -t processing.r` or `docker pull quay.io/gaocegege/processing.r`
 * `docker run processing.r`
 * Open the link of NoVNC in a web browser and the default password is `process`. Input it in the URL and play with Processing.R in a desktop environment:)
 
