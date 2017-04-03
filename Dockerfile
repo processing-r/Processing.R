@@ -1,4 +1,4 @@
-FROM consol/ubuntu-xfce-vnc
+FROM consol/ubuntu-xfce-vnc:1.0.2
 MAINTAINER Ce Gao(gaocegege) <gaocegege@hotmail.com>
 
 RUN mkdir -p /code/runner
