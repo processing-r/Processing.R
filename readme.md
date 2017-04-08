@@ -19,9 +19,13 @@ See [the documentation about the installation](./docs/howto.md).
 
 ## Feature Preview
 
-<img src="./docs/img/editor.png" width="500">
+<div align="center">
+	<img src="./docs/img/editor.png" alt="Editor" width="500">
+</div>
 
-<img src="./docs/img/demo.gif" width="500">
+<div align="center">
+	<img src="./docs/img/demo.gif" alt="Demo" width="300">
+</div>
 
 ## Useful Resources for Development
 

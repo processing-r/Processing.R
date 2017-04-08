@@ -20,9 +20,13 @@ See [the demo in vimeo :)](https://vimeo.com/207571123)
 * Run `./scripts/generate-ant-file.sh` to get a valid build.xml
 * Run `ant install`, you will get a mode in `processing/modes`.
 
-<img src="./img/editor.png" width="600">
+<div align="center">
+	<img src="./img/editor.png" alt="Editor" width="500">
+</div>
 
-<img src="./img/demo.gif" width="600">
+<div align="center">
+	<img src="./img/demo.gif" alt="Demo" width="300">
+</div>
 
 ### Runner.jar
 
@@ -42,4 +46,6 @@ processing$line(posAX, posAY, posBX, posBY)
 
 The output is:
 
-<img src="./img/demo.png" height="200">
+<div align="center">
+	<img src="./img/demo.png" alt="Output" width="100">
+</div>
