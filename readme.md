@@ -30,3 +30,7 @@ See [the documentation about the installation](./docs/howto.md).
 ## Useful Resources for Development
 
 See [references](./docs/references.md).
+
+## CHANGELOG
+
+See [CHANGELOG](./CHANGELOG.md)
