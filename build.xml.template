@@ -75,6 +75,7 @@
         <copy todir="${bundle}/mode">
             <fileset dir="lib/" />
         </copy>
+        <!-- TODO: Configure the version in bash script. -->
         <replaceregexp file="${bundle}/mode.properties" flags="g" match="@@version@@" replace="11" />
         <replaceregexp file="${bundle}/mode.properties" flags="g" match="@@pretty-version@@" replace="1" />
     </target>
