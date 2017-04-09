@@ -19,6 +19,8 @@ build/
 try/
 *.log
 build.xml
+*.ucls
+*.graffle
 
 # Demo
 *.mov

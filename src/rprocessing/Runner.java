@@ -27,12 +27,12 @@ public class Runner {
 
     public static boolean        VERBOSE   = Boolean.getBoolean("verbose");
 
-    static void log(final Object... objs) {
+    private static void log(final Object... objs) {
         if (!VERBOSE) {
             return;
         }
         for (final Object o : objs) {
-            System.err.print(String.valueOf(o));
+            System.err.print(Runner.class.getSimpleName() + ": " + String.valueOf(o));
         }
         System.err.println();
     }
@@ -71,14 +71,12 @@ public class Runner {
         if (engine == null) {
             throw new RuntimeException("Renjin Script Engine not found on the classpath.");
         }
-        System.out.println(1);
+        log("Tring to initialize RLangPApplet.");
         RLangPApplet rp = new RLangPApplet(engine, sketch.getMainCode());
-        System.out.println(1);
+        log("Adding processing variable into R top context.");
         rp.AddPAppletToRContext();
 
-        System.out.println(rp);
         try {
-            engine.eval("print(processing)");
             engine.eval(CORE_TEXT);
             // Run Sketch.
             PApplet.runSketch(args, rp);

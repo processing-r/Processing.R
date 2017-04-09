@@ -21,6 +21,15 @@ import rprocessing.util.Constant;
  */
 public class RLangPApplet extends PApplet {
 
+    public static boolean VERBOSE = Boolean.getBoolean("verbose");
+
+    private static void log(String msg) {
+        if (!VERBOSE) {
+            return;
+        }
+        System.err.println(RLangPApplet.class.getSimpleName() + ": " + msg);
+    }
+
     /**
      * Mode for Processing.
      * 
@@ -35,7 +44,7 @@ public class RLangPApplet extends PApplet {
     // definitions, which we then invoke during the run loop.
     private final Mode               mode;
 
-    /** Program Code */
+    /** Program code */
     private final String             programText;
 
     /** Engine to interpret R code */
@@ -57,7 +66,7 @@ public class RLangPApplet extends PApplet {
         if (source.getClass().equals(ExpressionVector.class)) {
             ExpressionVector ev = (ExpressionVector) source;
             for (int i = 0; i < ev.length(); ++i) {
-                System.out.println(ev.get(i).getClass());
+                //                LOGGER.info("The type of expression is ", ev.get(i).getClass());
                 if (ev.get(i).getClass().equals(FunctionCall.class)) {
                     this.renjinEngine.getTopLevelContext().evaluate(ev.get(i),
                         this.renjinEngine.getTopLevelContext().getEnvironment());
@@ -112,7 +121,7 @@ public class RLangPApplet extends PApplet {
             try {
                 this.renjinEngine.eval(this.programText);
             } catch (ScriptException e) {
-                System.out.println(e);
+                log(e.toString());
             }
         } else if (this.mode == Mode.ACTIVE) {
             Object obj = this.renjinEngine.get(Constant.SETUP_NAME);

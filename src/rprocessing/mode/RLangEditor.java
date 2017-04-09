@@ -36,10 +36,14 @@ import rprocessing.mode.run.SketchServiceManager;
 import rprocessing.mode.run.SketchServiceRunner;
 
 /**
+ * RLangEditor is the editor abstraction in R mode, which builds a
+ * editor and initialize all related components such as formatter 
+ * toolbar.
  * 
  * @author github.com/gaocegege
  */
 public class RLangEditor extends Editor {
+
     private static void log(final String msg) {
         if (RLangMode.VERBOSE) {
             System.err.println(RLangEditor.class.getSimpleName() + ": " + msg);

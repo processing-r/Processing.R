@@ -73,7 +73,7 @@ public class RLangMode extends Mode {
 
     @Override
     public String getModuleExtension() {
-        return "py";
+        return "r";
     }
 
     /** 
