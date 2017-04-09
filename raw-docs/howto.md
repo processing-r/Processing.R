@@ -18,6 +18,10 @@ See [the demo in vimeo :)](https://vimeo.com/207571123)
 * Install JDK 1.8
 * `cd build; ant build`
 
+You could see the command line video about the process:
+
+[![asciicast](https://asciinema.org/a/112150.png)](https://asciinema.org/a/112150)
+
 ### Editor Support
 
 * Replace paths in `./scripts/generate-ant-file.sh` with the paths in your environment.
