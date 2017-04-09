@@ -13,8 +13,10 @@ See [the demo in vimeo :)](https://vimeo.com/207571123)
 ## In Your Native Environment
 
 * Clone [processing/processing](https://github.com/processing/processing)
+* Change the code [here](https://github.com/processing/processing/blob/master/app/src/processing/app/Base.java#L404), from `mode/java` to `mode/RLangMode`.
+* Change the code [here](https://github.com/processing/processing/blob/master/app/src/processing/app/Base.java#L918), from `processing.mode.java.JavaMode` to `rprocessing.mode.RLangMode`.
 * Install JDK 1.8
-* Install Processing app
+* `cd build; ant build`
 
 ### Editor Support
 
