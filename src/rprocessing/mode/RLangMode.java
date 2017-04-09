@@ -63,17 +63,19 @@ public class RLangMode extends Mode {
         }
     }
 
-    /** 
+    /**
+     *
      * @see processing.app.Mode#getDefaultExtension()
      */
     @Override
     public String getDefaultExtension() {
-        return "rlangpde";
+        // TODO: Finish this function.
+        return "todo";
     }
 
     @Override
     public String getModuleExtension() {
-        return "r";
+        return "R";
     }
 
     /** 
