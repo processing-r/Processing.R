@@ -15,21 +15,21 @@ Now Processing.R is still in early development stage, not production ready. Welc
 
 ## Installation
 
-See [the documentation about the installation](./docs/howto.md).
+See [the documentation about the installation](./raw-docs/howto.md).
 
 ## Feature Preview
 
 <div align="center">
-	<img src="./docs/img/editor.png" alt="Editor" width="500">
+	<img src="./raw-docs/img/editor.png" alt="Editor" width="500">
 </div>
 
 <div align="center">
-	<img src="./docs/img/demo.gif" alt="Demo" width="300">
+	<img src="./raw-docs/img/demo.gif" alt="Demo" width="300">
 </div>
 
 ## Useful Resources for Development
 
-See [references](./docs/references.md).
+See [references](./raw-docs/references.md).
 
 ## CHANGELOG
 
