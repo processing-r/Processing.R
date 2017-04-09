@@ -346,5 +346,4 @@ public class RLangEditor extends Editor {
         }
         return tmp;
     }
-
 }

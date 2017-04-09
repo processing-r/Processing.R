@@ -142,7 +142,7 @@ public class SketchRunner implements SketchService {
                 // Exiting; no need to interrupt and join it later.
                 runner = null;
             }
-        }, "processing.py mode runner");
+        }, "Processing.R mode runner");
         runner.start();
     }
 
