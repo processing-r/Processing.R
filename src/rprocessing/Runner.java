@@ -39,7 +39,7 @@ public class Runner {
 
     public static void main(final String[] args) throws Exception {
         if (args.length < 1) {
-            throw new RuntimeException("I need the path of your R script as an argument.");
+            throw new RuntimeException("The path of your R script is needed as an argument.");
         }
         try {
             sketch = new StandaloneSketch(args);
