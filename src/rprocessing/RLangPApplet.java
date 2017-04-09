@@ -1,5 +1,7 @@
 package rprocessing;
 
+import rprocessing.util.Printer;
+
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 
@@ -50,9 +52,15 @@ public class RLangPApplet extends PApplet {
     /** Engine to interpret R code */
     private final RenjinScriptEngine renjinEngine;
 
-    public RLangPApplet(final ScriptEngine renjinEngine, final String programText) {
+    private final Printer            stdout;
+
+    public RLangPApplet(final ScriptEngine renjinEngine, final String programText, final Printer stdout) {
         this.renjinEngine = (RenjinScriptEngine) renjinEngine;
+        // TODO: https://github.com/gaocegege/Processing.R/issues/20
+        //       Should refactor printer to writer.
+        // this.renjinEngine.getContext().setWriter(stdout);
         this.programText = programText;
+        this.stdout = stdout;
         this.prePassCode();
         // Detect the mode after pre-pass program code.
         this.mode = this.detectMode();
@@ -95,6 +103,9 @@ public class RLangPApplet extends PApplet {
      */
     public void AddPAppletToRContext() {
         this.renjinEngine.put(Constant.PROCESSING_VAR_NAME, this);
+        // This is a trick to be deprecated. It is used to print
+        // messages in Processing app console by stdout$print(msg).
+        this.renjinEngine.put("stdout", stdout);
     }
 
     /**
@@ -116,6 +127,8 @@ public class RLangPApplet extends PApplet {
      */
     @Override
     public void setup() {
+        // I don't know why I put it there. Now I think it should be in constructor.
+        // But I ...
         wrapProcessingVariables();
         if (this.mode == Mode.STATIC) {
             try {
@@ -185,6 +198,7 @@ public class RLangPApplet extends PApplet {
      * Set Environment variables in R top context.
      */
     protected void wrapProcessingVariables() {
+        log("Wrap Processing built-in variables into R top context.");
         this.renjinEngine.put("width", width);
         this.renjinEngine.put("height", height);
         this.renjinEngine.put("displayWidth", displayWidth);

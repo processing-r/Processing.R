@@ -94,6 +94,7 @@ public class SketchRunner implements SketchService {
                         final Printer stdout = new Printer() {
                             @Override
                             public void print(final Object o) {
+                                log("Print statement is called :)");
                                 try {
                                     modeService.printStdOut(id, String.valueOf(o));
                                 } catch (final RemoteException e) {
@@ -166,6 +167,10 @@ public class SketchRunner implements SketchService {
         }
     }
 
+    /**
+     * SketchServiceRunner will run this function in a subprocess in its
+     * constructor function.
+     */
     public static void main(final String[] args) {
         final String id = args[0];
         // If env var SKETCH_RUNNER_FIRST=true then SketchRunner will wait for a ping from the Mode

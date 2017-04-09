@@ -1,7 +1,7 @@
 yPos <- 0.0;
 
 settings <- function() {
-  print("Set width and height.")
+  stdout$print("Set width and height.")
   processing$size(500, 500)
 }
 

@@ -72,7 +72,7 @@ public class Runner {
             throw new RuntimeException("Renjin Script Engine not found on the classpath.");
         }
         log("Tring to initialize RLangPApplet.");
-        RLangPApplet rp = new RLangPApplet(engine, sketch.getMainCode());
+        RLangPApplet rp = new RLangPApplet(engine, sketch.getMainCode(), stdout);
         log("Adding processing variable into R top context.");
         rp.AddPAppletToRContext();
 
