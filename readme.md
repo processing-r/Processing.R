@@ -19,11 +19,13 @@
     <a href="https://gitter.im/gaocegege/Processing.R?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge"><img src="https://badges.gitter.im/gaocegege/Processing.R.svg" alt="Gitter"></a>
 </p>
 
-Now Processing.R is still in early development stage, not production ready. Welcome to report bugs to [issues](https://github.com/gaocegege/Processing.R/issues)!
+Now Processing.R is still in early development stage, not production ready. The current version will be listed in [gaocegege.com/Processing.R/](http://gaocegege.com/Processing.R/). Welcome to report bugs to [issues](https://github.com/gaocegege/Processing.R/issues)!
 
 ## Installation
 
-See [the documentation about the installation](./raw-docs/howto.md).
+If you just want to have a try, you could download the packaged software from [gaocegege.com/Processing.R/](http://gaocegege.com/Processing.R/)
+
+If you want to compile the source code, see [HOWTO get Processing.R](./raw-docs/howto.md).
 
 ## Feature Preview
 

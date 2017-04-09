@@ -1,5 +1,7 @@
 # HOWTO
 
+If you just want to have a try, then there is no need to read this documentation, you could get the distribution from [gaocegege.com/Processing.R](http://gaocegege.com/Processing.R)
+
 ## Play with Docker
 
 * `docker pull quay.io/gaocegege/processing.r`
