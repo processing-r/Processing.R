@@ -9,7 +9,6 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Properties;
 import java.util.UUID;
 
 import javax.swing.AbstractAction;
@@ -25,6 +24,8 @@ import processing.app.Mode;
 import processing.app.Platform;
 import processing.app.SketchCode;
 import processing.app.SketchException;
+import processing.app.syntax.JEditTextArea;
+import processing.app.syntax.PdeTextAreaDefaults;
 import processing.app.ui.Editor;
 import processing.app.ui.EditorException;
 import processing.app.ui.EditorState;
@@ -45,7 +46,8 @@ import rprocessing.mode.run.SketchServiceRunner;
  */
 public class RLangEditor extends Editor {
 
-    private static final boolean VERBOSE = Boolean.parseBoolean(System.getenv("VERBOSE_RLANG_MODE"));
+    private static final boolean VERBOSE = Boolean
+                                             .parseBoolean(System.getenv("VERBOSE_RLANG_MODE"));
 
     private static void log(final String msg) {
         if (VERBOSE) {
@@ -183,6 +185,11 @@ public class RLangEditor extends Editor {
     @Override
     public Formatter createFormatter() {
         return null;
+    }
+
+    @Override
+    protected JEditTextArea createTextArea() {
+        return new JEditTextArea(new PdeTextAreaDefaults(mode), new RLangInputHandler(this));
     }
 
     /** 
