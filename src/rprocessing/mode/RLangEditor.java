@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Properties;
 import java.util.UUID;
 
 import javax.swing.AbstractAction;
@@ -44,8 +45,10 @@ import rprocessing.mode.run.SketchServiceRunner;
  */
 public class RLangEditor extends Editor {
 
+    private static final boolean VERBOSE = Boolean.parseBoolean(System.getenv("VERBOSE_RLANG_MODE"));
+
     private static void log(final String msg) {
-        if (RLangMode.VERBOSE) {
+        if (VERBOSE) {
             System.err.println(RLangEditor.class.getSimpleName() + ": " + msg);
         }
     }
@@ -80,6 +83,7 @@ public class RLangEditor extends Editor {
     protected RLangEditor(Base base, String path, EditorState state, Mode mode)
                                                                                throws EditorException {
         super(base, path, state, mode);
+        log("Initialize RLangEditor now.");
 
         id = UUID.randomUUID().toString();
 

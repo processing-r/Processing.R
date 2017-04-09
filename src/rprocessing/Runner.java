@@ -25,7 +25,7 @@ public class Runner {
     private static final String  CORE_TEXT = RScriptReader.readResourceAsText(Runner.class,
                                                "r/core.R");
 
-    public static boolean        VERBOSE   = Boolean.getBoolean("verbose");
+    private static final boolean VERBOSE = Boolean.parseBoolean(System.getenv("VERBOSE_RLANG_MODE"));
 
     private static void log(final Object... objs) {
         if (!VERBOSE) {

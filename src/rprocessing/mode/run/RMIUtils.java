@@ -13,9 +13,12 @@ import rprocessing.mode.RLangMode;
  * @author github.com/gaocegege
  */
 public class RMIUtils {
+
     private static final boolean EXTREMELY_VERBOSE = false;
 
     static final int             RMI_PORT          = 8221;
+
+    private static final boolean VERBOSE           = Boolean.parseBoolean(System.getenv("VERBOSE_RLANG_MODE"));
 
     static {
         System.setProperty("sun.rmi.transport.tcp.localHostNameTimeOut", "1000");
@@ -33,7 +36,7 @@ public class RMIUtils {
     }
 
     private static void log(final String msg) {
-        if (RLangMode.VERBOSE) {
+        if (VERBOSE) {
             System.err.println(RMIUtils.class.getSimpleName() + ": " + msg);
         }
     }

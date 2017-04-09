@@ -15,11 +15,14 @@ import rprocessing.mode.RLangMode;
  * @author github.com/gaocegege
  */
 public class SketchServiceManager implements ModeService {
+
     private static final String DEBUG_SKETCH_RUNNER_KEY = "$SKETCHRUNNER$";
+
+    private static final boolean VERBOSE = Boolean.parseBoolean(System.getenv("VERBOSE_RLANG_MODE"));
 
     @SuppressWarnings("unused")
     private static void log(final String msg) {
-        if (RLangMode.VERBOSE) {
+        if (VERBOSE) {
             System.err.println(SketchServiceManager.class.getSimpleName() + ": " + msg);
         }
     }

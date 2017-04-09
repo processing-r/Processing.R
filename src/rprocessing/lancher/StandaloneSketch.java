@@ -19,8 +19,10 @@ import rprocessing.util.RScriptReader;
  */
 public class StandaloneSketch implements RunnableSketch {
 
+    private static final boolean VERBOSE = Boolean.parseBoolean(System.getenv("VERBOSE_RLANG_MODE"));
+
     static void log(final Object... objs) {
-        if (!Runner.VERBOSE) {
+        if (!VERBOSE) {
             return;
         }
         for (final Object o : objs) {

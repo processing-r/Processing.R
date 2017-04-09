@@ -18,8 +18,11 @@ import rprocessing.util.Printer;
  * @author github.com/gaocegege
  */
 public class SketchRunner implements SketchService {
+
+    private static final boolean VERBOSE = Boolean.parseBoolean(System.getenv("VERBOSE_RLANG_MODE"));
+
     private static void log(final String msg) {
-        if (RLangMode.VERBOSE) {
+        if (VERBOSE) {
             System.err.println(SketchRunner.class.getSimpleName() + ": " + msg);
         }
     }

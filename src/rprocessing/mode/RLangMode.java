@@ -27,7 +27,7 @@ public class RLangMode extends Mode {
         sketchServiceManager = new SketchServiceManager(this);
     }
 
-    public static final boolean        VERBOSE             = Boolean.parseBoolean(System
+    private static final boolean        VERBOSE            = Boolean.parseBoolean(System
                                                                .getenv("VERBOSE_RLANG_MODE"));
 
     /**

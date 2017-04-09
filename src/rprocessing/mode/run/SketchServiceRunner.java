@@ -31,8 +31,11 @@ import com.google.common.base.Joiner;
  * @author github.com/gaocegege
  */
 public class SketchServiceRunner {
+
+    private static final boolean VERBOSE = Boolean.parseBoolean(System.getenv("VERBOSE_RLANG_MODE"));
+
     private static void log(final String msg) {
-        if (RLangMode.VERBOSE) {
+        if (VERBOSE) {
             System.err.println(SketchServiceRunner.class.getSimpleName() + ": " + msg);
         }
     }
@@ -100,7 +103,7 @@ public class SketchServiceRunner {
             command.add("-Xdock:name=Processing");
         }
 
-        if (RLangMode.VERBOSE) {
+        if (VERBOSE) {
             command.add("-Dverbose=true");
         }
 

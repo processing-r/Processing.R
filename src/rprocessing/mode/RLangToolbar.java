@@ -13,7 +13,7 @@ import processing.app.ui.EditorToolbar;
  */
 public class RLangToolbar extends EditorToolbar {
 
-    public static boolean VERBOSE = Boolean.getBoolean("verbose");
+    private static final boolean VERBOSE = Boolean.parseBoolean(System.getenv("VERBOSE_RLANG_MODE"));
 
     static void log(String msg) {
         if (!VERBOSE) {
