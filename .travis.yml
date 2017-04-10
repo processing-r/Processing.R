@@ -5,7 +5,6 @@ jdk:
   - oraclejdk8
 
 before_install:
-  - git clone --depth 1 https://github.com/processing/processing $HOME/processing
   - .ci/init.sh
 
 install:
