@@ -5,6 +5,7 @@
 draw KEYWORD1
 function KEYWORD1
 processing KEYWORD1
+stdout KEYWORD1
 height KEYWORD1
 settings KEYWORD1
 $ KEYWORD1
