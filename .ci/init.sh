@@ -13,6 +13,12 @@ function log {
 
 root=$(dirname "${BASH_SOURCE}")/..
 
+# Download Processing.
+curl -L http://download.processing.org/processing-3.3-linux64.tgz > $HOME/processing.tgz && \
+    tar xvf $HOME/processing.tgz -C $HOME && \
+    mv $HOME/processing-3.3 $HOME/processing && \
+    rm -rf $HOME/processing.tgz
+
 # Paths
 # Those paths are not needed when building runner.jar,
 # but will be used in the future to package the mode.
@@ -21,18 +27,8 @@ executable="/mock-user/Processing"
 # Those paths are important to build runner.jar.
 processing="$HOME/processing"
 core="$HOME/processing/core/library/"
-pde="$HOME/processing/app/"
+pde="$HOME/processing/lib/"
 renjin="lib/renjin-script-engine-0.8.2194-jar-with-dependencies.jar"
-
-# Build core.jar.
-cd ${core}/..
-ant build
-cd - > /dev/null
-
-# Build pde.jar.
-cd ${pde}
-ant build
-cd - > /dev/null
 
 cd ${root}
 cp build.xml.template build.xml
