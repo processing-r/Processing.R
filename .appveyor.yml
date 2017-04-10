@@ -1,0 +1,29 @@
+version: v1.0.1.{build}
+os: Visual Studio 2017
+clone_folder: c:\projects\Processing.R
+
+environment:
+  matrix:
+    - JAVA_HOME: "C:\\Program Files (x86)\\Java\\jdk1.8.0"
+    # - JAVA_HOME: "C:\\Program Files\\Java\\jdk1.8.0"
+
+build: off
+
+install:
+  - curl -L http://download.processing.org/processing-3.3-windows64.zip > c:\projects\processing.zip
+  - curl -L http://apache.claz.org//ant/binaries/apache-ant-1.10.1-bin.zip > c:\projects\apache-ant.zip
+  - cd c:\projects && unzip c:\projects\processing.zip && unzip c:\projects\apache-ant.zip
+  - set PATH=%PATH%;C:\projects\apache-ant-1.10.1\bin
+  - cd c:\projects\Processing.R
+  - .ci\init.cmd
+  - cd c:\projects\Processing.R
+  - ant info
+  - ant try
+
+notifications:
+  - provider: Email
+    to:
+    - gaocegege@hotmail.com
+    on_build_success: false
+    on_build_failure: true
+    on_build_status_changed: false
