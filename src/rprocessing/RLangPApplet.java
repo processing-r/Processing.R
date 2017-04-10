@@ -3,6 +3,7 @@ package rprocessing;
 import rprocessing.util.Printer;
 
 import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
 import org.renjin.parser.RParser;
@@ -11,6 +12,7 @@ import org.renjin.sexp.Closure;
 import org.renjin.sexp.ExpressionVector;
 import org.renjin.sexp.FunctionCall;
 import org.renjin.sexp.SEXP;
+import org.renjin.sexp.Symbol;
 
 import processing.core.PApplet;
 import rprocessing.util.Constant;
@@ -54,11 +56,16 @@ public class RLangPApplet extends PApplet {
 
     private final Printer            stdout;
 
-    public RLangPApplet(final ScriptEngine renjinEngine, final String programText, final Printer stdout) {
-        this.renjinEngine = (RenjinScriptEngine) renjinEngine;
-        // TODO: https://github.com/gaocegege/Processing.R/issues/20
-        //       Should refactor printer to writer.
-        // this.renjinEngine.getContext().setWriter(stdout);
+    public RLangPApplet(final String programText, final Printer stdout) {
+        // Create a script engine manager.
+        ScriptEngineManager manager = new ScriptEngineManager();
+        // Create a Renjin engine.
+        ScriptEngine engine = manager.getEngineByName("Renjin");
+        // Check if the engine has loaded correctly.
+        if (engine == null) {
+            throw new RuntimeException("Renjin Script Engine not found on the classpath.");
+        }
+        this.renjinEngine = (RenjinScriptEngine) engine;
         this.programText = programText;
         this.stdout = stdout;
         this.prePassCode();
@@ -71,11 +78,17 @@ public class RLangPApplet extends PApplet {
      */
     public void prePassCode() {
         SEXP source = RParser.parseSource(this.programText + "\n", "inline-string");
-        if (source.getClass().equals(ExpressionVector.class)) {
+        if (isSameClass(source, ExpressionVector.class)) {
             ExpressionVector ev = (ExpressionVector) source;
             for (int i = 0; i < ev.length(); ++i) {
-                //                LOGGER.info("The type of expression is ", ev.get(i).getClass());
-                if (ev.get(i).getClass().equals(FunctionCall.class)) {
+                /**
+                 * There is a bug, see https://github.com/gaocegege/Processing.R/issues/7
+                 * For example, processing$line() is also a function call in renjin engine.
+                 * To solve this problem, add a hack to make sure the function is "<-".
+                 */
+                if (isSameClass(ev.get(i), FunctionCall.class) && 
+                    isSameClass(((FunctionCall) ev.get(i)).getFunction(), Symbol.class) &&
+                    ((Symbol) ((FunctionCall) ev.get(i)).getFunction()).getPrintName().equals("<-")) {
                     this.renjinEngine.getTopLevelContext().evaluate(ev.get(i),
                         this.renjinEngine.getTopLevelContext().getEnvironment());
                 }
@@ -118,6 +131,7 @@ public class RLangPApplet extends PApplet {
             ((Closure) obj).doApply(this.renjinEngine.getTopLevelContext());
         } else if (mode == Mode.STATIC) {
             // TODO: Implement Static Mode.
+            // Set size and something else.
         }
     }
 

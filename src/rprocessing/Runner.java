@@ -1,9 +1,5 @@
 package rprocessing;
 
-import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
-import javax.script.ScriptException;
-
 import org.renjin.eval.EvalException;
 import org.renjin.parser.ParseException;
 
@@ -63,25 +59,14 @@ public class Runner {
                                                                                                           throws REvalException {
         final String[] args = sketch.getPAppletArguments();
 
-        // Create a script engine manager.
-        ScriptEngineManager manager = new ScriptEngineManager();
-        // Create a Renjin engine.
-        ScriptEngine engine = manager.getEngineByName("Renjin");
-        // Check if the engine has loaded correctly.
-        if (engine == null) {
-            throw new RuntimeException("Renjin Script Engine not found on the classpath.");
-        }
         log("Tring to initialize RLangPApplet.");
-        RLangPApplet rp = new RLangPApplet(engine, sketch.getMainCode(), stdout);
+        RLangPApplet rp = new RLangPApplet(sketch.getMainCode(), stdout);
         log("Adding processing variable into R top context.");
         rp.AddPAppletToRContext();
 
         try {
-            engine.eval(CORE_TEXT);
             // Run Sketch.
             PApplet.runSketch(args, rp);
-        } catch (ScriptException se) {
-            throw new REvalException(se.getMessage());
         } catch (ParseException pe) {
             throw new REvalException(pe.getMessage());
         } catch (EvalException ee) {
