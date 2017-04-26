@@ -1,5 +1,23 @@
 # Change Log
 
+## [Unreleased](https://github.com/gaocegege/Processing.R/tree/HEAD)
+
+[Full Changelog](https://github.com/gaocegege/Processing.R/compare/v1.0.1...HEAD)
+
+**Closed issues:**
+
+- Add Processing app with Processing.R into v1.0.1 [\#23](https://github.com/gaocegege/Processing.R/issues/23)
+- Add logger support to Processing.R [\#22](https://github.com/gaocegege/Processing.R/issues/22)
+- Re-direct STDOUT to console in Processing.app [\#20](https://github.com/gaocegege/Processing.R/issues/20)
+- Add CI for Windows [\#19](https://github.com/gaocegege/Processing.R/issues/19)
+- Simplify CI process: replace the compilation with download file [\#15](https://github.com/gaocegege/Processing.R/issues/15)
+- Static Mode in Editor [\#7](https://github.com/gaocegege/Processing.R/issues/7)
+
+**Merged pull requests:**
+
+- travis: Simplify CI process [\#26](https://github.com/gaocegege/Processing.R/pull/26) ([gaocegege](https://github.com/gaocegege))
+- WIP: appveyor: Add Windows CI [\#25](https://github.com/gaocegege/Processing.R/pull/25) ([gaocegege](https://github.com/gaocegege))
+
 ## [v1.0.1](https://github.com/gaocegege/Processing.R/tree/v1.0.1) (2017-04-09)
 [Full Changelog](https://github.com/gaocegege/Processing.R/compare/v0.0.2...v1.0.1)
 
