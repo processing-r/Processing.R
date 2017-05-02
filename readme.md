@@ -48,6 +48,10 @@ If you want to compile the source code, see [HOWTO get Processing.R](./raw-docs/
 
 See [references](./raw-docs/references.md).
 
+## Discussion in Processing Forum
+
+[Idea: R Language Mode for Processing](https://forum.processing.org/two/discussion/21195/gsoc-2017-r-language-mode-for-processing)
+
 ## CHANGELOG
 
 See [CHANGELOG](./CHANGELOG.md)
