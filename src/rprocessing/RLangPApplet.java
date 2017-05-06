@@ -1,7 +1,5 @@
 package rprocessing;
 
-import rprocessing.util.Printer;
-
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
@@ -14,9 +12,9 @@ import org.renjin.sexp.FunctionCall;
 import org.renjin.sexp.SEXP;
 import org.renjin.sexp.Symbol;
 
-import processing.core.PApplet;
-import rprocessing.util.Constant;
 import rprocessing.applet.BuiltinApplet;
+import rprocessing.util.Constant;
+import rprocessing.util.Printer;
 
 /**
  * RlangPApplet
@@ -26,14 +24,8 @@ import rprocessing.applet.BuiltinApplet;
  */
 public class RLangPApplet extends BuiltinApplet {
 
-    private static final boolean VERBOSE = Boolean.parseBoolean(System.getenv("VERBOSE_RLANG_MODE"));
-
-    private static void log(String msg) {
-        if (!VERBOSE) {
-            return;
-        }
-        System.err.println(RLangPApplet.class.getSimpleName() + ": " + msg);
-    }
+    private static final boolean VERBOSE = Boolean
+        .parseBoolean(System.getenv("VERBOSE_RLANG_MODE"));
 
     /**
      * Mode for Processing.
@@ -41,7 +33,7 @@ public class RLangPApplet extends BuiltinApplet {
      * @author github.com/gaocegege
      */
     private enum Mode {
-        STATIC, ACTIVE, MIXED
+                       STATIC, ACTIVE, MIXED
     }
 
     // A static-mode sketch must be interpreted from within the setup() method.
@@ -56,6 +48,13 @@ public class RLangPApplet extends BuiltinApplet {
     private final RenjinScriptEngine renjinEngine;
 
     private final Printer            stdout;
+
+    private static void log(String msg) {
+        if (!VERBOSE) {
+            return;
+        }
+        System.err.println(RLangPApplet.class.getSimpleName() + ": " + msg);
+    }
 
     public RLangPApplet(final String programText, final Printer stdout) {
         // Create a script engine manager.
@@ -87,9 +86,10 @@ public class RLangPApplet extends BuiltinApplet {
                  * For example, processing$line() is also a function call in renjin engine.
                  * To solve this problem, add a hack to make sure the function is "<-".
                  */
-                if (isSameClass(ev.get(i), FunctionCall.class) && 
-                    isSameClass(((FunctionCall) ev.get(i)).getFunction(), Symbol.class) &&
-                    ((Symbol) ((FunctionCall) ev.get(i)).getFunction()).getPrintName().equals("<-")) {
+                if (isSameClass(ev.get(i), FunctionCall.class)
+                    && isSameClass(((FunctionCall) ev.get(i)).getFunction(), Symbol.class)
+                    && ((Symbol) ((FunctionCall) ev.get(i)).getFunction()).getPrintName()
+                        .equals("<-")) {
                     this.renjinEngine.getTopLevelContext().evaluate(ev.get(i),
                         this.renjinEngine.getTopLevelContext().getEnvironment());
                 }
