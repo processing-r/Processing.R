@@ -16,6 +16,7 @@ import org.renjin.sexp.Symbol;
 
 import processing.core.PApplet;
 import rprocessing.util.Constant;
+import rprocessing.applet.BuiltinApplet;
 
 /**
  * RlangPApplet
@@ -23,7 +24,7 @@ import rprocessing.util.Constant;
  * 
  * @author github.com/gaocegege
  */
-public class RLangPApplet extends PApplet {
+public class RLangPApplet extends BuiltinApplet {
 
     private static final boolean VERBOSE = Boolean.parseBoolean(System.getenv("VERBOSE_RLANG_MODE"));
 
@@ -233,24 +234,5 @@ public class RLangPApplet extends PApplet {
     @SuppressWarnings("rawtypes")
     private static boolean isSameClass(Object obj, Class clazz) {
         return obj.getClass().equals(clazz);
-    }
-
-    /*
-     * Wrapper functions
-     * 
-     * float is not implemented in R, so processing.r need to cast double to
-     * float.
-     */
-
-    public void size(double width, double height) {
-        super.size((int) width, (int) height);
-    }
-
-    public void point(double x, double y) {
-        super.point((float) x, (float) y);
-    }
-
-    public void line(double posAX, double posAY, double posBX, double posBY) {
-        super.line((float) posAX, (float) posAY, (float) posBX, (float) posBY);
     }
 }
