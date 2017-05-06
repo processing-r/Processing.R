@@ -1,2 +1,6 @@
 processing$line(11, 22, 33, 22)
+processing$arc(50, 55, 50, 50, 0, 100)
+processing$triangle(30, 75, 58, 20, 86, 75)
+processing$ellipse(56, 46, 55, 55)
+processing$quad(38, 31, 86, 20, 69, 63, 30, 76)
 print("Hello, Processing.R")
