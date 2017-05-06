@@ -133,10 +133,8 @@ public class RLangInputHandler extends PdeInputHandler {
                 textArea.setSelectedText(newline());
                 break;
             default:
-                // TODO: make the err message more readable.
-                System.err.print("Unrecognized key.");
+                return false;
         }
-
         return false;
     }
 
