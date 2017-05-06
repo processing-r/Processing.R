@@ -27,3 +27,6 @@ build.xml
 
 # IDEA
 .idea/
+
+# backup
+*.backup
