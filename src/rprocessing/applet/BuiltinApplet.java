@@ -1,7 +1,9 @@
 package rprocessing.applet;
 
 import processing.core.PApplet;
+
 public class BuiltinApplet extends PApplet {
+	
     /*
      * Wrapper functions
      * 
@@ -19,5 +21,9 @@ public class BuiltinApplet extends PApplet {
 
     public void line(double posAX, double posAY, double posBX, double posBY) {
         super.line((float) posAX, (float) posAY, (float) posBX, (float) posBY);
+    }
+    
+    public void ellipse(double posX, double posY, double width, double height) {
+    	super.ellipse((float) posX, (float) posY, (float) width, (float) height);
     }
 }
