@@ -29,17 +29,15 @@ public class IOUtil {
             this.clazz = clazz;
         }
 
-        public String readText(final String resource) {
+        public String readText(final String resource) throws IOException {
             return IOUtil.readResourceAsText(clazz, resource);
         }
     }
 
-    public static String readResourceAsText(final Class<?> clazz, final String resource) {
-        try (final InputStream in = clazz.getResourceAsStream(resource)) {
-            return readText(in);
-        } catch (final IOException e) {
-            throw new RuntimeException(e);
-        }
+    public static String readResourceAsText(final Class<?> clazz,
+                                            final String resource) throws IOException {
+        final InputStream in = clazz.getResourceAsStream(resource);
+        return readText(in);
     }
 
     public static String readText(final InputStream in) throws IOException {
@@ -58,15 +56,15 @@ public class IOUtil {
     public static void rm(final Path target) throws IOException {
         Files.walkFileTree(target, new SimpleFileVisitor<Path>() {
             @Override
-            public FileVisitResult visitFile(final Path file, final BasicFileAttributes attrs)
-                                                                                              throws IOException {
+            public FileVisitResult visitFile(final Path file,
+                                             final BasicFileAttributes attrs) throws IOException {
                 Files.delete(file);
                 return CONTINUE;
             }
 
             @Override
-            public FileVisitResult postVisitDirectory(final Path dir, final IOException exc)
-                                                                                            throws IOException {
+            public FileVisitResult postVisitDirectory(final Path dir,
+                                                      final IOException exc) throws IOException {
                 if (exc != null) {
                     throw exc;
                 }

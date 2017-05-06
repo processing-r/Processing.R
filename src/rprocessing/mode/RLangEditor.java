@@ -46,14 +46,8 @@ import rprocessing.mode.run.SketchServiceRunner;
  */
 public class RLangEditor extends Editor {
 
-    private static final boolean VERBOSE = Boolean
-                                             .parseBoolean(System.getenv("VERBOSE_RLANG_MODE"));
-
-    private static void log(final String msg) {
-        if (VERBOSE) {
-            System.err.println(RLangEditor.class.getSimpleName() + ": " + msg);
-        }
-    }
+    private static final boolean      VERBOSE          = Boolean
+        .parseBoolean(System.getenv("VERBOSE_RLANG_MODE"));
 
     /**  */
     private static final long         serialVersionUID = -5993950683909551427L;
@@ -71,6 +65,12 @@ public class RLangEditor extends Editor {
      */
     private Path                      tempSketch;
 
+    private static void log(final String msg) {
+        if (VERBOSE) {
+            System.err.println(RLangEditor.class.getSimpleName() + ": " + msg);
+        }
+    }
+
     public String getId() {
         return id;
     }
@@ -82,8 +82,8 @@ public class RLangEditor extends Editor {
      * @param mode
      * @throws EditorException
      */
-    protected RLangEditor(Base base, String path, EditorState state, Mode mode)
-                                                                               throws EditorException {
+    protected RLangEditor(Base base, String path, EditorState state,
+                          Mode mode) throws EditorException {
         super(base, path, state, mode);
         log("Initialize RLangEditor now.");
 
@@ -106,7 +106,7 @@ public class RLangEditor extends Editor {
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(final WindowEvent e) {
-                cleanup.run();
+                cleanup.start();
                 Runtime.getRuntime().removeShutdownHook(cleanup);
             }
         });
@@ -218,6 +218,7 @@ public class RLangEditor extends Editor {
     }
 
     /** 
+     * It is empty but cannot be removed because it is a abstract function.
      * @see processing.app.ui.Editor#handleImportLibrary(java.lang.String)
      */
     @Override
@@ -282,8 +283,8 @@ public class RLangEditor extends Editor {
                 tempSketch = createTempSketch();
                 sketchPath = tempSketch.resolve(sketchMainFileName).toFile();
             } catch (final IOException e) {
-                Messages.showError("Sketchy Behavior", "I can't copy your unsaved work\n"
-                                                       + "to a temp directory.", e);
+                Messages.showError("Sketchy Behavior",
+                    "I can't copy your unsaved work\n" + "to a temp directory.", e);
                 return;
             }
         } else {
@@ -301,8 +302,8 @@ public class RLangEditor extends Editor {
         }
 
         try {
-            sketchService.runSketch(new PdeSketch(sketch, sketchPath, displayType, location,
-                locationType));
+            sketchService
+                .runSketch(new PdeSketch(sketch, sketchPath, displayType, location, locationType));
         } catch (final SketchException e) {
             statusError(e);
         }

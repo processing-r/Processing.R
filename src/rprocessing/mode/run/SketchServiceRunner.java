@@ -17,6 +17,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import com.google.common.base.Joiner;
+
 import processing.app.Messages;
 import processing.app.Platform;
 import processing.app.Preferences;
@@ -24,21 +26,14 @@ import processing.app.SketchException;
 import rprocessing.mode.RLangEditor;
 import rprocessing.mode.RLangMode;
 
-import com.google.common.base.Joiner;
-
 /**
  * 
  * @author github.com/gaocegege
  */
 public class SketchServiceRunner {
 
-    private static final boolean VERBOSE = Boolean.parseBoolean(System.getenv("VERBOSE_RLANG_MODE"));
-
-    private static void log(final String msg) {
-        if (VERBOSE) {
-            System.err.println(SketchServiceRunner.class.getSimpleName() + ": " + msg);
-        }
-    }
+    private static final boolean        VERBOSE              = Boolean
+        .parseBoolean(System.getenv("VERBOSE_RLANG_MODE"));
 
     private final RLangMode             mode;
     private final RLangEditor           editor;
@@ -56,6 +51,12 @@ public class SketchServiceRunner {
                                                                      return name.endsWith(".jar");
                                                                  }
                                                              };
+
+    private static void log(final String msg) {
+        if (VERBOSE) {
+            System.err.println(SketchServiceRunner.class.getSimpleName() + ": " + msg);
+        }
+    }
 
     public SketchServiceRunner(final RLangMode mode, final RLangEditor editor) {
         this.mode = mode;
@@ -111,12 +112,14 @@ public class SketchServiceRunner {
 
         final List<String> cp = new ArrayList<>();
         cp.addAll(filter(
-            Arrays.asList(System.getProperty("java.class.path").split(
-                Pattern.quote(File.pathSeparator))),
+            Arrays.asList(
+                System.getProperty("java.class.path").split(Pattern.quote(File.pathSeparator))),
             not(or(
-                containsPattern("(ant|ant-launcher|antlr|netbeans.*|osgi.*|jdi.*|ibm\\.icu.*|jna)\\.jar$"),
+                containsPattern(
+                    "(ant|ant-launcher|antlr|netbeans.*|osgi.*|jdi.*|ibm\\.icu.*|jna)\\.jar$"),
                 containsPattern("/processing/app/(test|lib)/")))));
-        for (final File jar : new File(Platform.getContentFile("core"), "library").listFiles(JARS)) {
+        for (final File jar : new File(Platform.getContentFile("core"), "library")
+            .listFiles(JARS)) {
             cp.add(jar.getAbsolutePath());
         }
         final File[] libJars = mode.getContentFile("mode").getAbsoluteFile().listFiles(JARS);

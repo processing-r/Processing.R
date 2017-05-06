@@ -16,27 +16,27 @@ import rprocessing.mode.RLangMode;
  */
 public class SketchServiceManager implements ModeService {
 
-    private static final String DEBUG_SKETCH_RUNNER_KEY = "$SKETCHRUNNER$";
+    private static final String                    DEBUG_SKETCH_RUNNER_KEY = "$SKETCHRUNNER$";
 
-    private static final boolean VERBOSE = Boolean.parseBoolean(System.getenv("VERBOSE_RLANG_MODE"));
-
-    @SuppressWarnings("unused")
-    private static void log(final String msg) {
-        if (VERBOSE) {
-            System.err.println(SketchServiceManager.class.getSimpleName() + ": " + msg);
-        }
-    }
+    private static final boolean                   VERBOSE                 = Boolean
+        .parseBoolean(System.getenv("VERBOSE_RLANG_MODE"));
 
     private final RLangMode                        mode;
-    private final Map<String, SketchServiceRunner> sketchServices       = new HashMap<>();
-    private final Set<String>                      killedSketchServices = new HashSet<>();
-    private volatile boolean                       isStarted            = false;
+    private final Map<String, SketchServiceRunner> sketchServices          = new HashMap<>();
+    private final Set<String>                      killedSketchServices    = new HashSet<>();
+    private volatile boolean                       isStarted               = false;
 
     /**
      * This is used when {@link PythonMode#SKETCH_RUNNER_FIRST} is true. This lets
      * use run the SketchRunner in a debugger, for example.
      */
     private SketchService                          debugSketchRunner;
+
+    private static void log(final String msg) {
+        if (VERBOSE) {
+            System.err.println(SketchServiceManager.class.getSimpleName() + ": " + msg);
+        }
+    }
 
     public SketchServiceManager(final RLangMode mode) {
         this.mode = mode;
@@ -89,8 +89,8 @@ public class SketchServiceManager implements ModeService {
 
         final SketchServiceRunner p = sketchServices.get(editorId);
         if (p == null) {
-            throw new RuntimeException("I somehow got a message from the sketch runner for "
-                                       + editorId
+            throw new RuntimeException(
+                "I somehow got a message from the sketch runner for " + editorId
                                        + " but don't have an active service process for it!");
         }
         return p;
