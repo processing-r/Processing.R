@@ -18,17 +18,31 @@ import processing.app.ui.Editor;
  */
 public class RLangInputHandler extends PdeInputHandler {
 
+    // ctrl-alt on windows & linux, cmd-alt on os x
+    private static int           CTRL_ALT           = ActionEvent.ALT_MASK | Toolkit
+        .getDefaultToolkit().getMenuShortcutKeyMask();
+
+    // Set 4 spaces for one tab.
+    private static final String  TAB                = "    ";
+    private static final int     TAB_SIZE           = TAB.length();
+
+    /**
+     * A line is some whitespace followed by a bunch of whatever.
+     */
+    private static final Pattern LINE               = Pattern.compile("^(\\s*)(.*)$");
+
+    private static final Pattern INITIAL_WHITESPACE = Pattern.compile("^(\\s*)");
+    /*
+     * This can be fooled by a line like
+     * print "He said: #LOLHASHTAG!"
+     */
+    private static final Pattern TERMINAL_COLON     = Pattern.compile(":\\s*(#.*)?$");
+    private static final Pattern POP_CONTEXT        = Pattern
+        .compile("^\\s*(return|break|continue)\\b");
+
     public RLangInputHandler(Editor editor) {
         super(editor);
     }
-
-    // ctrl-alt on windows & linux, cmd-alt on os x
-    private static int          CTRL_ALT = ActionEvent.ALT_MASK
-                                           | Toolkit.getDefaultToolkit().getMenuShortcutKeyMask();
-
-    // Set 4 spaces for one tab.
-    private static final String TAB      = "    ";
-    private static final int    TAB_SIZE = TAB.length();
 
     private static boolean isPrintableChar(final char c) {
         if (c >= 32 && c <= 127) {
@@ -59,9 +73,8 @@ public class RLangInputHandler extends PdeInputHandler {
         final Sketch sketch = editor.getSketch();
 
         // things that change the content of the text area
-        if (!event.isMetaDown()
-            && (code == KeyEvent.VK_BACK_SPACE || code == KeyEvent.VK_TAB
-                || code == KeyEvent.VK_ENTER || isPrintableChar(c))) {
+        if (!event.isMetaDown() && (code == KeyEvent.VK_BACK_SPACE || code == KeyEvent.VK_TAB
+                                    || code == KeyEvent.VK_ENTER || isPrintableChar(c))) {
             sketch.setModified(true);
         }
 
@@ -119,15 +132,13 @@ public class RLangInputHandler extends PdeInputHandler {
                 final String text = textArea.getText(); // text
                 textArea.setSelectedText(newline());
                 break;
+            default:
+                // TODO: make the err message more readable.
+                System.err.print("Unrecognized key.");
         }
 
         return false;
     }
-
-    /**
-     * A line is some whitespace followed by a bunch of whatever.
-     */
-    private static final Pattern LINE = Pattern.compile("^(\\s*)(.*)$");
 
     /**
      * Everything we need to know about a line in the text editor.
@@ -229,10 +240,10 @@ public class RLangInputHandler extends PdeInputHandler {
         for (int i = startLine; i <= stopLine; i++) {
             indentLineBy(i, deltaIndent);
         }
-        textArea.setSelectionStart(getAbsoluteCaretPositionRelativeToLineEnd(startLine,
-            startLineEndRelativePos));
-        textArea.setSelectionEnd(getAbsoluteCaretPositionRelativeToLineEnd(stopLine,
-            stopLineEndRelativePos));
+        textArea.setSelectionStart(
+            getAbsoluteCaretPositionRelativeToLineEnd(startLine, startLineEndRelativePos));
+        textArea.setSelectionEnd(
+            getAbsoluteCaretPositionRelativeToLineEnd(stopLine, stopLineEndRelativePos));
     }
 
     private int getAbsoluteCaretPositionRelativeToLineEnd(final int line,
@@ -259,15 +270,6 @@ public class RLangInputHandler extends PdeInputHandler {
         textArea.setSelectedText(sb.toString());
         textArea.selectNone();
     }
-
-    private static final Pattern INITIAL_WHITESPACE = Pattern.compile("^(\\s*)");
-    /*
-     * This can be fooled by a line like
-     * print "He said: #LOLHASHTAG!"
-     */
-    private static final Pattern TERMINAL_COLON     = Pattern.compile(":\\s*(#.*)?$");
-    private static final Pattern POP_CONTEXT        = Pattern
-                                                        .compile("^\\s*(return|break|continue)\\b");
 
     private boolean isOpen(final char c) {
         return c == '(' || c == '[' || c == '{';

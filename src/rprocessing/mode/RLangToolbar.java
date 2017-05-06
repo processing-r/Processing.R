@@ -13,16 +13,17 @@ import processing.app.ui.EditorToolbar;
  */
 public class RLangToolbar extends EditorToolbar {
 
-    private static final boolean VERBOSE = Boolean.parseBoolean(System.getenv("VERBOSE_RLANG_MODE"));
+    private static final long    serialVersionUID = -4227659009839101912L;
 
-    static void log(String msg) {
+    private static final boolean VERBOSE          = Boolean
+        .parseBoolean(System.getenv("VERBOSE_RLANG_MODE"));
+
+    private static void log(String msg) {
         if (!VERBOSE) {
             return;
         }
         System.err.println(RLangToolbar.class.getSimpleName() + ": " + msg);
     }
-
-    private static final long serialVersionUID = -4227659009839101912L;
 
     public RLangToolbar(final Editor editor) {
         super(editor);

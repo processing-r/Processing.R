@@ -51,7 +51,7 @@ public class PdeSketch implements RunnableSketch, Serializable {
     }
 
     public static enum LocationType {
-        EDITOR_LOCATION, SKETCH_LOCATION;
+                                     EDITOR_LOCATION, SKETCH_LOCATION;
     }
 
     @Override
@@ -82,13 +82,16 @@ public class PdeSketch implements RunnableSketch, Serializable {
                     args.add(String.format("%s=%d,%d", PApplet.ARGS_EDITOR_LOCATION, location.x,
                         location.y));
                 } else if (locationType == LocationType.SKETCH_LOCATION) {
-                    args.add(String.format("%s=%d,%d", PApplet.ARGS_LOCATION, location.x,
-                        location.y));
+                    args.add(
+                        String.format("%s=%d,%d", PApplet.ARGS_LOCATION, location.x, location.y));
                 }
                 break;
             case PRESENTATION:
                 args.add("fullScreen");
                 break;
+            default:
+                // TODO: make the error message more readable.
+                System.err.print("Wrong display type.");
         }
 
         args.add(mainFile.getName()); // sketch name; has to be last argument

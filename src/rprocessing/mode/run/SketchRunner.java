@@ -9,6 +9,7 @@ import processing.core.PConstants;
 import rprocessing.Runner;
 import rprocessing.SketchPositionListener;
 import rprocessing.exception.REvalException;
+import rprocessing.exception.RMIRuntimeException;
 import rprocessing.mode.RLangMode;
 import rprocessing.mode.run.RMIUtils.RMIProblem;
 import rprocessing.util.Printer;
@@ -19,18 +20,19 @@ import rprocessing.util.Printer;
  */
 public class SketchRunner implements SketchService {
 
-    private static final boolean VERBOSE = Boolean.parseBoolean(System.getenv("VERBOSE_RLANG_MODE"));
+    private static final boolean VERBOSE              = Boolean
+        .parseBoolean(System.getenv("VERBOSE_RLANG_MODE"));
+
+    private final String         id;
+    private final ModeService    modeService;
+    private Thread               runner               = null;
+    private volatile boolean     shutdownWasRequested = false;
 
     private static void log(final String msg) {
         if (VERBOSE) {
             System.err.println(SketchRunner.class.getSimpleName() + ": " + msg);
         }
     }
-
-    private final String      id;
-    private final ModeService modeService;
-    private Thread            runner               = null;
-    private volatile boolean  shutdownWasRequested = false;
 
     public SketchRunner(final String id, final ModeService modeService) {
         this.id = id;
@@ -129,10 +131,8 @@ public class SketchRunner implements SketchService {
                             convertREvalError(e, sketch.codeFileNames));
                     } catch (final Exception e) {
                         if (e.getCause() != null && e.getCause() instanceof REvalException) {
-                            modeService.handleSketchException(
-                                id,
-                                convertREvalError((REvalException) e.getCause(),
-                                    sketch.codeFileNames));
+                            modeService.handleSketchException(id, convertREvalError(
+                                (REvalException) e.getCause(), sketch.codeFileNames));
                         } else {
                             modeService.handleSketchException(id, e);
                         }
@@ -176,48 +176,58 @@ public class SketchRunner implements SketchService {
         // If env var SKETCH_RUNNER_FIRST=true then SketchRunner will wait for a ping from the Mode
         // before registering itself as the sketch runner.
         if (RLangMode.SKETCH_RUNNER_FIRST) {
-            waitForMode(id);
+            try {
+                waitForMode(id);
+            } catch (RMIRuntimeException e) {
+                System.err.println(e);
+                System.exit(-1);
+            }
         } else {
-            startSketchRunner(id);
+            try {
+                startSketchRunner(id);
+            } catch (RMIRuntimeException e) {
+                System.err.println(e);
+                System.exit(-1);
+            }
         }
     }
 
     private static class ModeWaiterImpl implements ModeWaiter {
-        final String id;
+        private final String id;
 
         public ModeWaiterImpl(final String id) {
             this.id = id;
         }
 
         @Override
-        public void modeReady(final ModeService modeService) {
+        public void modeReady(final ModeService modeService) throws RMIRuntimeException {
             try {
                 launch(id, modeService);
             } catch (final Exception e) {
-                throw new RuntimeException(e);
+                throw new RMIRuntimeException(e);
             }
         }
     }
 
-    private static void waitForMode(final String id) {
+    private static void waitForMode(final String id) throws RMIRuntimeException {
         try {
             RMIUtils.bind(new ModeWaiterImpl(id), ModeWaiter.class);
         } catch (final RMIProblem e) {
-            throw new RuntimeException(e);
+            throw new RMIRuntimeException(e);
         }
     }
 
-    private static void startSketchRunner(final String id) {
+    private static void startSketchRunner(final String id) throws RMIRuntimeException {
         try {
             final ModeService modeService = RMIUtils.lookup(ModeService.class);
             launch(id, modeService);
         } catch (final Exception e) {
-            throw new RuntimeException(e);
+            throw new RMIRuntimeException(e);
         }
     }
 
     private static void launch(final String id, final ModeService modeService) throws RMIProblem,
-                                                                              RemoteException {
+                                                                               RemoteException {
         final SketchRunner sketchRunner = new SketchRunner(id, modeService);
         final SketchService stub = (SketchService) RMIUtils.export(sketchRunner);
         log("Calling mode's handleReady().");

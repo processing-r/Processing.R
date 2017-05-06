@@ -13,6 +13,7 @@ import org.renjin.sexp.SEXP;
 import org.renjin.sexp.Symbol;
 
 import rprocessing.applet.BuiltinApplet;
+import rprocessing.exception.NotFoundException;
 import rprocessing.util.Constant;
 import rprocessing.util.Printer;
 
@@ -24,17 +25,8 @@ import rprocessing.util.Printer;
  */
 public class RLangPApplet extends BuiltinApplet {
 
-    private static final boolean VERBOSE = Boolean
+    private static final boolean     VERBOSE = Boolean
         .parseBoolean(System.getenv("VERBOSE_RLANG_MODE"));
-
-    /**
-     * Mode for Processing.
-     * 
-     * @author github.com/gaocegege
-     */
-    private enum Mode {
-                       STATIC, ACTIVE, MIXED
-    }
 
     // A static-mode sketch must be interpreted from within the setup() method.
     // All others are interpreted during construction in order to harvest method
@@ -49,6 +41,15 @@ public class RLangPApplet extends BuiltinApplet {
 
     private final Printer            stdout;
 
+    /**
+     * Mode for Processing.
+     * 
+     * @author github.com/gaocegege
+     */
+    private enum Mode {
+                       STATIC, ACTIVE, MIXED
+    }
+
     private static void log(String msg) {
         if (!VERBOSE) {
             return;
@@ -56,14 +57,14 @@ public class RLangPApplet extends BuiltinApplet {
         System.err.println(RLangPApplet.class.getSimpleName() + ": " + msg);
     }
 
-    public RLangPApplet(final String programText, final Printer stdout) {
+    public RLangPApplet(final String programText, final Printer stdout) throws NotFoundException {
         // Create a script engine manager.
         ScriptEngineManager manager = new ScriptEngineManager();
         // Create a Renjin engine.
         ScriptEngine engine = manager.getEngineByName("Renjin");
         // Check if the engine has loaded correctly.
         if (engine == null) {
-            throw new RuntimeException("Renjin Script Engine not found on the classpath.");
+            throw new NotFoundException("Renjin Script Engine not found on the classpath.");
         }
         this.renjinEngine = (RenjinScriptEngine) engine;
         this.programText = programText;
@@ -115,7 +116,7 @@ public class RLangPApplet extends BuiltinApplet {
      * Add PApplet instance to R top context
      * Notice: DO NOT do it in constructor.
      */
-    public void AddPAppletToRContext() {
+    public void addPAppletToRContext() {
         this.renjinEngine.put(Constant.PROCESSING_VAR_NAME, this);
         // This is a trick to be deprecated. It is used to print
         // messages in Processing app console by stdout$print(msg).
@@ -185,12 +186,9 @@ public class RLangPApplet extends BuiltinApplet {
     @SuppressWarnings("rawtypes")
     private boolean isActiveMode() {
         Class closureClass = Closure.class;
-        if (isSameClass(this.renjinEngine.get(Constant.SETTINGS_NAME), closureClass)
-            || isSameClass(this.renjinEngine.get(Constant.SETUP_NAME), closureClass)
-            || isSameClass(this.renjinEngine.get(Constant.DRAW_NAME), closureClass)) {
-            return true;
-        }
-        return false;
+        return isSameClass(this.renjinEngine.get(Constant.SETTINGS_NAME), closureClass)
+               || isSameClass(this.renjinEngine.get(Constant.SETUP_NAME), closureClass)
+               || isSameClass(this.renjinEngine.get(Constant.DRAW_NAME), closureClass);
     }
 
     /**
@@ -202,11 +200,7 @@ public class RLangPApplet extends BuiltinApplet {
     @SuppressWarnings("rawtypes")
     private boolean isMixMode() {
         Class closureClass = Closure.class;
-        if (isSameClass(this.renjinEngine.get(Constant.SIZE_NAME), closureClass)) {
-            return true;
-        }
-
-        return false;
+        return isSameClass(this.renjinEngine.get(Constant.SIZE_NAME), closureClass);
     }
 
     /**

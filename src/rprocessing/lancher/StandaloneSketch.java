@@ -19,9 +19,16 @@ import rprocessing.util.RScriptReader;
  */
 public class StandaloneSketch implements RunnableSketch {
 
-    private static final boolean VERBOSE = Boolean.parseBoolean(System.getenv("VERBOSE_RLANG_MODE"));
+    private static final boolean VERBOSE = Boolean
+        .parseBoolean(System.getenv("VERBOSE_RLANG_MODE"));
 
-    static void log(final Object... objs) {
+    private final File           sketchPath;
+    private final String         code;
+
+    //    private final List<File> libraryDirs;
+
+    @SuppressWarnings("unused")
+    private static void log(final Object... objs) {
         if (!VERBOSE) {
             return;
         }
@@ -30,11 +37,6 @@ public class StandaloneSketch implements RunnableSketch {
         }
         System.err.println();
     }
-
-    private final File   sketchPath;
-    private final String code;
-
-    //    private final List<File> libraryDirs;
 
     /**
      * Returns the path of the main processing-py.jar file.
@@ -46,8 +48,8 @@ public class StandaloneSketch implements RunnableSketch {
     public File getMainJarFile() {
         // On a Mac, when launched as an app, this will contain ".app/Contents/Java/processing-py.jar"
         try {
-            return new File(Runner.class.getProtectionDomain().getCodeSource().getLocation()
-                .toURI());
+            return new File(
+                Runner.class.getProtectionDomain().getCodeSource().getLocation().toURI());
         } catch (final URISyntaxException e) {
             e.printStackTrace();
         }
@@ -142,9 +144,8 @@ public class StandaloneSketch implements RunnableSketch {
 
     @Override
     public String[] getPAppletArguments() {
-        return new String[] {
-                PApplet.ARGS_SKETCH_FOLDER + "=" + sketchPath.getParentFile().getAbsolutePath(),
-                sketchPath.getName() // must be last argument
+        return new String[] { PApplet.ARGS_SKETCH_FOLDER + "="
+                              + sketchPath.getParentFile().getAbsolutePath(), sketchPath.getName() // must be last argument
         };
     }
 

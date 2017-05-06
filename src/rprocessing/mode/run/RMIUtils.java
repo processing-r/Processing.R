@@ -6,8 +6,6 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 
-import rprocessing.mode.RLangMode;
-
 /**
  * 
  * @author github.com/gaocegege
@@ -16,9 +14,10 @@ public class RMIUtils {
 
     private static final boolean EXTREMELY_VERBOSE = false;
 
-    static final int             RMI_PORT          = 8221;
+    private static final int     RMI_PORT          = 8221;
 
-    private static final boolean VERBOSE           = Boolean.parseBoolean(System.getenv("VERBOSE_RLANG_MODE"));
+    private static final boolean VERBOSE           = Boolean
+        .parseBoolean(System.getenv("VERBOSE_RLANG_MODE"));
 
     static {
         System.setProperty("sun.rmi.transport.tcp.localHostNameTimeOut", "1000");
@@ -58,13 +57,13 @@ public class RMIUtils {
         return LocateRegistry.getRegistry(RMI_PORT);
     }
 
-    public static void bind(final Remote remote, final Class<? extends Remote> remoteInterface)
-                                                                                               throws RMIProblem {
+    public static void bind(final Remote remote,
+                            final Class<? extends Remote> remoteInterface) throws RMIProblem {
         final String registryKey = remoteInterface.getSimpleName();
         try {
             final Remote stub = export(remote);
-            log("Attempting to bind instance of " + remote.getClass().getName()
-                + " to registry as " + registryKey);
+            log("Attempting to bind instance of " + remote.getClass().getName() + " to registry as "
+                + registryKey);
             registry().bind(registryKey, stub);
             log("Bound.");
             Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
