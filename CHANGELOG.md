@@ -15,6 +15,9 @@
 
 **Merged pull requests:**
 
+- builtin: Add curves function [\#31](https://github.com/gaocegege/Processing.R/pull/31) ([gaocegege](https://github.com/gaocegege))
+- Fix coding style according to codacy [\#29](https://github.com/gaocegege/Processing.R/pull/29) ([gaocegege](https://github.com/gaocegege))
+- Add 2D built-in functions  [\#27](https://github.com/gaocegege/Processing.R/pull/27) ([gaocegege](https://github.com/gaocegege))
 - travis: Simplify CI process [\#26](https://github.com/gaocegege/Processing.R/pull/26) ([gaocegege](https://github.com/gaocegege))
 - WIP: appveyor: Add Windows CI [\#25](https://github.com/gaocegege/Processing.R/pull/25) ([gaocegege](https://github.com/gaocegege))
 
