@@ -2,6 +2,11 @@ package rprocessing.applet;
 
 import processing.core.PApplet;
 
+/**
+ * BuiltinApplet is the type to refactor the function calls.
+ * 
+ * @author github.com/gaocegege
+ */
 public class BuiltinApplet extends PApplet {
 
     /*
@@ -31,8 +36,7 @@ public class BuiltinApplet extends PApplet {
         super.ellipse((float) posX, (float) posY, (float) width, (float) height);
     }
 
-    public void arc(double posX, double posY, double width, double height, double start,
-                    double stop) {
+    public void arc(double posX, double posY, double width, double height, double start, double stop) {
         super.arc((float) posX, (float) posY, (float) width, (float) height, (float) start,
             (float) stop);
     }
@@ -118,4 +122,86 @@ public class BuiltinApplet extends PApplet {
     public void curveTightness(double tightness) {
         super.curveTightness((float) tightness);
     }
+
+    /*
+     * Colors
+     */
+
+    public void backgroud(int rgb, double alpha) {
+        super.background(rgb, (float) alpha);
+    }
+
+    public void background(double gray) {
+        super.background((float) gray);
+    }
+
+    public void background(double gray, double alpha) {
+        super.background((float) gray, (float) alpha);
+    }
+
+    public void background(double v1, double v2, double v3) {
+        super.background((float) v1, (float) v2, (float) v3);
+    }
+
+    public void background(double v1, double v2, double v3, double alpha) {
+        super.background((float) v1, (float) v2, (float) v3, (float) alpha);
+    }
+
+    public void colorMode(int mode, double max) {
+        super.colorMode(mode, (float) max);
+    }
+
+    public void colorMode(int mode, double max1, double max2, double max3) {
+        super.colorMode(mode, (float) max1, (float) max2, (float) max3);
+    }
+
+    public void colorMode(int mode, double max1, double max2, double max3, double maxA) {
+        super.colorMode(mode, (float) max1, (float) max2, (float) max3, (float) maxA);
+    }
+
+    public void fill(int rgb, double alpha) {
+        super.fill(rgb, (float) alpha);
+    }
+
+    public void fill(double gray) {
+        super.fill((float) gray);
+    }
+
+    public void fill(double gray, double alpha) {
+        super.fill((float) gray, (float) alpha);
+    }
+
+    public void fill(double v1, double v2, double v3) {
+        super.fill((float) v1, (float) v2, (float) v3);
+    }
+
+    public void fill(double v1, double v2, double v3, double alpha) {
+        super.fill((float) v1, (float) v2, (float) v3, (float) alpha);
+    }
+
+    public void stroke(int rgb, double alpha) {
+        super.fill(rgb, (float) alpha);
+    }
+
+    public void stroke(double gray) {
+        super.fill((float) gray);
+    }
+
+    public void stroke(double gray, double alpha) {
+        super.fill((float) gray, (float) alpha);
+    }
+
+    public void stroke(double v1, double v2, double v3) {
+        super.fill((float) v1, (float) v2, (float) v3);
+    }
+
+    public void stroke(double v1, double v2, double v3, double alpha) {
+        super.fill((float) v1, (float) v2, (float) v3, (float) alpha);
+    }
+
+    // TODO: Blocked until pre-processor.
+    // See https://github.com/gaocegege/Processing.R/issues/9#issuecomment-299710866
+    //    public double alpha(int rgb) {
+    //        return 0;
+    //    }
 }

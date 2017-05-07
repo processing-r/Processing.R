@@ -1,3 +1,5 @@
+processing$background(255, 204, 0)
+
 processing$line(11, 22, 33, 22)
 
 processing$arc(50, 55, 50, 50, 0, 100)
@@ -10,7 +12,7 @@ processing$quad(38, 31, 86, 20, 69, 63, 30, 76)
 
 processing$bezierDetail(as.integer(12))
 
-bezier(85, 20, 10, 10, 90, 90, 15, 80)
+processing$bezier(85, 20, 10, 10, 90, 90, 15, 80)
 
 # for (i in 1:16) {
 #   t = i / float(steps);
