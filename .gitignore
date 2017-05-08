@@ -30,3 +30,12 @@ build.xml
 
 # backup
 *.backup
+
+# VS Code
+.vscode/
+
+# Java
+target/
+
+# Test
+test/

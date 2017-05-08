@@ -1,16 +1,20 @@
 <?xml version="1.0"?>
-<project name="processing.r" default="install" basedir="./">
+<project name="Processing.R" default="install" basedir="." xmlns:jacoco="antlib:org.jacoco.ant">
     <property name="mode.name" value="RLangMode" />
+
     <!-- folder to install modes in (probably a folder called "modes" inside your sketchbook folder) -->
     <property name="processing.modes" location="@@modes@@" />
+
     <!-- path to your processing executable. -->
     <property name="processing.executable" location="@@executable@@" />
     <property name="processing" value="@@processing@@" />
+
     <!-- location of processing jars (core.jar, pde.jar, ..) -->
     <property name="processing.classes.core" location="@@core@@" />
     <property name="processing.classes.pde" location="@@pde@@" />
     <property name="renjin" value="@@renjin@@" />
     <property name="java.target.version" value="1.8" />
+
     <!-- Folder -->
     <property name="try" value="try" />
     <property name="lib" value="lib" />
@@ -18,6 +22,15 @@
     <property name="build" value="build" />
     <property name="bin" value="bin" />
     <property name="dist" value="dist" />
+
+    <!-- Test -->
+    <property name="test.build.dir" value="test" />
+    <property name="test.src.dir" value="src" />
+    <property name="result.dir" location="target"/>
+    <property name="result.classes.dir" location="${test.build.dir}"/>
+    <property name="result.report.dir" location="${test.build.dir}/site/jacoco"/>
+    <property name="result.exec.file" location="${test.build.dir}/jacoco.exec"/>
+
     <path id="library-classpath">
         <fileset dir="${processing.classes.core}">
             <include name="*.jar" />
@@ -29,6 +42,13 @@
             <include name="*.jar" />
         </fileset>
     </path>
+
+    <taskdef uri="antlib:org.jacoco.ant" resource="org/jacoco/ant/antlib.xml">
+        <classpath>
+            <path refid="library-classpath" />
+        </classpath>
+    </taskdef>
+
     <target name="try" depends="build">
         <propertyfile file="build.number" />
         <!-- create the build.number file if it doesn't exist -->
@@ -101,5 +121,54 @@
     - - - - - - - - - - - - - - - - - - - - - - - -->
     <target name="run" depends="install">
         <exec executable="${processing.executable}" spawn="false" />
+    </target>
+    <!-- - - - - - - - - - - - - - - - - - - - - - -
+        TEST
+    - - - - - - - - - - - - - - - - - - - - - - - -->
+    <target name="test-compile" depends="build">
+        <mkdir dir="${test.build.dir}"/>
+        <javac srcdir="${test.src.dir}" destdir="${test.build.dir}" includeantruntime="false">
+            <classpath>
+                <path refid="library-classpath" />
+            </classpath>
+        </javac>
+    </target>
+    <target name="test" depends="test-compile">
+        <jacoco:coverage destfile="${result.exec.file}">
+            <junit printsummary="on" haltonfailure="yes" fork="true">
+                <classpath>
+                    <path refid="library-classpath" />
+                    <pathelement location="${build}"/>
+                </classpath>
+                <formatter type="brief" usefile="false" />
+                <batchtest>
+                    <fileset dir="${test.src.dir}" includes="**/*Test.java" />
+                </batchtest>
+            </junit>
+        </jacoco:coverage>
+    </target>
+    <target name="report" depends="test">
+        <!--  Step 3: Create coverage report  -->
+        <jacoco:report>
+            <!--
+            This task needs the collected execution data and ... 
+            -->
+            <executiondata>
+                <file file="${result.exec.file}"/>
+            </executiondata>
+            <!--  the class files and optional source files ...  -->
+            <structure name="JaCoCo Ant Example">
+                <classfiles>
+                    <fileset dir="${result.classes.dir}"/>
+                </classfiles>
+                <sourcefiles encoding="UTF-8">
+                    <fileset dir="${test.src.dir}"/>
+                </sourcefiles>
+            </structure>
+            <!--  to produce reports in different formats.  -->
+            <html destdir="${result.report.dir}"/>
+            <csv destfile="${result.report.dir}/report.csv"/>
+            <xml destfile="${result.report.dir}/report.xml"/>
+        </jacoco:report>
     </target>
 </project>

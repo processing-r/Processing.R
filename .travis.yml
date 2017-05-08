@@ -12,4 +12,8 @@ install:
   - ant try
 
 script:
-  - echo "No test now."
+  - ant report
+
+after_success:
+  - curl https://secure.central.sonatype.com/maven2/com/codacy/codacy-coverage-reporter/1.0.13/codacy-coverage-reporter-1.0.13-assembly.jar > codacy-coverage-reporter-assembly.jar
+  - java -cp codacy-coverage-reporter-assembly.jar com.codacy.CodacyCoverageReporter -l Java -r test/site/jacoco/report.xml
