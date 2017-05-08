@@ -38,4 +38,4 @@ build.xml
 target/
 
 # Test
-test/
+test-output/

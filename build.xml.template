@@ -24,7 +24,7 @@
     <property name="dist" value="dist" />
 
     <!-- Test -->
-    <property name="test.build.dir" value="test" />
+    <property name="test.build.dir" value="test-output" />
     <property name="test.src.dir" value="src" />
     <property name="result.dir" location="target"/>
     <property name="result.classes.dir" location="${test.build.dir}"/>
@@ -157,7 +157,7 @@
                 <file file="${result.exec.file}"/>
             </executiondata>
             <!--  the class files and optional source files ...  -->
-            <structure name="JaCoCo Ant Example">
+            <structure name="Processing.R">
                 <classfiles>
                     <fileset dir="${result.classes.dir}"/>
                 </classfiles>
