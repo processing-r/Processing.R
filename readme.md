@@ -13,6 +13,7 @@
 [![Gitter](https://badges.gitter.im/gaocegege/Processing.R.svg)](https://gitter.im/gaocegege/Processing.R?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 [![Build status](https://ci.appveyor.com/api/projects/status/9lq6psaw9c18ins8/branch/master?svg=true)](https://ci.appveyor.com/project/gaocegege/processing-r/branch/master)
 [![GitHub release](https://img.shields.io/github/release/gaocegege/Processing.R.svg)](https://github.com/gaocegege/Processing.R/releases)
+[![Codacy Badge](https://api.codacy.com/project/badge/Coverage/33ebc49f6f764fffb7ea7bf617edf902)](https://www.codacy.com/app/gaocegege/Processing-R?utm_source=github.com&utm_medium=referral&utm_content=gaocegege/Processing.R&utm_campaign=Badge_Coverage)
 -->
 
 <p align="center">
@@ -21,6 +22,7 @@
     <a href="https://quay.io/repository/gaocegege/processing.r"><img src="https://img.shields.io/badge/docker-supported-blue.svg" alt=""></a>
     <a href="https://quay.io/repository/gaocegege/processing.r"><img src="https://quay.io/repository/gaocegege/processing.r/status" alt="Docker Repository on Quay" title="Docker Repository on Quay"></a>
     <a href="https://www.codacy.com/app/gaocegege/Processing-R?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=gaocegege/Processing.R&amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/33ebc49f6f764fffb7ea7bf617edf902" alt="Codacy Badge"></a>
+    <a href="https://www.codacy.com/app/gaocegege/Processing-R?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=gaocegege/Processing.R&amp;utm_campaign=Badge_Coverage"><img src="https://api.codacy.com/project/badge/Coverage/33ebc49f6f764fffb7ea7bf617edf902" alt="Codacy Badge"></a>
     <a href="https://github.com/gaocegege/Processing.R/releases"><img src="https://img.shields.io/github/downloads/gaocegege/Processing.R/total.svg" alt="GitHub Download"></a>
     <a href="https://github.com/gaocegege/Processing.R/releases"><img src="https://img.shields.io/github/release/gaocegege/Processing.R.svg" alt="GitHub Release"></a>
     <a href="https://gitter.im/gaocegege/Processing.R?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge"><img src="https://badges.gitter.im/gaocegege/Processing.R.svg" alt="Gitter"></a>
