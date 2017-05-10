@@ -1,0 +1,73 @@
+# From https://processing.org/tutorials/2darray/
+
+cols <- 10
+rows <- 10
+
+Cell <- function(x, y, w, h, angle)
+{
+    me <- list(
+        x = x,
+        y = y,
+        w = w,
+        h = h,
+        angle = angle
+    )
+    class(me) <- append(class(me),"Cell")
+    return(me)
+}
+
+oscillate <- function(cell)
+{
+    UseMethod("oscillate",cell)
+}
+
+oscillate.Cell <- function(cell)
+{
+    # stdout$print("Calling the base oscillate function")
+    cell$angle <- cell$angle + 0.2
+    return(cell)
+}
+
+display <- function(cell)
+{
+    UseMethod("display",cell)
+}
+
+display.Cell <- function(cell)
+{
+    processing$stroke(255)
+    processing$fill(127 + 127 * sin(cell$angle))
+    processing$rect(cell$x,cell$y,cell$w,cell$h)
+}
+
+grid <- list()
+
+settings <- function() {
+  stdout$print("Set width and height.")
+  processing$size(200,200)
+}
+
+setup <- function()
+{
+    for (i in 1:cols-1)
+    {
+        for (j in 1:rows-1)
+        {
+            # There is no 0 in a list.
+            grid[[1 + i * cols + j]] = Cell(i*20, j*20, 20, 20, i + j)
+        }
+    }
+}
+
+draw <- function()
+{
+    processing$background(0)
+    for (i in 1:cols-1)
+    {
+        for (j in 1:rows-1)
+        {
+            oscillate(grid[[1 + i * cols + j]])
+            display(grid[[1 + i * cols + j]])
+        }
+    }
+}
