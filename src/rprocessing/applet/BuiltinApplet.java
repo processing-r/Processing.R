@@ -180,23 +180,23 @@ public class BuiltinApplet extends PApplet {
     }
 
     public void stroke(int rgb, double alpha) {
-        super.fill(rgb, (float) alpha);
+        super.stroke(rgb, (float) alpha);
     }
 
     public void stroke(double gray) {
-        super.fill((float) gray);
+        super.stroke((float) gray);
     }
 
     public void stroke(double gray, double alpha) {
-        super.fill((float) gray, (float) alpha);
+        super.stroke((float) gray, (float) alpha);
     }
 
     public void stroke(double v1, double v2, double v3) {
-        super.fill((float) v1, (float) v2, (float) v3);
+        super.stroke((float) v1, (float) v2, (float) v3);
     }
 
     public void stroke(double v1, double v2, double v3, double alpha) {
-        super.fill((float) v1, (float) v2, (float) v3, (float) alpha);
+        super.stroke((float) v1, (float) v2, (float) v3, (float) alpha);
     }
 
     // TODO: Blocked until pre-processor.
@@ -204,4 +204,12 @@ public class BuiltinApplet extends PApplet {
     //    public double alpha(int rgb) {
     //        return 0;
     //    }
+
+    public double radians(double degrees) {
+        return super.radians((float) degrees);
+    }
+
+    public void text(String c, double posX, double posY) {
+        super.text(c, (float) posX, (float) posY);
+    }
 }
