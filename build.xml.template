@@ -86,9 +86,6 @@
         <mkdir dir="${bundle}" />
         <mkdir dir="${bundle}/mode" />
         <jar jarfile="${bundle}/mode/${mode.name}.jar" basedir="build" />
-        <zip destfile="${dist}/mode/${mode.name}.jar" excludes="**/*.MF">
-            <zipgroupfileset dir="lib" includes="*.jar" />
-        </zip>
         <copy todir="${bundle}">
             <fileset dir="resources/" />
         </copy>
@@ -104,8 +101,9 @@
     - - - - - - - - - - - - - - - - - - - - - - - -->
     <target name="install" depends="package">
         <delete dir="${processing.modes}/${mode.name}" />
-        <copy todir="${processing.modes}/">
-            <fileset dir="${dist}" />
+        <mkdir dir="${processing.modes}/${mode.name}" />
+        <copy todir="${processing.modes}/${mode.name}">
+            <fileset dir="${dist}/${mode.name}" />
         </copy>
     </target>
     <!-- - - - - - - - - - - - - - - - - - - - - - -
