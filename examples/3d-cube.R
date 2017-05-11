@@ -1,0 +1,53 @@
+PI <- 3.1415
+
+settings <- function()
+{
+ processing$size(500, 500, "processing.opengl.PGraphics3D")
+}
+
+setup <- function()
+{
+  processing$colorMode(as.integer(1), 1)
+  processing$frameRate(24)
+}
+
+draw <- function()
+{
+  frames <- 24 * 3
+  t <- processing$frameCount() / frames
+  
+  processing$background(1)
+  
+  processing$perspective(0.5, 1, 0.01, 100)
+  
+  processing$camera(
+    0, 0, 25 + sin(PI * 2 * t) * 3,
+    0, 0, 0,
+    0, 1, 0
+  )
+
+  processing$rotateX(-0.5 - 0.05 * sin(PI * 4 * t))
+  processing$rotateY(-0.5 - 0.05 * cos(PI * 2 * t))
+  
+  columns <- 8
+  for (ix in 1:columns - 1)
+  {
+    x <- ix - 0.5 * columns + 0.5
+    for (iy in 1:columns - 1)
+    {
+      y <- iy - 0.5 * columns + 0.5
+      for (iz in 1:columns - 1)
+      {
+        z <- iz - 0.5 * columns + 0.5
+
+        d <- sqrt(x * x + y * y + z * z)
+        s <- abs(sin(d - t * 4 * PI))
+      
+        processing$pushMatrix()
+        processing$translate(x, z, y)
+        processing$box(s)
+        processing$popMatrix()
+      }
+    }
+  }
+}
