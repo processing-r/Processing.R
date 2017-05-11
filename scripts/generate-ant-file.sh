@@ -10,12 +10,13 @@ function log {
 
 root=$(dirname "${BASH_SOURCE}")/..
 
-# Path
+# Path to be changed
 modes="/Users/gaoce/Documents/Processing/modes"
 executable="/Applications/Processing.app/Contents/MacOS/Processing"
-processing="../processing"
 core="../processing/core/library/"
 pde="../processing/app/"
+
+# Static path
 renjin="lib/renjin-script-engine-0.8.2194-jar-with-dependencies.jar"
 
 # Build core.jar.

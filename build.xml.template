@@ -7,7 +7,6 @@
 
     <!-- path to your processing executable. -->
     <property name="processing.executable" location="@@executable@@" />
-    <property name="processing" value="@@processing@@" />
 
     <!-- location of processing jars (core.jar, pde.jar, ..) -->
     <property name="processing.classes.core" location="@@core@@" />
