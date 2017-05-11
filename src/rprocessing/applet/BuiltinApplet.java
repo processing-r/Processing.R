@@ -1,5 +1,7 @@
 package rprocessing.applet;
 
+import org.renjin.sexp.StringVector;
+
 import processing.core.PApplet;
 
 /**
@@ -20,6 +22,10 @@ public class BuiltinApplet extends PApplet {
         super.size((int) width, (int) height);
     }
 
+    public void size(double width, double height, StringVector renderer) {
+        super.size((int) width, (int) height, renderer.asString());
+    }
+
     /*
      * 2D Primitives
      */
@@ -36,7 +42,8 @@ public class BuiltinApplet extends PApplet {
         super.ellipse((float) posX, (float) posY, (float) width, (float) height);
     }
 
-    public void arc(double posX, double posY, double width, double height, double start, double stop) {
+    public void arc(double posX, double posY, double width, double height, double start,
+                    double stop) {
         super.arc((float) posX, (float) posY, (float) width, (float) height, (float) start,
             (float) stop);
     }
@@ -199,11 +206,53 @@ public class BuiltinApplet extends PApplet {
         super.stroke((float) v1, (float) v2, (float) v3, (float) alpha);
     }
 
+    /*
+     * 3D
+     */
+
+    public void box(double size) {
+        super.box((float) size);
+    }
+
+    public void box(double w, double h, double d) {
+        super.box((float) w, (float) h, (float) d);
+    }
+
     // TODO: Blocked until pre-processor.
     // See https://github.com/gaocegege/Processing.R/issues/9#issuecomment-299710866
     //    public double alpha(int rgb) {
     //        return 0;
     //    }
+
+    public void perspective(double fovy, double aspect, double zNear, double zFar) {
+        super.perspective((float) fovy, (float) aspect, (float) zNear, (float) zFar);
+    }
+
+    public void frameRate(double fps) {
+        super.frameRate((float) fps);
+    }
+
+    public double frameCount() {
+        return super.frameCount;
+    }
+
+    public void camera(double eyeX, double eyeY, double eyeZ, double centerX, double centerY,
+                       double centerZ, double upX, double upY, double upZ) {
+        super.camera((float) eyeX, (float) eyeY, (float) eyeZ, (float) centerX, (float) centerY,
+            (float) centerZ, (float) upX, (float) upY, (float) upZ);
+    }
+
+    public void rotateX(double angle) {
+        super.rotateX((float) angle);
+    }
+
+    public void rotateY(double angle) {
+        super.rotateY((float) angle);
+    }
+
+    public void translate(double x, double y, double z) {
+        super.translate((float) x, (float) y, (float) z);
+    }
 
     public double radians(double degrees) {
         return super.radians((float) degrees);
