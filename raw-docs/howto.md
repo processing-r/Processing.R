@@ -27,7 +27,7 @@ Processing.R is *not* currently available via PDE > Add Tool > Modes, however th
 Configure `./scripts/generate-ant-file.sh`:
 
 - `modes`: the destination for installing the mode once it is built.  
-   -  MacOSX: `~/Documents/Processing/modes/`
+   -  MacOSX: `/Users/[MyUserName]/Documents/Processing/modes/`
    -  Windows: `%homepath%\Documents\modes\`
    -  Linux: `~/sketchbook/modes/`
 - `core` and `pde`: directories contain pde.jar and core.jar. They are be used to build RLangMode.
@@ -41,7 +41,7 @@ Configure `./scripts/generate-ant-file.sh`:
 For example, to install the mode into a default existing PDE app on a MacOS system, set arguments in `./scripts/generate-ant-file.sh` such as:
 
 ```
-modes="~/Documents/Processing/modes"
+modes="/Users/[MyUserName]/Documents/Processing/modes"
 core="/Applications/Processing.app/Contents/Java/"
 pde="/Applications/Processing.app/Contents/Java/"
 executable="/Applications/Processing.app/Contents/MacOS/Processing"
