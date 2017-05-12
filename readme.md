@@ -46,14 +46,30 @@ If you want to compile the source code, see [HOWTO get Processing.R](./raw-docs/
 	<img src="./raw-docs/img/demo.gif" alt="Demo" width="300">
 </div>
 
-## Useful Resources for Development
+## CONTRIBUTING
 
-See [references](./raw-docs/references.md).
+Feel free to hack on Processing.R! There are some [issues for the new contributors](https://github.com/gaocegege/Processing.R/issues?q=is%3Aissue+is%3Aopen+label%3Afor-new-contributors) to get started with.
+
+Before the contribution, read [the CONTRIBUTING guide](./CONTRIBUTING.md) first :)
+
+## CHANGELOG
+
+See [CHANGELOG](./CHANGELOG.md)
+
+## AUTHORS
+
+See [AUTHORS](./AUTHORS.md)
 
 ## Discussion in Processing Forum
 
 [Idea: R Language Mode for Processing](https://forum.processing.org/two/discussion/21195/gsoc-2017-r-language-mode-for-processing)
 
-## CHANGELOG
+## Useful Resources for Development
 
-See [CHANGELOG](./CHANGELOG.md)
+See [references](./raw-docs/references.md).
+
+## Acknowledgments
+
+* Thanks [processing](https://github.com/processing/processing) for the Processing Development Environment(PDE).
+* Thanks [renjin](https://github.com/bedatadriven/renjin) for its awesome JVM-based interpreter for the R language.
+* Thanks [Jeremy Douglass](https://github.com/jeremydouglass) for mentoring me in Google Summer of Code 2017.

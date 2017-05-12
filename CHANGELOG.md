@@ -6,20 +6,32 @@
 
 **Closed issues:**
 
+- macOS fails to run Processing.R [\#47](https://github.com/gaocegege/Processing.R/issues/47)
+- Add an object oriented example [\#41](https://github.com/gaocegege/Processing.R/issues/41)
+- Travis fails according to ant report [\#37](https://github.com/gaocegege/Processing.R/issues/37)
+- Fail to build mode in macOS [\#33](https://github.com/gaocegege/Processing.R/issues/33)
 - Add Processing app with Processing.R into v1.0.1 [\#23](https://github.com/gaocegege/Processing.R/issues/23)
 - Add logger support to Processing.R [\#22](https://github.com/gaocegege/Processing.R/issues/22)
 - Re-direct STDOUT to console in Processing.app [\#20](https://github.com/gaocegege/Processing.R/issues/20)
 - Add CI for Windows [\#19](https://github.com/gaocegege/Processing.R/issues/19)
+- Imporve code quality according to codacy report [\#18](https://github.com/gaocegege/Processing.R/issues/18)
 - Simplify CI process: replace the compilation with download file [\#15](https://github.com/gaocegege/Processing.R/issues/15)
 - Static Mode in Editor [\#7](https://github.com/gaocegege/Processing.R/issues/7)
 
 **Merged pull requests:**
 
+- examples: Add a 3d example [\#46](https://github.com/gaocegege/Processing.R/pull/46) ([gaocegege](https://github.com/gaocegege))
+- examples: Add a new example about Trigonometry [\#45](https://github.com/gaocegege/Processing.R/pull/45) ([gaocegege](https://github.com/gaocegege))
+- ant: Fix the logic for mannual installation [\#44](https://github.com/gaocegege/Processing.R/pull/44) ([gaocegege](https://github.com/gaocegege))
+- Add an object oriented example [\#40](https://github.com/gaocegege/Processing.R/pull/40) ([gaocegege](https://github.com/gaocegege))
+- Fix ant report [\#38](https://github.com/gaocegege/Processing.R/pull/38) ([gaocegege](https://github.com/gaocegege))
+- Setup coverage report [\#36](https://github.com/gaocegege/Processing.R/pull/36) ([gaocegege](https://github.com/gaocegege))
+- Support built-in color functions [\#32](https://github.com/gaocegege/Processing.R/pull/32) ([gaocegege](https://github.com/gaocegege))
 - builtin: Add curves function [\#31](https://github.com/gaocegege/Processing.R/pull/31) ([gaocegege](https://github.com/gaocegege))
 - Fix coding style according to codacy [\#29](https://github.com/gaocegege/Processing.R/pull/29) ([gaocegege](https://github.com/gaocegege))
 - Add 2D built-in functions  [\#27](https://github.com/gaocegege/Processing.R/pull/27) ([gaocegege](https://github.com/gaocegege))
 - travis: Simplify CI process [\#26](https://github.com/gaocegege/Processing.R/pull/26) ([gaocegege](https://github.com/gaocegege))
-- WIP: appveyor: Add Windows CI [\#25](https://github.com/gaocegege/Processing.R/pull/25) ([gaocegege](https://github.com/gaocegege))
+- appveyor: Add Windows CI [\#25](https://github.com/gaocegege/Processing.R/pull/25) ([gaocegege](https://github.com/gaocegege))
 
 ## [v1.0.1](https://github.com/gaocegege/Processing.R/tree/v1.0.1) (2017-04-09)
 [Full Changelog](https://github.com/gaocegege/Processing.R/compare/v0.0.2...v1.0.1)
