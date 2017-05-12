@@ -25,7 +25,6 @@
     <!-- Test -->
     <property name="test.build.dir" value="test-output" />
     <property name="test.src.dir" value="src" />
-    <property name="result.dir" location="target"/>
     <property name="result.classes.dir" location="${test.build.dir}"/>
     <property name="result.report.dir" location="${test.build.dir}/site/jacoco"/>
     <property name="result.exec.file" location="${test.build.dir}/jacoco.exec"/>
