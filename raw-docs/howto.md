@@ -36,7 +36,7 @@ Configure `./scripts/generate-ant-file.sh`:
    -  The path is used in `ant run` to start a PDE instance. Leave blank to not launch PDE on `ant run`.
    -  MacOSX: `/Applications/Processing.app/Contents/MacOS/Processing`
 
-##### A) Add to existing PDE
+##### A) configure for adding to an existing PDE
 
 For example, to install the mode into a default existing PDE app on a MacOS system, set arguments in `./scripts/generate-ant-file.sh` such as:
 
@@ -49,7 +49,7 @@ executable="/Applications/Processing.app/Contents/MacOS/Processing"
 
 This will generate build.xml errors (as the core and pde directories only contain the actual jars, not source). However it will work correctly.
 
-##### B) Create new PDE
+##### B) configure for creating a new PDE
 
 Build the source code of Processing core and pde wherever it is located on the system. For example:
 
