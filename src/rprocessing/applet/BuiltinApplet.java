@@ -218,6 +218,10 @@ public class BuiltinApplet extends PApplet {
         super.box((float) w, (float) h, (float) d);
     }
 
+    public void sphere(double size) {
+        super.sphere((float) size);
+    }
+
     // TODO: Blocked until pre-processor.
     // See https://github.com/gaocegege/Processing.R/issues/9#issuecomment-299710866
     //    public double alpha(int rgb) {
