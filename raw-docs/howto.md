@@ -16,6 +16,14 @@ See [the demo in vimeo :)](https://vimeo.com/207571123)
 
 ### Editor Support
 
+1. checkout Processing.R from github
+2. configure `./scripts/generate-ant-file.sh`
+3. build mode and install into PDE using `ant build` (must have ant)
+4. restart PDE
+5. select R Language from mode drop-down
+
+**Note:** Many parts of PDE integration are still incomplete: files cannot be double-clicked or dragged to open so code must be cut-pasted into the window, saved files cannot be reopened except through the recent files dialog list, the run button launches multiple window rather than re-running, stop button does not work, etc.
+
 There are 4 paths to be determined in `./scripts/generate-ant-file.sh`:
 
 ```
