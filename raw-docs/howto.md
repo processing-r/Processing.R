@@ -1,30 +1,66 @@
 # HOWTO
 
-If you just want to have a try, then there is no need to read this documentation, you could get the distribution from [gaocegege.com/Processing.R](http://gaocegege.com/Processing.R)
+## Installation
 
-## Play with Docker
+Processing.R is available for the Processing Development Environment (PDE) or stand-alone. It is available in these forms:
 
-### DEPRECATED
+1. a PDE mode, which can be
+   -  added to PDE
+   -  built with its own PDE
+2. a command-line runner -- does not require the PDE
+3. a pre-built image -- OLD
+4. a docker container image -- DEPRECATED
 
-* `docker pull quay.io/gaocegege/processing.r`
-* `docker run quay.io/gaocegege/processing.r`
-* Open the link of NoVNC in a web browser and the default password is `process`. Input it in the URL and play with Processing.R in a desktop environment:)
+Processing.R is *not* currently available via PDE > Add Tool > Modes, however the mode will appear there once installed.
 
-See [the demo in vimeo :)](https://vimeo.com/207571123)
+### 1. PDE Mode
 
-## In Your Native Environment
-
-### Editor Support
+**Warning:** Many parts of PDE integration are still incomplete: files cannot be double-clicked or dragged to open so code must be cut-pasted into the window, saved files cannot be reopened except through the recent files dialog list, the run button launches multiple window rather than re-running, stop button does not work, etc.
 
 1. checkout Processing.R from github
 2. configure `./scripts/generate-ant-file.sh`
-3. build mode and install into PDE using `ant build` (must have ant)
-4. restart PDE
-5. select R Language from mode drop-down
+3. build and install mode into PDE using `ant build` (must have ant)
+4. start PDE and select `R Language` from mode drop-down menu
 
-**Note:** Many parts of PDE integration are still incomplete: files cannot be double-clicked or dragged to open so code must be cut-pasted into the window, saved files cannot be reopened except through the recent files dialog list, the run button launches multiple window rather than re-running, stop button does not work, etc.
+#### Configure script
 
-There are 4 paths to be determined in `./scripts/generate-ant-file.sh`:
+Configure `./scripts/generate-ant-file.sh`:
+
+- `modes`: the destination for installing the mode once it is built.  
+   -  MacOSX: `~/Documents/Processing/modes/`
+   -  Windows: `%homepath%\Documents\modes\`
+   -  Linux: `~/sketchbook/modes/`
+- `core` and `pde`: directories contain pde.jar and core.jar. They are be used to build RLangMode.
+   -  MacOSX: `/Applications/Processing.app/Contents/Java/`
+- `executable`: optional argument giving the location of PDE.
+   -  The path is used in `ant run` to start a PDE instance. Leave blank to not launch PDE on `ant run`.
+   -  MacOSX: `/Applications/Processing.app/Contents/MacOS/Processing`
+
+##### A) Add to existing PDE
+
+For example, to install the mode into a default existing PDE app on a MacOS system, set arguments in `./scripts/generate-ant-file.sh` such as:
+
+```
+modes="~/Documents/Processing/modes"
+core="/Applications/Processing.app/Contents/Java/"
+pde="/Applications/Processing.app/Contents/Java/"
+executable="/Applications/Processing.app/Contents/MacOS/Processing"
+```
+
+This will generate build.xml errors (as the core and pde directories only contain the actual jars, not source). However it will work correctly.
+
+##### B) Create new PDE
+
+Build the source code of Processing core and pde wherever it is located on the system. For example:
+
+```bash
+$ cd processing/core
+$ ant build
+$ cd processing/app
+$ ant build
+```
+
+Then set the two paths accordingly in `./scripts/generate-ant-file.sh`:
 
 ```
 modes="~/Documents/Processing/modes"
@@ -33,7 +69,7 @@ pde="../processing/app/"
 executable="/Applications/Processing.app/Contents/MacOS/Processing"
 ```
 
-After that,
+#### Install
 
 * Run `./scripts/generate-ant-file.sh` to get a valid build.xml
 * Run `ant install`, the modes will be installed into PDE.
@@ -46,41 +82,8 @@ After that,
 	<img src="./img/demo.gif" alt="Demo" width="300">
 </div>
 
-#### Explanation about paths in `scripts/generate-ant-file.sh`
 
-##### mode
-
-The value of mode could be:
-
-* MacOSX: `~/Documents/Processing/modes/`
-* Windows: `%homepath%\Documents\modes\`
-* Linux: `~/sketchbook/modes/`
-
-##### pde and core
-
-These are two directories which contain pde.jar and core.jar. They are be used to build RLangMode.
-
-You could get the two directories after building the source code of Processing:
-
-```bash
-$ cd processing/core
-$ ant build
-$ cd processing/app
-$ ant build
-```
-
-Then you could set the two paths:
-
-```
-core="processing/core/library/"
-pde="processing/app/"
-```
-
-##### executable
-
-The path is used in `ant run`, it will call the binary to start a PDE instance, if you don't want this, feel free to leave it blank.
-
-### Runner.jar
+### 2. Command Line Runner
 
 Processing.R offers a jar, which allows to have a try without the installation of Processing app. 
 
@@ -101,3 +104,19 @@ The output is:
 <div align="center">
 	<img src="./img/demo.png" alt="Output" width="100">
 </div>
+
+### 3. Image (OLD)
+
+**Warning:** The pre-built distribution may be significantly out of date compared to the latest repository.
+
+The distribution image is available from:
+
+-  [gaocegege.com/Processing.R](http://gaocegege.com/Processing.R)
+
+### 4. Docker Image (DEPRECATED)
+
+* `docker pull quay.io/gaocegege/processing.r`
+* `docker run quay.io/gaocegege/processing.r`
+* Open the link of NoVNC in a web browser and the default password is `process`. Input it in the URL and play with Processing.R in a desktop environment:)
+
+See [the demo in vimeo :)](https://vimeo.com/207571123)
