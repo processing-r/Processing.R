@@ -47,6 +47,23 @@
         </classpath>
     </taskdef>
 
+    <target name="info">
+        <echo>This is the R mode for Processing, powered by github.com/gaocegege</echo>
+    </target>
+
+    <target name="build">
+        <mkdir dir="build" />
+        <javac destdir="build" includeantruntime="false">
+            <src path="src" />
+            <classpath>
+                <path refid="library-classpath" />
+            </classpath>
+        </javac>
+        <copy todir="build">
+            <fileset dir="src" excludes="**/*.java" />
+        </copy>
+    </target>
+
     <target name="try" depends="build">
         <propertyfile file="build.number" />
         <!-- create the build.number file if it doesn't exist -->
@@ -60,29 +77,13 @@
             <zipgroupfileset dir="${lib}" includes="**/*.jar" />
         </jar>
     </target>
-    <target name="build">
-        <mkdir dir="build" />
-        <javac destdir="build" includeantruntime="false">
-            <src path="src" />
-            <classpath>
-                <path refid="library-classpath" />
-            </classpath>
-        </javac>
-        <copy todir="build">
-            <fileset dir="src" excludes="**/*.java" />
-        </copy>
-    </target>
-    <target name="info">
-        <echo>This is the R mode for Processing, powered by github.com/gaocegege</echo>
-    </target>
-    <!-- - - - - - - - - - - - - - - - - - - - - - -
-        PACKAGE
-    - - - - - - - - - - - - - - - - - - - - - - - -->
+
     <target name="package" depends="build">
         <delete dir="${dist}" />
         <property name="bundle" value="${dist}/${mode.name}" />
         <mkdir dir="${bundle}" />
         <mkdir dir="${bundle}/mode" />
+        <mkdir dir="${bundle}/examples" />
         <jar jarfile="${bundle}/mode/${mode.name}.jar" basedir="build" />
         <copy todir="${bundle}">
             <fileset dir="resources/" />
@@ -90,13 +91,14 @@
         <copy todir="${bundle}/mode">
             <fileset dir="lib/" />
         </copy>
+        <copy todir="${bundle}/examples">
+            <fileset dir="examples/" />
+        </copy>
         <!-- TODO: Configure the version in bash script. -->
         <replaceregexp file="${bundle}/mode.properties" flags="g" match="@@version@@" replace="11" />
         <replaceregexp file="${bundle}/mode.properties" flags="g" match="@@pretty-version@@" replace="1" />
     </target>
-    <!-- - - - - - - - - - - - - - - - - - - - - - -
-        INSTALL
-    - - - - - - - - - - - - - - - - - - - - - - - -->
+
     <target name="install" depends="package">
         <delete dir="${processing.modes}/${mode.name}" />
         <mkdir dir="${processing.modes}/${mode.name}" />
@@ -104,23 +106,11 @@
             <fileset dir="${dist}/${mode.name}" />
         </copy>
     </target>
-    <!-- - - - - - - - - - - - - - - - - - - - - - -
-        CLEAN
-    - - - - - - - - - - - - - - - - - - - - - - - -->
-    <target name="clean">
-        <delete dir="${build}" />
-        <delete dir="${dist}" />
-        <delete dir="${try}" />
-    </target>
-    <!-- - - - - - - - - - - - - - - - - - - - - - -
-        RUN
-    - - - - - - - - - - - - - - - - - - - - - - - -->
+
     <target name="run" depends="install">
         <exec executable="${processing.executable}" spawn="false" />
     </target>
-    <!-- - - - - - - - - - - - - - - - - - - - - - -
-        TEST
-    - - - - - - - - - - - - - - - - - - - - - - - -->
+
     <target name="test-compile" depends="build">
         <mkdir dir="${test.build.dir}"/>
         <javac srcdir="${test.src.dir}" destdir="${test.build.dir}" includeantruntime="false">
@@ -129,6 +119,7 @@
             </classpath>
         </javac>
     </target>
+
     <target name="test" depends="test-compile">
         <jacoco:coverage destfile="${result.exec.file}">
             <junit printsummary="on" haltonfailure="yes" fork="true">
@@ -143,6 +134,7 @@
             </junit>
         </jacoco:coverage>
     </target>
+
     <target name="report" depends="test">
         <!--  Step 3: Create coverage report  -->
         <jacoco:report>
@@ -166,5 +158,12 @@
             <csv destfile="${result.report.dir}/report.csv"/>
             <xml destfile="${result.report.dir}/report.xml"/>
         </jacoco:report>
+    </target>
+
+    <target name="clean">
+        <delete dir="${build}" />
+        <delete dir="${dist}" />
+        <delete dir="${try}" />
+        <delete dir="${test.build.dir}" />
     </target>
 </project>

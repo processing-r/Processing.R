@@ -17,16 +17,16 @@ import rprocessing.mode.run.SketchServiceManager;
  */
 public class RLangMode extends Mode {
 
-    private static final boolean       VERBOSE             = Boolean
-        .parseBoolean(System.getenv("VERBOSE_RLANG_MODE"));
+    private static final boolean       VERBOSE             = Boolean.parseBoolean(System
+                                                               .getenv("VERBOSE_RLANG_MODE"));
 
     /**
      * If the environment variable SKETCH_RUNNER_FIRST is equal to the string "true", then
      * {@link RLangMode} expects that the {@link SketchRunner} is already running and waiting
      * to be communicated with (as when you're debugging it in Eclipse, for example).
      */
-    public static final boolean        SKETCH_RUNNER_FIRST = Boolean
-        .parseBoolean(System.getenv("SKETCH_RUNNER_FIRST"));
+    public static final boolean        SKETCH_RUNNER_FIRST = Boolean.parseBoolean(System
+                                                               .getenv("SKETCH_RUNNER_FIRST"));
 
     private final SketchServiceManager sketchServiceManager;
 
@@ -51,8 +51,8 @@ public class RLangMode extends Mode {
      * @see processing.app.Mode#createEditor(processing.app.Base, java.lang.String, processing.app.ui.EditorState)
      */
     @Override
-    public Editor createEditor(Base base, final String path,
-                               final EditorState state) throws EditorException {
+    public Editor createEditor(Base base, final String path, final EditorState state)
+                                                                                     throws EditorException {
         // Lazily start the sketch running service only when an editor is required.
         if (!sketchServiceManager.isStarted()) {
             sketchServiceManager.start();
@@ -73,7 +73,7 @@ public class RLangMode extends Mode {
     @Override
     public String getDefaultExtension() {
         // TODO: Finish this function.
-        return "todo";
+        return "rpde";
     }
 
     @Override
@@ -87,6 +87,14 @@ public class RLangMode extends Mode {
     @Override
     public String[] getExtensions() {
         return new String[] { getDefaultExtension(), getModuleExtension() };
+    }
+
+    /**
+     * @see processing.app.Mode#getExampleCategoryFolders()
+     */
+    @Override
+    public File[] getExampleCategoryFolders() {
+        return new File[] { new File(examplesFolder, "Basics") };
     }
 
     /** 
