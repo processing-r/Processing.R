@@ -3,7 +3,7 @@
 source "$(dirname "${BASH_SOURCE}")/utils/generator-util.sh"
 
 # Path to be changed
-modes="/Users/gaoce/Documents/Processing/modes"
+modes="~/Documents/Processing/modes"
 executable="/Applications/Processing.app/Contents/MacOS/Processing"
 core="/Applications/Processing.app/Contents/Java/core.jar"
 pde="/Applications/Processing.app/Contents/Java/pde.jar"
