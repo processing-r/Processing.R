@@ -1,17 +1,6 @@
 #!/usr/bin/env bash
 
-# init.sh establishes a initial environment to build Processing.R in travis.
-# Most of the code is copied from `scripts/generate-ant-file.sh`
-
-# Timestamped log, e.g. log "cluster created".
-#
-# Input:
-#   $1 Log string.
-function log {
-  echo -e "[`TZ=Asia/Shanghai date`] ${1}"
-}
-
-root=$(dirname "${BASH_SOURCE}")/..
+source "$(dirname "${BASH_SOURCE}")/../scripts/utils/generator-util.sh"
 
 # Download Processing.
 curl -L http://download.processing.org/processing-3.3-linux64.tgz > $HOME/processing.tgz && \
@@ -26,18 +15,8 @@ modes="/mock-user/modes"
 executable="/mock-user/Processing"
 # Those paths are important to build runner.jar.
 processing="$HOME/processing"
-core="$HOME/processing/core/library/"
-pde="$HOME/processing/lib/"
-renjin="lib/renjin-script-engine-0.8.2194-jar-with-dependencies.jar"
+core="$HOME/processing/core/library/core.jar"
+pde="$HOME/processing/lib/pde.jar"
 
-cd ${root}
-cp build.xml.template build.xml
-# Interpret config template.
-log "Inject the config to build.xml.template"
-perl -i -pe "s|\@\@modes\@\@|${modes}|g" build.xml
-perl -i -pe "s|\@\@executable\@\@|${executable}|g" build.xml
-perl -i -pe "s|\@\@processing\@\@|${processing}|g" build.xml
-perl -i -pe "s|\@\@core\@\@|${core}|g" build.xml
-perl -i -pe "s|\@\@pde\@\@|${pde}|g" build.xml
-perl -i -pe "s|\@\@renjin\@\@|${renjin}|g" build.xml
-cd - > /dev/null
+# Call functions in utils/generator-util.sh
+generate-build-config ${modes} ${executable} ${core} ${pde}

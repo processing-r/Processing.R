@@ -30,12 +30,8 @@
     <property name="result.exec.file" location="${test.build.dir}/jacoco.exec"/>
 
     <path id="library-classpath">
-        <fileset dir="${processing.classes.core}">
-            <include name="*.jar" />
-        </fileset>
-        <fileset dir="${processing.classes.pde}">
-            <include name="*.jar" />
-        </fileset>
+        <pathelement location="${processing.classes.core}"/>
+        <pathelement location="${processing.classes.pde}"/>
         <fileset dir="lib">
             <include name="*.jar" />
         </fileset>
@@ -73,7 +69,7 @@
             <manifest>
                 <attribute name="Main-Class" value="rprocessing.Runner" />
             </manifest>
-            <zipgroupfileset dir="${processing.classes.core}" includes="**/*.jar" />
+            <zipgroupfileset file="${processing.classes.core}" includes="${processing.classes.core}" />
             <zipgroupfileset dir="${lib}" includes="**/*.jar" />
         </jar>
     </target>
