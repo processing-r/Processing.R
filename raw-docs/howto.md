@@ -30,11 +30,13 @@ Configure `./scripts/generate-ant-file.sh`:
    -  MacOSX: `/Users/[MyUserName]/Documents/Processing/modes/`
    -  Windows: `%homepath%\Documents\modes\`
    -  Linux: `~/sketchbook/modes/`
-- `core` and `pde`: directories contain pde.jar and core.jar. They are be used to build RLangMode.
-   -  MacOSX: `/Applications/Processing.app/Contents/Java/`
+- `core` and `pde`: paths to pde.jar and core.jar. They are be used to build RLangMode.
+   -  MacOSX: `/Applications/Processing.app/Contents/Java/core.jar` and `/Applications/Processing.app/Contents/Java/pde.jar`
+   -  Linux: `[MyPDE]/core/library/core.jar` and `[MyPDE]/lib/pde.jar`
 - `executable`: optional argument giving the location of PDE.
    -  The path is used in `ant run` to start a PDE instance. Leave blank to not launch PDE on `ant run`.
    -  MacOSX: `/Applications/Processing.app/Contents/MacOS/Processing`
+   -  Linux: `[MyPDE]/processing`
 
 ##### A) configure for adding to an existing PDE
 
