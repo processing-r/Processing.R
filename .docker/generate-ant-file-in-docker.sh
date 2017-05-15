@@ -5,10 +5,9 @@ source "$(dirname "${BASH_SOURCE}")/../scripts/utils/generator-util.sh"
 # Paths
 # Those paths are not needed when building runner.jar,
 # but will be used in the future to package the mode.
-modes="/mock-user/modes"
+modes="/root/sketchbook/modes"
 executable="/mock-user/Processing"
 # Those paths are important to build runner.jar.
-processing="/code/processing"
 core="/code/processing/core/library/core.jar"
 pde="/code/processing/lib/pde.jar"
 
