@@ -10,9 +10,15 @@ RUN apt-get update && \
     ant
 
 # Download Processing.
-RUN curl -L http://download.processing.org/processing-3.3-linux64.tgz > /code/processing.tgz && \
+# Dev operation: copy processing into the image.
+# COPY processing-3.3.3-linux64.tgz /code/processing.tgz
+# RUN tar xvf /code/processing.tgz -C /code && \
+#     mv /code/processing-3.3.3 /code/processing && \
+#     rm -rf /code/processing.tgz
+# Prod operation: Download processing from processing.org.
+RUN curl -L http://download.processing.org/processing-3.3.3-linux64.tgz > /code/processing.tgz && \
     tar xvf /code/processing.tgz -C /code && \
-    mv /code/processing-3.3 /code/processing && \
+    mv /code/processing-3.3.3 /code/processing && \
     rm -rf /code/processing.tgz
 
 # Install Oracle JDK 1.8
@@ -44,3 +50,6 @@ WORKDIR /code/processing.r
 RUN bash .docker/generate-ant-file-in-docker.sh && \
     ant try && \
     mv try/RLangMode.jar /code/runner
+
+RUN /code/processing/processing && \
+    ant install
