@@ -13,6 +13,8 @@ $ KEYWORD1
 if KEYWORD3 if
 print FUNCTION1
 
+#		comment
+
 // Processing
 
 abs	FUNCTION1	abs_

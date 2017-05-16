@@ -209,12 +209,24 @@ public class RLangEditor extends Editor {
         cleanupTempSketch();
     }
 
+    @Override
+    public void handleAutoFormat() {
+        super.handleAutoFormat();
+        recolor();
+    }
+
     /** 
      * @see processing.app.ui.Editor#getCommentPrefix()
      */
     @Override
     public String getCommentPrefix() {
         return "# ";
+    }
+
+    @Override
+    protected void handleCommentUncomment() {
+        super.handleCommentUncomment();
+        recolor();
     }
 
     /** 
@@ -264,6 +276,10 @@ public class RLangEditor extends Editor {
         internalCloseRunner();
         restoreToolbar();
         requestFocus();
+    }
+
+    private void recolor() {
+        textarea.getDocument().tokenizeLines();
     }
 
     private void restoreToolbar() {
