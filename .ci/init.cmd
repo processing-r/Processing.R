@@ -7,7 +7,7 @@ set modes="c:\\mock-user\\modes"
 set executable="c:\\mock-user\\Processing"
 REM # Those paths are important to build runner.jar.
 set processing="c:\\projects\\processing-3.3"
-set core="c:\\projects\\processing-3.3\\core\\library\\core.jar"
+set core="c:\\projects\\processing-3.3\\core\\library"
 set pde="c:\\projects\\processing-3.3\\lib\\pde.jar"
 set renjin="lib\\renjin-script-engine-0.8.2194-jar-with-dependencies.jar"
 
