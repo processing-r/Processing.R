@@ -15,7 +15,7 @@ modes="/mock-user/modes"
 executable="/mock-user/Processing"
 # Those paths are important to build runner.jar.
 processing="$HOME/processing"
-core="$HOME/processing/core/library/core.jar"
+core="$HOME/processing/core/library"
 pde="$HOME/processing/lib/pde.jar"
 
 # Call functions in utils/generator-util.sh

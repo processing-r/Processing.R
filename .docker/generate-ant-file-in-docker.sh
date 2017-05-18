@@ -8,7 +8,7 @@ source "$(dirname "${BASH_SOURCE}")/../scripts/utils/generator-util.sh"
 modes="/root/sketchbook/modes"
 executable="/mock-user/Processing"
 # Those paths are important to build runner.jar.
-core="/code/processing/core/library/core.jar"
+core="/code/processing/core/library"
 pde="/code/processing/lib/pde.jar"
 
 # Call functions in utils/generator-util.sh
