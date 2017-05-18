@@ -1,5 +1,13 @@
 package rprocessing;
 
+import java.awt.Component;
+import java.awt.Window;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+import java.lang.reflect.Method;
+import java.util.Arrays;
+import java.util.concurrent.CountDownLatch;
+
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
@@ -12,10 +20,18 @@ import org.renjin.sexp.FunctionCall;
 import org.renjin.sexp.SEXP;
 import org.renjin.sexp.Symbol;
 
+import processing.awt.PSurfaceAWT;
+import processing.core.PApplet;
+import processing.core.PConstants;
+import processing.core.PSurface;
+import processing.javafx.PSurfaceFX;
+import processing.opengl.PSurfaceJOGL;
 import rprocessing.applet.BuiltinApplet;
 import rprocessing.exception.NotFoundException;
 import rprocessing.util.Constant;
 import rprocessing.util.Printer;
+
+import com.jogamp.newt.opengl.GLWindow;
 
 /**
  * RlangPApplet
@@ -25,8 +41,8 @@ import rprocessing.util.Printer;
  */
 public class RLangPApplet extends BuiltinApplet {
 
-    private static final boolean     VERBOSE = Boolean
-        .parseBoolean(System.getenv("VERBOSE_RLANG_MODE"));
+    private static final boolean     VERBOSE       = Boolean.parseBoolean(System
+                                                       .getenv("VERBOSE_RLANG_MODE"));
 
     // A static-mode sketch must be interpreted from within the setup() method.
     // All others are interpreted during construction in order to harvest method
@@ -41,13 +57,15 @@ public class RLangPApplet extends BuiltinApplet {
 
     private final Printer            stdout;
 
+    private final CountDownLatch     finishedLatch = new CountDownLatch(1);
+
     /**
      * Mode for Processing.
      * 
      * @author github.com/gaocegege
      */
     private enum Mode {
-                       STATIC, ACTIVE, MIXED
+        STATIC, ACTIVE, MIXED
     }
 
     private static void log(String msg) {
@@ -89,8 +107,8 @@ public class RLangPApplet extends BuiltinApplet {
                  */
                 if (isSameClass(ev.get(i), FunctionCall.class)
                     && isSameClass(((FunctionCall) ev.get(i)).getFunction(), Symbol.class)
-                    && ((Symbol) ((FunctionCall) ev.get(i)).getFunction()).getPrintName()
-                        .equals("<-")) {
+                    && ((Symbol) ((FunctionCall) ev.get(i)).getFunction()).getPrintName().equals(
+                        "<-")) {
                     this.renjinEngine.getTopLevelContext().evaluate(ev.get(i),
                         this.renjinEngine.getTopLevelContext().getEnvironment());
                 }
@@ -121,6 +139,105 @@ public class RLangPApplet extends BuiltinApplet {
         // This is a trick to be deprecated. It is used to print
         // messages in Processing app console by stdout$print(msg).
         this.renjinEngine.put("stdout", stdout);
+    }
+
+    public void runBlock(final String[] arguments) {
+        log("runBlock");
+        PApplet.runSketch(arguments, this);
+        try {
+            finishedLatch.await();
+            log("Down");
+        } catch (final InterruptedException interrupted) {
+            // Treat an interruption as a request to the applet to terminate.
+            exit();
+            try {
+                finishedLatch.await();
+                log("Down");
+            } catch (final InterruptedException e) {
+                log(e.toString());
+            }
+        } finally {
+            Thread.setDefaultUncaughtExceptionHandler(null);
+            if (PApplet.platform == PConstants.MACOSX
+                && Arrays.asList(arguments).contains("fullScreen")) {
+                // Frame should be OS-X fullscreen, and it won't stop being that unless the jvm
+                // exits or we explicitly tell it to minimize.
+                // (If it's disposed, it'll leave a gray blank window behind it.)
+                log("Disabling fullscreen.");
+                macosxFullScreenToggle(frame);
+            }
+            if (surface instanceof PSurfaceFX) {
+                // Sadly, JavaFX is an abomination, and there's no way to run an FX sketch more than once,
+                // so we must actually exit.
+                log("JavaFX requires SketchRunner to terminate. Farewell!");
+                System.exit(0);
+            }
+            final Object nativeWindow = surface.getNative();
+            if (nativeWindow instanceof com.jogamp.newt.Window) {
+                ((com.jogamp.newt.Window) nativeWindow).destroy();
+            } else {
+                surface.setVisible(false);
+            }
+        }
+        //        if (terminalException != null) {
+        //            throw terminalException;
+        //        }
+    }
+
+    static private void macosxFullScreenToggle(final Window window) {
+        try {
+            final Class<?> appClass = Class.forName("com.apple.eawt.Application");
+            final Method getAppMethod = appClass.getMethod("getApplication");
+            final Object app = getAppMethod.invoke(null);
+            final Method requestMethod = appClass
+                .getMethod("requestToggleFullScreen", Window.class);
+            requestMethod.invoke(app, window);
+        } catch (final ClassNotFoundException cnfe) {
+            // ignored
+        } catch (final Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 
+     * @see processing.core.PApplet#initSurface()
+     */
+    @Override
+    protected PSurface initSurface() {
+        final PSurface s = super.initSurface();
+        this.frame = null; // eliminate a memory leak from 2.x compat hack
+        //        s.setTitle(pySketchPath.getFileName().toString().replaceAll("\\..*$", ""));
+        if (s instanceof PSurfaceAWT) {
+            final PSurfaceAWT surf = (PSurfaceAWT) s;
+            final Component c = (Component) surf.getNative();
+            c.addComponentListener(new ComponentAdapter() {
+                @Override
+                public void componentHidden(final ComponentEvent e) {
+                    log("initSurface");
+                    finishedLatch.countDown();
+                }
+            });
+        } else if (s instanceof PSurfaceJOGL) {
+            final PSurfaceJOGL surf = (PSurfaceJOGL) s;
+            final GLWindow win = (GLWindow) surf.getNative();
+            win.addWindowListener(new com.jogamp.newt.event.WindowAdapter() {
+                @Override
+                public void windowDestroyed(final com.jogamp.newt.event.WindowEvent arg0) {
+                    log("initSurface");
+                    finishedLatch.countDown();
+                }
+            });
+        } else if (s instanceof PSurfaceFX) {
+            System.err.println("I don't know how to watch FX2D windows for close.");
+        }
+        return s;
+    }
+
+    @Override
+    public void exitActual() {
+        log("exitActual");
+        finishedLatch.countDown();
     }
 
     /**
