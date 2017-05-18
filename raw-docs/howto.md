@@ -30,9 +30,9 @@ Configure `./scripts/generate-ant-file.sh`:
    -  MacOSX: `/Users/[MyUserName]/Documents/Processing/modes/`
    -  Windows: `%homepath%\Documents\modes\`
    -  Linux: `${HOME}/sketchbook/modes/`
-- `core` and `pde`: paths to pde.jar and core.jar. They are be used to build RLangMode.
-   -  MacOSX: `/Applications/Processing.app/Contents/Java/core.jar` and `/Applications/Processing.app/Contents/Java/pde.jar`
-   -  Linux: `[MyPDE]/core/library/core.jar` and `[MyPDE]/lib/pde.jar`
+- `core` and `pde`: paths to core library and pde.jar. They are be used to build runner and run test cases.
+   -  MacOSX: `/Applications/Processing.app/Contents/Java/core/library` and `/Applications/Processing.app/Contents/Java/pde.jar`
+   -  Linux: `[MyPDE]/core/library` and `[MyPDE]/lib/pde.jar`
 - `executable`: optional argument giving the location of PDE.
    -  The path is used in `ant run` to start a PDE instance. Leave blank to not launch PDE on `ant run`.
    -  MacOSX: `/Applications/Processing.app/Contents/MacOS/Processing`
@@ -44,8 +44,8 @@ For example, to install the mode into a default existing PDE app on a MacOS syst
 
 ```
 modes="/Users/[MyUserName]/Documents/Processing/modes"
-core="/Applications/Processing.app/Contents/Java/"
-pde="/Applications/Processing.app/Contents/Java/"
+core="/Applications/Processing.app/Contents/Java/core/library"
+pde="/Applications/Processing.app/Contents/Java/pde.jar"
 executable="/Applications/Processing.app/Contents/MacOS/Processing"
 ```
 
@@ -67,7 +67,7 @@ Then set the two paths accordingly in `./scripts/generate-ant-file.sh`:
 ```
 modes="${HOME}/Documents/Processing/modes"
 core="../processing/core/library/"
-pde="../processing/app/"
+pde="../processing/app/pde.jar"
 executable="/Applications/Processing.app/Contents/MacOS/Processing"
 ```
 

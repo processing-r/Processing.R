@@ -3,14 +3,14 @@
     <property name="mode.name" value="RLangMode" />
 
     <!-- folder to install modes in (probably a folder called "modes" inside your sketchbook folder) -->
-    <property name="processing.modes" location="@@modes@@" />
+    <property name="processing.modes" value="@@modes@@" />
 
     <!-- path to your processing executable. -->
-    <property name="processing.executable" location="@@executable@@" />
+    <property name="processing.executable" value="@@executable@@" />
 
     <!-- location of processing jars (core.jar, pde.jar, ..) -->
-    <property name="processing.classes.core" location="@@core@@" />
-    <property name="processing.classes.pde" location="@@pde@@" />
+    <property name="processing.classes.core" value="@@core@@" />
+    <property name="processing.classes.pde" value="@@pde@@" />
     <property name="renjin" value="@@renjin@@" />
     <property name="java.target.version" value="1.8" />
 
@@ -30,8 +30,10 @@
     <property name="result.exec.file" location="${test.build.dir}/jacoco.exec"/>
 
     <path id="library-classpath">
-        <pathelement location="${processing.classes.core}"/>
         <pathelement location="${processing.classes.pde}"/>
+        <fileset dir="${processing.classes.core}">
+            <include name="*.jar" />
+        </fileset>
         <fileset dir="lib">
             <include name="*.jar" />
         </fileset>
@@ -69,7 +71,7 @@
             <manifest>
                 <attribute name="Main-Class" value="rprocessing.Runner" />
             </manifest>
-            <zipgroupfileset file="${processing.classes.core}" includes="${processing.classes.core}" />
+            <zipgroupfileset dir="${processing.classes.core}" includes="*.jar" />
             <zipgroupfileset dir="${lib}" includes="**/*.jar" />
         </jar>
     </target>

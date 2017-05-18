@@ -9,13 +9,14 @@ function log {
 }
 
 function help {
-  log "There are 4 paths needed: mode directory, path to executable, path to core.jar, and path to pde.jar."
+  log "There are 4 paths needed: mode directory, path to executable, path to core.jar directory and path to pde.jar."
 }
 
 function generate-build-config {
+  local numberOfParams=4
   local root=$(dirname "${BASH_SOURCE}")/../..
 
-  if [[ $# -ne 4 ]]; then
+  if [[ $# -ne ${numberOfParams} ]]; then
     log "The number of parameters is $#, which does not match ${FUNCNAME} in ${BASH_SOURCE}."
     help
     exit 1
