@@ -29,7 +29,7 @@ Configure `./scripts/generate-ant-file.sh`:
 - `modes`: the destination for installing the mode once it is built.  
    -  MacOSX: `/Users/[MyUserName]/Documents/Processing/modes/`
    -  Windows: `%homepath%\Documents\modes\`
-   -  Linux: `~/sketchbook/modes/`
+   -  Linux: `${HOME}/sketchbook/modes/`
 - `core` and `pde`: paths to pde.jar and core.jar. They are be used to build RLangMode.
    -  MacOSX: `/Applications/Processing.app/Contents/Java/core.jar` and `/Applications/Processing.app/Contents/Java/pde.jar`
    -  Linux: `[MyPDE]/core/library/core.jar` and `[MyPDE]/lib/pde.jar`
@@ -65,7 +65,7 @@ $ ant build
 Then set the two paths accordingly in `./scripts/generate-ant-file.sh`:
 
 ```
-modes="~/Documents/Processing/modes"
+modes="${HOME}/Documents/Processing/modes"
 core="../processing/core/library/"
 pde="../processing/app/"
 executable="/Applications/Processing.app/Contents/MacOS/Processing"

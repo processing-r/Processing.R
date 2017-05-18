@@ -46,8 +46,8 @@ import rprocessing.mode.run.SketchServiceRunner;
  */
 public class RLangEditor extends Editor {
 
-    private static final boolean      VERBOSE          = Boolean
-        .parseBoolean(System.getenv("VERBOSE_RLANG_MODE"));
+    private static final boolean      VERBOSE          = Boolean.parseBoolean(System
+                                                           .getenv("VERBOSE_RLANG_MODE"));
 
     /**  */
     private static final long         serialVersionUID = -5993950683909551427L;
@@ -82,8 +82,8 @@ public class RLangEditor extends Editor {
      * @param mode
      * @throws EditorException
      */
-    protected RLangEditor(Base base, String path, EditorState state,
-                          Mode mode) throws EditorException {
+    protected RLangEditor(Base base, String path, EditorState state, Mode mode)
+                                                                               throws EditorException {
         super(base, path, state, mode);
         log("Initialize RLangEditor now.");
 
@@ -205,6 +205,7 @@ public class RLangEditor extends Editor {
      */
     @Override
     public void deactivateRun() {
+        log("deactivateRun");
         restoreToolbar();
         cleanupTempSketch();
     }
@@ -272,6 +273,7 @@ public class RLangEditor extends Editor {
     }
 
     public void handleStop() {
+        log("handleStop");
         toolbar.activateStop();
         internalCloseRunner();
         restoreToolbar();
@@ -299,8 +301,8 @@ public class RLangEditor extends Editor {
                 tempSketch = createTempSketch();
                 sketchPath = tempSketch.resolve(sketchMainFileName).toFile();
             } catch (final IOException e) {
-                Messages.showError("Sketchy Behavior",
-                    "I can't copy your unsaved work\n" + "to a temp directory.", e);
+                Messages.showError("Sketchy Behavior", "I can't copy your unsaved work\n"
+                                                       + "to a temp directory.", e);
                 return;
             }
         } else {
@@ -318,8 +320,8 @@ public class RLangEditor extends Editor {
         }
 
         try {
-            sketchService
-                .runSketch(new PdeSketch(sketch, sketchPath, displayType, location, locationType));
+            sketchService.runSketch(new PdeSketch(sketch, sketchPath, displayType, location,
+                locationType));
         } catch (final SketchException e) {
             statusError(e);
         }

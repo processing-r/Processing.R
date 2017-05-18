@@ -3,7 +3,6 @@ package rprocessing;
 import org.renjin.eval.EvalException;
 import org.renjin.parser.ParseException;
 
-import processing.core.PApplet;
 import rprocessing.exception.NotFoundException;
 import rprocessing.exception.REvalException;
 import rprocessing.lancher.StandaloneSketch;
@@ -21,10 +20,10 @@ public class Runner {
 
     @SuppressWarnings("unused")
     private static final String  CORE_TEXT = RScriptReader.readResourceAsText(Runner.class,
-        "r/core.R");
+                                               "r/core.R");
 
-    private static final boolean VERBOSE   = Boolean
-        .parseBoolean(System.getenv("VERBOSE_RLANG_MODE"));
+    private static final boolean VERBOSE   = Boolean.parseBoolean(System
+                                               .getenv("VERBOSE_RLANG_MODE"));
 
     private static void log(final Object... objs) {
         if (!VERBOSE) {
@@ -50,16 +49,18 @@ public class Runner {
     }
 
     public synchronized static void runSketchBlocking(final RunnableSketch sketch,
-                                                      final Printer stdout,
-                                                      final Printer stderr) throws REvalException,
-                                                                            NotFoundException {
+                                                      final Printer stdout, final Printer stderr)
+                                                                                                 throws REvalException,
+                                                                                                 NotFoundException {
         runSketchBlocking(sketch, stdout, stderr, null);
     }
 
     public synchronized static void runSketchBlocking(final RunnableSketch sketch,
-                                                      final Printer stdout, final Printer stderr,
-                                                      final SketchPositionListener sketchPositionListener) throws REvalException,
-                                                                                                           NotFoundException {
+                                                      final Printer stdout,
+                                                      final Printer stderr,
+                                                      final SketchPositionListener sketchPositionListener)
+                                                                                                          throws REvalException,
+                                                                                                          NotFoundException {
         final String[] args = sketch.getPAppletArguments();
 
         log("Tring to initialize RLangPApplet.");
@@ -69,7 +70,7 @@ public class Runner {
 
         try {
             // Run Sketch.
-            PApplet.runSketch(args, rp);
+            rp.runBlock(args);
         } catch (ParseException pe) {
             throw new REvalException(pe.getMessage());
         } catch (EvalException ee) {
