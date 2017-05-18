@@ -10,6 +10,7 @@ before_install:
 install:
   - ant info
   - ant try
+  - ant package
 
 script:
   - ant report

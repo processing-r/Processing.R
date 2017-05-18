@@ -19,11 +19,4 @@ install:
   - cd c:\projects\Processing.R
   - ant info
   - ant try
-
-notifications:
-  - provider: Email
-    to:
-    - gaocegege@hotmail.com
-    on_build_success: false
-    on_build_failure: true
-    on_build_status_changed: false
+  - ant package
