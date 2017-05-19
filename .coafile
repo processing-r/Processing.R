@@ -3,10 +3,10 @@ files = src/**/*.java, examples/**/*.rpde
 
 max_line_length = 80
 
-[Java]
-# https://github.com/coala/coala-bears/issues/1750
-bears = CheckstyleBear
-indent_size = 4
+# [Java]
+# # https://github.com/coala/coala-bears/issues/1750
+# bears = CheckstyleBear
+# indent_size = 4
 
 [R]
 bears = FormatRBear
