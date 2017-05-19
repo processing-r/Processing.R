@@ -12,6 +12,7 @@
 - PDE mode installation \(manual\) [\#42](https://github.com/gaocegege/Processing.R/issues/42)
 - Add an object oriented example [\#41](https://github.com/gaocegege/Processing.R/issues/41)
 - Travis fails according to ant report [\#37](https://github.com/gaocegege/Processing.R/issues/37)
+- Comments highlight error in Processing IDE [\#35](https://github.com/gaocegege/Processing.R/issues/35)
 - Fail to build mode in macOS [\#33](https://github.com/gaocegege/Processing.R/issues/33)
 - Add Processing app with Processing.R into v1.0.1 [\#23](https://github.com/gaocegege/Processing.R/issues/23)
 - Add logger support to Processing.R [\#22](https://github.com/gaocegege/Processing.R/issues/22)
@@ -21,9 +22,15 @@
 - Simplify CI process: replace the compilation with download file [\#15](https://github.com/gaocegege/Processing.R/issues/15)
 - Merge generate-ant-file.sh scripts to one bash script [\#13](https://github.com/gaocegege/Processing.R/issues/13)
 - Static Mode in Editor [\#7](https://github.com/gaocegege/Processing.R/issues/7)
+- RLangPApplet singleton [\#6](https://github.com/gaocegege/Processing.R/issues/6)
 
 **Merged pull requests:**
 
+- coala: Add coala support [\#67](https://github.com/gaocegege/Processing.R/pull/67) ([gaocegege](https://github.com/gaocegege))
+- ci: Add ant package [\#66](https://github.com/gaocegege/Processing.R/pull/66) ([gaocegege](https://github.com/gaocegege))
+- Make PApplet to be a singleton. [\#65](https://github.com/gaocegege/Processing.R/pull/65) ([gaocegege](https://github.com/gaocegege))
+- Fix comments highlight [\#64](https://github.com/gaocegege/Processing.R/pull/64) ([gaocegege](https://github.com/gaocegege))
+- Docker: Update the docker config [\#62](https://github.com/gaocegege/Processing.R/pull/62) ([gaocegege](https://github.com/gaocegege))
 - Optimize the script to generate build.xml [\#60](https://github.com/gaocegege/Processing.R/pull/60) ([gaocegege](https://github.com/gaocegege))
 - Add examples folder into mode distribution [\#57](https://github.com/gaocegege/Processing.R/pull/57) ([gaocegege](https://github.com/gaocegege))
 - examples: Add a 3d example [\#46](https://github.com/gaocegege/Processing.R/pull/46) ([gaocegege](https://github.com/gaocegege))
