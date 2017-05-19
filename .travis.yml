@@ -1,5 +1,6 @@
 language: java
-sudo: false
+
+services: docker
 
 jdk:
   - oraclejdk8
@@ -12,6 +13,7 @@ install:
   - ant try
 
 script:
+  - docker run -v=$(pwd):/app --workdir=/app coala/base coala --ci
   - ant report
 
 after_success:
