@@ -2,7 +2,14 @@
 
 ## [Unreleased](https://github.com/gaocegege/Processing.R/tree/HEAD)
 
-[Full Changelog](https://github.com/gaocegege/Processing.R/compare/v1.0.1...HEAD)
+[Full Changelog](https://github.com/gaocegege/Processing.R/compare/v1.0.2...HEAD)
+
+**Closed issues:**
+
+- adopt style guide for R code and examples [\#52](https://github.com/gaocegege/Processing.R/issues/52)
+
+## [v1.0.2](https://github.com/gaocegege/Processing.R/tree/v1.0.2) (2017-05-19)
+[Full Changelog](https://github.com/gaocegege/Processing.R/compare/v1.0.1...v1.0.2)
 
 **Closed issues:**
 
@@ -26,6 +33,7 @@
 
 **Merged pull requests:**
 
+- docs: Udpate docs [\#68](https://github.com/gaocegege/Processing.R/pull/68) ([gaocegege](https://github.com/gaocegege))
 - coala: Add coala support [\#67](https://github.com/gaocegege/Processing.R/pull/67) ([gaocegege](https://github.com/gaocegege))
 - ci: Add ant package [\#66](https://github.com/gaocegege/Processing.R/pull/66) ([gaocegege](https://github.com/gaocegege))
 - Make PApplet to be a singleton. [\#65](https://github.com/gaocegege/Processing.R/pull/65) ([gaocegege](https://github.com/gaocegege))
