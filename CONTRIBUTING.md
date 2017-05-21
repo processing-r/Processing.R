@@ -25,7 +25,7 @@ Thanks for your contributions!
 ## Coding Style
 
 See the 
-[Java style doc](https: //google.github.io/styleguide/javaguide.html) and [FormatR utilities](https://yihui.name/formatr/) for details.
+[Java style doc](https://google.github.io/styleguide/javaguide.html) and [FormatR utilities](https://yihui.name/formatr/) for details.
 
 You could install [coala](http://coala.io) to run code linting analysis in command line.
 
