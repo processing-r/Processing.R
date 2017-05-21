@@ -1,5 +1,5 @@
 package rprocessing.util;
 
 public interface Printer {
-    void print(Object o);
+  void print(Object object);
 }

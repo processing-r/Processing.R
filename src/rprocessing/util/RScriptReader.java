@@ -8,51 +8,50 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 /**
- * RScriptReader
- * Read the script from r package.
+ * RScriptReader Read the script from r package.
  * 
  * @author github.com/gaocegege
  */
 public class RScriptReader {
 
-    private static final Charset UTF8 = Charset.forName("utf-8");
+  private static final Charset UTF8 = Charset.forName("utf-8");
 
-    public static class ResourceReader {
-        private final Class<?> clazz;
+  public static class ResourceReader {
+    private final Class<?> clazz;
 
-        public ResourceReader(final Class<?> clazz) {
-            this.clazz = clazz;
-        }
-
-        public String readText(final String resource) {
-            return RScriptReader.readResourceAsText(clazz, resource);
-        }
+    public ResourceReader(final Class<?> clazz) {
+      this.clazz = clazz;
     }
 
-    public static String readResourceAsText(final Class<?> clazz, final String resource) {
-        try (final InputStream in = clazz.getResourceAsStream(resource)) {
-            return readText(in);
-        } catch (final IOException e) {
-            throw new RuntimeException(e);
-        }
+    public String readText(final String resource) {
+      return RScriptReader.readResourceAsText(clazz, resource);
     }
+  }
 
-    public static String readText(final InputStream in) throws IOException {
-        return new String(readFully(in), UTF8);
+  public static String readResourceAsText(final Class<?> clazz, final String resource) {
+    try (final InputStream in = clazz.getResourceAsStream(resource)) {
+      return readText(in);
+    } catch (final IOException e) {
+      throw new RuntimeException(e);
     }
+  }
 
-    public static String readText(final Path path) throws IOException {
-        return new String(Files.readAllBytes(path), UTF8);
-    }
+  public static String readText(final InputStream in) throws IOException {
+    return new String(readFully(in), UTF8);
+  }
 
-    public static byte[] readFully(final InputStream in) throws IOException {
-        try (final ByteArrayOutputStream bytes = new ByteArrayOutputStream(1024)) {
-            final byte[] buf = new byte[1024];
-            int n;
-            while ((n = in.read(buf)) != -1) {
-                bytes.write(buf, 0, n);
-            }
-            return bytes.toByteArray();
-        }
+  public static String readText(final Path path) throws IOException {
+    return new String(Files.readAllBytes(path), UTF8);
+  }
+
+  public static byte[] readFully(final InputStream in) throws IOException {
+    try (final ByteArrayOutputStream bytes = new ByteArrayOutputStream(1024)) {
+      final byte[] buf = new byte[1024];
+      int n;
+      while ((n = in.read(buf)) != -1) {
+        bytes.write(buf, 0, n);
+      }
+      return bytes.toByteArray();
     }
+  }
 }
