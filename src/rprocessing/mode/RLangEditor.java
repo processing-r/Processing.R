@@ -242,8 +242,8 @@ public class RLangEditor extends Editor {
   public void internalCloseRunner() {
     try {
       sketchService.stopSketch();
-    } catch (final SketchException e) {
-      statusError(e);
+    } catch (final SketchException exception) {
+      statusError(exception);
     } finally {
       cleanupTempSketch();
     }
@@ -297,9 +297,9 @@ public class RLangEditor extends Editor {
       try {
         tempSketch = createTempSketch();
         sketchPath = tempSketch.resolve(sketchMainFileName).toFile();
-      } catch (final IOException e) {
-        Messages.showError("Sketchy Behavior", "I can't copy your unsaved work\n"
-            + "to a temp directory.", e);
+      } catch (final IOException exception) {
+        Messages.showError("Sketchy Behavior",
+            "I can't copy your unsaved work\n" + "to a temp directory.", exception);
         return;
       }
     } else {
@@ -319,8 +319,8 @@ public class RLangEditor extends Editor {
     try {
       sketchService
           .runSketch(new PdeSketch(sketch, sketchPath, displayType, location, locationType));
-    } catch (final SketchException e) {
-      statusError(e);
+    } catch (final SketchException exception) {
+      statusError(exception);
     }
   }
 
@@ -332,8 +332,8 @@ public class RLangEditor extends Editor {
           IOUtil.rm(tempSketch);
           log("Deleted " + tempSketch);
           assert (!tempSketch.toFile().exists());
-        } catch (final IOException e) {
-          System.err.println(e);
+        } catch (final IOException exception) {
+          System.err.println(exception);
         }
       }
       tempSketch = null;
@@ -347,11 +347,8 @@ public class RLangEditor extends Editor {
     // Leaving this here because it seems like it's more the editor's responsibility
     if (sketch.isModified()) {
       final Object[] options = {"OK", "Cancel"};
-      final int result =
-          JOptionPane
-              .showOptionDialog(this, "Save changes before export?", "Save",
-                  JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options,
-                  options[0]);
+      final int result = JOptionPane.showOptionDialog(this, "Save changes before export?", "Save",
+          JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
       if (result == JOptionPane.OK_OPTION) {
         handleSave(true);
       } else {

@@ -25,8 +25,8 @@ public class RLangMode extends Mode {
    * {@link RLangMode} expects that the {@link SketchRunner} is already running and waiting to be
    * communicated with (as when you're debugging it in Eclipse, for example).
    */
-  public static final boolean SKETCH_RUNNER_FIRST = Boolean.parseBoolean(System
-      .getenv("SKETCH_RUNNER_FIRST"));
+  public static final boolean SKETCH_RUNNER_FIRST =
+      Boolean.parseBoolean(System.getenv("SKETCH_RUNNER_FIRST"));
 
   private final SketchServiceManager sketchServiceManager;
 
@@ -61,8 +61,8 @@ public class RLangMode extends Mode {
 
     try {
       return new RLangEditor(base, path, state, this);
-    } catch (EditorException e) {
-      Messages.showError("Editor Exception", "Issue Creating Editor", e);
+    } catch (EditorException exception) {
+      Messages.showError("Editor Exception", "Issue Creating Editor", exception);
       return null;
     }
   }

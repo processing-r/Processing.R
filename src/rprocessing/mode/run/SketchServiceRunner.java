@@ -17,14 +17,14 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import com.google.common.base.Joiner;
+
 import processing.app.Messages;
 import processing.app.Platform;
 import processing.app.Preferences;
 import processing.app.SketchException;
 import rprocessing.mode.RLangEditor;
 import rprocessing.mode.RLangMode;
-
-import com.google.common.base.Joiner;
 
 /**
  * 
@@ -80,8 +80,8 @@ public class SketchServiceRunner {
     log("Running:\n" + pb.command());
     try {
       sketchServiceRunner = pb.start();
-    } catch (final IOException e) {
-      Messages.showError("RLang Mode Error", "Cannot start rlang sketch runner.", e);
+    } catch (final IOException exception) {
+      Messages.showError("RLang Mode Error", "Cannot start rlang sketch runner.", exception);
     }
   }
 
@@ -109,10 +109,11 @@ public class SketchServiceRunner {
 
     final List<String> cp = new ArrayList<>();
     cp.addAll(filter(
-        Arrays.asList(System.getProperty("java.class.path")
-            .split(Pattern.quote(File.pathSeparator))),
+        Arrays
+            .asList(System.getProperty("java.class.path").split(Pattern.quote(File.pathSeparator))),
         not(or(
-            containsPattern("(ant|ant-launcher|antlr|netbeans.*|osgi.*|jdi.*|ibm\\.icu.*|jna)\\.jar$"),
+            containsPattern(
+                "(ant|ant-launcher|antlr|netbeans.*|osgi.*|jdi.*|ibm\\.icu.*|jna)\\.jar$"),
             containsPattern("/processing/app/(test|lib)/")))));
     for (final File jar : new File(Platform.getContentFile("core"), "library").listFiles(JARS)) {
       cp.add(jar.getAbsolutePath());
@@ -140,13 +141,13 @@ public class SketchServiceRunner {
     return new ProcessBuilder(command);
   }
 
-  private void handleRemoteException(final RemoteException e) throws SketchException {
-    final Throwable cause = e.getCause();
+  private void handleRemoteException(final RemoteException exception) throws SketchException {
+    final Throwable cause = exception.getCause();
     if (cause instanceof SocketTimeoutException || cause instanceof ConnectException) {
       log("SketchRunner either hung or not there. Restarting it.");
       restartServerProcess();
     } else {
-      throw new SketchException(e.getMessage());
+      throw new SketchException(exception.getMessage());
     }
   }
 
@@ -173,8 +174,8 @@ public class SketchServiceRunner {
       public void run() {
         try {
           runSketch(sketch);
-        } catch (final SketchException e) {
-          editor.statusError(e);
+        } catch (final SketchException exception) {
+          editor.statusError(exception);
         }
       }
     };
@@ -188,8 +189,8 @@ public class SketchServiceRunner {
       // If and only if we've successully request a sketch start, nuke the pending request.
       pendingSketchRequest = null;
       return;
-    } catch (final RemoteException e) {
-      handleRemoteException(e);
+    } catch (final RemoteException exception) {
+      handleRemoteException(exception);
       log("Leaving pending request to run sketch.");
     }
   }
@@ -203,8 +204,8 @@ public class SketchServiceRunner {
     }
     try {
       sketchService.stopSketch();
-    } catch (final RemoteException e) {
-      handleRemoteException(e);
+    } catch (final RemoteException exception) {
+      handleRemoteException(exception);
     }
   }
 
@@ -213,7 +214,7 @@ public class SketchServiceRunner {
       log("Telling sketch runner to shutdown.");
       try {
         sketchService.shutdown();
-      } catch (final RemoteException e) {
+      } catch (final RemoteException exception) {
       }
     }
     if (sketchServiceRunner != null) {
@@ -223,7 +224,7 @@ public class SketchServiceRunner {
       try {
         sketchServiceRunner.waitFor();
         log("Sketcher runner process exited normally.");
-      } catch (final InterruptedException e) {
+      } catch (final InterruptedException exception) {
         log("Interrupted while waiting for sketch runner to exit.");
       }
       sketchServiceRunner = null;
@@ -243,8 +244,8 @@ public class SketchServiceRunner {
     editor.printErr(s);
   }
 
-  public void handleSketchException(final Exception e) {
-    editor.statusError(e);
+  public void handleSketchException(final Exception exception) {
+    editor.statusError(exception);
   }
 
   public void handleSketchMoved(final Point leftTop) {

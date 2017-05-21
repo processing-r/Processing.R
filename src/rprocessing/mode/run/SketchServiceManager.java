@@ -75,8 +75,8 @@ public class SketchServiceManager implements ModeService {
       } else {
         RMIUtils.bind(this, ModeService.class);
       }
-    } catch (final Exception e) {
-      Messages.showError("RLangMode Error", "Cannot start rlang sketch service.", e);
+    } catch (final Exception exception) {
+      Messages.showError("RLangMode Error", "Cannot start rlang sketch service.", exception);
       return;
     }
   }
@@ -105,8 +105,8 @@ public class SketchServiceManager implements ModeService {
   }
 
   @Override
-  public void handleSketchException(final String editorId, final Exception e) {
-    processFor(editorId).handleSketchException(e);
+  public void handleSketchException(final String editorId, final Exception exception) {
+    processFor(editorId).handleSketchException(exception);
   }
 
   @Override
