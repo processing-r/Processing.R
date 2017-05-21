@@ -18,7 +18,7 @@ public interface ModeService extends Remote {
 
   void handleSketchException(String editorId, Exception exception) throws RemoteException;
 
-  void printStdOut(String editorId, String s) throws RemoteException;
+  void printStdOut(String editorId, String str) throws RemoteException;
 
-  void printStdErr(String editorId, String s) throws RemoteException;
+  void printStdErr(String editorId, String str) throws RemoteException;
 }

@@ -28,11 +28,18 @@ public class RScriptReader {
     }
   }
 
+  /**
+   * read the resource as text
+   * 
+   * @param clazz
+   * @param resource
+   * @return
+   */
   public static String readResourceAsText(final Class<?> clazz, final String resource) {
     try (final InputStream in = clazz.getResourceAsStream(resource)) {
       return readText(in);
-    } catch (final IOException e) {
-      throw new RuntimeException(e);
+    } catch (final IOException exception) {
+      throw new RuntimeException(exception);
     }
   }
 

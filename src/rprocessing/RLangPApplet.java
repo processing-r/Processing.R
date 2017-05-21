@@ -20,6 +20,8 @@ import org.renjin.sexp.FunctionCall;
 import org.renjin.sexp.SEXP;
 import org.renjin.sexp.Symbol;
 
+import com.jogamp.newt.opengl.GLWindow;
+
 import processing.awt.PSurfaceAWT;
 import processing.core.PApplet;
 import processing.core.PConstants;
@@ -30,8 +32,6 @@ import rprocessing.applet.BuiltinApplet;
 import rprocessing.exception.NotFoundException;
 import rprocessing.util.Constant;
 import rprocessing.util.Printer;
-
-import com.jogamp.newt.opengl.GLWindow;
 
 /**
  * RlangPApplet PApplet for R language, powered by Renjin.
@@ -148,12 +148,13 @@ public class RLangPApplet extends BuiltinApplet {
       try {
         finishedLatch.await();
         log("Down");
-      } catch (final InterruptedException e) {
-        log(e.toString());
+      } catch (final InterruptedException exception) {
+        log(exception.toString());
       }
     } finally {
       Thread.setDefaultUncaughtExceptionHandler(null);
-      if (PApplet.platform == PConstants.MACOSX && Arrays.asList(arguments).contains("fullScreen")) {
+      if (PApplet.platform == PConstants.MACOSX
+          && Arrays.asList(arguments).contains("fullScreen")) {
         // Frame should be OS-X fullscreen, and it won't stop being that unless the jvm
         // exits or we explicitly tell it to minimize.
         // (If it's disposed, it'll leave a gray blank window behind it.)
@@ -187,8 +188,8 @@ public class RLangPApplet extends BuiltinApplet {
       requestMethod.invoke(app, window);
     } catch (final ClassNotFoundException cnfe) {
       // ignored
-    } catch (final Exception e) {
-      e.printStackTrace();
+    } catch (final Exception exception) {
+      exception.printStackTrace();
     }
   }
 
@@ -260,8 +261,8 @@ public class RLangPApplet extends BuiltinApplet {
     if (this.mode == Mode.STATIC) {
       try {
         this.renjinEngine.eval(this.programText);
-      } catch (ScriptException e) {
-        log(e.toString());
+      } catch (ScriptException exception) {
+        log(exception.toString());
       }
     } else if (this.mode == Mode.ACTIVE) {
       Object obj = this.renjinEngine.get(Constant.SETUP_NAME);

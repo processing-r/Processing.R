@@ -48,8 +48,8 @@ public class StandaloneSketch implements RunnableSketch {
     // On a Mac, when launched as an app, this will contain ".app/Contents/Java/processing-py.jar"
     try {
       return new File(Runner.class.getProtectionDomain().getCodeSource().getLocation().toURI());
-    } catch (final URISyntaxException e) {
-      e.printStackTrace();
+    } catch (final URISyntaxException exception) {
+      exception.printStackTrace();
     }
     return null;
   }

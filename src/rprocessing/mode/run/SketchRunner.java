@@ -99,8 +99,8 @@ public class SketchRunner implements SketchService {
                 log("Print statement is called :)");
                 try {
                   modeService.printStdOut(id, String.valueOf(o));
-                } catch (final RemoteException e) {
-                  System.err.println(e);
+                } catch (final RemoteException exception) {
+                  System.err.println(exception);
                 }
               }
             };
@@ -109,8 +109,8 @@ public class SketchRunner implements SketchService {
               public void print(final Object o) {
                 try {
                   modeService.printStdErr(id, String.valueOf(o));
-                } catch (final RemoteException e) {
-                  System.err.println(e);
+                } catch (final RemoteException exception) {
+                  System.err.println(exception);
                 }
               }
             };
@@ -119,28 +119,29 @@ public class SketchRunner implements SketchService {
               public void sketchMoved(final Point leftTop) {
                 try {
                   modeService.handleSketchMoved(id, leftTop);
-                } catch (final RemoteException e) {
-                  System.err.println(e);
+                } catch (final RemoteException exception) {
+                  System.err.println(exception);
                 }
               }
             };
             Runner.runSketchBlocking(sketch, stdout, stderr, sketchPositionListener);
-          } catch (final REvalException e) {
-            log("Sketch runner caught " + e);
-            modeService.handleSketchException(id, convertREvalError(e, sketch.codeFileNames));
-          } catch (final Exception e) {
-            if (e.getCause() != null && e.getCause() instanceof REvalException) {
+          } catch (final REvalException exception) {
+            log("Sketch runner caught " + exception);
+            modeService.handleSketchException(id,
+                convertREvalError(exception, sketch.codeFileNames));
+          } catch (final Exception exception) {
+            if (exception.getCause() != null && exception.getCause() instanceof REvalException) {
               modeService.handleSketchException(id,
-                  convertREvalError((REvalException) e.getCause(), sketch.codeFileNames));
+                  convertREvalError((REvalException) exception.getCause(), sketch.codeFileNames));
             } else {
-              modeService.handleSketchException(id, e);
+              modeService.handleSketchException(id, exception);
             }
           } finally {
             log("Handling sketch stoppage...");
             modeService.handleSketchStopped(id);
           }
-        } catch (final RemoteException e) {
-          log(e.toString());
+        } catch (final RemoteException exception) {
+          log(exception.toString());
         }
         // Exiting; no need to interrupt and join it later.
         runner = null;
@@ -159,7 +160,7 @@ public class SketchRunner implements SketchService {
         log("Joining runner thread.");
         runner.join();
         log("Runner thread terminated normally.");
-      } catch (final InterruptedException e) {
+      } catch (final InterruptedException exception) {
         log("Interrupted while joined to runner thread.");
       }
       runner = null;
@@ -176,15 +177,15 @@ public class SketchRunner implements SketchService {
     if (RLangMode.SKETCH_RUNNER_FIRST) {
       try {
         waitForMode(id);
-      } catch (RMIRuntimeException e) {
-        System.err.println(e);
+      } catch (RMIRuntimeException exception) {
+        System.err.println(exception);
         System.exit(-1);
       }
     } else {
       try {
         startSketchRunner(id);
-      } catch (RMIRuntimeException e) {
-        System.err.println(e);
+      } catch (RMIRuntimeException exception) {
+        System.err.println(exception);
         System.exit(-1);
       }
     }
@@ -201,8 +202,8 @@ public class SketchRunner implements SketchService {
     public void modeReady(final ModeService modeService) throws RMIRuntimeException {
       try {
         launch(id, modeService);
-      } catch (final Exception e) {
-        throw new RMIRuntimeException(e);
+      } catch (final Exception exception) {
+        throw new RMIRuntimeException(exception);
       }
     }
   }
@@ -210,8 +211,8 @@ public class SketchRunner implements SketchService {
   private static void waitForMode(final String id) throws RMIRuntimeException {
     try {
       RMIUtils.bind(new ModeWaiterImpl(id), ModeWaiter.class);
-    } catch (final RMIProblem e) {
-      throw new RMIRuntimeException(e);
+    } catch (final RMIProblem exception) {
+      throw new RMIRuntimeException(exception);
     }
   }
 
@@ -219,13 +220,13 @@ public class SketchRunner implements SketchService {
     try {
       final ModeService modeService = RMIUtils.lookup(ModeService.class);
       launch(id, modeService);
-    } catch (final Exception e) {
-      throw new RMIRuntimeException(e);
+    } catch (final Exception exception) {
+      throw new RMIRuntimeException(exception);
     }
   }
 
-  private static void launch(final String id, final ModeService modeService) throws RMIProblem,
-      RemoteException {
+  private static void launch(final String id, final ModeService modeService)
+      throws RMIProblem, RemoteException {
     final SketchRunner sketchRunner = new SketchRunner(id, modeService);
     final SketchService stub = (SketchService) RMIUtils.export(sketchRunner);
     log("Calling mode's handleReady().");
@@ -236,14 +237,15 @@ public class SketchRunner implements SketchService {
         log("Exiting; telling modeService.");
         try {
           modeService.handleSketchStopped(id);
-        } catch (final RemoteException e) {
+        } catch (final RemoteException exception) {
           // nothing we can do about it now.
         }
       }
     }));
   }
 
-  private SketchException convertREvalError(final REvalException e, final String[] fileNames) {
-    return new SketchException(e.getMessage());
+  private SketchException convertREvalError(final REvalException exception,
+      final String[] fileNames) {
+    return new SketchException(exception.getMessage());
   }
 }

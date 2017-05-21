@@ -69,7 +69,7 @@ class TreeCopier implements FileVisitor<Path> {
     final Path newdir = target.resolve(source.relativize(dir));
     try {
       Files.copy(dir, newdir, COPY_ATTRIBUTES);
-    } catch (final FileAlreadyExistsException x) {
+    } catch (final FileAlreadyExistsException exception) {
       // ignore
     } catch (final IOException ioException) {
       System.err.format("Unable to create: %s: %s%n", newdir, ioException);
