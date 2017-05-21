@@ -10,5 +10,5 @@ import rprocessing.exception.RMIRuntimeException;
  * @author github.com/gaocegege
  */
 public interface ModeWaiter extends Remote {
-    void modeReady(ModeService modeService) throws RemoteException, RMIRuntimeException;
+  void modeReady(ModeService modeService) throws RemoteException, RMIRuntimeException;
 }

@@ -39,3 +39,6 @@ target/
 
 # Test
 test-output/
+
+# Local helpers
+local/

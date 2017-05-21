@@ -18,76 +18,84 @@ import java.util.EnumSet;
  * 
  * @author github.com/gaocegege
  */
-public class IOUtil {
+public class IOUtil { // Ignore CheckstyleBear (AbbreviationAsWordInName)
 
-    private static final Charset UTF8 = Charset.forName("utf-8");
+  private static final Charset UTF8 = Charset.forName("utf-8");
 
-    public static class ResourceReader {
-        private final Class<?> clazz;
+  public static class ResourceReader {
+    private final Class<?> clazz;
 
-        public ResourceReader(final Class<?> clazz) {
-            this.clazz = clazz;
-        }
-
-        public String readText(final String resource) throws IOException {
-            return IOUtil.readResourceAsText(clazz, resource);
-        }
-    }
-
-    public static String readResourceAsText(final Class<?> clazz,
-                                            final String resource) throws IOException {
-        final InputStream in = clazz.getResourceAsStream(resource);
-        return readText(in);
-    }
-
-    public static String readText(final InputStream in) throws IOException {
-        return new String(readFully(in), UTF8);
-    }
-
-    public static String readText(final Path path) throws IOException {
-        return new String(Files.readAllBytes(path), UTF8);
+    public ResourceReader(final Class<?> clazz) {
+      this.clazz = clazz;
     }
 
     /**
-     * Recursively deletes the given directory or file.
-     * @param target Path of file to be deleted.
+     * read text from the resource
+     * 
+     * @param resource
+     * @return
      * @throws IOException
      */
-    public static void rm(final Path target) throws IOException {
-        Files.walkFileTree(target, new SimpleFileVisitor<Path>() {
-            @Override
-            public FileVisitResult visitFile(final Path file,
-                                             final BasicFileAttributes attrs) throws IOException {
-                Files.delete(file);
-                return CONTINUE;
-            }
-
-            @Override
-            public FileVisitResult postVisitDirectory(final Path dir,
-                                                      final IOException exc) throws IOException {
-                if (exc != null) {
-                    throw exc;
-                }
-                Files.delete(dir);
-                return CONTINUE;
-            }
-        });
+    public String readText(final String resource) throws IOException {
+      return IOUtil.readResourceAsText(clazz, resource);
     }
+  }
 
-    public static void copy(final Path src, final Path target) throws IOException {
-        final Path dest = Files.isDirectory(target) ? target.resolve(src.getFileName()) : target;
-        final EnumSet<FileVisitOption> doNotResolveLinks = EnumSet.noneOf(FileVisitOption.class);
-        Files.walkFileTree(src, doNotResolveLinks, Integer.MAX_VALUE, new TreeCopier(src, dest));
-    }
+  public static String readResourceAsText(final Class<?> clazz, final String resource)
+      throws IOException {
+    final InputStream in = clazz.getResourceAsStream(resource);
+    return readText(in);
+  }
 
-    public static byte[] readFully(final InputStream in) throws IOException {
-        try (final ByteArrayOutputStream bytes = new ByteArrayOutputStream(1024)) {
-            final byte[] buf = new byte[1024];
-            int n;
-            while ((n = in.read(buf)) != -1) {
-                bytes.write(buf, 0, n);
-            }
-            return bytes.toByteArray();
+  public static String readText(final InputStream in) throws IOException {
+    return new String(readFully(in), UTF8);
+  }
+
+  public static String readText(final Path path) throws IOException {
+    return new String(Files.readAllBytes(path), UTF8);
+  }
+
+  /**
+   * Recursively deletes the given directory or file.
+   * 
+   * @param target Path of file to be deleted.
+   * @throws IOException
+   */
+  public static void rm(final Path target) throws IOException {
+    Files.walkFileTree(target, new SimpleFileVisitor<Path>() {
+      @Override
+      public FileVisitResult visitFile(final Path file, final BasicFileAttributes attrs)
+          throws IOException {
+        Files.delete(file);
+        return CONTINUE;
+      }
+
+      @Override
+      public FileVisitResult postVisitDirectory(final Path dir, final IOException exc)
+          throws IOException {
+        if (exc != null) {
+          throw exc;
         }
+        Files.delete(dir);
+        return CONTINUE;
+      }
+    });
+  }
+
+  public static void copy(final Path src, final Path target) throws IOException {
+    final Path dest = Files.isDirectory(target) ? target.resolve(src.getFileName()) : target;
+    final EnumSet<FileVisitOption> doNotResolveLinks = EnumSet.noneOf(FileVisitOption.class);
+    Files.walkFileTree(src, doNotResolveLinks, Integer.MAX_VALUE, new TreeCopier(src, dest));
+  }
+
+  public static byte[] readFully(final InputStream in) throws IOException {
+    try (final ByteArrayOutputStream bytes = new ByteArrayOutputStream(1024)) {
+      final byte[] buf = new byte[1024];
+      int n;
+      while ((n = in.read(buf)) != -1) {
+        bytes.write(buf, 0, n);
+      }
+      return bytes.toByteArray();
     }
+  }
 }
