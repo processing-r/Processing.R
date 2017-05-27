@@ -16,7 +16,8 @@
 
     <!-- Folder -->
     <property name="try" value="try" />
-    <property name="lib" value="lib" />
+    <property name="mode-lib" value="lib/mode" />
+    <property name="test-lib" value="lib/test" />
     <property name="src" value="src" />
     <property name="build" value="build" />
     <property name="bin" value="bin" />
@@ -29,19 +30,25 @@
     <property name="result.report.dir" location="${test.build.dir}/site/jacoco"/>
     <property name="result.exec.file" location="${test.build.dir}/jacoco.exec"/>
 
-    <path id="library-classpath">
+    <path id="mode-library-classpath">
         <pathelement location="${processing.classes.pde}"/>
         <fileset dir="${processing.classes.core}">
             <include name="*.jar" />
         </fileset>
-        <fileset dir="lib">
+        <fileset dir="${mode-lib}">
+            <include name="*.jar" />
+        </fileset>
+    </path>
+
+    <path id="test-library-classpath">
+        <fileset dir="${test-lib}">
             <include name="*.jar" />
         </fileset>
     </path>
 
     <taskdef uri="antlib:org.jacoco.ant" resource="org/jacoco/ant/antlib.xml">
         <classpath>
-            <path refid="library-classpath" />
+            <path refid="test-library-classpath" />
         </classpath>
     </taskdef>
 
@@ -52,9 +59,9 @@
     <target name="build">
         <mkdir dir="build" />
         <javac destdir="build" includeantruntime="false">
-            <src path="src" />
+            <src path="src/rprocessing" />
             <classpath>
-                <path refid="library-classpath" />
+                <path refid="mode-library-classpath" />
             </classpath>
         </javac>
         <copy todir="build">
@@ -72,7 +79,7 @@
                 <attribute name="Main-Class" value="rprocessing.Runner" />
             </manifest>
             <zipgroupfileset dir="${processing.classes.core}" includes="*.jar" />
-            <zipgroupfileset dir="${lib}" includes="**/*.jar" />
+            <zipgroupfileset dir="${mode-lib}" includes="**/*.jar" />
         </jar>
     </target>
 
@@ -87,7 +94,7 @@
             <fileset dir="resources/" />
         </copy>
         <copy todir="${bundle}/mode">
-            <fileset dir="lib/" />
+            <fileset dir="${mode-lib}" />
         </copy>
         <copy todir="${bundle}/examples">
             <fileset dir="examples/" />
@@ -109,11 +116,12 @@
         <exec executable="${processing.executable}" spawn="false" />
     </target>
 
-    <target name="test-compile" depends="build">
+    <target name="test-compile">
         <mkdir dir="${test.build.dir}"/>
         <javac srcdir="${test.src.dir}" destdir="${test.build.dir}" includeantruntime="false">
             <classpath>
-                <path refid="library-classpath" />
+                <path refid="mode-library-classpath" />
+                <path refid="test-library-classpath" />
             </classpath>
         </javac>
     </target>
@@ -122,8 +130,9 @@
         <jacoco:coverage destfile="${result.exec.file}">
             <junit printsummary="on" haltonfailure="yes" fork="true">
                 <classpath>
-                    <path refid="library-classpath" />
-                    <pathelement location="${build}"/>
+                    <path refid="mode-library-classpath" />
+                    <path refid="test-library-classpath" />
+                    <pathelement location="${test.build.dir}"/>
                 </classpath>
                 <formatter type="brief" usefile="false" />
                 <batchtest>
