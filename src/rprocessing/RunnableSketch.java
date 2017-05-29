@@ -3,7 +3,7 @@ package rprocessing;
 import java.io.File;
 
 /**
- *
+ *  // Ignore CheckstyleBear (JavadocParagraph)
  * Everything Runner.runSketchBlocking needs to know to be able to run a sketch.
  *
  */

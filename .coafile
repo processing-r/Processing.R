@@ -1,9 +1,10 @@
 [Java]
 # https://github.com/coala/coala-bears/issues/1750
 bears = CheckstyleBear
-files = src/**/*.java
+checkstyle_configs = ./java-style.xml
+files = src/rprocessing/**/*.java
+ignore = src/test/*.java, src/rprocessing/TreeCopier.java, src/rprocessing/mode/run/OSXAdapter.java
 
 [R]
 bears = FormatRBear
 files = examples/**/*.rpde
-

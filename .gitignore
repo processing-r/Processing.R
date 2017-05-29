@@ -42,3 +42,4 @@ test-output/
 
 # Local helpers
 local/
+*.log

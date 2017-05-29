@@ -11,7 +11,6 @@ import rprocessing.mode.RLangEditor;
 import rprocessing.mode.RLangMode;
 
 /**
- * 
  * @author github.com/gaocegege
  */
 public class SketchServiceManager implements ModeService {
@@ -31,14 +30,14 @@ public class SketchServiceManager implements ModeService {
    */
   private SketchService debugSketchRunner;
 
+  public SketchServiceManager(final RLangMode mode) {
+    this.mode = mode;
+  }
+
   private static void log(final String msg) {
     if (VERBOSE) {
       System.err.println(SketchServiceManager.class.getSimpleName() + ": " + msg);
     }
-  }
-
-  public SketchServiceManager(final RLangMode mode) {
-    this.mode = mode;
   }
 
   public SketchServiceRunner createSketchService(final RLangEditor editor) {
