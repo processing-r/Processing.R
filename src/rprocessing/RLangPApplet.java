@@ -325,7 +325,6 @@ public class RLangPApplet extends BuiltinApplet {
     this.renjinEngine.put("displayHeight", displayHeight);
     this.renjinEngine.put("focused", focused);
     this.renjinEngine.put("keyPressed", keyPressed);
-    this.renjinEngine.put("frameCount", (double) frameCount);
     this.renjinEngine.put("frameRate", frameRate);
     // TODO: Find some ways to push constants into R.
   }
