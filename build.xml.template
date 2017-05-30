@@ -11,7 +11,6 @@
     <!-- location of processing jars (core.jar, pde.jar, ..) -->
     <property name="processing.classes.core" value="@@core@@" />
     <property name="processing.classes.pde" value="@@pde@@" />
-    <property name="renjin" value="@@renjin@@" />
     <property name="java.target.version" value="1.8" />
 
     <!-- Folder -->

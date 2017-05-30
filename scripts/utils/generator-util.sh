@@ -21,9 +21,7 @@ function generate-build-config {
     help
     exit 1
   fi
-  # Static path
-  local renjin="lib/renjin-script-engine-0.8.2194-jar-with-dependencies.jar"
-
+  
   cd ${root}
   cp build.xml.template build.xml
   # Interpret config template.
