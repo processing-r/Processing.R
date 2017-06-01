@@ -48,12 +48,12 @@ public class Runner {
     }
   }
 
-  public synchronized static void runSketchBlocking(final RunnableSketch sketch,
+  public static synchronized void runSketchBlocking(final RunnableSketch sketch,
       final Printer stdout, final Printer stderr) throws REvalException, NotFoundException {
     runSketchBlocking(sketch, stdout, stderr, null);
   }
 
-  public synchronized static void runSketchBlocking(final RunnableSketch sketch,
+  public static synchronized void runSketchBlocking(final RunnableSketch sketch,
       final Printer stdout, final Printer stderr,
       final SketchPositionListener sketchPositionListener) throws REvalException, NotFoundException {
     final String[] args = sketch.getPAppletArguments();
