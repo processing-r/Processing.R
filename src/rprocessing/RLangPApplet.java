@@ -179,7 +179,7 @@ public class RLangPApplet extends BuiltinApplet {
     // }
   }
 
-  static private void macosxFullScreenToggle(final Window window) {
+  private static void macosxFullScreenToggle(final Window window) {
     try {
       final Class<?> appClass = Class.forName("com.apple.eawt.Application");
       final Method getAppMethod = appClass.getMethod("getApplication");
