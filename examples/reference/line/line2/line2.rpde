@@ -1,0 +1,5 @@
+processing$line(30, 20, 85, 20);
+processing$stroke(126);
+processing$line(85, 20, 85, 75);
+processing$stroke(255);
+processing$line(85, 75, 30, 75);
