@@ -31,10 +31,6 @@ public class IOUtil { // Ignore CheckstyleBear (AbbreviationAsWordInName)
 
     /**
      * read text from the resource
-     * 
-     * @param resource
-     * @return
-     * @throws IOException
      */
     public String readText(final String resource) throws IOException {
       return IOUtil.readResourceAsText(clazz, resource);
