@@ -73,7 +73,10 @@ public class RLangInputHandler extends PdeInputHandler {
 
     // things that change the content of the text area
     if (!event.isMetaDown()
-        && (code == KeyEvent.VK_BACK_SPACE || code == KeyEvent.VK_TAB || code == KeyEvent.VK_ENTER || isPrintableChar(c))) {
+        && (code == KeyEvent.VK_BACK_SPACE
+            || code == KeyEvent.VK_TAB
+            || code == KeyEvent.VK_ENTER
+            || isPrintableChar(c))) {
       sketch.setModified(true);
     }
 

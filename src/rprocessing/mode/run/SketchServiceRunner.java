@@ -215,6 +215,7 @@ public class SketchServiceRunner {
       try {
         sketchService.shutdown();
       } catch (final RemoteException exception) {
+        log(exception.toString());
       }
     }
     if (sketchServiceRunner != null) {
