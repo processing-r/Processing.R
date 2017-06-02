@@ -65,8 +65,6 @@ public class Runner {
     try {
       // Run Sketch.
       rp.runBlock(args);
-    } catch (ParseException pe) {
-      throw new REvalException(pe.getMessage());
     } catch (EvalException ee) {
       throw new REvalException(ee.getMessage());
     }
