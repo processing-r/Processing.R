@@ -4,20 +4,20 @@ import java.awt.Component;
 import java.awt.Window;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.lang.Thread.UncaughtExceptionHandler;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.concurrent.CountDownLatch;
 
 import javax.script.ScriptException;
 
+import org.renjin.eval.EvalException;
 import org.renjin.parser.RParser;
 import org.renjin.sexp.Closure;
 import org.renjin.sexp.ExpressionVector;
 import org.renjin.sexp.FunctionCall;
 import org.renjin.sexp.SEXP;
 import org.renjin.sexp.Symbol;
-
-import com.jogamp.newt.opengl.GLWindow;
 
 import processing.awt.PSurfaceAWT;
 import processing.core.PApplet;
@@ -27,9 +27,12 @@ import processing.javafx.PSurfaceFX;
 import processing.opengl.PSurfaceJOGL;
 import rprocessing.applet.BuiltinApplet;
 import rprocessing.exception.NotFoundException;
+import rprocessing.exception.RSketchError;
 import rprocessing.util.Constant;
 import rprocessing.util.Printer;
 import rprocessing.util.RScriptReader;
+
+import com.jogamp.newt.opengl.GLWindow;
 
 /**
  * RlangPApplet PApplet for R language, powered by Renjin.
@@ -54,6 +57,8 @@ public class RLangPApplet extends BuiltinApplet {
   private final Printer stdout;
 
   private final CountDownLatch finishedLatch = new CountDownLatch(1);
+
+  private RSketchError terminalException = null;
 
   /**
    * Mode for Processing.
@@ -129,7 +134,7 @@ public class RLangPApplet extends BuiltinApplet {
     this.renjinEngine.put("stdout", stdout);
   }
 
-  public void runBlock(final String[] arguments) {
+  public void runBlock(final String[] arguments) throws RSketchError {
     log("runBlock");
     PApplet.runSketch(arguments, this);
     try {
@@ -146,8 +151,7 @@ public class RLangPApplet extends BuiltinApplet {
       }
     } finally {
       Thread.setDefaultUncaughtExceptionHandler(null);
-      if (PApplet.platform == PConstants.MACOSX
-          && Arrays.asList(arguments).contains("fullScreen")) {
+      if (PApplet.platform == PConstants.MACOSX && Arrays.asList(arguments).contains("fullScreen")) {
         // Frame should be OS-X fullscreen, and it won't stop being that unless the jvm
         // exits or we explicitly tell it to minimize.
         // (If it's disposed, it'll leave a gray blank window behind it.)
@@ -167,9 +171,9 @@ public class RLangPApplet extends BuiltinApplet {
         surface.setVisible(false);
       }
     }
-    // if (terminalException != null) {
-    // throw terminalException;
-    // }
+    if (terminalException != null) {
+      throw terminalException;
+    }
   }
 
   private static void macosxFullScreenToggle(final Window window) {
@@ -228,6 +232,28 @@ public class RLangPApplet extends BuiltinApplet {
   }
 
   /**
+   * @see processing.core.PApplet#start()
+   */
+  @Override
+  public void start() {
+    // I want to quit on runtime exceptions.
+    // Processing just sits there by default.
+    Thread.setDefaultUncaughtExceptionHandler(new UncaughtExceptionHandler() {
+      @Override
+      public void uncaughtException(final Thread t, final Throwable e) {
+        terminalException = toSketchException(e);
+        try {
+          handleMethods("dispose");
+        } catch (final Exception noop) {
+          // give up
+        }
+        finishedLatch.countDown();
+      }
+    });
+    super.start();
+  }
+
+  /**
    * @see processing.core.PApplet#settings()
    */
   @Override
@@ -255,7 +281,8 @@ public class RLangPApplet extends BuiltinApplet {
       try {
         this.renjinEngine.eval(this.programText);
       } catch (ScriptException exception) {
-        log(exception.toString());
+        terminalException = toSketchException(exception);
+        exitActual();
       }
     } else if (this.mode == Mode.ACTIVE) {
       Object obj = this.renjinEngine.get(Constant.SETUP_NAME);
@@ -333,5 +360,20 @@ public class RLangPApplet extends BuiltinApplet {
   @SuppressWarnings("rawtypes")
   private static boolean isSameClass(Object obj, Class clazz) {
     return obj.getClass().equals(clazz);
+  }
+
+  private static RSketchError toSketchException(Throwable t) {
+    if (t instanceof RuntimeException && t.getCause() != null) {
+      t = t.getCause();
+    }
+    if (t instanceof RSketchError) {
+      return (RSketchError) t;
+    }
+    if (t instanceof EvalException) {
+      final RSketchError e = (RSketchError) t;
+      return e;
+    }
+    log("No exception type detected.");
+    return null;
   }
 }
