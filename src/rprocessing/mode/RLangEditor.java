@@ -73,13 +73,6 @@ public class RLangEditor extends Editor {
     return id;
   }
 
-  /**
-   * @param base
-   * @param path
-   * @param state
-   * @param mode
-   * @throws EditorException
-   */
   protected RLangEditor(Base base, String path, EditorState state, Mode mode)
       throws EditorException {
     super(base, path, state, mode);

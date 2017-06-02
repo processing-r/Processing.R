@@ -37,6 +37,8 @@ public class RLangTokenMarker extends TokenMarker {
         id = Token.FUNCTION1 + num;
         paren = true;
         break;
+      default:
+        break;
     }
     keywords.add(keyword, (byte) id);
   }
@@ -157,7 +159,8 @@ public class RLangTokenMarker extends TokenMarker {
         break;
       case Token.NULL:
         doKeyword(line, length, '\0');
-        //$FALL-THROUGH$
+        addToken(length - lastOffset, token);
+        break;
       default:
         addToken(length - lastOffset, token);
         break;
