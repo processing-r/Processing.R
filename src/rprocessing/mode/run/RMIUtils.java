@@ -51,6 +51,7 @@ public class RMIUtils {
     try {
       return LocateRegistry.createRegistry(RMI_PORT);
     } catch (final RemoteException exception) {
+      log(exception.toString());
     }
     return LocateRegistry.getRegistry(RMI_PORT);
   }
@@ -71,6 +72,7 @@ public class RMIUtils {
             log("Unbinding " + registryKey + " from registry.");
             registry().unbind(registryKey);
           } catch (final Exception exception) {
+            log(exception.toString());
           }
         }
       }));
