@@ -1,11 +1,11 @@
 package rprocessing;
 
 import org.renjin.eval.EvalException;
+
 import rprocessing.exception.NotFoundException;
 import rprocessing.exception.REvalException;
 import rprocessing.lancher.StandaloneSketch;
 import rprocessing.util.Printer;
-import rprocessing.util.RScriptReader;
 import rprocessing.util.StreamPrinter;
 
 /**
@@ -17,11 +17,11 @@ public class Runner {
 
   public static RunnableSketch sketch;
 
-  @SuppressWarnings("unused")
-  private static final String CORE_TEXT =
-      RScriptReader.readResourceAsText(Runner.class, "r/core.R");
+  // private static final String CORE_TEXT =
+  // RScriptReader.readResourceAsText(Runner.class, "r/core.R");
 
-  private static final boolean VERBOSE = Boolean.parseBoolean(System.getenv("VERBOSE_RLANG_MODE"));
+  private static final boolean VERBOSE = Boolean.parseBoolean(System
+      .getenv("VERBOSE_RLANG_MODE"));
 
   private static void log(final Object... objs) {
     if (!VERBOSE) {
@@ -39,7 +39,8 @@ public class Runner {
     }
     try {
       sketch = new StandaloneSketch(args);
-      runSketchBlocking(sketch, new StreamPrinter(System.out), new StreamPrinter(System.err));
+      runSketchBlocking(sketch, new StreamPrinter(System.out), new StreamPrinter(
+          System.err));
     } catch (final Throwable t) {
       System.err.println(t);
       System.exit(-1);
@@ -47,14 +48,15 @@ public class Runner {
   }
 
   public static synchronized void runSketchBlocking(final RunnableSketch sketch,
-      final Printer stdout, final Printer stderr) throws REvalException, NotFoundException {
+      final Printer stdout, final Printer stderr) throws REvalException,
+      NotFoundException {
     runSketchBlocking(sketch, stdout, stderr, null);
   }
 
   public static synchronized void runSketchBlocking(final RunnableSketch sketch,
       final Printer stdout, final Printer stderr,
-      final SketchPositionListener sketchPositionListener)
-      throws REvalException, NotFoundException {
+      final SketchPositionListener sketchPositionListener) throws REvalException,
+      NotFoundException {
     final String[] args = sketch.getPAppletArguments();
 
     log("Tring to initialize RLangPApplet.");
