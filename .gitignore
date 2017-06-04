@@ -39,6 +39,7 @@ target/
 
 # Test
 test-output/
+scripts/codacy-coverage-reporter-assembly.jar
 
 # Local helpers
 local/
