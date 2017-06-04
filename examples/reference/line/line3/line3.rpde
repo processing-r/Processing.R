@@ -11,9 +11,9 @@ setup <- function() {
 }
 
 draw <- function() {
-  line(30, 20, 0, 85, 20, 15);
-  stroke(126);
-  line(85, 20, 15, 85, 75, 0);
-  stroke(255);
-  line(85, 75, 0, 30, 75, -50);
+  processing$line(30, 20, 0, 85, 20, 15)
+  processing$stroke(126)
+  processing$line(85, 20, 15, 85, 75, 0)
+  processing$stroke(255)
+  processing$line(85, 75, 0, 30, 75, -50)
 }
