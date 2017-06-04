@@ -7,5 +7,7 @@ root=$(dirname "${BASH_SOURCE}")/..
 cd ${root}
 # Set the token first: 
 # export CODACY_PROJECT_TOKEN=%Project_Token%
-java -cp ./scripts/codacy-coverage-reporter-assembly.jar com.codacy.CodacyCoverageReporter -l Java -r ./test-output/site/jacoco/report.xml
+COMMIT=$(git log -n 1 --pretty=format:"%H")
+echo ${COMMIT}
+java -cp ./scripts/codacy-coverage-reporter-assembly.jar com.codacy.CodacyCoverageReporter -l Java --commitUUID ${COMMIT} -r ./test-output/site/jacoco/report.xml
 cd - > /dev/null
