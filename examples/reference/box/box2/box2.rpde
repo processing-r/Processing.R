@@ -9,7 +9,7 @@ setup <- function() {
 }
 
 draw <- function() {
-    processing$translate(58, 48, 0) 
+    processing$translate(58, 48, 0)
     processing$rotateY(0.5)
     processing$noFill()
     processing$box(40, 20, 50)
