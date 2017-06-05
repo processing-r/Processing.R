@@ -1,5 +1,4 @@
-# point 1
-# https://processing.org/reference/point_.html
+# point 1 https://processing.org/reference/point_.html
 
 processing$noSmooth()
 processing$point(30, 20)

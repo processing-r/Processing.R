@@ -1,5 +1,4 @@
-# point 2
-# https://processing.org/reference/point_.html
+# point 2 https://processing.org/reference/point_.html
 
 P3D <- "processing.opengl.PGraphics3D"
 processing$size(100, 100, P3D)
