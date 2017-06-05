@@ -6,7 +6,6 @@ jdk:
   - oraclejdk8
 
 before_install:
-  - sudo apt-get install xvfb
   - .ci/init.sh
 
 install:
