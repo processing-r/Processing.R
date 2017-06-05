@@ -4,4 +4,4 @@ OPEN <- 1
 CHORD <- 2
 PIE <- 3
 
-processing$arc(50, 50, 80, 80, 0, PI + QUARTER_PI, PIE)
+processing$arc(50, 50, 80, 80, 0, PI + QUARTER_PI, as.integer(PIE))
