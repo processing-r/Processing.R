@@ -1,6 +1,7 @@
 package rprocessing;
 
 import org.renjin.eval.EvalException;
+
 import rprocessing.exception.NotFoundException;
 import rprocessing.exception.REvalException;
 import rprocessing.lancher.StandaloneSketch;
@@ -38,7 +39,10 @@ public class Runner {
     try {
       sketch = new StandaloneSketch(args);
       runSketchBlocking(sketch, new StreamPrinter(System.out), new StreamPrinter(System.err));
-      System.exit(0);
+
+      // See https://github.com/gaocegege/Processing.R/issues/89
+      // It can't be reproduced, so comment the statement.
+      // System.exit(0);
     } catch (final Throwable t) {
       System.err.println(t);
       System.exit(-1);
