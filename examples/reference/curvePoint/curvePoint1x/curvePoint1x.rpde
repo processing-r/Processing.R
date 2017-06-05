@@ -1,10 +1,12 @@
+## Fails due to ellipseMode()
+
+CENTER <- 3
+
 processing$noFill()
 processing$curve(5, 26, 5, 26, 73, 24, 73, 61)
 processing$curve(5, 26, 73, 24, 73, 61, 15, 65)
 processing$fill(255)
-
-# processing$ellipseMode(CENTER)
-## ERROR: ellipseMode() fails
+processing$ellipseMode(CENTER)
 
 steps <- 6
 for (i in 0:steps) {

@@ -1,3 +1,6 @@
+# Fails on mouseX, mouseY
+# Fails on sphereDetail()
+
 P3D <- "processing.opengl.PGraphics3D"
 
 settings <- function() {
@@ -12,17 +15,12 @@ draw <- function() {
     processing$background(200)
     processing$stroke(255, 50)
     processing$translate(50, 50, 0)
-
-    # processing$rotateX(processing$mouseY * 0.05)
-    # processing$rotateY(processing$mouseX * 0.05)
-    # processing$fill(processing$mouseX * 2, 0, 160)
-    ## ERROR: mouseX and mouseY    
+    processing$rotateX(processing$mouseY * 0.05)
+    processing$rotateY(processing$mouseX * 0.05)
+    processing$fill(processing$mouseX * 2, 0, 160)
     processing$rotateX(50 * 0.05)
     processing$rotateY(50 * 0.05)
     processing$fill(50 * 2, 0, 160)
-
-    # processing$sphereDetail(processing$mouseX / 4)
-    # processing$sphereDetail(12) # fails to render, sketch runs if commented out
-
+    processing$sphereDetail(processing$mouseX / 4)
     processing$sphere(40)
 }
