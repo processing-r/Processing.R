@@ -1,0 +1,12 @@
+# beginShape 3 https://processing.org/reference/beginShape_.html
+
+# Fails on beginShape(LINES)
+
+LINES <- 5
+
+processing$beginShape(LINES);
+processing$vertex(30, 20);
+processing$vertex(85, 20);
+processing$vertex(85, 75);
+processing$vertex(30, 75);
+processing$endShape();

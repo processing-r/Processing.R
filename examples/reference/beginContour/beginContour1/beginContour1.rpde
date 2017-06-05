@@ -1,0 +1,23 @@
+# beginContour 1 https://processing.org/reference/beginContour_.html
+
+# Fails on endShape(CLOSE)
+
+CLOSE <- 3
+
+processing$size(100, 100)
+processing$translate(50, 50)
+processing$stroke(255, 0, 0)
+processing$beginShape()
+# Exterior part of shape, clockwise winding
+processing$vertex(-40, -40)
+processing$vertex(40, -40)
+processing$vertex(40, 40)
+processing$vertex(-40, 40)
+# Interior part of shape, counter-clockwise winding
+processing$beginContour()
+processing$vertex(-20, -20)
+processing$vertex(-20, 20)
+processing$vertex(20, 20)
+processing$vertex(20, -20)
+processing$endContour()
+processing$endShape(CLOSE)
