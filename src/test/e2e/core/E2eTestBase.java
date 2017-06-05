@@ -6,12 +6,16 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import rprocessing.Runner;
 import test.e2e.util.ImageUtils;
+import test.e2e.util.TempFile;
 
 public abstract class E2eTestBase {
 
-  protected String code;
+  protected static float THRESHOLD = (float) 0.01;
+  protected static String SAVE_CODE_TEMPLATE = "processing$saveFrame(\"%s\")\nprocessing$exit()";
 
-  protected abstract void testInternal() throws Exception;
+  protected String code;
+  protected String coreCode;
+  protected String referenceURI;
 
   protected String referenceImage(String path) throws MalformedURLException {
     return "https://processing.org/reference/images/" + path;
@@ -31,9 +35,21 @@ public abstract class E2eTestBase {
     Runner.main(args);
   }
 
-  protected void operation() throws Exception {
-    testInternal();
-    System.out.println("\n## Code to test\n");
+  protected void defaultOperation() throws Exception {
+    // Create temp sketch file and image file.
+    File saveFile = TempFile.createTempImage();
+    code = assembleCode(saveFile.getCanonicalPath());
+    File sketchFile = TempFile.createSketchTempFile(code);
+    System.out.println("## Code to test\n");
     System.out.println(code);
+
+    // Run the sketch and save the image to saveFile.
+    this.runSketch(sketchFile.getCanonicalPath());
+
+    assert (diffImageWithProcessingReference(saveFile, referenceURI) < THRESHOLD);
+  }
+
+  protected String assembleCode(String filename) {
+    return coreCode + "\n" + String.format(SAVE_CODE_TEMPLATE, filename);
   }
 }
