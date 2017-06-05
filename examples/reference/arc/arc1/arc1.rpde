@@ -1,3 +1,5 @@
+# arc 1 https://processing.org/reference/arc_.html
+
 PI <- 3.1415
 HALF_PI <- PI/2
 QUARTER_PI <- PI/4
