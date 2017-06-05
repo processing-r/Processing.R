@@ -1,0 +1,11 @@
+# curveVertex 1 https://processing.org/reference/curveVertex_.html
+
+processing$noFill()
+processing$beginShape()
+processing$curveVertex(84,  91)
+processing$curveVertex(84,  91)
+processing$curveVertex(68,  19)
+processing$curveVertex(21,  17)
+processing$curveVertex(32, 100)
+processing$curveVertex(32, 100)
+processing$endShape()
