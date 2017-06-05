@@ -1,0 +1,36 @@
+P3D <- "processing.opengl.PGraphics3D"
+
+settings <- function() {
+    processing$size(100, 100, P3D)
+}
+
+setup <- function() {
+    processing$noFill()
+}
+
+draw <- function() {
+    processing$background(204)
+    # t <- processing$map(processing$mouseX, 0, width, -5, 5)
+    ## ERROR: mouseX
+    # processing$curveTightness(t) 
+       
+    mycurve(-1)
+    processing$translate(0,10)
+    mycurve(0)
+    processing$translate(0,10)
+    mycurve(1)
+    processing$translate(0,10)
+    mycurve(2)
+}
+
+mycurve <- function(tightness){
+    processing$curveTightness(tightness)
+    processing$beginShape()
+    processing$curveVertex(10, 26)
+    processing$curveVertex(10, 26)
+    processing$curveVertex(83, 24)
+    processing$curveVertex(83, 61)
+    processing$curveVertex(25, 65)
+    processing$curveVertex(25, 65)
+    processing$endShape()
+}
