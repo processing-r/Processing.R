@@ -1,0 +1,13 @@
+# beginShape 2 https://processing.org/reference/beginShape_.html
+
+# Fails on beginShape(POINTS)
+
+POINTS <- 3
+
+# processing$beginShape(POINTS)
+processing$beginShape()
+processing$vertex(30, 20)
+processing$vertex(85, 20)
+processing$vertex(85, 75)
+processing$vertex(30, 75)
+processing$endShape()
