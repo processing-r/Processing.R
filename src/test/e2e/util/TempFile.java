@@ -3,7 +3,6 @@ package test.e2e.util;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
-
 import org.apache.commons.io.FileUtils;
 
 /**
@@ -12,7 +11,7 @@ import org.apache.commons.io.FileUtils;
  * @author github.com/gaocegege
  */
 public class TempFile {
-  private static String SKETCH_PREFIX = "Processing.R";
+  private static String SKETCH_PREFIX = "Processing.R.";
   private static String SKETCH_SUFFIX = ".tmp.rpde";
   private static String PNG_SUFFIX = ".tmp.png";
 
