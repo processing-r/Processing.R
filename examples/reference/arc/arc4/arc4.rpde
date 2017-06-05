@@ -1,3 +1,5 @@
+# arc 4 https://processing.org/reference/arc_.html
+
 PI <- 3.1415
 QUARTER_PI <- PI/4
 OPEN <- 1
