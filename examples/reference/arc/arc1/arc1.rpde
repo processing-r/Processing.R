@@ -3,8 +3,8 @@ HALF_PI <- PI/2
 QUARTER_PI <- PI/4
 TWO_PI <- PI * 2
 
-processing$arc(50, 55, 50, 50, 0, HALF_PI)
-processing$noFill()
-processing$arc(50, 55, 60, 60, HALF_PI, PI)
-processing$arc(50, 55, 70, 70, PI, PI + QUARTER_PI)
-processing$arc(50, 55, 80, 80, PI + QUARTER_PI, TWO_PI)
+arc(50, 55, 50, 50, 0, HALF_PI)
+noFill()
+arc(50, 55, 60, 60, HALF_PI, PI)
+arc(50, 55, 70, 70, PI, PI + QUARTER_PI)
+arc(50, 55, 80, 80, PI + QUARTER_PI, TWO_PI)

@@ -1,7 +1,7 @@
 # point 1 https://processing.org/reference/point_.html
 
-processing$noSmooth()
-processing$point(30, 20)
-processing$point(85, 20)
-processing$point(85, 75)
-processing$point(30, 75)
+noSmooth()
+point(30, 20)
+point(85, 20)
+point(85, 75)
+point(30, 75)
