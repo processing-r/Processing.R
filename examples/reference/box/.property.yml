@@ -1,2 +1,15 @@
 category: Shape
 subcategory: 2D Primitives
+description: "A box is an extruded rectangle. A box with equal dimensions on all sides is a cube."
+syntax: "box(<c>size</c>)\nbox(<c>w</c>, <c>h</c>, <c>d</c>)"
+parameters:
+  - label: size
+    description: dimension of the box in all dimensions (creates a cube)
+  - label: w
+    description: dimension of the box in the x-dimension
+  - label: h
+    description: dimension of the box in the y-dimension
+  - label: d
+    description: dimension of the box in the z-dimension
+related:
+  - sphere
