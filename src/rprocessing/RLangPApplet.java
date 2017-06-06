@@ -32,6 +32,7 @@ import rprocessing.applet.BuiltinApplet;
 import rprocessing.exception.NotFoundException;
 import rprocessing.util.Constant;
 import rprocessing.util.Printer;
+import rprocessing.util.RScriptReader;
 
 /**
  * RlangPApplet PApplet for R language, powered by Renjin.
@@ -52,6 +53,9 @@ public class RLangPApplet extends BuiltinApplet {
 
   /** Engine to interpret R code */
   private final RenjinScriptEngine renjinEngine;
+
+  private static final String CORE_TEXT =
+      RScriptReader.readResourceAsText(Runner.class, "r/core.R");
 
   private final Printer stdout;
 
@@ -88,6 +92,10 @@ public class RLangPApplet extends BuiltinApplet {
     this.prePassCode();
     // Detect the mode after pre-pass program code.
     this.mode = this.detectMode();
+  }
+
+  public void evaluateCoreCode() throws ScriptException {
+    this.renjinEngine.eval(CORE_TEXT);
   }
 
   /**
