@@ -1,10 +1,12 @@
 # arc 2 https://processing.org/reference/arc_.html
 
+# TODO: replace with built-in constants
 PI <- 3.1415
 QUARTER_PI <- PI/4
-OPEN <- 1
-CHORD <- 2
-PIE <- 3
 
-# TODO: Fix double to int cast.
-arc(50, 50, 80, 80, 0, PI + QUARTER_PI, as.integer(OPEN))
+# TODO: Fix double to int casts
+OPEN <- as.integer(1)
+CHORD <- as.integer(2)
+PIE <- as.integer(3)
+
+arc(50, 50, 80, 80, 0, PI + QUARTER_PI, OPEN)
