@@ -26,4 +26,8 @@ public class BuiltinApplet extends PApplet {
   public double frameCount() {
     return super.frameCount;
   }
+
+  public double getPI() {
+    return PI;
+  }
 }
