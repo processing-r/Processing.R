@@ -43,7 +43,7 @@ curveVertex = processing$curveVertex
 delay = processing$delay
 directionalLight = processing$directionalLight
 displayDensity = processing$displayDensity
-draw = processing$draw
+# draw = processing$draw
 ellipse = processing$ellipse
 ellipseMode = processing$ellipseMode
 emissive = processing$emissive
@@ -154,8 +154,8 @@ selectFolder = processing$selectFolder
 selectInput = processing$selectInput
 selectOutput = processing$selectOutput
 set = processing$set
-settings = processing$settings
-setup = processing$setup
+# settings = processing$settings
+# setup = processing$setup
 shader = processing$shader
 shape = processing$shape
 shapeMode = processing$shapeMode
@@ -190,3 +190,6 @@ translate = processing$translate
 triangle = processing$triangle
 updatePixels = processing$updatePixels
 vertex = processing$vertex
+
+# Hack
+frameCount = processing$frameCount
