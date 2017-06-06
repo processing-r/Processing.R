@@ -1,2 +1,26 @@
 category: Shape
 subcategory: 2D Primitives
+description: "Draws an arc to the screen. Arcs are drawn along the outer edge of an ellipse defined by the <b>a</b>, <b>b</b>, <b>c</b>, and <b>d</b> parameters. The origin of the arc's ellipse may be changed with the <b>ellipseMode()</b> function. Use the <b>start</b> and <b>stop</b> parameters to specify the angles (in radians) at which to draw the arc.<br />
+<br />
+There are three ways to draw an arc; the rendering technique used is defined by the optional seventh paramter. The three options, depicted in the above examples, are PIE, OPEN, and CHORD. The default mode is the OPEN stroke with a PIE fill.
+"
+syntax: "arc(<c>a</c>, <c>b</c>, <c>c</c>, <c>d</c>, <c>start</c>, <c>stop</c>)\narc(<c>a</c>, <c>b</c>, <c>c</c>, <c>d</c>, <c>start</c>, <c>stop</c>, <c>mode</c>)
+"
+parameters:
+  - label: a
+    description: "x-coordinate of the arc's ellipse"
+  - label: b
+    description: "y-coordinate of the arc's ellipse"
+  - label: c
+    description: "width of the arc's ellipse"
+  - label: d
+    description: "height of the arc's ellipse"
+  - label: start
+    description: "angle to start the arc, specified in radians"
+  - label: stop
+    description: "angle to stop the arc, specified in radians"
+related:
+  - ellipse
+  - ellipseMode
+  - radians
+  - degrees

@@ -1,2 +1,11 @@
 category: Shape
 subcategory: 2D Primitives
+description: "Draws a point, a coordinate in space at the dimension of one pixel. The first parameter is the horizontal value for the point, the second value is the vertical value for the point, and the optional third value is the depth value. Drawing this shape in 3D with the <b>z</b> parameter requires the P3D parameter in combination with <b>size()</b> as shown in the above example."
+syntax: "point(<c>x</c>, <c>y</c>)\npoint(<c>x</c>, <c>y</c>, <c>z</c>)"
+parameters:
+  - label: x
+    description: x-coordinate of the point
+  - label: y
+    description: y-coordinate of the point
+  - label: z
+    description: z-coordinate of the point
