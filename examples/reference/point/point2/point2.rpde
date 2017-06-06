@@ -2,13 +2,13 @@
 
 P3D <- "processing.opengl.PGraphics3D"
 settings <- function() {
-    processing$size(100, 100, P3D)
+    size(100, 100, P3D)
 }
 
 draw <- function() {
-    processing$noSmooth()
-    processing$point(30, 20, -50)
-    processing$point(85, 20, -50)
-    processing$point(85, 75, -50)
-    processing$point(30, 75, -50)
+    noSmooth()
+    point(30, 20, -50)
+    point(85, 20, -50)
+    point(85, 75, -50)
+    point(30, 75, -50)
 }

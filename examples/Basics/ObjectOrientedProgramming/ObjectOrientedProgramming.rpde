@@ -24,16 +24,16 @@ display <- function(cell) {
 }
 
 display.Cell <- function(cell) {
-    processing$stroke(255)
-    processing$fill(127 + 127 * sin(cell$angle))
-    processing$rect(cell$x, cell$y, cell$w, cell$h)
+    stroke(255)
+    fill(127 + 127 * sin(cell$angle))
+    rect(cell$x, cell$y, cell$w, cell$h)
 }
 
 grid <- list()
 
 settings <- function() {
     stdout$print("Set width and height.")
-    processing$size(200, 200)
+    size(200, 200)
 }
 
 setup <- function() {
@@ -46,7 +46,7 @@ setup <- function() {
 }
 
 draw <- function() {
-    processing$background(0)
+    background(0)
     for (i in 1:cols - 1) {
         for (j in 1:rows - 1) {
             oscillate(grid[[1 + i * cols + j]])

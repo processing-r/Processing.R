@@ -1,10 +1,10 @@
 yPos <- 0
 
 draw <- function() {
-    processing$background(as.integer(204))
+    background(as.integer(204))
     yPos <- yPos - 1
     if (yPos < 0) {
         yPos <- height
     }
-    processing$line(0, yPos, width, yPos)
+    line(0, yPos, width, yPos)
 }

@@ -1,16 +1,16 @@
 P3D <- "processing.opengl.PGraphics3D"
 
 settings <- function() {
-    processing$size(100, 100, P3D)
+    size(100, 100, P3D)
 }
 
 setup <- function() {
-    processing$noLoop()
+    noLoop()
 }
 
 draw <- function() {
-    processing$translate(58, 48, 0)
-    processing$rotateY(0.5)
-    processing$noFill()
-    processing$box(40, 20, 50)
+    translate(58, 48, 0)
+    rotateY(0.5)
+    noFill()
+    box(40, 20, 50)
 }

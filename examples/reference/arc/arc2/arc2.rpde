@@ -5,4 +5,4 @@ CHORD <- 2
 PIE <- 3
 
 # TODO: Fix double to int cast.
-processing$arc(50, 50, 80, 80, 0, PI + QUARTER_PI, as.integer(OPEN))
+arc(50, 50, 80, 80, 0, PI + QUARTER_PI, as.integer(OPEN))
