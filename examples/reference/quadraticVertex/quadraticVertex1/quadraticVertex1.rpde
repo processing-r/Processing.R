@@ -1,8 +1,8 @@
 # quadraticVertex 1 https://processing.org/reference/quadraticVertex_.html
 
-processing$noFill()
-processing$strokeWeight(4)
-processing$beginShape()
-processing$vertex(20, 20)
-processing$quadraticVertex(80, 20, 50, 50)
-processing$endShape()
+noFill()
+strokeWeight(4)
+beginShape()
+vertex(20, 20)
+quadraticVertex(80, 20, 50, 50)
+endShape()

@@ -1,9 +1,9 @@
 # beginShape 4 https://processing.org/reference/beginShape_.html
 
-processing$noFill()
-processing$beginShape()
-processing$vertex(30, 20)
-processing$vertex(85, 20)
-processing$vertex(85, 75)
-processing$vertex(30, 75)
-processing$endShape()
+noFill()
+beginShape()
+vertex(30, 20)
+vertex(85, 20)
+vertex(85, 75)
+vertex(30, 75)
+endShape()

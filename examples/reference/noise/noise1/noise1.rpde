@@ -1,20 +1,9 @@
 # noise 1 https://processing.org/reference/noise_.html
 
-width <- 100
-height <- 100
-
 xoff <- 0
-
-settings <- function() {
-    processing$size(width, height)
-}
-
-setup <- function() {
-}
-
-draw <- function() {
-    processing$background(204)
-    xoff = xoff + .01;
-    n <- processing$noise(xoff) * width;
-    processing$line(n, 0, n, height);
+draw <- function(){
+    background(204)
+    xoff = xoff + .01
+    n <- noise(xoff) * width
+    line(n, 0, n, height)
 }

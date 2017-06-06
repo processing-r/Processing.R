@@ -1,12 +1,12 @@
 # bezierPoint 1 https://processing.org/reference/bezierPoint_.html
 
-processing$noFill()
-processing$bezier(85, 20, 10, 10, 90, 90, 15, 80)
-processing$fill(255)
+noFill()
+bezier(85, 20, 10, 10, 90, 90, 15, 80)
+fill(255)
 steps <- 10
 for (i in 0:steps) {
     t <- i / steps
-    x = processing$bezierPoint(85, 10, 90, 15, t)
-    y = processing$bezierPoint(20, 10, 90, 80, t)
-    processing$ellipse(x, y, 5, 5)
+    x = bezierPoint(85, 10, 90, 15, t)
+    y = bezierPoint(20, 10, 90, 80, t)
+    ellipse(x, y, 5, 5)
 }
