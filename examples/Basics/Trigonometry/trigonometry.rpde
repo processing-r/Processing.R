@@ -59,7 +59,6 @@ draw <- function() {
     stroke(50)
     line(px, py, width/8 + radius + x, py)
     
-    # Output calculations to screen text('y <- sin x', 35, 185)
-    # text('px <- ' + px, 105, 185) text('py <- ' + py, 215,
-    # 185)
+    # Output calculations to screen text('y <- sin x', 35, 185) text('px <- ' + px,
+    # 105, 185) text('py <- ' + py, 215, 185)
 }
