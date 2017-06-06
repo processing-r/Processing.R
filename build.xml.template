@@ -21,6 +21,7 @@
     <property name="build" value="build" />
     <property name="bin" value="bin" />
     <property name="dist" value="dist" />
+    <property name="r.core.dir" value="src/rprocessing/r" />
 
     <!-- Test -->
     <property name="test.build.dir" value="test-output" />
@@ -126,6 +127,9 @@
     </target>
 
     <target name="test" depends="test-compile">
+        <copy todir="${test.build.dir}/rprocessing/r" >  
+            <fileset dir="${r.core.dir}" includes="**"/>  
+        </copy> 
         <jacoco:coverage destfile="${result.exec.file}">
             <junit printsummary="on" haltonfailure="yes" fork="true">
                 <classpath>
