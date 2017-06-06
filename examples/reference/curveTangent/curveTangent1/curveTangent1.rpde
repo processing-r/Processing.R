@@ -3,17 +3,17 @@
 PI <- 3.1415
 HALF_PI <- PI/2
 
-processing$noFill()
-processing$curve(5, 26, 73, 24, 73, 61, 15, 65) 
+noFill()
+curve(5, 26, 73, 24, 73, 61, 15, 65) 
 steps <- 6
 for (i in 0:steps) {
     t <- i / steps
-    x <- processing$curvePoint(5, 73, 73, 15, t)
-    y <- processing$curvePoint(26, 24, 61, 65, t)
+    x <- curvePoint(5, 73, 73, 15, t)
+    y <- curvePoint(26, 24, 61, 65, t)
     # ellipse(x, y, 5, 5)
-    tx <- processing$curveTangent(5, 73, 73, 15, t)
-    ty <- processing$curveTangent(26, 24, 61, 65, t)
+    tx <- curveTangent(5, 73, 73, 15, t)
+    ty <- curveTangent(26, 24, 61, 65, t)
     a <- atan2(ty, tx)
     a = a - HALF_PI
-    processing$line(x, y, cos(a)*8 + x, sin(a)*8 + y)
+    line(x, y, cos(a)*8 + x, sin(a)*8 + y)
 }

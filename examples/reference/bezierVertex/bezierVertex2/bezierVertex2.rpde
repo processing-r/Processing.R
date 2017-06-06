@@ -1,7 +1,7 @@
 # bezierVertex 2 https://processing.org/reference/bezierVertex_.html
 
-processing$beginShape()
-processing$vertex(30, 20)
-processing$bezierVertex(80, 0, 80, 75, 30, 75);
-processing$bezierVertex(50, 80, 60, 25, 30, 20)
-processing$endShape()
+beginShape()
+vertex(30, 20)
+bezierVertex(80, 0, 80, 75, 30, 75);
+bezierVertex(50, 80, 60, 25, 30, 20)
+endShape()
