@@ -329,10 +329,10 @@ public class RLangPApplet extends BuiltinApplet {
   protected void wrapProcessingVariables() {
     log("Wrap Processing built-in variables into R top context.");
     // TODO: Find some ways to push constants into R.
-    // this.renjinEngine.put("width", width);
-    // this.renjinEngine.put("height", height);
-    // this.renjinEngine.put("displayWidth", displayWidth);
-    // this.renjinEngine.put("displayHeight", displayHeight);
+    this.renjinEngine.put("width", width);
+    this.renjinEngine.put("height", height);
+    this.renjinEngine.put("displayWidth", displayWidth);
+    this.renjinEngine.put("displayHeight", displayHeight);
     // this.renjinEngine.put("focused", focused);
     // this.renjinEngine.put("keyPressed", keyPressed);
   }

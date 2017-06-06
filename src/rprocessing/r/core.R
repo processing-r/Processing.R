@@ -193,3 +193,4 @@ vertex = processing$vertex
 
 # Hack
 frameCount = processing$frameCount
+# radians = processing$radians
