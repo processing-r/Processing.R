@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+
 import rprocessing.Runner;
 import test.e2e.util.ImageUtils;
 import test.e2e.util.TempFile;
@@ -14,7 +15,7 @@ public abstract class E2eTestBase {
   protected static String SAVE_CODE_TEMPLATE = "processing$saveFrame(\"%s\")\nprocessing$exit()";
 
   protected String code;
-  protected String coreCode;
+  protected String coreCodeTemplate;
   protected String referenceURI;
 
   protected String referenceImage(String path) throws MalformedURLException {
@@ -46,10 +47,10 @@ public abstract class E2eTestBase {
     // Run the sketch and save the image to saveFile.
     this.runSketch(sketchFile.getCanonicalPath());
 
-    assert (diffImageWithProcessingReference(saveFile, referenceURI) < THRESHOLD);
+    assert (diffImage(saveFile, referenceURI) < THRESHOLD);
   }
 
   protected String assembleCode(String filename) {
-    return coreCode + "\n" + String.format(SAVE_CODE_TEMPLATE, filename);
+    return String.format(coreCodeTemplate, filename);
   }
 }
