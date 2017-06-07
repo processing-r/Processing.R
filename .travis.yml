@@ -14,7 +14,8 @@ install:
   - ant package
 
 script:
-  - xvfb-run ant report
+  # See https://askubuntu.com/a/693533
+  - xvfb-run -a -s "-screen 0 1024x768x24" ant report
   - docker run -v=$(pwd):/app --workdir=/app coala/base coala --ci
 
 after_success:
