@@ -1,13 +1,14 @@
 # beginShape 5 https://processing.org/reference/beginShape_.html
 
-# Fails on endShape(CLOSE)
+OPEN   <- as.integer(1)
+CLOSE  <- as.integer(2)
+POINTS <- as.integer(3)
+LINES  <- as.integer(5)
 
-CLOSE <- 3
-
-processing$noFill();
-processing$beginShape();
-processing$vertex(30, 20);
-processing$vertex(85, 20);
-processing$vertex(85, 75);
-processing$vertex(30, 75);
-processing$endShape(CLOSE);
+noFill();
+beginShape();
+vertex(30, 20);
+vertex(85, 20);
+vertex(85, 75);
+vertex(30, 75);
+endShape(CLOSE);

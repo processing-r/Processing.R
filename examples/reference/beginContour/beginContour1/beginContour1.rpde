@@ -1,23 +1,21 @@
 # beginContour 1 https://processing.org/reference/beginContour_.html
 
-# Fails on endShape(CLOSE)
+CLOSE <- as.integer(2)
 
-CLOSE <- 3
-
-processing$size(100, 100)
-processing$translate(50, 50)
-processing$stroke(255, 0, 0)
-processing$beginShape()
+size(100, 100)
+translate(50, 50)
+stroke(255, 0, 0)
+beginShape()
 # Exterior part of shape, clockwise winding
-processing$vertex(-40, -40)
-processing$vertex(40, -40)
-processing$vertex(40, 40)
-processing$vertex(-40, 40)
+vertex(-40, -40)
+vertex(40, -40)
+vertex(40, 40)
+vertex(-40, 40)
 # Interior part of shape, counter-clockwise winding
-processing$beginContour()
-processing$vertex(-20, -20)
-processing$vertex(-20, 20)
-processing$vertex(20, 20)
-processing$vertex(20, -20)
-processing$endContour()
-processing$endShape(CLOSE)
+beginContour()
+vertex(-20, -20)
+vertex(-20, 20)
+vertex(20, 20)
+vertex(20, -20)
+endContour()
+endShape(CLOSE)
