@@ -1,5 +1,4 @@
-# Fails on mouseX, mouseY
-# Fails on sphereDetail()
+# Fails on mouseX, mouseY Fails on sphereDetail()
 
 P3D <- "processing.opengl.PGraphics3D"
 
@@ -21,6 +20,6 @@ draw <- function() {
     processing$rotateX(50 * 0.05)
     processing$rotateY(50 * 0.05)
     processing$fill(50 * 2, 0, 160)
-    processing$sphereDetail(processing$mouseX / 4)
+    processing$sphereDetail(processing$mouseX/4)
     processing$sphere(40)
 }

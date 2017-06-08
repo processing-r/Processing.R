@@ -1,5 +1,4 @@
-# Fails due to mouseX
-# Fails due to bezierDetail()
+# Fails due to mouseX Fails due to bezierDetail()
 
 P3D <- "processing.opengl.PGraphics3D"
 

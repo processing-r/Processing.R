@@ -1,9 +1,9 @@
 # noise 1 https://processing.org/reference/noise_.html
 
 xoff <- 0
-draw <- function(){
+draw <- function() {
     background(204)
-    xoff = xoff + .01
+    xoff = xoff + 0.01
     n <- noise(xoff) * width
     line(n, 0, n, height)
 }

@@ -1,9 +1,9 @@
 # beginShape 1 https://processing.org/reference/beginShape_.html
 
-OPEN   <- as.integer(1)
-CLOSE  <- as.integer(2)
+OPEN <- as.integer(1)
+CLOSE <- as.integer(2)
 POINTS <- as.integer(3)
-LINES  <- as.integer(5)
+LINES <- as.integer(5)
 
 beginShape()
 vertex(30, 20)
