@@ -1,5 +1,4 @@
-# Fails on mouseX
-# Alternate demonstration of curveTightness works fine
+# Fails on mouseX Alternate demonstration of curveTightness works fine
 
 P3D <- "processing.opengl.PGraphics3D"
 
@@ -13,20 +12,19 @@ setup <- function() {
 
 draw <- function() {
     processing$background(204)
-    # t <- processing$map(processing$mouseX, 0, width, -5, 5)
-    ## ERROR: mouseX
-    # processing$curveTightness(t) 
-       
+    # t <- processing$map(processing$mouseX, 0, width, -5, 5) ERROR: mouseX
+    # processing$curveTightness(t)
+    
     mycurve(-1)
-    processing$translate(0,10)
+    processing$translate(0, 10)
     mycurve(0)
-    processing$translate(0,10)
+    processing$translate(0, 10)
     mycurve(1)
-    processing$translate(0,10)
+    processing$translate(0, 10)
     mycurve(2)
 }
 
-mycurve <- function(tightness){
+mycurve <- function(tightness) {
     processing$curveTightness(tightness)
     processing$beginShape()
     processing$curveVertex(10, 26)

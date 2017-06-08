@@ -4,10 +4,10 @@ PI <- 3.1415
 HALF_PI <- PI/2
 
 noFill()
-curve(5, 26, 73, 24, 73, 61, 15, 65) 
+curve(5, 26, 73, 24, 73, 61, 15, 65)
 steps <- 6
 for (i in 0:steps) {
-    t <- i / steps
+    t <- i/steps
     x <- curvePoint(5, 73, 73, 15, t)
     y <- curvePoint(26, 24, 61, 65, t)
     # ellipse(x, y, 5, 5)
@@ -15,5 +15,5 @@ for (i in 0:steps) {
     ty <- curveTangent(26, 24, 61, 65, t)
     a <- atan2(ty, tx)
     a = a - HALF_PI
-    line(x, y, cos(a)*8 + x, sin(a)*8 + y)
+    line(x, y, cos(a) * 8 + x, sin(a) * 8 + y)
 }

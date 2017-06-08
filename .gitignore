@@ -44,3 +44,6 @@ scripts/codacy-coverage-reporter-assembly.jar
 # Local helpers
 local/
 *.log
+
+# Git
+*.orig
