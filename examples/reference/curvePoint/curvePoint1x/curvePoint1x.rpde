@@ -1,6 +1,6 @@
 ## Fails due to ellipseMode()
 
-CENTER <- 3
+CENTER <- as.integer(3)
 
 processing$noFill()
 processing$curve(5, 26, 5, 26, 73, 24, 73, 61)
