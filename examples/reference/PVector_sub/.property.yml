@@ -1,0 +1,25 @@
+category: PVector
+subcategory: Method
+description: "
+Subtracts x, y, and z components from a vector, subtracts one vector from another, or subtracts two independent vectors. The version of the method that substracts two vectors is a static method and returns a PVector, the others have no return value -- they act directly on the vector. See the examples for more context.  In all cases, the second vector (v2) is subtracted from the first (v1), resulting in v1-v2.
+"
+syntax: ".sub(<c>v</c>)\n.sub(<c>x</c>, <c>y</c>, <c>z</c>)\n.sub(<c>v1</c>, <c>v2</c>)\n.sub(<c>v1</c>, <c>v2</c>, <c>target</c>)"
+parameters:
+  - label: 'v'
+    description: "PVector: any variable of type PVector"
+  - label: 'x'
+    description: "float: the x component of the vector"
+  - label: 'y'
+    description: "float: the y component of the vector"
+  - label: 'z'
+    description: "float: the z component of the vector"
+  - label: 'v1'
+    description: "PVector: the x, y, and z components of a PVector object"
+  - label: 'v2'
+    description: "PVector: the x, y, and z components of a PVector object"
+  - label: 'v1'
+    description: "PVector: the x, y, and z components of a PVector object"
+  - label: 'v2'
+    description: "PVector: the x, y, and z components of a PVector object"
+  - label: 'target'
+    description: "PVector: PVector in which to store the result"

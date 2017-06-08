@@ -1,0 +1,11 @@
+category: Rendering
+subcategory: Shaders
+description: "
+Applies the shader specified by the parameters. It's compatible with the P2D and P3D renderers, but not with the default renderer.
+"
+syntax: "shader(<c>shader</c>)\nshader(<c>shader</c>, <c>kind</c>)"
+parameters:
+  - label: 'shader'
+    description: "PShader: name of shader file"
+  - label: 'kind'
+    description: "int: type of shader, either POINTS, LINES, or TRIANGLES"

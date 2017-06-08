@@ -1,0 +1,33 @@
+category: Control
+subcategory: Logical Operators
+description: "
+<p>Compares two expressions and evaluates to <b>True</b> only if both evaluate to <b>True</b>. Returns <b>False</b> if one or both evaluate to <b>False</b>. The following list shows all possible combinations:
+<pre>
+True and False   # Evaluates False because the second is False
+False and True   # Evaluates False because the first is False
+True and True    # Evaluates True because both are True
+False and False  # Evaluates False because both are False
+</pre>
+<p>The \"and\" operator is <i>short-circuiting</i>; it will not bother to evaluate its
+second expression of the first is False. That means, in the following example, that
+<tt>DoSomething</tt> is never called:
+<pre>
+def DoSomething():
+    print \"I did something!\"
+    return True
+
+x = False
+if x and DoSomething():
+    print \"This cannot happen.\"
+</pre>
+"
+syntax: "<c>expression1</c> and <c>expression2</c>"
+parameters:
+  - label: 'expression1'
+    description: "any valid expression"
+  - label: 'expression2'
+    description: "any valid expression"
+related:
+  - logicalOR
+  - logicalNOT
+  - if

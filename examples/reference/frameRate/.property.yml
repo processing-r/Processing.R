@@ -1,0 +1,17 @@
+category: Environment
+subcategory: 
+description: "
+Specifies the number of frames to be displayed every second. For example, the function call <b>frameRate(30)</b> will attempt to refresh 30 times a second. If the processor is not fast enough to maintain the specified rate, the frame rate will not be achieved. Setting the frame rate within <b>setup()</b> is recommended. The default rate is 60 frames per second.
+"
+syntax: "frameRate(<c>fps</c>)"
+parameters:
+  - label: 'fps'
+    description: "float: number of desired frames per second"
+related:
+  - frameRate_var
+  - frameCount
+  - setup
+  - draw
+  - loop
+  - noLoop
+  - redraw

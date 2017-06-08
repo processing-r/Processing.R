@@ -1,0 +1,11 @@
+category: Shape
+subcategory: 3D Primitives
+description: "
+A sphere is a hollow ball made from tessellated triangles.
+"
+syntax: "sphere(<c>r</c>)"
+parameters:
+  - label: 'r'
+    description: "float: the radius of the sphere"
+related:
+  - sphereDetail

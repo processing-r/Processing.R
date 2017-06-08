@@ -1,0 +1,13 @@
+category: Input
+subcategory: Time & Date
+description: "
+Processing communicates with the clock on your computer. The <b>month()</b> function returns the current month as an integer from 1 - 12.
+"
+syntax: "month()"
+related:
+  - millis
+  - second
+  - minute
+  - hour
+  - day
+  - year

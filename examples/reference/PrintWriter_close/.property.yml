@@ -1,0 +1,9 @@
+category: PrintWriter
+subcategory: Method
+description: "
+Closes the <b>PrintWriter</b> object.
+"
+syntax: "<c>pw</c>.close()"
+parameters:
+  - label: 'pw'
+    description: "any object of the type PrintWriter"

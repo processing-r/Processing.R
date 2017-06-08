@@ -1,0 +1,11 @@
+category: Transform
+subcategory: 
+description: "
+Replaces the current matrix with the identity matrix. The equivalent function in OpenGL is <b>glLoadIdentity()</b>. 
+"
+syntax: "resetMatrix()"
+related:
+  - pushMatrix
+  - popMatrix
+  - applyMatrix
+  - printMatrix

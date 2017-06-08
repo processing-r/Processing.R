@@ -1,0 +1,16 @@
+category: Data
+subcategory: List Methods
+description: "
+Add an item to the end of the list.
+"
+syntax: "<c>a</c>.append(<c>x</c>)"
+parameters:
+  - label: 'a'
+    description: "list to append to"
+  - label: 'x'
+    description: "item to append"
+related:
+  - list_insert
+  - list_pop
+  - list_reverse
+  - list_index

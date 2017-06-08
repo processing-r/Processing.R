@@ -1,0 +1,24 @@
+category: Typography
+subcategory: Loading & Displaying
+description: "
+Dynamically converts a font to the format used by Processing from a .ttf or .otf file inside the sketch's \"data\" folder or a font that's installed elsewhere on the computer. If you want to use a font installed on your computer, use the <b>PFont.list()</b> method to first determine the names for the fonts recognized by the computer and are compatible with this function. Not all fonts can be used and some might work with one operating system and not others. When sharing a sketch with other people or posting it on the web, you may need to include a .ttf or .otf version of your font in the data directory of the sketch because other people might not have the font installed on their computer. Only fonts that can legally be distributed should be included with a sketch.<br />
+<br />
+The <b>size</b> parameter states the font size you want to generate. The <b>smooth</b> parameter specifies if the font should be antialiased or not. The <b>charset</b> parameter is an array of chars that specifies the characters to generate.<br />
+<br />
+This function allows Processing to work with the font natively in the default renderer, so the letters are defined by vector geometry and are rendered quickly. In the <b>P2D</b> and <b>P3D</b> renderers, the function sets the project to render the font as a series of small textures. For instance, when using the default renderer, the actual native version of the font will be employed by the sketch, improving drawing quality and performance. With the <b>P2D</b> and <b>P3D</b> renderers, the bitmapped version will be used to improve speed and appearance, but the results are poor when exporting if the sketch does not include the .otf or .ttf file, and the requested font is not available on the machine running the sketch. 
+"
+syntax: "createFont(<c>name</c>, <c>size</c>)\ncreateFont(<c>name</c>, <c>size</c>, <c>smooth</c>)\ncreateFont(<c>name</c>, <c>size</c>, <c>smooth</c>, <c>charset</c>)"
+parameters:
+  - label: 'name'
+    description: "String: name of the font to load"
+  - label: 'size'
+    description: "float: point size of the font"
+  - label: 'smooth'
+    description: "boolean: true for an antialiased font, false for aliased"
+  - label: 'charset'
+    description: "char: list containing characters to be generated"
+related:
+  - PFont
+  - textFont
+  - PGraphics
+  - loadFont

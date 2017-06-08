@@ -1,0 +1,13 @@
+category: Input
+subcategory: Time & Date
+description: "
+Processing communicates with the clock on your computer. The <b>hour()</b> function returns the current hour as a value from 0 - 23.
+"
+syntax: "hour()"
+related:
+  - millis
+  - second
+  - minute
+  - day
+  - month
+  - year

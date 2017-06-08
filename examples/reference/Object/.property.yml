@@ -1,0 +1,13 @@
+category: Data
+subcategory: Composite
+description: "
+Objects are instances of classes. A class is a grouping of related methods (functions) and fields (variables and constants).
+"
+syntax: "<c>instanceName</c> = <c>ClassName()</c>"
+parameters:
+  - label: 'ClassName'
+    description: "the class from which to create the new object"
+  - label: 'instanceName'
+    description: "the name for the new object"
+related:
+  - class

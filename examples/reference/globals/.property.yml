@@ -1,0 +1,6 @@
+category: Structure
+subcategory: 
+description: "
+Global variables are declared outside functions and are readable throughout the program. If you wish to modify or create a global variable from within a function, you must use the <tt>global</tt> Python statement. 
+"
+syntax: "	x = 0\n\n	def foo():\n	    global x\n	    x = 5 \n"

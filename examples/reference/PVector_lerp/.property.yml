@@ -1,0 +1,25 @@
+category: PVector
+subcategory: Method
+description: "
+Calculates linear interpolation from one vector to another vector.  (Just like regular <b>lerp()</b>, but for vectors.)<br/>
+<br/>
+Note that there is one <em>static</em> version of this method, and two <em>non-static</em> versions.  The static version, <b>lerp(v1, v2, amt)</b> is given the two vectors to interpolate and returns a new PVector object.  The static version is used by referencing the PVector class directly.  (See the middle example above.)  The non-static versions, <b>lerp(v, amt)</b> and <b>lerp(x, y, z, amt)</b>, do not return a new PVector, but transform the values of the PVector on which they are called.  These non-static versions function the same way, but the former takes another vector as input, while the latter takes three float values.  (See the top and bottom examples above, respectively.)
+"
+syntax: ".lerp(<c>v</c>, <c>amt</c>)\n.lerp(<c>v1</c>, <c>v2</c>, <c>amt</c>)\n.lerp(<c>x</c>, <c>y</c>, <c>z</c>, <c>amt</c>)"
+parameters:
+  - label: 'v'
+    description: "PVector: the vector to lerp to"
+  - label: 'amt'
+    description: "float: The amount of interpolation; some value between 0.0 (old vector) and 1.0 (new vector). 0.1 is very near the new vector. 0.5 is halfway in between."
+  - label: 'v1'
+    description: "PVector: the vector to start from"
+  - label: 'v2'
+    description: "PVector: the vector to lerp to"
+  - label: 'x'
+    description: "float: the x component to lerp to"
+  - label: 'y'
+    description: "float: the y component to lerp to"
+  - label: 'z'
+    description: "float: the z component to lerp to"
+related:
+  - PVector_lerp

@@ -1,0 +1,13 @@
+category: PVector
+subcategory: Method
+description: "
+Calculates the Euclidean distance between two points (considering a point as a vector object).
+"
+syntax: ".dist(v)\n.dist(v1, v2)"
+parameters:
+  - label: 'v'
+    description: "PVector: the x, y, and z coordinates of a PVector"
+  - label: 'v1'
+    description: "PVector: any variable of type PVector"
+  - label: 'v2'
+    description: "PVector: any variable of type PVector"

@@ -1,0 +1,18 @@
+category: Table
+subcategory: Method
+description: "
+Retrieves all values in the specified column, and returns them as a string list.  The column may be specified by either its ID or title.
+"
+syntax: ".getStringColumn(columnName)\n.getStringColumn(column)"
+parameters:
+  - label: 'columnName'
+    description: "String: title of the column to search"
+  - label: 'column'
+    description: "int: ID number of the column to search"
+related:
+  - XML_getInt
+  - XML_getFloat
+  - XML_getString
+  - XML_setInt
+  - XML_setFloat
+  - XML_setString

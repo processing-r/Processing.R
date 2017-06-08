@@ -1,0 +1,21 @@
+category: Math
+subcategory: Bitwise Operators
+description: "
+Compares each corresponding bit in the binary representation of the values. For each comparison two 1's yield 1, 1 and 0 yield 1, and two 0's yield 0. This is easy to see when we look at the binary representation of numbers<br />
+<br />
+<pre>  11010110  # 214
+| 01011100  # 92
+  --------
+  11011110  # 222</pre>
+<br />
+To see the binary representation of a number, use the <b>binary()</b> function with <b>print()</b>.
+"
+syntax: "<c>value</c> | <c>value2</c>"
+parameters:
+  - label: 'value1'
+    description: "int, char, byte"
+  - label: 'value2'
+    description: "int, char, byte"
+related:
+  - bitwiseAND
+  - binary

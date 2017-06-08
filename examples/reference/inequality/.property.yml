@@ -1,0 +1,17 @@
+category: Control
+subcategory: Relational Operators
+description: "
+Determines if one expression is not equivalent to another.
+"
+syntax: "<c>value1</c> != <c>value2</c>"
+parameters:
+  - label: 'value1'
+    description: "int, float, byte, boolean, String"
+  - label: 'value2'
+    description: "int, float, byte, boolean, String"
+related:
+  - greaterthan
+  - lessthan
+  - greaterthanorequalto
+  - lessthanorequalto
+  - equality

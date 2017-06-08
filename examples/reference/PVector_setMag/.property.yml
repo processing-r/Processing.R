@@ -1,0 +1,13 @@
+category: PVector
+subcategory: Method
+description: "
+Set the magnitude of this vector to the value used for the <b>len</b> parameter.
+"
+syntax: ".setMag(<c>len</c>)\n.setMag(<c>target</c>, <c>len</c>)"
+parameters:
+  - label: 'len'
+    description: "float: the new length for this vector"
+  - label: 'target'
+    description: "PVector: Set to null to create a new vector"
+  - label: 'len'
+    description: "float: the new length for the new vector"

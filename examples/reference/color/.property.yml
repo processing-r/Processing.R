@@ -1,0 +1,25 @@
+category: Color
+subcategory: Creating & Reading
+description: "
+Creates colors for storing in variables of the <b>color</b> datatype. The parameters are interpreted as RGB or HSB values depending on the current <b>colorMode()</b>. The default mode is RGB values from 0 to 255 and, therefore, <b>color(255, 204, 0)</b> will return a bright yellow color (see the first example above).<br/>
+<br/>
+Note that if only one value is provided to <b>color()</b>, it will be interpreted as a grayscale value. Add a second value, and it will be used for alpha transparency. When three values are specified, they are interpreted as either RGB or HSB values. Adding a fourth value applies alpha transparency.<br/>
+<br/>
+Note that when using hexadecimal notation, it is not necessary to use <b>color()</b>, as in: <b>c = #006699</b><br/>
+<br/>
+More about how colors are stored can be found in the reference for the <a href=\"color_datatype.html\">color</a> datatype.
+"
+syntax: "color(<c>gray</c>)\ncolor(<c>gray</c>, <c>alpha</c>)\ncolor(<c>v1</c>, <c>v2</c>, <c>v3</c>)\ncolor(<c>v1</c>, <c>v2</c>, <c>v3</c>, <c>alpha</c>)"
+parameters:
+  - label: 'gray'
+    description: "int: number specifying value between white and black"
+  - label: 'alpha'
+    description: "float, or int: relative to current color range"
+  - label: 'v1'
+    description: "float, or int: red or hue values relative to the current color range"
+  - label: 'v2'
+    description: "float, or int: green or saturation values relative to the current color range"
+  - label: 'v3'
+    description: "float, or int: blue or brightness values relative to the current color range"
+related:
+  - colorMode

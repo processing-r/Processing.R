@@ -1,0 +1,32 @@
+category: PImage
+subcategory: Method
+description: "
+Copies a region of pixels from one image into another. If the source and destination regions aren't the same size, it will automatically resize source pixels to fit the specified target region. No alpha information is used in the process, however if the source image has an alpha channel set, it will be copied as well.
+<br /><br />
+As of release 0149, this function ignores <b>imageMode()</b>.
+"
+syntax: "pimg.copy(sx, sy, sw, sh, dx, dy, dw, dh)\npimg.copy(src, sx, sy, sw, sh, dx, dy, dw, dh)"
+parameters:
+  - label: 'pimg'
+    description: "PImage: any object of type PImage"
+  - label: 'sx'
+    description: "int: X coordinate of the source's upper left corner"
+  - label: 'sy'
+    description: "int: Y coordinate of the source's upper left corner"
+  - label: 'sw'
+    description: "int: source image width"
+  - label: 'sh'
+    description: "int: source image height"
+  - label: 'dx'
+    description: "int: X coordinate of the destination's upper left corner"
+  - label: 'dy'
+    description: "int: Y coordinate of the destination's upper left corner"
+  - label: 'dw'
+    description: "int: destination image width"
+  - label: 'dh'
+    description: "int: destination image height"
+  - label: 'src'
+    description: "PImage: an image variable referring to the source image."
+related:
+  - alpha
+  - PImage_blend

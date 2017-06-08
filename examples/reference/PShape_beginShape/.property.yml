@@ -1,0 +1,11 @@
+category: PShape
+subcategory: Method
+description: "
+This method is used to start a custom shape created with the <b>createShape()</b> function. It's always and only used with <b>createShape()</b>. 
+"
+syntax: "beginShape()\nbeginShape(<c>kind</c>)"
+parameters:
+  - label: 'kind'
+    description: "int: Either POINTS, LINES, TRIANGLES, TRIANGLE_FAN, TRIANGLE_STRIP, QUADS, or QUAD_STRIP "
+related:
+  - PShape_endShape

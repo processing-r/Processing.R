@@ -1,0 +1,19 @@
+category: Lights, Camera
+subcategory: Material Properties
+description: "
+Sets the emissive color of the material used for drawing shapes drawn to the screen. Used in combination with <b>ambient()</b>, <b>specular()</b>, and <b>shininess()</b> in setting the material properties of shapes.
+"
+syntax: "emissive(<c>rgb</c>)\nemissive(<c>gray</c>)\nemissive(<c>v1</c>, <c>v2</c>, <c>v3</c>)"
+parameters:
+  - label: 'rgb'
+    description: "int: color to set"
+  - label: 'v1'
+    description: "float: red or hue value (depending on current color mode)"
+  - label: 'v2'
+    description: "float: green or saturation value (depending on current color mode)"
+  - label: 'v3'
+    description: "float: blue or brightness value (depending on current color mode)"
+related:
+  - ambient
+  - specular
+  - shininess

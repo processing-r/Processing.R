@@ -1,0 +1,11 @@
+category: Structure
+subcategory: 
+description: "
+Explanatory notes embedded within the code. Comments are used to remind yourself and to inform others about the details of the code. Single-line comments are signified with the pound character. Comments are ignored by the interpreter.
+"
+syntax: "# <c>comment</c>"
+parameters:
+  - label: 'comment'
+    description: "any sequence of characters"
+related:
+  - multilinecomment

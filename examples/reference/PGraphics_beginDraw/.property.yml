@@ -1,0 +1,9 @@
+category: PGraphics
+subcategory: Method
+description: "
+Sets the default properties for a PGraphics object. It should be called before anything is drawn into the object.
+"
+syntax: "<c>graphics</c>.beginDraw()"
+parameters:
+  - label: 'graphics'
+    description: "PGraphics: any object of the type PGraphics"

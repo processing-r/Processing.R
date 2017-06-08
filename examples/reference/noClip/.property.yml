@@ -1,0 +1,6 @@
+category: Rendering
+subcategory: 
+description: "
+Disables the clipping previously started by the <b>clip()</b> function.
+"
+syntax: "    noClip()\n"

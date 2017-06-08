@@ -1,0 +1,13 @@
+category: Math
+subcategory: Random
+description: "
+Sets the seed value for <b>random()</b>. By default, <b>random()</b> produces different results each time the program is run. Set the <b>seed</b> parameter to a constant to return the same pseudo-random numbers each time the software is run.
+"
+syntax: "randomSeed(<c>seed</c>)"
+parameters:
+  - label: 'seed'
+    description: "int: seed value"
+related:
+  - random
+  - noise
+  - noiseSeed

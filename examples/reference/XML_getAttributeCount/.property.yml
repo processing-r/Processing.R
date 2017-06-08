@@ -1,0 +1,6 @@
+category: XMLElement
+subcategory: Method
+description: "
+Counts the specified element's number of attributes, returned as an int.
+"
+syntax: ".getAttributeCount()\n"

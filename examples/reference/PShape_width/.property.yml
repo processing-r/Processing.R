@@ -1,0 +1,8 @@
+category: PShape
+subcategory: Field
+description: "
+The width of the PShape document.
+"
+syntax: ""
+related:
+  - PShape_height

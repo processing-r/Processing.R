@@ -1,0 +1,12 @@
+category: Math
+subcategory: Calculation
+description: "
+Calculates the closest int value that is greater than or equal to the value of the parameter. For example, <b>ceil(9.03)</b> returns the value 10.
+"
+syntax: "ceil(<c>n</c>)"
+parameters:
+  - label: 'n'
+    description: "float: number to round up"
+related:
+  - floor
+  - round

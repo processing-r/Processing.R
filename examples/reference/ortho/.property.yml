@@ -1,0 +1,19 @@
+category: Lights, Camera
+subcategory: Camera
+description: "
+Sets an orthographic projection and defines a parallel clipping volume. All objects with the same dimension appear the same size, regardless of whether they are near or far from the camera. The parameters to this function specify the clipping volume where left and right are the minimum and maximum x values, top and bottom are the minimum and maximum y values, and near and far are the minimum and maximum z values. If no parameters are given, the default is used: ortho(0, width, 0, height).
+"
+syntax: "ortho()\northo(<c>left</c>, <c>right</c>, <c>bottom</c>, <c>top</c>)\northo(<c>left</c>, <c>right</c>, <c>bottom</c>, <c>top</c>, <c>near</c>, <c>far</c>)"
+parameters:
+  - label: 'left'
+    description: "float: left plane of the clipping volume"
+  - label: 'right'
+    description: "float: right plane of the clipping volume"
+  - label: 'bottom'
+    description: "float: bottom plane of the clipping volume"
+  - label: 'top'
+    description: "float: top plane of the clipping volume"
+  - label: 'near'
+    description: "float: maximum distance from the origin to the viewer"
+  - label: 'far'
+    description: "float: maximum distance from the origin away from the viewer"

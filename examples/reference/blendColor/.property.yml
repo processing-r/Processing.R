@@ -1,0 +1,16 @@
+category: Color
+subcategory: Creating & Reading
+description: "
+Blends two color values together based on the blending mode given as the <b>MODE</b> parameter. The possible modes are described in the reference for the <b>blend()</b> function.
+"
+syntax: "blendColor(c1,c2,MODE)"
+parameters:
+  - label: 'c1'
+    description: "color: the first color to blend"
+  - label: 'c2'
+    description: "color: the second color to blend"
+  - label: 'MODE'
+    description: "Either BLEND, ADD, SUBTRACT, DARKEST, LIGHTEST, DIFFERENCE, EXCLUSION, MULTIPLY, SCREEN, OVERLAY, HARD_LIGHT, SOFT_LIGHT, DODGE, or BURN"
+related:
+  - PImage_blend
+  - color

@@ -1,0 +1,12 @@
+category: Table
+subcategory: Method
+description: "
+Returns a reference to the specified <b>TableRow</b>.  The reference can then be used to get and set values of the selected row, as illustrated in the example above.
+"
+syntax: ".getRow(row)"
+related:
+  - Table_rows
+  - Table_findRow
+  - Table_findRows
+  - Table_matchRow
+  - Table_matchRows

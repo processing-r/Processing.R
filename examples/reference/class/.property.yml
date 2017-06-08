@@ -1,0 +1,13 @@
+category: Structure
+subcategory: 
+description: "
+Keyword used to indicate the declaration of a class. A class is a composite of fields (data) and methods (functions that are a part of the class) which may be instantiated as objects. The first letter of a class name is usually uppercase to separate it from other kinds of variables. In Python, instance variables are accessed via the <b>self</b> keyword.
+"
+syntax: "class <c>ClassName</c>(object):\n  <c>statements</c>\n</s"
+parameters:
+  - label: 'ClassName'
+    description: "Any valid variable name"
+  - label: 'statements'
+    description: "List of statements"
+related:
+  - Object

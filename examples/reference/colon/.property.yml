@@ -1,0 +1,14 @@
+category: Structure
+subcategory: 
+description: "
+A colon declares the start of an indented block. Any statement followed by an indented
+block of code should end with a colon. The colon also separates key/value pairs 
+in dictionary literals. 
+"
+syntax: ""
+related:
+  - if
+  - else
+  - for
+  - def
+  - dictionary

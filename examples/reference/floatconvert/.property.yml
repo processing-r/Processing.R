@@ -1,0 +1,11 @@
+category: Data
+subcategory: Conversion
+description: "
+Converts an int to its floating point representation.
+"
+syntax: "	var = float(i)"
+parameters:
+  - label: 'var'
+    description: "variable name referencing the float"
+  - label: 'i'
+    description: "int: any int to be converted to a float"

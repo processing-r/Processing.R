@@ -1,0 +1,13 @@
+category: Input
+subcategory: Time & Date
+description: "
+Processing communicates with the clock on your computer. The <b>minute()</b> function returns the current minute as an integer from 0 - 59.
+"
+syntax: "minute()"
+related:
+  - millis
+  - second
+  - hour
+  - day
+  - month
+  - year

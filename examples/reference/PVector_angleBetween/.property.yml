@@ -1,0 +1,11 @@
+category: PVector
+subcategory: Method
+description: "
+Calculates and returns the angle (in radians) between two vectors.
+"
+syntax: ".angleBetween(<c>v1</c>, <c>v2</c>)"
+parameters:
+  - label: 'v1'
+    description: "PVector: the x, y, and z components of a PVector"
+  - label: 'v2'
+    description: "PVector: the x, y, and z components of a PVector"

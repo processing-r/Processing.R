@@ -1,0 +1,13 @@
+category: Typography
+subcategory: Attributes
+description: "
+Sets the current font size. This size will be used in all subsequent calls to the <b>text()</b> function. Font size is measured in units of pixels.
+"
+syntax: "	testSize(size)"
+parameters:
+  - label: 'size'
+    description: "int: size of text in units of pixels"
+related:
+  - loadFont
+  - text
+  - textFont

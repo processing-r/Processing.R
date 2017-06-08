@@ -1,0 +1,27 @@
+category: Structure
+subcategory: 
+description: "
+Returns <b>True</b> if a given value is in a string, list or dictionary, and
+<b>False</b> otherwise.<br/><br/>
+
+The <b>in</b> operator works slightly differently for different types. When
+used with strings, it checks if a substring is found within another string.
+When used with lists or tuples, it checks if a given value is found inside the
+list or tuple.  When used with dictionaries, it checks to see if a particular
+key is present in the dictionary.<br/><br/>
+
+(Note that the use of the keyword <b>in</b> as an operator is separate from
+and unrelated to its use in the syntax of <b>for</b> loops and list
+comprehensions.)
+
+"
+syntax: "	<c>item</c> in <c>object</c>"
+parameters:
+  - label: 'i'
+    description: "The item whose presence to check for."
+  - label: 'a'
+    description: "The object (e.g., string, list, dictionary) to search inside."
+related:
+  - list
+  - string
+  - dictionary

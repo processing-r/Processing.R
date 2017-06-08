@@ -1,0 +1,8 @@
+category: Environment
+subcategory: 
+description: "
+Hides the cursor from view. Will not work when running the program in a web browser or in full screen (Present) mode.
+"
+syntax: "noCursor()"
+related:
+  - cursor

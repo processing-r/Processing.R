@@ -1,0 +1,19 @@
+category: Data
+subcategory: String Functions
+description: "
+Utility function for formatting numbers into strings. Similar to <b>nf()</b> but puts a \"+\" in front of positive numbers and a \"-\" in front of negative numbers. There are two versions: one for formatting floats, and one for formatting ints. The values for the <b>digits</b>, <b>left</b>, and <b>right</b> parameters should always be positive integers.
+"
+syntax: "nfp(<c>num</c>, <c>digits</c>)\nnfp(<c>num</c>, <c>left</c>, <c>right</c>)"
+parameters:
+  - label: 'num'
+    description: "the number(s) to format"
+  - label: 'digits'
+    description: "int: number of digits to pad with zeroes"
+  - label: 'left'
+    description: "int: the number of digits to the left of the decimal point"
+  - label: 'right'
+    description: "int: the number of digits to the right of the decimal point"
+related:
+  - nf
+  - nfs
+  - nfc

@@ -1,0 +1,9 @@
+category: Rendering
+subcategory: Shaders
+description: "
+Restores the default shaders. Code that runs after <b>resetShader()</b> will not be affected by previously defined shaders.
+"
+syntax: "resetShader()\nresetShader(<c>kind</c>)"
+parameters:
+  - label: 'kind'
+    description: "int: type of shader, either POINTS, LINES, or TRIANGLES"

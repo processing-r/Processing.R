@@ -1,0 +1,28 @@
+category: Lights, Camera
+subcategory: Camera
+description: "
+Sets the position of the camera through setting the eye position, the center of the scene, and which axis is facing upward. Moving the eye position and the direction it is pointing (the center of the scene) allows the images to be seen from different angles. The version without any parameters sets the camera to the default position, pointing to the center of the display window with the Y axis as up. The default values are <b>camera(width/2.0, height/2.0, (height/2.0) / tan(PI*30.0 / 180.0), width/2.0, height/2.0, 0, 0, 1, 0)</b>. This function is similar to <b>gluLookAt()</b> in OpenGL, but it first clears the current camera settings.
+"
+syntax: "camera()\ncamera(<c>eyeX</c>, <c>eyeY</c>, <c>eyeZ</c>, <c>centerX</c>, <c>centerY</c>, <c>centerZ</c>, <c>upX</c>, <c>upY</c>, <c>upZ</c>)"
+parameters:
+  - label: 'eyeX'
+    description: "float: x-coordinate for the eye"
+  - label: 'eyeY'
+    description: "float: y-coordinate for the eye"
+  - label: 'eyeZ'
+    description: "float: z-coordinate for the eye"
+  - label: 'centerX'
+    description: "float: x-coordinate for the center of the scene"
+  - label: 'centerY'
+    description: "float: y-coordinate for the center of the scene"
+  - label: 'centerZ'
+    description: "float: z-coordinate for the center of the scene"
+  - label: 'upX'
+    description: "float: usually 0.0, 1.0, or -1.0"
+  - label: 'upY'
+    description: "float: usually 0.0, 1.0, or -1.0"
+  - label: 'upZ'
+    description: "float: usually 0.0, 1.0, or -1.0"
+related:
+  - endCamera
+  - frustum

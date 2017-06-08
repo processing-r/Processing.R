@@ -1,0 +1,6 @@
+category: XMLElement
+subcategory: Method
+description: "
+Sets the element's name, which is specified as a String.
+"
+syntax: ".setName(newName)\n"

@@ -1,0 +1,21 @@
+category: Shape
+subcategory: Curves
+description: "
+Evaluates the Bezier at point t for points a, b, c, d. The parameter t varies between 0 and 1, a and d are points on the curve, and b and c are the control points. This can be done once with the x coordinates and a second time with the y coordinates to get the location of a bezier curve at t.
+"
+syntax: "bezierPoint(<c>a</c>, <c>b</c>, <c>c</c>, <c>d</c>, <c>t</c>)"
+parameters:
+  - label: 'a'
+    description: "float: coordinate of first point on the curve"
+  - label: 'b'
+    description: "float: coordinate of first control point"
+  - label: 'c'
+    description: "float: coordinate of second control point"
+  - label: 'd'
+    description: "float: coordinate of second point on the curve"
+  - label: 't'
+    description: "float: value between 0 and 1"
+related:
+  - bezier
+  - bezierVertex
+  - curvePoint

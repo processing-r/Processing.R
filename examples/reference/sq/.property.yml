@@ -1,0 +1,11 @@
+category: Math
+subcategory: Calculation
+description: "
+Squares a number (multiplies a number by itself). The result is always a positive number, as multiplying two negative numbers always yields a positive result. For example, -1 * -1 = 1.
+"
+syntax: "	sq(n)"
+parameters:
+  - label: 'n'
+    description: "value to be squared (mutliplied by itself)"
+related:
+  - sqrt

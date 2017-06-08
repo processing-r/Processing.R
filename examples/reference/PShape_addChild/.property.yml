@@ -1,0 +1,15 @@
+category: PShape
+subcategory: Method
+description: "
+This is a new reference entry for Processing 2.0. It will be updated shortly. For now, please check the Examples to see how to use this new syntax.
+"
+syntax: "<c>sh</c>.addChild(<c>who</c>)\n<c>sh</c>.addChild(<c>who</c>, <c>idx</c>)"
+parameters:
+  - label: 'sh'
+    description: "PShape: any variable of type PShape"
+  - label: 'who'
+    description: "PShape: any variable of type PShape"
+  - label: 'idx'
+    description: "int: the layer position in which to insert the new child"
+related:
+  - XML_getChild

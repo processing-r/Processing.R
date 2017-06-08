@@ -1,0 +1,13 @@
+category: Typography
+subcategory: Attributes
+description: "
+Calculates and returns the width of any character or text string.
+"
+syntax: "	textWidth(str)"
+parameters:
+  - label: 'str'
+    description: "String: any character or text string"
+related:
+  - loadFont
+  - text
+  - textFont

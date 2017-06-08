@@ -1,0 +1,15 @@
+category: Output
+subcategory: Files
+description: "
+Creates a new file in the sketch folder, and a <b>PrintWriter</b> object to write to it. For the file to be made correctly, it should be flushed and must be closed with its <b>flush()</b> and <b>close()</b> methods (see above example). 
+<br/> <br/>
+Starting with Processing release 0134, all files loaded and saved by the Processing API use UTF-8 encoding. In previous releases, the default encoding for your platform was used, which causes problems when files are moved to other platforms.
+"
+syntax: "	output = createWriter(fileName)"
+parameters:
+  - label: 'output'
+    description: "PrintWriter object"
+  - label: 'fileName'
+    description: "String: Name of file to create and allow the PrintWriter object to write to."
+related:
+  - createReader

@@ -1,0 +1,12 @@
+category: Data
+subcategory: Composite
+description: "
+<b>XML</b> is a representation of an XML object, able to parse XML code. Use <b>loadXML()</b> to load external XML files and create <b>XML</b> objects.<br/>
+<br/>
+Only files encoded as UTF-8 (or plain ASCII) are parsed properly; the encoding parameter inside XML files is ignored.
+"
+syntax: ""
+related:
+  - loadXML
+  - parseXML
+  - saveXML

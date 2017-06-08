@@ -1,0 +1,9 @@
+category: Table
+subcategory: Method
+description: "
+Removes all rows from a <b>Table</b>.  While all rows are removed, columns and column titles are maintained.
+"
+syntax: ".clearRows()"
+related:
+  - Table_addRow
+  - Table_removeRow

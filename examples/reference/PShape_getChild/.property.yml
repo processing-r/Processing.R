@@ -1,0 +1,15 @@
+category: PShape
+subcategory: Method
+description: "
+Extracts a child shape from a parent shape. Specify the name of the shape with the <b>target</b> parameter. The shape is returned as a <b>PShape</b> object, or <b>null</b> is returned if there is an error.
+"
+syntax: "<c>sh</c>.getChild(<c>index</c>)\n<c>sh</c>.getChild(<c>target</c>)"
+parameters:
+  - label: 'sh'
+    description: "PShape: any variable of type PShape"
+  - label: 'index'
+    description: "int: the layer position of the shape to get"
+  - label: 'target'
+    description: "String: the name of the shape to get"
+related:
+  - XML_addChild

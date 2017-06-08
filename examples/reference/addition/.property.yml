@@ -1,0 +1,14 @@
+category: Math
+subcategory: Operators
+description: "
+Adds two values or concatenates string values. As a mathematical operator, it calculates the sum of two values. As a string operator, it combines two strings into one. Note that for concatenation, non-string datatypes must be cast to strings using str(). 
+"
+syntax: "<c>value1</c> + <c>value2</c>"
+parameters:
+  - label: 'value1'
+    description: "String, int, float, char, byte, boolean"
+  - label: 'value2'
+    description: "String, int, float, char, byte, boolean"
+related:
+  - addassign
+  - minus

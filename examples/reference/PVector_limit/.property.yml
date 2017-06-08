@@ -1,0 +1,6 @@
+category: PVector
+subcategory: Method
+description: "
+Limit the magnitude of this vector to the value used for the <b>max</b> parameter.
+"
+syntax: ".limit(max)\n"

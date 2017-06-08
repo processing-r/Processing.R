@@ -1,0 +1,6 @@
+category: XMLElement
+subcategory: Method
+description: "
+Sets the content of an element's attribute as a String.  The first String specifies the attribute name, while the second specifies the new content.
+"
+syntax: ".setString(name, value)\n"

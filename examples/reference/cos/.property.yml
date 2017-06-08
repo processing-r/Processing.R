@@ -1,0 +1,13 @@
+category: Math
+subcategory: Trigonometry
+description: "
+Calculates the cosine of an angle. This function expects the values of the <b>angle</b> parameter to be provided in radians (values from 0 to PI*2). Values are returned in the range -1 to 1.
+"
+syntax: "cos(<c>angle</c>)"
+parameters:
+  - label: 'angle'
+    description: "float: an angle in radians"
+related:
+  - sin
+  - tan
+  - radians

@@ -1,0 +1,18 @@
+category: Data
+subcategory: String Methods
+description: "
+Combines a sequence of strings to create a new string, separating each item from the sequence with the content of the string the method is called on.
+
+"
+syntax: "	<c>separator</c>.join(<c>sequence</c>)"
+parameters:
+  - label: 'separator'
+    description: "The string to insert between elements of the sequence."
+  - label: 'sequence'
+    description: "A sequence (e.g., list or tuple) of strings to be joined together."
+related:
+  - string_formatting
+  - string_find
+  - string_strip
+  - string_split
+  - string_replace

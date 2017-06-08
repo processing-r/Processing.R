@@ -1,0 +1,13 @@
+category: Input
+subcategory: Files
+description: "
+Creates a BufferedReader object that can be used to read files line-by-line as individual String objects. This is the complement to the createWriter() function. 
+
+Starting with Processing release 0134, all files loaded and saved by the Processing API use UTF-8 encoding. In previous releases, the default encoding for your platform was used, which causes problems when files are moved to other platforms.
+"
+syntax: "createReader(<c>filename</c>)"
+parameters:
+  - label: 'filename'
+    description: "Name of the file to be opened"
+related:
+  - createWriter

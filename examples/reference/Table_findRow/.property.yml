@@ -1,0 +1,19 @@
+category: Table
+subcategory: Method
+description: "
+Finds the first row in the <b>Table</b> that contains the value provided, and returns a reference to that row.  Even if multiple rows are possible matches, only the first matching row is returned. The column to search may be specified by either its ID or title.
+"
+syntax: ".findRow(<c>value</c>, <c>column</c>)\n.findRow(<c>value</c>, <c>columnName</c>)"
+parameters:
+  - label: 'value'
+    description: "String: the value to match"
+  - label: 'column'
+    description: "int: ID number of the column to search"
+  - label: 'columnName'
+    description: "String: title of the column to search"
+related:
+  - Table_getRow
+  - Table_rows
+  - Table_findRows
+  - Table_matchRow
+  - Table_matchRows

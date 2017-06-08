@@ -1,0 +1,23 @@
+category: Data
+subcategory: Dictionary Methods
+description: "
+Returns tuples of the key/value pairs present in the specified dictionary, in
+the form of an iterator. This iterator is primarily useful as a means of
+iterating over every key/value pair in a dictionary in a <b>for</b> loop, as
+shown in the example above.<br/><br/>
+
+The <b>iteritems()</b> method is more memory-efficient than the <b>items()</b>
+method, as it returns each item in succession, instead of reproducing the
+entire dictionary as a list in memory.<br/><br/>
+
+Note that because of the nature of the dictionary data structure, key/value
+pairs returned from <b>iteritems()</b> will be in arbitrary order (not
+necessarily the order they appeared in when the dictionary was defined).
+"
+syntax: "	<c>dict</c>.iteritems()"
+parameters:
+  - label: 'dict'
+    description: "The dictionary to be iterated over."
+related:
+  - dictionary
+  - dict_items

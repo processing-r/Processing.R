@@ -1,0 +1,18 @@
+category: Data
+subcategory: Dictionary Methods
+description: "
+Returns the key/value pairs present in the dictionary, in the form of a
+list of tuples. For large dictionaries, consider using
+<b><ref target=\"dict_iteritems.xml\">iteritems()</ref></b> instead, which returns
+an iterator.<br/><br/>
+
+Note that because of the nature of the dictionary data structure, key/value
+pairs returned from <b>items()</b> will be in arbitrary order (not necessarily
+the order they appeared in when the dictionary was defined).
+"
+syntax: "	<c>dict</c>.items()"
+parameters:
+  - label: 'dict'
+    description: "The dictionary whose items will be returned."
+related:
+  - dictionary

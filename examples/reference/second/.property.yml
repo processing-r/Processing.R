@@ -1,0 +1,13 @@
+category: Input
+subcategory: Time & Date
+description: "
+Processing communicates with the clock on your computer. The <b>second()</b> function returns the current second as an integer from 0 - 59.
+"
+syntax: "second()"
+related:
+  - millis
+  - minute
+  - hour
+  - day
+  - month
+  - year

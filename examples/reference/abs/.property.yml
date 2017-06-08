@@ -1,0 +1,9 @@
+category: Math
+subcategory: Calculation
+description: "
+Calculates the absolute value (magnitude) of a number. The absolute value of a number is always positive.
+"
+syntax: "abs(n)"
+parameters:
+  - label: 'n'
+    description: "any numberical value, usually an int or float"

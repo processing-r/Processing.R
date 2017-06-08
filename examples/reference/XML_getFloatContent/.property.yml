@@ -1,0 +1,9 @@
+category: XMLElement
+subcategory: Method
+description: "
+Returns the content of an element as a float. If there is no such content, either <b>null</b> or the provided default value is returned.
+"
+syntax: ".getFloatContent()\n.getFloatContent(defaultValue)"
+related:
+  - XML_getContent
+  - XML_getIntContent

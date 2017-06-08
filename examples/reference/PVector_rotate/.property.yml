@@ -1,0 +1,9 @@
+category: PVector
+subcategory: Method
+description: "
+Rotates a vector by the specified angle (2D vectors only), while maintaining the same magnitude.
+"
+syntax: ".rotate(theta)"
+parameters:
+  - label: 'theta'
+    description: "float: the angle of rotation"

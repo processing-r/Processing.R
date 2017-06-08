@@ -1,0 +1,20 @@
+category: Image
+subcategory: 
+description: "
+Creates a new PImage (the datatype for storing images). This provides a fresh buffer of pixels to play with. Set the size of the buffer with the <b>width</b> and <b>height</b> parameters. The <b>format</b> parameter defines how the pixels are stored. See the PImage reference for more information.
+<br/> <br/>
+Be sure to include all three parameters, specifying only the width and height (but no format) will produce a strange error.
+<br/> <br/>
+Advanced users please note that createImage() should be used instead of the syntax <tt>new PImage()</tt>. 
+"
+syntax: "createImage(<c>w</c>, <c>h</c>, <c>format</c>)"
+parameters:
+  - label: 'w'
+    description: "int: width in pixels"
+  - label: 'h'
+    description: "int: height in pixels"
+  - label: 'format'
+    description: "int: Either RGB, ARGB, ALPHA (grayscale alpha channel)"
+related:
+  - PImage
+  - PGraphics

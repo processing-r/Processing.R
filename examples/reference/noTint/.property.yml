@@ -1,0 +1,9 @@
+category: Image
+subcategory: Loading & Displaying
+description: "
+Removes the current fill value for displaying images and reverts to displaying images with their original hues.
+"
+syntax: "noTint()"
+related:
+  - tint
+  - image

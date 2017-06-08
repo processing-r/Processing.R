@@ -1,0 +1,11 @@
+category: Data
+subcategory: Conversion
+description: "
+Converts a non-integer type (such as a floating-point number or string) to its integer representation. 
+"
+syntax: "	int(<c>value</c>)<br/>\n	int(<c>value</c>, <c>base</c>)"
+parameters:
+  - label: 'value'
+    description: "the value to convert to an integer"
+  - label: 'base'
+    description: "if <b>value</b> is a string, the base to perform the conversion in"

@@ -1,0 +1,11 @@
+category: Constants
+subcategory: 
+description: "
+TAU is an alias for TWO_PI, a mathematical constant with the value 6.28318530717958647693. It is twice the ratio of the circumference of a circle to its diameter. It is useful in combination with the trigonometric functions <b>sin()</b> and <b>cos()</b>.
+"
+syntax: ""
+related:
+  - PI
+  - TWO_PI
+  - HALF_PI
+  - QUARTER_PI

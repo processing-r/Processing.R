@@ -1,0 +1,16 @@
+category: Math
+subcategory: Calculation
+description: "
+Constrains a value to not exceed a maximum and minimum value.
+"
+syntax: "constrain(<c>amt</c>, <c>low</c>, <c>high</c>)"
+parameters:
+  - label: 'amt'
+    description: "int, or float: the value to constrain"
+  - label: 'low'
+    description: "int, or float: minimum limit"
+  - label: 'high'
+    description: "int, or float: maximum limit"
+related:
+  - max
+  - min
