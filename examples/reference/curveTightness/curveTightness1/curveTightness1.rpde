@@ -13,8 +13,8 @@ setup <- function() {
 }
 
 draw <- function() {
-    background(204)
     # t <- map(50, 0, width, -5, 5)
+    background(204)
     # curveTightness(t)
     
     mycurve(-1)
