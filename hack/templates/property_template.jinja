@@ -1,0 +1,17 @@
+category: {{ item.category }}
+subcategory: {{ item.subcategory }}
+description: "{{ item.description }}"
+syntax: "{{ item.syntax }}"
+{% if item.parameters %}
+parameters:
+{% for param in item.parameters %}
+  - label: '{{ param.label }}'
+    description: "{{ param.description }}"
+{% endfor %}
+{% endif %}
+{% if item.related %}
+related:
+{% for related_item in item.related %}
+  - {{ related_item }}
+{% endfor %}
+{% endif %}
