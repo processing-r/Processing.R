@@ -1,0 +1,38 @@
+# curveTightness 1x -- original fails on mouseX https://processing.org/reference/curveTightness_.html
+
+P3D <- "processing.opengl.PGraphics3D"
+
+settings <- function() {
+    size(100, 100, P3D)
+}
+
+setup <- function() {
+    noFill()
+    noLoop()
+}
+
+draw <- function() {
+    background(204)
+    # t <- map(mouseX, 0, width, -5, 5) ERROR: mouseX
+    # curveTightness(t)
+    
+    mycurve(-1)
+    translate(0, 10)
+    mycurve(0)
+    translate(0, 10)
+    mycurve(1)
+    translate(0, 10)
+    mycurve(2)
+}
+
+mycurve <- function(tightness) {
+    curveTightness(tightness)
+    beginShape()
+    curveVertex(10, 26)
+    curveVertex(10, 26)
+    curveVertex(83, 24)
+    curveVertex(83, 61)
+    curveVertex(25, 65)
+    curveVertex(25, 65)
+    endShape()
+}
