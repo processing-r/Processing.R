@@ -1,4 +1,5 @@
-# curveTightness 1x -- original fails on mouseX https://processing.org/reference/curveTightness_.html
+# curveTightness 1x -- original fails on map, mouseX
+# https://processing.org/reference/curveTightness_.html
 
 P3D <- "processing.opengl.PGraphics3D"
 
@@ -13,7 +14,7 @@ setup <- function() {
 
 draw <- function() {
     background(204)
-    # t <- map(mouseX, 0, width, -5, 5) ERROR: mouseX
+    # t <- map(50, 0, width, -5, 5)
     # curveTightness(t)
     
     mycurve(-1)
