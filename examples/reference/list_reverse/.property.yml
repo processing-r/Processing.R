@@ -1,0 +1,14 @@
+category: Data
+subcategory: List Methods
+description: "
+Reverse the elements of a list in place.
+"
+syntax: "	a.reverse()"
+parameters:
+  - label: 'a'
+    description: "list: the list to be reversed"
+related:
+  - list_insert
+  - list_pop
+  - list_append
+  - list_index

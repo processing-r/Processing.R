@@ -1,0 +1,10 @@
+category: Structure
+subcategory: 
+description: "
+By default, Processing loops through <b>draw()</b> continuously, executing the code within it. However, the <b>draw()</b> loop may be stopped by calling <b>noLoop()</b>. In that case, the <b>draw()</b> loop can be resumed with <b>loop()</b>.
+"
+syntax: "loop()"
+related:
+  - noLoop
+  - redraw
+  - draw

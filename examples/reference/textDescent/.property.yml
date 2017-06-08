@@ -1,0 +1,8 @@
+category: Typography
+subcategory: Metrics
+description: "
+Returns descent of the current font at its current size. This information is useful for determining the height of the font below the baseline. For example, adding the <b>textAscent()</b> and <b>textDescent()</b> values will give you the total height of the line.
+"
+syntax: "	textDescent()"
+related:
+  - textAscent

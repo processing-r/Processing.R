@@ -1,0 +1,18 @@
+category: Data
+subcategory: String Methods
+description: "
+The method split() returns a list of all words in the string using the provided separator. An optional second argument limits the number of splits.
+"
+syntax: "str.split(<c>sep</c>)\nstr.split(<c>sep</c>,<c>num</c>)"
+parameters:
+  - label: 'sep'
+    description: "string to split words by"
+  - label: 'num'
+    description: "number of elements to split"
+related:
+  - string
+  - string_formatting
+  - string_find
+  - string_join
+  - string_split
+  - string_replace

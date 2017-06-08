@@ -1,24 +1,26 @@
 category: Shape
 subcategory: 2D Primitives
-description: "A quad is a quadrilateral, a four sided polygon. It is similar to a rectangle, but the angles between its edges are not constrained to ninety degrees. The first pair of parameters (x1,y1) sets the first vertex and the subsequent pairs should proceed clockwise or counter-clockwise around the defined shape."
+description: "
+A quad is a quadrilateral, a four sided polygon. It is similar to a rectangle, but the angles between its edges are not constrained to ninety degrees. The first pair of parameters (x1,y1) sets the first vertex and the subsequent pairs should proceed clockwise or counter-clockwise around the defined shape.
+"
 syntax: "quad(<c>x1</c>, <c>y1</c>, <c>x2</c>, <c>y2</c>, <c>x3</c>, <c>y3</c>, <c>x4</c>, <c>y4</c>)"
 parameters:
-  - label: x1
-    description: x-coordinate of the first corner
-  - label: y1
-    description: y-coordinate of the first corner
-  - label: x2
-    description: x-coordinate of the second corner
-  - label: y2
-    description: y-coordinate of the second corner
-  - label: x3
-    description: x-coordinate of the third corner
-  - label: y3
-    description: y-coordinate of the third corner
-  - label: x4
-    description: x-coordinate of the forth corner
-  - label: y4
-    description: y-coordinate of the forth corner
+  - label: 'x1'
+    description: "float: x-coordinate of the first corner"
+  - label: 'y1'
+    description: "float: y-coordinate of the first corner"
+  - label: 'x2'
+    description: "float: x-coordinate of the second corner"
+  - label: 'y2'
+    description: "float: y-coordinate of the second corner"
+  - label: 'x3'
+    description: "float: x-coordinate of the third corner"
+  - label: 'y3'
+    description: "float: y-coordinate of the third corner"
+  - label: 'x4'
+    description: "float: x-coordinate of the fourth corner"
+  - label: 'y4'
+    description: "float: y-coordinate of the fourth corner"
 related:
   - rect
   - point

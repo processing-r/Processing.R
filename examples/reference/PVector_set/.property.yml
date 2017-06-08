@@ -1,0 +1,21 @@
+category: PVector
+subcategory: Method
+description: "
+Sets the x, y, and z component of the vector using three separate variables, the data from a PVector, or the values from a float array.
+"
+syntax: ".set(<c>x</c>, <c>y</c>, <c>z</c>)\n.set(<c>x</c>, <c>y</c>)\n.set(<c>v</c>)\n.set(<c>source</c>)"
+parameters:
+  - label: 'x'
+    description: "float: the x component of the vector"
+  - label: 'y'
+    description: "float: the y component of the vector"
+  - label: 'z'
+    description: "float: the z component of the vector"
+  - label: 'x'
+    description: "float: the x component of the vector"
+  - label: 'y'
+    description: "float: the y component of the vector"
+  - label: 'v'
+    description: "float: the y component of the vector"
+  - label: 'source'
+    description: "float: list to copy from"

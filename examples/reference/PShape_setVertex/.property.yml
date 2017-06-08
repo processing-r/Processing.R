@@ -1,0 +1,22 @@
+category: PShape
+subcategory: Method
+description: "
+The <b>setVertex()</b> method defines the coordinates of the vertex point located at the position defined by the <b>index</b> parameter. This method works when shapes are created as shown in the example above, but won't work properly when a shape is defined explicitly (e.g. createShape(RECT, 20, 20, 80, 80).
+"
+syntax: "<c>sh</c>.setVertex(<c>index</c>, <c>x</c>, <c>y</c>)\n<c>sh</c>.setVertex(<c>index</c>, <c>x</c>, <c>y</c>, <c>z</c>)\n<c>sh</c>.setVertex(<c>index</c>, <c>vec</c>)"
+parameters:
+  - label: 'sh'
+    description: "PShape: any variable of type PShape"
+  - label: 'index'
+    description: "int: the location of the vertex"
+  - label: 'x'
+    description: "float: the x value for the vertex"
+  - label: 'y'
+    description: "float: the y value for the vertex"
+  - label: 'z'
+    description: "float: the z value for the vertex"
+  - label: 'vec'
+    description: "PVector: the PVector to define the x, y, z coordinates"
+related:
+  - PShape_getVertex
+  - PShape_getVertexCount

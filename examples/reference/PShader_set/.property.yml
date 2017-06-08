@@ -1,0 +1,27 @@
+category: PShader
+subcategory: Method
+description: "
+Sets the uniform variables inside the shader to modify the effect while the program is running.
+"
+syntax: ".set(name, x)\n.set(name, x, y)\n.set(name, x, y, z)\n.set(name, x, y, z, w)\n.set(name, vec)\n.set(name, vec, ncoords)\n.set(name, boolvec, ncoords)\n.set(name, mat)\n.set(name, mat, use3x3)\n.set(name, tex)"
+parameters:
+  - label: 'name'
+    description: "String: the name of the uniform variable to modify"
+  - label: 'x'
+    description: "boolean, float, or int: first component of the variable to modify"
+  - label: 'y'
+    description: "boolean, float, or int: second component of the variable to modify. The variable has to be declared with an array/vector type in the shader (i.e.: int[2], vec2)"
+  - label: 'z'
+    description: "boolean, float, or int: third component of the variable to modify. The variable has to be declared with an array/vector type in the shader (i.e.: int[3], vec3)"
+  - label: 'w'
+    description: "boolean, float, or int: fourth component of the variable to modify. The variable has to be declared with an array/vector type in the shader (i.e.: int[4], vec4)"
+  - label: 'vec'
+    description: "boolean, float, int, or PVector: modifies all the components of an array/vector uniform variable. PVector can only be used if the type of the variable is vec3."
+  - label: 'ncoords'
+    description: "int: number of coordinates per element, max 4"
+  - label: 'mat'
+    description: "PMatrix3D, or PMatrix2D: matrix of values"
+  - label: 'use3x3'
+    description: "boolean: enforces the matrix is 3 x 3"
+  - label: 'tex'
+    description: "PImage: sets the sampler uniform variable to read from this image texture"

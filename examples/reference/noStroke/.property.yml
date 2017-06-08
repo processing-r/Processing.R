@@ -1,0 +1,10 @@
+category: Color
+subcategory: Setting
+description: "
+Disables drawing the stroke (outline). If both <b>noStroke()</b> and <b>noFill()</b> are called, nothing will be drawn to the screen.
+"
+syntax: "noStroke()"
+related:
+  - stroke
+  - fill
+  - noFill

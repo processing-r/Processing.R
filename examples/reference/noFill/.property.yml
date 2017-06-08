@@ -1,0 +1,10 @@
+category: Color
+subcategory: Setting
+description: "
+Disables filling geometry. If both <b>noStroke()</b> and <b>noFill()</b> are called, nothing will be drawn to the screen.
+"
+syntax: "noFill()"
+related:
+  - fill
+  - stroke
+  - noStroke

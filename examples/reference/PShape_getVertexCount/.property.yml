@@ -1,0 +1,12 @@
+category: PShape
+subcategory: Method
+description: "
+The <b>getVertexCount()</b> method returns the number of vertices that make up a PShape. In the above example, the value 4 is returned by the <b>getVertexCount()</b> method because 4 vertices are defined in <b>setup()</b>.
+"
+syntax: "<c>sh</c>.getVertexCount()"
+parameters:
+  - label: 'sh'
+    description: "PShape: any variable of type PShape"
+related:
+  - PShape_getVertex
+  - PShape_setVertex

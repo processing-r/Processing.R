@@ -1,0 +1,8 @@
+category: Output
+subcategory: Files
+description: "
+Stops the recording process started by <b>beginRecord()</b> and closes the file.
+"
+syntax: "endRecord()"
+related:
+  - beginRecord

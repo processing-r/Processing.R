@@ -1,0 +1,13 @@
+category: Transform
+subcategory: 
+description: "
+Pushes the current transformation matrix onto the matrix stack. Understanding <b>pushMatrix()</b> and <b>popMatrix()</b> requires understanding the concept of a matrix stack. The <b>pushMatrix()</b> function saves the current coordinate system to the stack and <b>popMatrix()</b> restores the prior coordinate system. <b>pushMatrix()</b> and <b>popMatrix()</b> are used in conjuction with the other transformation functions and may be embedded to control the scope of the transformations.
+"
+syntax: "pushMatrix()"
+related:
+  - popMatrix
+  - translate
+  - rotate
+  - rotateX
+  - rotateY
+  - rotateZ

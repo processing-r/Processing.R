@@ -1,0 +1,13 @@
+category: Math
+subcategory: Trigonometry
+description: "
+The inverse of <b>tan()</b>, returns the arc tangent of a value. This function expects the values in the range of -Infinity to Infinity (exclusive) and values are returned in the range <b>-PI/2</b> to <b>PI/2 </b>.
+"
+syntax: "atan(<c>value</c>)"
+parameters:
+  - label: 'value'
+    description: "float: the value whose arc tan is to be returned"
+related:
+  - tan
+  - asin
+  - acos

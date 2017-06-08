@@ -1,0 +1,15 @@
+category: Rendering
+subcategory: 
+description: "
+Limits the rendering to the boundaries of a rectangle defined by the parameters. The boundaries are drawn based on the state of the <b>imageMode()</b> fuction, either CORNER, CORNERS, or CENTER. 
+"
+syntax: "clip(x1, y1, x2, y2)"
+parameters:
+  - label: 'x1'
+    description: "int: x coordinate of first corner of bounding box"
+  - label: 'y1'
+    description: "int: y coordinate of first corner of bounding box"
+  - label: 'x2'
+    description: "int: x coordinate of second corner of bounding box"
+  - label: 'y2'
+    description: "int: y coordinate of second corner of bounding box"

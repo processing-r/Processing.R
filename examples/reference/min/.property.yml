@@ -1,0 +1,17 @@
+category: Math
+subcategory: Calculation
+description: "
+Determines the smallest value in a sequence of numbers, and then returns that value. <b>min()</b> accepts either two or three <b>float</b> or <b>int</b> values as parameters, or an array of any length.
+"
+syntax: "min(<c>a</c>, <c>b</c>)\nmin(<c>a</c>, <c>b</c>, <c>c</c>)\nmin(<c>list</c>)"
+parameters:
+  - label: 'a'
+    description: "int, or float: first number"
+  - label: 'b'
+    description: "int, or float: second number"
+  - label: 'c'
+    description: "int, or float: third number"
+  - label: 'list'
+    description: "float, or int: list of numbers to compare"
+related:
+  - max

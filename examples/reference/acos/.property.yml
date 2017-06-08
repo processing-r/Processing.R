@@ -1,0 +1,13 @@
+category: Math
+subcategory: Trigonometry
+description: "
+The inverse of <b>cos()</b>, returns the arc cosine of a value. This function expects the values in the range of -1 to 1 and values are returned in the range <b>0</b> to <b>PI (3.1415927)</b>.
+"
+syntax: "acos(<c>value</c>)"
+parameters:
+  - label: 'value'
+    description: "float: the value whose arc cosine is to be returned"
+related:
+  - cos
+  - asin
+  - atan

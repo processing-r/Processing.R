@@ -1,16 +1,18 @@
 category: Shape
 subcategory: 2D Primitives
-description: "Draws an ellipse (oval) to the screen. An ellipse with equal width and height is a circle. By default, the first two parameters set the location, and the third and fourth parameters set the shape's width and height. The origin may be changed with the <b>ellipseMode()</b> function."
+description: "
+Draws an ellipse (oval) to the screen. An ellipse with equal width and height is a circle. By default, the first two parameters set the location, and the third and fourth parameters set the shape's width and height. The origin may be changed with the <b>ellipseMode()</b> function.
+"
 syntax: "ellipse(<c>a</c>, <c>b</c>, <c>c</c>, <c>d</c>)"
 parameters:
-  - label: a
-    description: x-coordinate of the ellipse
-  - label: b
-    description: y-coordinate of the ellipse
-  - label: c
-    description: width of the ellipse by default
-  - label: d
-    description: height of the ellipse by default
+  - label: 'a'
+    description: "float: x-coordinate of the ellipse"
+  - label: 'b'
+    description: "float: y-coordinate of the ellipse"
+  - label: 'c'
+    description: "float: width of the ellipse by default"
+  - label: 'd'
+    description: "float: height of the ellipse by default"
 related:
   - ellipseMode
   - arc

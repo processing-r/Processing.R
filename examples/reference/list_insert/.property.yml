@@ -1,0 +1,18 @@
+category: Data
+subcategory: List Methods
+description: "
+Insert an item into a list at a given index.
+"
+syntax: "<c>a</c>.insert(<c>i</c>, <c>x</c>)"
+parameters:
+  - label: 'a'
+    description: "The list to insert into."
+  - label: 'i'
+    description: "The index of the element before which to insert."
+  - label: 'x'
+    description: "The item to insert."
+related:
+  - list_append
+  - list_pop
+  - list_reverse
+  - list_index

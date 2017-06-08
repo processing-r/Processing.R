@@ -1,0 +1,16 @@
+category: Data
+subcategory: List Methods
+description: "
+Extends a list by appending all of the elements of another list to the end.
+"
+syntax: "<c>a</c>.extend(<c>x</c>)"
+parameters:
+  - label: 'a'
+    description: "list to extend"
+  - label: 'x'
+    description: "list of items to append to original list"
+related:
+  - list_insert
+  - list_pop
+  - list_reverse
+  - list_index

@@ -1,0 +1,9 @@
+category: PVector
+subcategory: Method
+description: "
+Normalize the vector to length 1 (make it a unit vector).
+"
+syntax: ".normalize()\n.normalize(target)"
+parameters:
+  - label: 'target'
+    description: "PVector: Set to null to create a new vector"

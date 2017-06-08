@@ -1,0 +1,11 @@
+category: Data
+subcategory: Dictionary Methods
+description: "
+Returns a list of keys in the given dictionary.
+"
+syntax: "	<c>dict</c>.keys()"
+parameters:
+  - label: 'dict'
+    description: "The dictionary whose keys will be returned."
+related:
+  - dictionary

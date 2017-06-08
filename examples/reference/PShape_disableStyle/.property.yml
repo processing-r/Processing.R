@@ -1,0 +1,11 @@
+category: PShape
+subcategory: Method
+description: "
+Disables the shape's style data and uses Processing's current styles. Styles include attributes such as colors, stroke weight, and stroke joints. 
+"
+syntax: "c>sh</c>.disableStyle("
+parameters:
+  - label: 'sh'
+    description: "PShape: any variable of type PShape"
+related:
+  - PShape_endShape

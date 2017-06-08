@@ -1,0 +1,16 @@
+category: Color
+subcategory: Creating & Reading
+description: "
+Extracts the brightness value from a color.
+"
+syntax: "brightness(<c>rgb</c>)"
+parameters:
+  - label: 'rgb'
+    description: "int: any value of the color datatype"
+related:
+  - red
+  - green
+  - blue
+  - alpha
+  - hue
+  - saturation

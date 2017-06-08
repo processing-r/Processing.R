@@ -1,0 +1,9 @@
+category: Structure
+subcategory: 
+description: "
+Separates parameters in function calls and elements during assignment.
+"
+syntax: "value1, ..., valueN"
+parameters:
+  - label: 'value1, ..., valueN'
+    description: "any int, float, byte, boolean, color, char, String"

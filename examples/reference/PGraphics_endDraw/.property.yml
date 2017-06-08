@@ -1,0 +1,9 @@
+category: PGraphics
+subcategory: Method
+description: "
+Finalizes the rendering of a PGraphics object so that it can be shown on screen.
+"
+syntax: "<c>graphics</c>.endDraw()"
+parameters:
+  - label: 'graphics'
+    description: "PGraphics: any object of the type PGraphics"

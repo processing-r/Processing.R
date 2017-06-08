@@ -1,0 +1,18 @@
+category: Data
+subcategory: String Methods
+description: "
+Returns a copy of a string, with all lowercase characters converted to
+uppercase.
+"
+syntax: "	str.upper()"
+parameters:
+  - label: 'str'
+    description: "String: any string of characters."
+related:
+  - string
+  - string_formatting
+  - string_find
+  - string_strip
+  - string_join
+  - string_replace
+  - string_lower

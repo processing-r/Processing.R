@@ -1,0 +1,22 @@
+category: TableRow
+subcategory: Method
+description: "
+Stores an integer value in the <b>TableRow</b>'s specified column. The column may be specified by either its ID or title.
+"
+syntax: ".setInt(<c>row</c>, <c>column</c>, <c>value</c>)\n.setInt(<c>row</c>, <c>columnName</c>, <c>value</c>)"
+parameters:
+  - label: 'row'
+    description: "int: ID number of the target row"
+  - label: 'column'
+    description: "int: ID number of the target column"
+  - label: 'value'
+    description: "int: value to assign"
+  - label: 'columnName'
+    description: "String: title of the target column"
+related:
+  - XML_setFloat
+  - XML_setString
+  - XML_getInt
+  - XML_getFloat
+  - XML_getString
+  - Table_getStringColumn

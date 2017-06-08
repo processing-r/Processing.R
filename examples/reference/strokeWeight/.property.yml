@@ -1,0 +1,13 @@
+category: Shape
+subcategory: Attributes
+description: "
+Sets the width of the stroke used for lines, points, and the border around shapes. All widths are set in units of pixels.
+"
+syntax: "	strokeWeight(weight)"
+parameters:
+  - label: 'weight'
+    description: "int: thickness of stroke"
+related:
+  - stroke
+  - strokeJoin
+  - strokeCap

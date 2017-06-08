@@ -1,0 +1,16 @@
+category: Data
+subcategory: String Methods
+description: "
+Retruns a copy of the string with leading and trailing characters removed -- whitespace by default. Given an optional argument, strip removes specific leading and trailing characters. 
+"
+syntax: "a.strip()\na.strip(<c>chars</c>)\n"
+parameters:
+  - label: 'chars'
+    description: "an optional argument that removes specific characters"
+related:
+  - string
+  - string_formatting
+  - string_find
+  - string_join
+  - string_split
+  - string_replace

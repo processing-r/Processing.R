@@ -1,0 +1,9 @@
+category: PShape
+subcategory: Method
+description: "
+Returns the number of children within the PShape.
+"
+syntax: "c>sh</c>.getChildCount("
+parameters:
+  - label: 'sh'
+    description: "PShape: any variable of type PShape"

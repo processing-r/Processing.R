@@ -1,0 +1,16 @@
+category: Color
+subcategory: Creating & Reading
+description: "
+Extracts the hue value from a color.
+"
+syntax: "hue(<c>rgb</c>)"
+parameters:
+  - label: 'rgb'
+    description: "int: any value of the color datatype"
+related:
+  - red
+  - green
+  - blue
+  - alpha
+  - saturation
+  - brightness

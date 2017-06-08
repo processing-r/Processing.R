@@ -1,0 +1,22 @@
+category: Shape
+subcategory: Curves
+description: "
+Calculates the tangent of a point on a curve. There's a good definition of <a href=\"http://en.wikipedia.org/wiki/Tangent\" target=\"new\"><em>tangent</em> on Wikipedia</a>.
+"
+syntax: "curveTangent(<c>a</c>, <c>b</c>, <c>c</c>, <c>d</c>, <c>t</c>)"
+parameters:
+  - label: 'a'
+    description: "float: coordinate of first point on the curve"
+  - label: 'b'
+    description: "float: coordinate of first control point"
+  - label: 'c'
+    description: "float: coordinate of second control point"
+  - label: 'd'
+    description: "float: coordinate of second point on the curve"
+  - label: 't'
+    description: "float: value between 0 and 1"
+related:
+  - curve
+  - curveVertex
+  - curvePoint
+  - bezierTangent

@@ -1,0 +1,11 @@
+category: Transform
+subcategory: 
+description: "
+Prints the current matrix to the Console (the text window at the bottom of Processing).
+"
+syntax: "printMatrix()"
+related:
+  - pushMatrix
+  - popMatrix
+  - resetMatrix
+  - applyMatrix

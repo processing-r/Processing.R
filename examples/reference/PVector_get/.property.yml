@@ -1,0 +1,6 @@
+category: PVector
+subcategory: Method
+description: "
+Gets a copy of the vector, returns a PVector object.
+"
+syntax: ".get()\n.get(target)\n"

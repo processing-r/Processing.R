@@ -1,0 +1,23 @@
+category: Input
+subcategory: Files
+description: "
+Writes the contents of a Table object to a file. By default, this file is saved to the sketch's folder. This folder is opened by selecting \"Show Sketch Folder\" from the \"Sketch\" menu.<br/>
+<br/>
+Alternatively, the file can be saved to any location on the computer by using an absolute path (something that starts with / on Unix and Linux, or a drive letter on Windows).<br/>
+<br/>
+All files loaded and saved by the Processing API use UTF-8 encoding.
+"
+syntax: "saveTable(<c>table</c>, <c>filename</c>)\nsaveTable(<c>table</c>, <c>filename</c>, <c>options</c>)\n"
+parameters:
+  - label: 'table'
+    description: "Table: the Table object to save to a file"
+  - label: 'filename'
+    description: "String: the filename to which the Table should be saved"
+  - label: 'options'
+    description: "String: can be one of \"tsv\", \"csv\", \"bin\", or \"html\""
+related:
+  - Table
+  - loadTable
+  - loadBytes
+  - loadStrings
+  - loadXML

@@ -1,0 +1,11 @@
+category: PrintWriter
+subcategory: Method
+description: "
+Writes data to a <b>PrintWriter</b> object stream.
+"
+syntax: "<c>pw</c>.print(<c>data</c>)"
+parameters:
+  - label: 'pw'
+    description: "any object of the type PrintWriter"
+  - label: 'data'
+    description: "boolean, byte, char, color, int, float, String"

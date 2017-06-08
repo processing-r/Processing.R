@@ -1,0 +1,23 @@
+category: Input
+subcategory: Mouse
+description: "
+The <b>mouseClicked()</b> function is called <i>after</i> a mouse button has been pressed and then released.
+<br/><br/>
+Mouse and keyboard events only work when a program has <b>draw()</b>. Without <b>draw()</b>, the code is only run once and then stops listening for events.
+"
+syntax: "def mouseClicked():\n    statements\n\ndef mouseClicked(event):\n    statements"
+parameters:
+  - label: 'event'
+    description: "MouseEvent: the MouseEvent"
+related:
+  - mouseX
+  - mouseY
+  - pmouseX
+  - pmouseY
+  - mousePressed_var
+  - mousePressed
+  - mouseReleased
+  - mouseMoved
+  - mouseDragged
+  - mouseButton
+  - mouseWheel

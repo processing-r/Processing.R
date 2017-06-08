@@ -1,0 +1,24 @@
+category: Lights, Camera
+subcategory: Lights
+description: "
+Adds an ambient light. Ambient light doesn't come from a specific direction, the rays have light have bounced around so much that objects are evenly lit from all sides. Ambient lights are almost always used in combination with other types of lights. Lights need to be included in the <b>draw()</b> to remain persistent in a looping program. Placing them in the <b>setup()</b> of a looping program will cause them to only have an effect the first time through the loop. The <b>v1</b>, <b>v2</b>, and <b>v3</b> parameters are interpreted as either RGB or HSB values, depending on the current color mode.
+"
+syntax: "ambientLight(<c>v1</c>, <c>v2</c>, <c>v3</c>)\nambientLight(<c>v1</c>, <c>v2</c>, <c>v3</c>, <c>x</c>, <c>y</c>, <c>z</c>)"
+parameters:
+  - label: 'v1'
+    description: "float: red or hue value (depending on current color mode)"
+  - label: 'v2'
+    description: "float: green or saturation value (depending on current color mode)"
+  - label: 'v3'
+    description: "float: blue or brightness value (depending on current color mode)"
+  - label: 'x'
+    description: "float: x-coordinate of the light"
+  - label: 'y'
+    description: "float: y-coordinate of the light"
+  - label: 'x'
+    description: "float: z-coordinate of the light"
+related:
+  - lights
+  - directionalLight
+  - pointLight
+  - spotLight

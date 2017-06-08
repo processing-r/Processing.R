@@ -1,0 +1,8 @@
+category: Lights, Camera
+subcategory: Camera
+description: "
+Prints the current camera matrix to the Console (the text window at the bottom of Processing).
+"
+syntax: "printCamera()"
+related:
+  - camera

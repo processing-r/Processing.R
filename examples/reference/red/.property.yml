@@ -1,0 +1,22 @@
+category: Color
+subcategory: Creating & Reading
+description: "
+Extracts the red value from a color, scaled to match current <b>colorMode()</b>. The value is always returned as a float, so be careful not to assign it to an int value.<br />
+<br />
+The <b>red()</b> function is easy to use and understand, but it is slower than a technique called bit shifting. When working in <b>colorMode(RGB, 255)</b>, you can acheive the same results as <b>red()</b> but with greater speed by using the right shift operator (<b>>></b>) with a bit mask. For example, the following two lines of code are equivalent means of getting the red value of the color value <b>c</b>:<br />
+<br />
+<pre>r1 = red(c)  # Simpler, but slower to calculate
+r2 = c >> 16 & 0xFF  # Very fast to calculate</pre>
+"
+syntax: "red(<c>rgb</c>)"
+parameters:
+  - label: 'rgb'
+    description: "int: any value of the color datatype"
+related:
+  - green
+  - blue
+  - alpha
+  - hue
+  - saturation
+  - brightness
+  - rightshift

@@ -1,0 +1,20 @@
+category: Input
+subcategory: Mouse
+description: "
+The <b>mouseReleased()</b> function is called every time a mouse button is released.
+<br/><br/>
+Mouse and keyboard events only work when a program has <b>draw()</b>. Without <b>draw()</b>, the code is only run once and then stops listening for events.
+"
+syntax: "mouseReleased()\nmouseReleased(event)"
+related:
+  - mouseX
+  - mouseY
+  - pmouseX
+  - pmouseY
+  - mousePressed_var
+  - mousePressed
+  - mouseClicked
+  - mouseMoved
+  - mouseDragged
+  - mouseButton
+  - mouseWheel

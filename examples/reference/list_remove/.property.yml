@@ -1,0 +1,17 @@
+category: Data
+subcategory: List Methods
+description: "
+Removes the given item from the list. Raises a ValueError exception if the
+item isn't found.
+"
+syntax: "<c>a</c>.remove(<c>i</c>)"
+parameters:
+  - label: 'a'
+    description: "List from which to remove an item."
+  - label: 'i'
+    description: "The item to remove."
+related:
+  - list_insert
+  - list_append
+  - list_reverse
+  - list_index

@@ -1,0 +1,34 @@
+category: Shape
+subcategory: Curves
+description: "
+Draws a Bezier curve on the screen. These curves are defined by a series of anchor and control points. The first two parameters specify the first anchor point and the last two parameters specify the other anchor point. The middle parameters specify the control points which define the shape of the curve. Bezier curves were developed by French engineer Pierre Bezier. Using the 3D version requires rendering with P3D (see the Environment reference for more information).
+"
+syntax: "bezier(<c>x1</c>, <c>y1</c>, <c>x2</c>, <c>y2</c>, <c>x3</c>, <c>y3</c>, <c>x4</c>, <c>y4</c>)\nbezier(<c>x1</c>, <c>y1</c>, <c>z1</c>, <c>x2</c>, <c>y2</c>, <c>z2</c>, <c>x3</c>, <c>y3</c>, <c>z3</c>, <c>x4</c>, <c>y4</c>, <c>z4</c>)"
+parameters:
+  - label: 'x1'
+    description: "float: coordinates for the first anchor point"
+  - label: 'y1'
+    description: "float: coordinates for the first anchor point"
+  - label: 'z1'
+    description: "float: coordinates for the first anchor point"
+  - label: 'x2'
+    description: "float: coordinates for the first control point"
+  - label: 'y2'
+    description: "float: coordinates for the first control point"
+  - label: 'z2'
+    description: "float: coordinates for the first control point"
+  - label: 'x3'
+    description: "float: coordinates for the second control point"
+  - label: 'y3'
+    description: "float: coordinates for the second control point"
+  - label: 'z3'
+    description: "float: coordinates for the second control point"
+  - label: 'x4'
+    description: "float: coordinates for the second anchor point"
+  - label: 'y4'
+    description: "float: coordinates for the second anchor point"
+  - label: 'z4'
+    description: "float: coordinates for the second anchor point"
+related:
+  - bezierVertex
+  - curve

@@ -1,0 +1,15 @@
+category: Structure
+subcategory: 
+description: "
+Curly braces are used to define \"dictionary literals,\" giving you the ability
+to declare a dictionary and its contents inside your program. A dictionary
+literal consists of a series of key/value pairs, written with a colon
+(<b>:</b>) between them, and with each of the key/value pairs separated from
+one other with commas.
+"
+syntax: "	dict = {<c>key0: val0, ..., keyN: valN</c>}"
+parameters:
+  - label: 'key0: val0, ..., keyN: valN'
+    description: "a sequence of key/value pairs"
+related:
+  - indexbrackets

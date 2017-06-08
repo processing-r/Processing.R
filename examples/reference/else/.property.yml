@@ -1,0 +1,14 @@
+category: Control
+subcategory: Conditionals
+description: "
+Extends the <b>if</b> structure allowing the program to choose between two or more blocks of code. It specifies a block of code to execute when the expression in <b>if</b> is <b>False</b>.
+"
+syntax: "if <c>expression</c>:\n  <c>statements</c> \nelse:\n  <c>statements</c> \n\nif <c>expression</c>:\n  <c>statements</c> \nelif <c>expression</c>:\n  <c>statements</c> \nelse:\n  <c>statements</c> "
+parameters:
+  - label: 'expression'
+    description: "any valid expression that evaluates to true or false"
+  - label: 'statements'
+    description: "one or more statements to be executed"
+related:
+  - if
+  - if

@@ -1,0 +1,13 @@
+category: Data
+subcategory: Conversion
+description: "
+Converts a String representation of a hexadecimal number to its equivalent integer value.
+"
+syntax: "	unhex(str)"
+parameters:
+  - label: 'str'
+    description: "str: string representation of a hexadecimal number"
+related:
+  - hex
+  - binary
+  - unbinary

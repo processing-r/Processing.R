@@ -1,0 +1,6 @@
+category: PVector
+subcategory: Field
+description: "
+The x component of the vector. This field (variable) can be used to both get and set the value (see above example.)
+"
+syntax: ""

@@ -1,0 +1,13 @@
+category: Shape
+subcategory: Attributes
+description: "
+Sets the style of the joints which connect line segments. These joints are either mitered, beveled, or rounded and specified with the corresponding parameters MITER, BEVEL, and ROUND. The default joint is MITER. 
+"
+syntax: "	strokeJoin(mode)"
+parameters:
+  - label: 'mode'
+    description: "int: either ROUND, BEVEL or MITER"
+related:
+  - stroke
+  - strokeWeight
+  - strokeCap

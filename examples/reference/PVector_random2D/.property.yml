@@ -1,0 +1,13 @@
+category: PVector
+subcategory: Method
+description: "
+Returns a new 2D unit vector with a random direction.  If you pass in <b>this</b> as an argument, it will use the PApplet's random number generator.
+"
+syntax: ".random2D()\n.random2D(<c>parent</c>)\n.random2D(<c>target</c>)\n.random2D(<c>target</c>, <c>parent</c>)"
+parameters:
+  - label: 'parent'
+    description: "PApplet: current PApplet instance"
+  - label: 'target'
+    description: "PVector: the target vector (if null, a new vector will be created)"
+related:
+  - PVector_random3D

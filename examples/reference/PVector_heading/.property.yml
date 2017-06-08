@@ -1,0 +1,6 @@
+category: PVector
+subcategory: Method
+description: "
+Calculates the angle of rotation for a vector (2D vectors only).
+"
+syntax: ".heading()\n"

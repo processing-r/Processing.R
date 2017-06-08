@@ -1,0 +1,13 @@
+category: Math
+subcategory: Calculation
+description: "
+Calculates the magnitude (or length) of a vector. A vector is a direction in space commonly used in computer graphics and linear algebra. Because it has no \"start\" position, the magnitude of a vector can be thought of as the distance from the coordinate 0,0 to its x,y value. Therefore, <b>mag()</b> is a shortcut for writing <b>dist(0, 0, x, y)</b>. 
+"
+syntax: "mag(x, y)"
+parameters:
+  - label: 'x'
+    description: "int: x component of a vector"
+  - label: 'y'
+    description: "int: y component of a vector"
+related:
+  - PVector_magSq

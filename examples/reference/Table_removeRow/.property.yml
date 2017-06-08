@@ -1,0 +1,12 @@
+category: Table
+subcategory: Method
+description: "
+Removes a row from a <b>Table</b> object.
+"
+syntax: ".removeRow(row)"
+parameters:
+  - label: 'row'
+    description: "int: ID number of the row to remove"
+related:
+  - Table_addRow
+  - Table_clearRows

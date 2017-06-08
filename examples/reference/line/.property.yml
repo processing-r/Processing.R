@@ -1,20 +1,22 @@
 category: Shape
 subcategory: 2D Primitives
-description: "Draws a line (a direct path between two points) to the screen. The version of <b>line()</b> with four parameters draws the line in 2D.  To color a line, use the <b>stroke()</b> function. A line cannot be filled, therefore the <b>fill()</b> function will not affect the color of a line. 2D lines are drawn with a width of one pixel by default, but this can be changed with the <b>strokeWeight()</b> function. The version with six parameters allows the line to be placed anywhere within XYZ space. Drawing this shape in 3D with the <b>z</b> parameter requires the P3D parameter in combination with <b>size()</b> as shown in the above example."
+description: "
+Draws a line (a direct path between two points) to the screen. The version of <b>line()</b> with four parameters draws the line in 2D.  To color a line, use the <b>stroke()</b> function. A line cannot be filled, therefore the <b>fill()</b> function will not affect the color of a line. 2D lines are drawn with a width of one pixel by default, but this can be changed with the <b>strokeWeight()</b> function. The version with six parameters allows the line to be placed anywhere within XYZ space. Drawing this shape in 3D with the <b>z</b> parameter requires the P3D parameter in combination with <b>size()</b> as shown in the above example.
+"
 syntax: "line(<c>x1</c>, <c>y1</c>, <c>x2</c>, <c>y2</c>)\nline(<c>x1</c>, <c>y1</c>, <c>z1</c>, <c>x2</c>, <c>y2</c>, <c>z2</c>)"
 parameters:
-  - label: x1
-    description: x-coordinate of the first point
-  - label: y1
-    description: y-coordinate of the first point
-  - label: x2
-    description: x-coordinate of the second point
-  - label: y2
-    description: y-coordinate of the second point
-  - label: z1
-    description: z-coordinate of the first point
-  - label: z2
-    description: z-coordinate of the second point
+  - label: 'x1'
+    description: "float: x-coordinate of the first point"
+  - label: 'y1'
+    description: "float: y-coordinate of the first point"
+  - label: 'x2'
+    description: "float: x-coordinate of the second point"
+  - label: 'y2'
+    description: "float: y-coordinate of the second point"
+  - label: 'z1'
+    description: "float: z-coordinate of the first point"
+  - label: 'z2'
+    description: "float: z-coordinate of the second point"
 related:
   - strokeWeight
   - strokeJoin

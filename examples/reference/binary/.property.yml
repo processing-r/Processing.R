@@ -1,0 +1,17 @@
+category: Data
+subcategory: Conversion
+description: "
+Converts a byte, char, int, or color to a String containing the equivalent binary notation. For example, the color value produced by <b>color(0, 102, 153, 255)</b> will convert to the String value \"11111111000000000110011010011001\". This function can help make your geeky debugging sessions much happier.<br/>
+<br/>
+Note that the maximum number of digits is 32, because an <b>int</b> value can only represent up to 32 bits. Specifying more than 32 digits will have no effect.
+"
+syntax: "binary(<c>value</c>)\nbinary(<c>value</c>, <c>digits</c>)"
+parameters:
+  - label: 'value'
+    description: "char, byte, or int: value to convert"
+  - label: 'digits'
+    description: "int: number of digits to return"
+related:
+  - unbinary
+  - hex
+  - unhex

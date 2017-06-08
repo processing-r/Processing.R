@@ -1,0 +1,12 @@
+category: Math
+subcategory: Calculation
+description: "
+Calculates the closest int value that is less than or equal to the value of the parameter.
+"
+syntax: "\nfloor(<c>n</c>)"
+parameters:
+  - label: 'n'
+    description: "float: number to round down"
+related:
+  - ceil
+  - round

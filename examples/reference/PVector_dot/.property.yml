@@ -1,0 +1,19 @@
+category: PVector
+subcategory: Method
+description: "
+Calculates the dot product of two vectors.
+"
+syntax: ".dot(<c>v</c>)\n.dot(<c>x</c>, <c>y</c>, <c>z</c>)\n.dot(<c>v1</c>, <c>v2</c>)"
+parameters:
+  - label: 'v'
+    description: "PVector: any variable of type PVector"
+  - label: 'x'
+    description: "float: x component of the vector"
+  - label: 'y'
+    description: "float: y component of the vector"
+  - label: 'z'
+    description: "float: z component of the vector"
+  - label: 'v1'
+    description: "PVector: any variable of type PVector"
+  - label: 'v2'
+    description: "PVector: any variable of type PVector"

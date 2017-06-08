@@ -1,0 +1,9 @@
+category: Math
+subcategory: Calculation
+description: "
+Returns Euler's number <i>e</i> (2.71828...) raised to the power of the <b>n</b> parameter.
+"
+syntax: "exp(n)"
+parameters:
+  - label: 'n'
+    description: ""

@@ -1,0 +1,12 @@
+category: Math
+subcategory: Calculation
+description: "
+Calculates the integer closest to the <b>n</b> parameter. For example, <b>round(133.8)</b> returns the value 134.
+"
+syntax: "round(<c>n</c>)"
+parameters:
+  - label: 'n'
+    description: "float: number to round"
+related:
+  - floor
+  - ceil

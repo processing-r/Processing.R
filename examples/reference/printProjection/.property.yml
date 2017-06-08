@@ -1,0 +1,8 @@
+category: Lights, Camera
+subcategory: Camera
+description: "
+Prints the current projection matrix to the Console (the text window at the bottom of Processing).
+"
+syntax: "printProjection()"
+related:
+  - camera

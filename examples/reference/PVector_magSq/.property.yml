@@ -1,0 +1,8 @@
+category: PVector
+subcategory: Method
+description: "
+Calculates the magnitude (length) of the vector, squared.  This method is often used to improve performance since, unlike <b>mag()</b>, it does not require a <b>sqrt()</b> operation.
+"
+syntax: ""
+related:
+  - PVector_mag

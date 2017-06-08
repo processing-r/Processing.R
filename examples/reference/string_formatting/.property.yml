@@ -1,0 +1,20 @@
+category: Structure
+subcategory: 
+description: "
+Substitute variables in a string using the string format operator % as shown above. Symbols that can be used with % include: 
+%i for integers, %f for floats and  %s for strings. 
+"
+syntax: "	\"%s\" % \"string\"\n	\"%i\" % 10 \n	\"%f\" % 10.5"
+parameters:
+  - label: '%s'
+    description: "String: any string"
+  - label: '%i'
+    description: "int: any int"
+  - label: '%f'
+    description: "float: any float"
+related:
+  - string
+  - string_find
+  - string_strip
+  - string_join
+  - string_replace

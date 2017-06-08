@@ -1,0 +1,35 @@
+category: Shape
+subcategory: Curves
+description: "
+Draws a curved line on the screen. The first and second parameters specify the beginning control point and the last two parameters specify the ending control point. The middle parameters specify the start and stop of the curve. Longer curves can be created by putting a series of <b>curve()</b> functions together or using <b>curveVertex()</b>. An additional function called <b>curveTightness()</b> provides control for the visual quality of the curve. The <b>curve()</b> function is an implementation of Catmull-Rom splines. Using the 3D version requires rendering with P3D (see the Environment reference for more information).
+"
+syntax: "curve(<c>x1</c>, <c>y1</c>, <c>x2</c>, <c>y2</c>, <c>x3</c>, <c>y3</c>, <c>x4</c>, <c>y4</c>)\ncurve(<c>x1</c>, <c>y1</c>, <c>z1</c>, <c>x2</c>, <c>y2</c>, <c>z2</c>, <c>x3</c>, <c>y3</c>, <c>z3</c>, <c>x4</c>, <c>y4</c>, <c>z4</c>)"
+parameters:
+  - label: 'x1'
+    description: "float: coordinates for the beginning control point"
+  - label: 'y1'
+    description: "float: coordinates for the beginning control point"
+  - label: 'x2'
+    description: "float: coordinates for the first point"
+  - label: 'y2'
+    description: "float: coordinates for the first point"
+  - label: 'x3'
+    description: "float: coordinates for the second point"
+  - label: 'y3'
+    description: "float: coordinates for the second point"
+  - label: 'x4'
+    description: "float: coordinates for the ending control point"
+  - label: 'y4'
+    description: "float: coordinates for the ending control point"
+  - label: 'z1'
+    description: "float: coordinates for the beginning control point"
+  - label: 'z2'
+    description: "float: coordinates for the first point"
+  - label: 'z3'
+    description: "float: coordinates for the second point"
+  - label: 'z4'
+    description: "float: coordinates for the ending control point"
+related:
+  - curveVertex
+  - curveTightness
+  - bezier

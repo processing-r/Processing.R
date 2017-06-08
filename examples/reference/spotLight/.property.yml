@@ -1,0 +1,28 @@
+category: Lights, Camera
+subcategory: Lights
+description: "
+Adds a spot light. Lights need to be included in the <b>draw()</b> to remain persistent in a looping program. Placing them in the <b>setup()</b> of a looping program will cause them to only have an effect the first time through the loop. The <b>v1</b>, <b>v2</b>, and <b>v3</b> parameters are interpreted as either RGB or HSB values, depending on the current color mode. The <b>x</b>, <b>y</b>, and <b>z</b> parameters specify the position of the light and <b>nx</b>, <b>ny</b>, <b>nz</b> specify the direction of light. The <b>angle</b> parameter affects angle of the spotlight cone, while <b>concentration</b> sets the bias of light focusing toward the center of that cone.
+"
+syntax: "spotLight(<c>v1</c>, <c>v2</c>, <c>v3</c>, <c>x</c>, <c>y</c>, <c>z</c>, <c>nx</c>, <c>ny</c>, <c>nz</c>, <c>angle</c>, <c>concentration</c>)"
+parameters:
+  - label: 'v1'
+    description: "float: red or hue value (depending on current color mode)"
+  - label: 'v2'
+    description: "float: green or saturation value (depending on current color mode)"
+  - label: 'v3'
+    description: "float: blue or brightness value (depending on current color mode)"
+  - label: 'x'
+    description: "float: x-coordinate of the light"
+  - label: 'y'
+    description: "float: y-coordinate of the light"
+  - label: 'z'
+    description: "float: z-coordinate of the light"
+  - label: 'nx'
+    description: "float: direction along the x axis"
+  - label: 'ny'
+    description: "float: direction along the y axis"
+related:
+  - lights
+  - directionalLight
+  - pointLight
+  - ambientLight

@@ -1,0 +1,9 @@
+category: PrintWriter
+subcategory: Method
+description: "
+Flushes the <b>PrintWriter</b> object. This is necessary to ensure all remaining data is written to the file before it is closed.
+"
+syntax: "<c>pw</c>.flush()"
+parameters:
+  - label: 'pw'
+    description: "any object of the type PrintWriter"

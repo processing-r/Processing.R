@@ -1,0 +1,16 @@
+category: PShape
+subcategory: Method
+description: "
+The <b>getVertex()</b> method returns a PVector with the coordinates of the vertex point located at the position defined by the <b>index</b> parameter. This method works when shapes are created as shown in the example above, but won't work properly when a shape is defined explicitly (e.g. createShape(RECT, 20, 20, 80, 80).
+"
+syntax: "<c>sh</c>.getVertex(<c>index</c>)\n<c>sh</c>.getVertex(<c>index</c>, <c>vec</c>)"
+parameters:
+  - label: 'sh'
+    description: "PShape: any variable of type PShape"
+  - label: 'index'
+    description: "int: the location of the vertex"
+  - label: 'vec'
+    description: "PVector: PVector to assign the data to"
+related:
+  - PShape_setVertex
+  - PShape_getVertexCount

@@ -1,0 +1,13 @@
+category: Math
+subcategory: Trigonometry
+description: "
+Calculates the ratio of the sine and cosine of an angle. This function expects the values of the <b>angle</b> parameter to be provided in radians (values from 0 to PI*2). Values are returned in the range <b>infinity</b> to <b>-infinity</b>.
+"
+syntax: "	tan(radians)"
+parameters:
+  - label: 'radians'
+    description: "float: radian value, used to calculate the ration of the sine and cosine of an angle."
+related:
+  - cos
+  - sin
+  - radians

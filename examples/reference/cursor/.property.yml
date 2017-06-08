@@ -1,0 +1,19 @@
+category: Environment
+subcategory: 
+description: "
+Sets the cursor to a predefined symbol or an image, or makes it visible if already hidden. If you are trying to set an image as the cursor, the recommended size is 16x16 or 32x32 pixels. It is not possible to load an image as the cursor if you are exporting your program for the Web, and not all MODES work with all browsers. The values for parameters <b>x</b> and <b>y</b> must be less than the dimensions of the image.
+<br /> <br />
+Setting or hiding the cursor does not generally work with \"Present\" mode (when running full-screen).
+"
+syntax: "cursor(<c>kind</c>)\ncursor(<c>img</c>)\ncursor(<c>img</c>, <c>x</c>, <c>y</c>)\ncursor()"
+parameters:
+  - label: 'kind'
+    description: "int: either ARROW, CROSS, HAND, MOVE, TEXT, or WAIT"
+  - label: 'img'
+    description: "PImage: any variable of type PImage"
+  - label: 'x'
+    description: "int: the horizontal active spot of the cursor"
+  - label: 'y'
+    description: "int: the vertical active spot of the cursor"
+related:
+  - noCursor

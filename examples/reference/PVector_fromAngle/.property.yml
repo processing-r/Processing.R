@@ -1,0 +1,11 @@
+category: PVector
+subcategory: Method
+description: "
+Calculates and returns a new 2D unit vector from the specified angle value (in radians).
+"
+syntax: ".fromAngle(<c>angle</c>)\n.fromAngle(<c>angle</c>, <c>target</c>)"
+parameters:
+  - label: 'angle'
+    description: "float: the angle in radians"
+  - label: 'target'
+    description: "PVector: the target vector (if null, a new vector will be created)"
