@@ -19,6 +19,8 @@ import org.renjin.sexp.FunctionCall;
 import org.renjin.sexp.SEXP;
 import org.renjin.sexp.Symbol;
 
+import com.jogamp.newt.opengl.GLWindow;
+
 import processing.awt.PSurfaceAWT;
 import processing.core.PApplet;
 import processing.core.PConstants;
@@ -31,8 +33,6 @@ import rprocessing.exception.RSketchError;
 import rprocessing.util.Constant;
 import rprocessing.util.Printer;
 import rprocessing.util.RScriptReader;
-
-import com.jogamp.newt.opengl.GLWindow;
 
 /**
  * RlangPApplet PApplet for R language, powered by Renjin.
@@ -151,7 +151,8 @@ public class RLangPApplet extends BuiltinApplet {
       }
     } finally {
       Thread.setDefaultUncaughtExceptionHandler(null);
-      if (PApplet.platform == PConstants.MACOSX && Arrays.asList(arguments).contains("fullScreen")) {
+      if (PApplet.platform == PConstants.MACOSX
+          && Arrays.asList(arguments).contains("fullScreen")) {
         // Frame should be OS-X fullscreen, and it won't stop being that unless the jvm
         // exits or we explicitly tell it to minimize.
         // (If it's disposed, it'll leave a gray blank window behind it.)

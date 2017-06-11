@@ -6,6 +6,7 @@ package rprocessing.exception;
  * @author github.com/gaocegege
  */
 public class RSketchError extends Exception {
+
   private static final long serialVersionUID = 6563629093797155634L;
   public final String fileName;
   public final int line;
@@ -23,7 +24,8 @@ public class RSketchError extends Exception {
     this(message, fileName, line, 0);
   }
 
-  public RSketchError(final String message, final String fileName, final int line, final int column) {
+  public RSketchError(final String message, final String fileName, final int line,
+      final int column) {
     super(message);
 
     this.fileName = fileName;
