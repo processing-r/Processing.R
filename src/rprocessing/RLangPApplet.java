@@ -9,7 +9,6 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.concurrent.CountDownLatch;
 
-import javax.script.ScriptException;
 
 import org.renjin.eval.EvalException;
 import org.renjin.parser.RParser;
@@ -244,6 +243,7 @@ public class RLangPApplet extends BuiltinApplet {
       public void uncaughtException(final Thread t, final Throwable e) {
         terminalException = toSketchException(e);
         try {
+          log("There is an unexpected exception.");
           handleMethods("dispose");
         } catch (final Exception noop) {
           // give up
@@ -280,8 +280,11 @@ public class RLangPApplet extends BuiltinApplet {
     wrapProcessingVariables();
     if (this.mode == Mode.STATIC) {
       try {
+        log("The mode is static, run the program directly.");
         this.renjinEngine.eval(this.programText);
-      } catch (ScriptException exception) {
+        log("Evaluate the code in static mode.");
+      } catch (final Exception exception) {
+        log("There is exception when evaluate the code in static mode.");
         terminalException = toSketchException(exception);
         exitActual();
       }
@@ -293,6 +296,7 @@ public class RLangPApplet extends BuiltinApplet {
     } else {
       System.out.println("The program is in mix mode now.");
     }
+    log("Setup done");
   }
 
   /**
@@ -371,6 +375,10 @@ public class RLangPApplet extends BuiltinApplet {
       return (RSketchError) t;
     }
     if (t instanceof EvalException) {
+      final RSketchError e = (RSketchError) t;
+      return e;
+    }
+    if (t instanceof ClassCastException) {
       final RSketchError e = (RSketchError) t;
       return e;
     }
