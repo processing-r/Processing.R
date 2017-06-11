@@ -9,6 +9,7 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.concurrent.CountDownLatch;
 
+import javax.script.ScriptException;
 
 import org.renjin.eval.EvalException;
 import org.renjin.parser.RParser;
@@ -83,8 +84,12 @@ public class RLangPApplet extends BuiltinApplet {
     this.mode = this.detectMode();
   }
 
-  public void evaluateCoreCode() throws ScriptException {
-    this.renjinEngine.eval(CORE_TEXT);
+  public void evaluateCoreCode() throws RSketchError {
+    try {
+      this.renjinEngine.eval(CORE_TEXT);
+    } catch (final ScriptException se) {
+      throw toSketchException(se);
+    }
   }
 
   /**

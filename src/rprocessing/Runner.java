@@ -7,9 +7,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import javax.script.ScriptException;
-
-
 import processing.core.PApplet;
 import processing.core.PConstants;
 import rprocessing.exception.NotFoundException;
@@ -27,8 +24,6 @@ import rprocessing.util.StreamPrinter;
 public class Runner {
 
   public static RunnableSketch sketch;
-  private static final String CORE_TEXT =
-      RScriptReader.readResourceAsText(Runner.class, "r/core.R");
 
   private static final boolean VERBOSE = Boolean.parseBoolean(System.getenv("VERBOSE_RLANG_MODE"));
 
@@ -90,6 +85,7 @@ public class Runner {
     RLangPApplet rp = new RLangPApplet(sketch.getMainCode(), stdout);
     log("Adding processing variable into R top context.");
     rp.addPAppletToRContext();
+    rp.evaluateCoreCode();
 
     final List<File> libDirs = sketch.getLibraryDirectories();
     if (libDirs != null) {
