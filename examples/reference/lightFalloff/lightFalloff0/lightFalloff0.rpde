@@ -1,0 +1,19 @@
+P3D <- "processing.opengl.PGraphics3D"
+CLOSE <- as.integer(2)
+
+settings <- function() {
+    size(100, 100, P3D)
+}
+
+draw <- function() {
+    noStroke()
+    background(0)
+    lightFalloff(1, 0.001, 0)
+    pointLight(150, 250, 150, 50, 50, 50)
+    beginShape()
+    vertex(0, 0, 0)
+    vertex(100, 0, -100)
+    vertex(100, 100, -100)
+    vertex(0, 100, 0)
+    endShape(CLOSE)
+}
