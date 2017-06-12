@@ -46,6 +46,10 @@ If you want to compile the source code, see [HOWTO get Processing.R](./raw-docs/
 	<img src="./raw-docs/img/demo.gif" alt="Demo" width="300">
 </div>
 
+## Processing.R Reference
+
+See [Processing.R Reference](https://processing-r.github.io/Processing.R-docs/) hosted in [Processing-R/Processing.R-docs](https://github.com/Processing-R/Processing.R-docs), which is still incomplete.
+
 ## CONTRIBUTING
 
 Feel free to hack on Processing.R! There are some [issues for the new contributors](https://github.com/gaocegege/Processing.R/issues?q=is%3Aissue+is%3Aopen+label%3Afor-new-contributors) to get started with.
