@@ -6,7 +6,38 @@
 
 **Closed issues:**
 
+- Error when run example/reference [\#106](https://github.com/gaocegege/Processing.R/issues/106)
+- Travis-CI testing and Docker error? [\#101](https://github.com/gaocegege/Processing.R/issues/101)
+- trigonometry is not in example in PDE [\#96](https://github.com/gaocegege/Processing.R/issues/96)
+- Support description and syntax in reference by .property.yml [\#93](https://github.com/gaocegege/Processing.R/issues/93)
+- Runner.jar blocks although exit is called [\#89](https://github.com/gaocegege/Processing.R/issues/89)
+- New release \(pre-GSOC\) [\#70](https://github.com/gaocegege/Processing.R/issues/70)
+- coala: Support code linting for Java [\#69](https://github.com/gaocegege/Processing.R/issues/69)
+- Adapt float type in language level by renjin [\#61](https://github.com/gaocegege/Processing.R/issues/61)
 - adopt style guide for R code and examples [\#52](https://github.com/gaocegege/Processing.R/issues/52)
+- Package necessary deps when installation [\#43](https://github.com/gaocegege/Processing.R/issues/43)
+- Support more built-in functions  [\#16](https://github.com/gaocegege/Processing.R/issues/16)
+
+**Merged pull requests:**
+
+- README: Add reference [\#113](https://github.com/gaocegege/Processing.R/pull/113) ([gaocegege](https://github.com/gaocegege))
+- Finish shape reference [\#109](https://github.com/gaocegege/Processing.R/pull/109) ([gaocegege](https://github.com/gaocegege))
+- reference: Migrate property from processing.py [\#105](https://github.com/gaocegege/Processing.R/pull/105) ([gaocegege](https://github.com/gaocegege))
+- Add reference sketches [\#104](https://github.com/gaocegege/Processing.R/pull/104) ([gaocegege](https://github.com/gaocegege))
+- test: Generate test cases from reference code [\#102](https://github.com/gaocegege/Processing.R/pull/102) ([gaocegege](https://github.com/gaocegege))
+- Rename to add the example into mode distribution [\#100](https://github.com/gaocegege/Processing.R/pull/100) ([gaocegege](https://github.com/gaocegege))
+- Pre-processor: Remove processing prefix [\#95](https://github.com/gaocegege/Processing.R/pull/95) ([gaocegege](https://github.com/gaocegege))
+- reference: Add description and parameters [\#94](https://github.com/gaocegege/Processing.R/pull/94) ([gaocegege](https://github.com/gaocegege))
+- reference: Add category properties [\#92](https://github.com/gaocegege/Processing.R/pull/92) ([gaocegege](https://github.com/gaocegege))
+- reference: Fix the integer transfer [\#91](https://github.com/gaocegege/Processing.R/pull/91) ([gaocegege](https://github.com/gaocegege))
+- Runner: Exit when finished [\#90](https://github.com/gaocegege/Processing.R/pull/90) ([gaocegege](https://github.com/gaocegege))
+- examples: add R sketches equivalent to examples in Processing\(Java\) reference [\#88](https://github.com/gaocegege/Processing.R/pull/88) ([gaocegege](https://github.com/gaocegege))
+- Establish e2e test architecture [\#87](https://github.com/gaocegege/Processing.R/pull/87) ([gaocegege](https://github.com/gaocegege))
+- Support float from renjin [\#79](https://github.com/gaocegege/Processing.R/pull/79) ([gaocegege](https://github.com/gaocegege))
+- ant: Remove test dependencies from build process [\#76](https://github.com/gaocegege/Processing.R/pull/76) ([gaocegege](https://github.com/gaocegege))
+- LICENSE: GPLv3 [\#74](https://github.com/gaocegege/Processing.R/pull/74) ([gaocegege](https://github.com/gaocegege))
+- Fix the code style according to coala [\#73](https://github.com/gaocegege/Processing.R/pull/73) ([gaocegege](https://github.com/gaocegege))
+- style: Update code with google style [\#72](https://github.com/gaocegege/Processing.R/pull/72) ([gaocegege](https://github.com/gaocegege))
 
 ## [v1.0.2](https://github.com/gaocegege/Processing.R/tree/v1.0.2) (2017-05-19)
 [Full Changelog](https://github.com/gaocegege/Processing.R/compare/v1.0.1...v1.0.2)
@@ -25,7 +56,7 @@
 - Add logger support to Processing.R [\#22](https://github.com/gaocegege/Processing.R/issues/22)
 - Re-direct STDOUT to console in Processing.app [\#20](https://github.com/gaocegege/Processing.R/issues/20)
 - Add CI for Windows [\#19](https://github.com/gaocegege/Processing.R/issues/19)
-- Imporve code quality according to codacy report [\#18](https://github.com/gaocegege/Processing.R/issues/18)
+- Improve code quality according to codacy report [\#18](https://github.com/gaocegege/Processing.R/issues/18)
 - Simplify CI process: replace the compilation with download file [\#15](https://github.com/gaocegege/Processing.R/issues/15)
 - Merge generate-ant-file.sh scripts to one bash script [\#13](https://github.com/gaocegege/Processing.R/issues/13)
 - Static Mode in Editor [\#7](https://github.com/gaocegege/Processing.R/issues/7)
