@@ -9,7 +9,7 @@ import test.e2e.core.E2eTestBase;
 public class Arc3Test extends E2eTestBase {
 
   public Arc3Test() {
-    coreCodeTemplate = "PI <- 3.1415\nQUARTER_PI <- PI/4\nOPEN <- 1\nCHORD <- 2\nPIE <- 3\n\narc(50, 50, 80, 80, 0, PI + QUARTER_PI, as.integer(CHORD))\n\nsaveFrame(\"%s\")\nexit()\n";
+    coreCodeTemplate = "# arc 3 https://processing.org/reference/arc_.html\n\n# TODO: replace with built-in constants\nPI <- 3.1415\nQUARTER_PI <- PI/4\n\n# TODO: Fix double to int casts\nOPEN <- as.integer(1)\nCHORD <- as.integer(2)\nPIE <- as.integer(3)\n\narc(50, 50, 80, 80, 0, PI + QUARTER_PI, CHORD)\n\nsaveFrame(\"%s\")\nexit()\n";
     referenceURI = "https://processing.org/reference/images/arc_3.png";
   }
 

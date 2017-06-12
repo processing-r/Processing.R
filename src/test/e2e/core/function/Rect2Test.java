@@ -9,7 +9,7 @@ import test.e2e.core.E2eTestBase;
 public class Rect2Test extends E2eTestBase {
 
   public Rect2Test() {
-    coreCodeTemplate = "rect(30, 20, 55, 55, 7)\n\nsaveFrame(\"%s\")\nexit()\n";
+    coreCodeTemplate = "# rect 2 https://processing.org/reference/rect_.html\n\nrect(30, 20, 55, 55, 7)\n\nsaveFrame(\"%s\")\nexit()\n";
     referenceURI = "https://processing.org/reference/images/rect_1.png";
   }
 

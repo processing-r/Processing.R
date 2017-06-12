@@ -9,7 +9,7 @@ import test.e2e.core.E2eTestBase;
 public class Line1Test extends E2eTestBase {
 
   public Line1Test() {
-    coreCodeTemplate = "line(30, 20, 85, 75)\n\nsaveFrame(\"%s\")\nexit()\n";
+    coreCodeTemplate = "# line 1 https://processing.org/reference/line_.html\n\nline(30, 20, 85, 75)\n\nsaveFrame(\"%s\")\nexit()\n";
     referenceURI = "https://processing.org/reference/images/line_0.png";
   }
 
