@@ -1,0 +1,11 @@
+ROUND <- bitwShiftL(1, 1)
+SQUARE <- bitwShiftL(1, 0)
+PROJECT <- bitwShiftL(1, 2)
+
+strokeWeight(12)
+strokeCap(ROUND)
+line(20, 30, 80, 30)
+strokeCap(SQUARE)
+line(20, 50, 80, 50)
+strokeCap(PROJECT)
+line(20, 70, 80, 70)
