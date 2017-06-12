@@ -1,0 +1,7 @@
+setup <- function() {
+    s = loadShape("https://raw.githubusercontent.com/processing/processing-docs/master/content/examples/Basics/Shape/LoadDisplaySVG/data/bot1.svg")
+}
+
+draw <- function() {
+    shape(s, 10, 10, 80, 80)
+}
