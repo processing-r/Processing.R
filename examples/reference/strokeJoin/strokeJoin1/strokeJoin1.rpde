@@ -1,0 +1,10 @@
+BEVEL <- bitwShiftL(1, 5)
+
+noFill()
+strokeWeight(10.0)
+strokeJoin(BEVEL)
+beginShape()
+vertex(35, 20)
+vertex(65, 50)
+vertex(35, 80)
+endShape()
