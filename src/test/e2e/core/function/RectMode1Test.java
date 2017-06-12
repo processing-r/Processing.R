@@ -9,7 +9,7 @@ import test.e2e.core.E2eTestBase;
 public class RectMode1Test extends E2eTestBase {
 
   public RectMode1Test() {
-    coreCodeTemplate = "RADIUS <- as.integer(2)\nCENTER <- as.integer(3)\n\nrectMode(RADIUS) # Set rectMode to RADIUS\nfill(255) # Set fill to white\nrect(50, 50, 30, 30) # Draw white rect using RADIUS mode\n\nrectMode(CENTER) # Set rectMode to CENTER\nfill(100) # Set fill to gray\nrect(50, 50, 30, 30) # Draw gray rect using CENTER mode\n\nsaveFrame(\"%s\")\nexit()\n";
+    coreCodeTemplate = "RADIUS <- as.integer(2)\nCENTER <- as.integer(3)\n\nrectMode(RADIUS)  # Set rectMode to RADIUS\nfill(255)  # Set fill to white\nrect(50, 50, 30, 30)  # Draw white rect using RADIUS mode\n\nrectMode(CENTER)  # Set rectMode to CENTER\nfill(100)  # Set fill to gray\nrect(50, 50, 30, 30)  # Draw gray rect using CENTER mode\n\nsaveFrame(\"%s\")\nexit()\n";
     referenceURI = "https://processing.org/reference/images/rectMode_1.png";
   }
 
