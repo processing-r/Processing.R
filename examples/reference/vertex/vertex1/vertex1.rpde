@@ -1,0 +1,15 @@
+POINTS <- as.integer(3)
+P3D <- "processing.opengl.PGraphics3D"
+
+settings <- function() {
+    size(100, 100, P3D)
+}
+
+draw <- function() {
+    beginShape(POINTS)
+    vertex(30, 20, -50)
+    vertex(85, 20, -50)
+    vertex(85, 75, -50)
+    vertex(30, 75, -50)
+    endShape()
+}
