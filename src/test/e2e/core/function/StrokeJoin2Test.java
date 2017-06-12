@@ -9,7 +9,7 @@ import test.e2e.core.E2eTestBase;
 public class StrokeJoin2Test extends E2eTestBase {
 
   public StrokeJoin2Test() {
-    coreCodeTemplate = "ROUND <- bitwShiftL(1, 1)\n\nnoFill()\nstrokeWeight(10.0)\nstrokeJoin(ROUND)\nbeginShape()\nvertex(35, 20)\nvertex(65, 50)\nvertex(35, 80)\nendShape()\n\nsaveFrame(\"%s\")\nexit()\n";
+    coreCodeTemplate = "ROUND <- bitwShiftL(1, 1)\n\nnoFill()\nstrokeWeight(10)\nstrokeJoin(ROUND)\nbeginShape()\nvertex(35, 20)\nvertex(65, 50)\nvertex(35, 80)\nendShape()\n\nsaveFrame(\"%s\")\nexit()\n";
     referenceURI = "https://processing.org/reference/images/strokeJoin_2.png";
   }
 

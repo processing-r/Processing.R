@@ -1,7 +1,7 @@
 ROUND <- bitwShiftL(1, 1)
 
 noFill()
-strokeWeight(10.0)
+strokeWeight(10)
 strokeJoin(ROUND)
 beginShape()
 vertex(35, 20)
