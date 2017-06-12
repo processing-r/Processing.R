@@ -9,7 +9,7 @@ import test.e2e.core.E2eTestBase;
 public class Line3Test extends E2eTestBase {
 
   public Line3Test() {
-    coreCodeTemplate = "# Drawing lines in 3D requires P3D as a parameter to size()\n\nP3D <- \"processing.opengl.PGraphics3D\"\n\nsettings <- function() {\n    size(100, 100, P3D)\n}\n\nsetup <- function() {\n}\n\ndraw <- function() {\n    line(30, 20, 0, 85, 20, 15)\n    stroke(126)\n    line(85, 20, 15, 85, 75, 0)\n    stroke(255)\n    line(85, 75, 0, 30, 75, -50)\n    saveFrame(\"%s\")\n    exit()\n}\n";
+    coreCodeTemplate = "# line 3 https://processing.org/reference/line_.html\n\n# Drawing lines in 3D requires P3D as a parameter to size()\n\nP3D <- \"processing.opengl.PGraphics3D\"\n\nsettings <- function() {\n    size(100, 100, P3D)\n}\n\nsetup <- function() {\n}\n\ndraw <- function() {\n    line(30, 20, 0, 85, 20, 15)\n    stroke(126)\n    line(85, 20, 15, 85, 75, 0)\n    stroke(255)\n    line(85, 75, 0, 30, 75, -50)\n    saveFrame(\"%s\")\n    exit()\n}\n";
     referenceURI = "https://processing.org/reference/images/line_2.png";
   }
 

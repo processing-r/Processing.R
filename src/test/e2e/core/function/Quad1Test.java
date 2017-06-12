@@ -9,7 +9,7 @@ import test.e2e.core.E2eTestBase;
 public class Quad1Test extends E2eTestBase {
 
   public Quad1Test() {
-    coreCodeTemplate = "quad(38, 31, 86, 20, 69, 63, 30, 76)\n\nsaveFrame(\"%s\")\nexit()\n";
+    coreCodeTemplate = "# quad 1 https://processing.org/reference/quad_.html\n\nquad(38, 31, 86, 20, 69, 63, 30, 76)\n\nsaveFrame(\"%s\")\nexit()\n";
     referenceURI = "https://processing.org/reference/images/quad_.png";
   }
 

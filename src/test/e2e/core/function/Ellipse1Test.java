@@ -9,7 +9,7 @@ import test.e2e.core.E2eTestBase;
 public class Ellipse1Test extends E2eTestBase {
 
   public Ellipse1Test() {
-    coreCodeTemplate = "ellipse(56, 46, 55, 55)\n\nsaveFrame(\"%s\")\nexit()\n";
+    coreCodeTemplate = "# ellipse 1 https://processing.org/reference/ellipse_.html\n\nellipse(56, 46, 55, 55)\n\nsaveFrame(\"%s\")\nexit()\n";
     referenceURI = "https://processing.org/reference/images/ellipse_.png";
   }
 
