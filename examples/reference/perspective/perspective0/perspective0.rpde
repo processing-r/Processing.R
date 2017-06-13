@@ -1,0 +1,17 @@
+P3D <- "processing.opengl.PGraphics3D"
+PI <- pi
+
+settings <- function() {
+    size(100, 100, P3D)
+}
+
+draw <- function() {
+    noFill()
+    fov = PI/3
+    cameraZ = (height/2)/tan(fov/2)
+    perspective(fov, width/height, cameraZ/10, cameraZ * 10)
+    translate(50, 50, 0)
+    rotateX(-PI/6)
+    rotateY(PI/3)
+    box(45)
+}
