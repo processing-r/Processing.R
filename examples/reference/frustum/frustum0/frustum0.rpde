@@ -1,0 +1,14 @@
+P3D <- "processing.opengl.PGraphics3D"
+PI <- pi
+
+settings <- function() {
+    size(100, 100, P3D)
+}
+
+draw <- function() {
+    noFill()
+    background(204)
+    frustum(-10, 0, 0, 10, 10, 200)
+    rotateY(PI/6)
+    box(45)
+}
