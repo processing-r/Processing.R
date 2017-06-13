@@ -1,3 +1,5 @@
+import(rprocessing.RLangPApplet)
+
 alpha = processing$alpha
 ambient = processing$ambient
 ambientLight = processing$ambientLight
@@ -193,4 +195,5 @@ vertex = processing$vertex
 
 # Hack
 frameCount = processing$frameCount
-# radians = processing$radians
+radians = RLangPApplet$radians
+lerp = RLangPApplet$lerp
