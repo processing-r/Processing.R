@@ -34,4 +34,24 @@ public class BuiltinApplet extends PApplet {
   public double getPI() {
     return PI;
   }
+
+  /**
+   *
+   * @see processing.core.PApplet#focusGained()
+   */
+  @Override
+  public void focusGained() {
+    super.focusGained();
+    this.renjinEngine.put("focused",super.focused);
+  }
+
+  /**
+   *
+   * @see processing.core.PApplet#focusLost()
+   */
+  @Override
+  public void focusLost() {
+    super.focusLost();
+    this.renjinEngine.put("focused",super.focused);
+  }
 }
