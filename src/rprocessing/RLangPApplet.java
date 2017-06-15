@@ -323,12 +323,20 @@ public class RLangPApplet extends BuiltinApplet {
     return isSameClass(this.renjinEngine.get(Constant.SIZE_NAME), closureClass);
   }
 
+  /**
+   *
+   * @see processing.core.PApplet#focusGained()
+   */
   @Override
   public void focusGained() {
     super.focusGained();
     this.renjinEngine.put("focused",super.focused);
   }
 
+  /**
+   *
+   * @see processing.core.PApplet#focusLost()
+   */
   @Override
   public void focusLost() {
     super.focusLost();
