@@ -323,6 +323,18 @@ public class RLangPApplet extends BuiltinApplet {
     return isSameClass(this.renjinEngine.get(Constant.SIZE_NAME), closureClass);
   }
 
+  @Override
+  public void focusGained() {
+    super.focusGained();
+    this.renjinEngine.put("focused",super.focused);
+  }
+
+  @Override
+  public void focusLost() {
+    super.focusLost();
+    this.renjinEngine.put("focused",super.focused);
+  }
+
   /**
    * Set Environment variables in R top context.
    */

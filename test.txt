@@ -1,0 +1,12 @@
+yPos <- 0
+
+settings <- function() {
+    
+    size(500, 500)
+}
+
+draw <- function() {
+    stdout$print(height)
+    stdout$print(processing$focused)
+}
+
