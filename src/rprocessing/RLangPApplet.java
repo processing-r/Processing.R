@@ -342,6 +342,19 @@ public class RLangPApplet extends BuiltinApplet {
     super.focusLost();
     this.renjinEngine.put("focused",super.focused);
   }
+
+  @Override
+  public void mouseMoved() {
+    wrapMouseVariables();
+  }
+
+  private void wrapMouseVariables() {
+    this.renjinEngine.put("mouseX", mouseX);
+    this.renjinEngine.put("mouseY", mouseY);
+    this.renjinEngine.put("pmouseX", pmouseX);
+    this.renjinEngine.put("pmouseY", pmouseY);
+    //this.renjinEngine.put("mouseButton", mouseButton);
+  }
   
   /**
    * Set Environment variables in R top context.
@@ -349,11 +362,12 @@ public class RLangPApplet extends BuiltinApplet {
   protected void wrapProcessingVariables() {
     log("Wrap Processing built-in variables into R top context.");
     // TODO: Find some ways to push constants into R.
+    wrapMouseVariables();
     this.renjinEngine.put("width", width);
     this.renjinEngine.put("height", height);
     this.renjinEngine.put("displayWidth", displayWidth);
     this.renjinEngine.put("displayHeight", displayHeight);
-    // this.renjinEngine.put("focused", focused);
+    this.renjinEngine.put("focused", focused);
     // this.renjinEngine.put("keyPressed", keyPressed);
   }
 
