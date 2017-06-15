@@ -353,7 +353,7 @@ public class RLangPApplet extends BuiltinApplet {
     this.renjinEngine.put("height", height);
     this.renjinEngine.put("displayWidth", displayWidth);
     this.renjinEngine.put("displayHeight", displayHeight);
-    // this.renjinEngine.put("focused", focused);
+    this.renjinEngine.put("focused", focused);
     // this.renjinEngine.put("keyPressed", keyPressed);
   }
 
