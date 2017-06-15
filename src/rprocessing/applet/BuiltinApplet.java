@@ -27,7 +27,8 @@ public class BuiltinApplet extends PApplet {
     return super.frameCount;
   }
 
-  public double getPI() {
-    return PI;
-  }
+  public boolean getFocused() { return super.focused; }
+
+  public double getPI() { return PI; }
+
 }
