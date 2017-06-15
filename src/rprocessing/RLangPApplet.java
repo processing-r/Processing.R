@@ -324,6 +324,26 @@ public class RLangPApplet extends BuiltinApplet {
   }
 
   /**
+   *
+   * @see processing.core.PApplet#focusGained()
+   */
+  @Override
+  public void focusGained() {
+    super.focusGained();
+    this.renjinEngine.put("focused",super.focused);
+  }
+
+  /**
+   *
+   * @see processing.core.PApplet#focusLost()
+   */
+  @Override
+  public void focusLost() {
+    super.focusLost();
+    this.renjinEngine.put("focused",super.focused);
+  }
+  
+  /**
    * Set Environment variables in R top context.
    */
   protected void wrapProcessingVariables() {
