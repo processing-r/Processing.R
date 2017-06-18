@@ -51,9 +51,6 @@ public class RLangPApplet extends BuiltinApplet {
   /** Program code */
   private final String programText;
 
-  /** Engine to interpret R code */
-  private final RenjinScriptEngine renjinEngine;
-
   private static final String CORE_TEXT =
       RScriptReader.readResourceAsText(Runner.class, "r/core.R");
 
@@ -78,15 +75,6 @@ public class RLangPApplet extends BuiltinApplet {
   }
 
   public RLangPApplet(final String programText, final Printer stdout) throws NotFoundException {
-    // Create a script engine manager.
-    ScriptEngineManager manager = new ScriptEngineManager();
-    // Create a Renjin engine.
-    ScriptEngine engine = manager.getEngineByName("Renjin");
-    // Check if the engine has loaded correctly.
-    if (engine == null) {
-      throw new NotFoundException("Renjin Script Engine not found on the classpath.");
-    }
-    this.renjinEngine = (RenjinScriptEngine) engine;
     this.programText = programText;
     this.stdout = stdout;
     this.prePassCode();
@@ -321,39 +309,6 @@ public class RLangPApplet extends BuiltinApplet {
   private boolean isMixMode() {
     Class closureClass = Closure.class;
     return isSameClass(this.renjinEngine.get(Constant.SIZE_NAME), closureClass);
-  }
-
-  /**
-   *
-   * @see processing.core.PApplet#focusGained()
-   */
-  @Override
-  public void focusGained() {
-    super.focusGained();
-    this.renjinEngine.put("focused",super.focused);
-  }
-
-  /**
-   *
-   * @see processing.core.PApplet#focusLost()
-   */
-  @Override
-  public void focusLost() {
-    super.focusLost();
-    this.renjinEngine.put("focused",super.focused);
-  }
-
-  @Override
-  public void mouseMoved() {
-    wrapMouseVariables();
-  }
-
-  private void wrapMouseVariables() {
-    this.renjinEngine.put("mouseX", mouseX);
-    this.renjinEngine.put("mouseY", mouseY);
-    this.renjinEngine.put("pmouseX", pmouseX);
-    this.renjinEngine.put("pmouseY", pmouseY);
-    //this.renjinEngine.put("mouseButton", mouseButton);
   }
   
   /**
