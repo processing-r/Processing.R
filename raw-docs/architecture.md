@@ -2,28 +2,34 @@
 
 ## Overview
 
+Processing.R is an R language mode for Processing and the Processing Development Environment (PDE). With Processing.R users can write Processing sketches in the PDE using the R language.
+
 [Processing](http://processing.org/) is a flexible software sketchbook and a language for learning how to code within the context of the visual arts. Since 2001, Processing has promoted software literacy within the visual arts and visual literacy within technology. There are tens of thousands of students, artists, designers, researchers, and hobbyists who use Processing for learning and prototyping.
 
-The Processing Development Environment (PDE) makes it easy to write Processing programs. Programs are written in the Text Editor and started by pressing the Run button. In Processing, a computer program is called a sketch. Sketches are stored in the Sketchbook, which is a folder on your computer.
+[The Processing Development Environment (PDE)](https://processing.org/reference/environment/) makes it easy to write Processing programs. Programs are written in the Text Editor and started by pressing the Run button. In Processing, a computer program is called a sketch. Sketches are stored in the Sketchbook, which is a folder on your computer.
 
-Processing has different programming modes to make it possible to deploy sketches on different platforms and program in different ways. The Java mode is the default. Other programming modes such as [python mode](http://py.processing.org/), [native javascript mode](https://p5js.org/) and [android mode](http://android.processing.org/). These modes allows users with specific language to get started with Processing easily.
+[Programming modes](https://processing.org/reference/environment/#Programming_modes) in Processing make it possible to deploy sketches on different platforms and program in different ways. The default is Java mode. Other programming modes include [python mode](http://py.processing.org/), [native javascript mode](https://p5js.org/) and [android mode](http://android.processing.org/). These modes allow users of a specific language to get started with Processing easily.
 
-Processing.R is an [R language](https://www.r-project.org/) mode for Processing, which has a similiar architecture to [python mode](http://py.processing.org/). R is a free software environment for statistical computing and graphics. It compiles and runs on a wide variety of UNIX platforms, Windows and MacOS. With Processing.R, users could write Processing sketches using R in PDE.
+[R](https://www.r-project.org/) is a language and free software environment for statistical computing and graphics. It compiles and runs on a wide variety of UNIX platforms, Windows and MacOS.
+
+Processing.R has a similiar architecture to [python mode](http://py.processing.org/). 
 
 ## Architecture
 
-Processing.R has two artifacts:
+Processing.R is available in two forms:
 
-* A JAR `runner.jar`, which wraps Processing.R into a JAR.
-* A mode in Processing `RLangMode`, which will be moved into PDE and act as a language mode to serve PDE users.
+* The Processing.R JAR wrapper, `runner.jar`.
+* The Processing.R PDE language mode, `RLangMode`.
 
-The two artifacts share the same architecture.
+These two forms share the same architecture.
 
 ### `RLangPApplet`
 
-`RLangPApplet` is the class which extends `BuiltinApplet`. `RLangPApplet` overrides the built-in functions such as `draw`, `settings` and `setup`. `BuiltinApplet` is the layer to adapt Processing API to R. For example, it defines a function to cast parameters from integer to double, to fit the API definition in Processing.
+`RLangPApplet` is the class which extends `BuiltinApplet`. `RLangPApplet` overrides the built-in functions such as `draw`, `settings` and `setup`. `RLangPApplet` calls renjin, which is the JVM interpreter for R, to evaluate the R code.
 
-`RLangPApplet` calls renjin, which is the JVM interpreter for R, to evaluate the R code.
+### `BuiltinApplet`
+
+`BuiltinApplet` is the layer to adapt Processing API to R. For example, it defines a function to cast parameters from integer to double, to fit the API definition in Processing.
 
 ### `Runner`
 
@@ -51,8 +57,8 @@ Processing.R uses Java Remote Method Invocation(RMI), to solve the performance p
 
 ### `SketchRunner`
 
-`SketchRunner` is the middle layer between `SketchServiceRunner` and `Runner`. It interacts with `Runner` to run the Processing.R skectches.
+`SketchRunner` is the middle layer between `SketchServiceRunner` and `Runner`. It interacts with `Runner` to run the Processing.R sketches.
 
 ## Reference
 
-* "Processing.Org". Processing.org. N. p., 2017. Web. 17 June 2017.
+* "Processing.org". Processing.org. N.p., 2017. Web. 17 June 2017.
