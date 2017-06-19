@@ -12,7 +12,7 @@ Processing.R is an R language mode for Processing and the Processing Development
 
 [R](https://www.r-project.org/) is a language and free software environment for statistical computing and graphics. It compiles and runs on a wide variety of UNIX platforms, Windows and MacOS.
 
-Processing.R has a similiar architecture to [python mode](http://py.processing.org/). 
+[renjin](http://www.renjin.org/) is a JVM-based interpreter for the R language for statistical computing. Processing.R uses renjin to run R language sketches in JVM using Processing's default Java API. The Processing.R mode has a similiar architecture to [python mode](http://py.processing.org/), which uses Jython.
 
 ## Architecture
 
@@ -23,41 +23,47 @@ Processing.R is available in two forms:
 
 These two forms share the same architecture.
 
-### `RLangPApplet`
+### COMMON
 
-`RLangPApplet` is the class which extends `BuiltinApplet`. `RLangPApplet` overrides the built-in functions such as `draw`, `settings` and `setup`. `RLangPApplet` calls renjin, which is the JVM interpreter for R, to evaluate the R code.
+#### `RLangPApplet`
 
-### `BuiltinApplet`
+`RLangPApplet` is a class that extends `BuiltinApplet`. `RLangPApplet` overrides built-in functions such as `draw`, `settings` and `setup`. `RLangPApplet` calls renjin, which is the JVM interpreter for R, to evaluate the R code.
 
-`BuiltinApplet` is the layer to adapt Processing API to R. For example, it defines a function to cast parameters from integer to double, to fit the API definition in Processing.
+#### `BuiltinApplet`
 
-### `Runner`
+`BuiltinApplet` is the layer that maps between the Processing Java API and the R language as implemented in renjin. For example, it defines a function to cast parameters from integer to double in order to fit the Processing API.
 
-`Runner` is the class to run Processing.R sketches. It initializes an `RLangPApplet` instance and calls `runSketchBlocking` to run the Processing.R skectch.
+### JAR
 
-The entry of `runner.jar` is the `main` function in `Runner`. If you want to get familiar with `runner.jar`, you could start from `Runner`.
+Want to understand `runner.jar`? Start with `Runner`.
 
-### `RLangMode`
+#### `Runner`
 
-`RLangMode` is the type for Processing.R mode, which will be accessed through reflection. If you want to know how Processing.R works in Processing Development Environment(PDE), you can start from `RLangMode`.
+`Runner` is the class to run Processing.R sketches. It initializes an `RLangPApplet` instance and calls `runSketchBlocking` to run a Processing.R sketch. The entry of `runner.jar` is the `main` function in `Runner`.
 
-Processing.R uses Java Remote Method Invocation(RMI), to solve the performance problem. Processing.R mode creates some long-running processes(`SketchServiceRunner`) to handle the requests from Processing Development Environment(PDE).
+#### `SketchRunner`
 
-### `RLangEditor`
+`SketchRunner` interacts with `Runner` to run the Processing.R sketches. It is the middle layer between `Runner` and `SketchServiceRunner`. 
 
-`RLangEditor` represents the editor in Processing Development Environment(PDE). It consists of the logic about the built-in editor.
+#### `SketchServiceRunner`
 
-### `ModeService` and `SketchServiceManager`
+`SketchServiceRunner` is a standalone process out of the mode. It calls the `main` function in `SketchRunner`.
 
-`ModeService` is the Remote Method Invocation(RMI) interface, which extends `java.rmi.Remote`. `SketchServiceManager` is the class which implements `ModeService`. `RLangMode` creates a `SketchServiceManager` instance when started. `SketchServiceManager` manages all `SketchServiceRunner`s, and `SketchServiceRunner` runs the real logic of Processing.R sketches.
+### PDE MODE
 
-### `SketchServiceRunner`
+Want to understand the Processing Development Environment(PDE) mode? Start with `RLangMode`.
 
-`SketchServiceRunner` is a standalone process out of the mode. It calls `main` function in `SketchRunner`.
+#### `RLangMode`
 
-### `SketchRunner`
+`RLangMode` is the main class for the Processing.R PDE mode. It is accessed through reflection. Processing.R uses Java Remote Method Invocation(RMI), to solve the performance problem. Processing.R mode creates some long-running processes(`SketchServiceRunner`) to handle the requests from Processing Development Environment(PDE).
 
-`SketchRunner` is the middle layer between `SketchServiceRunner` and `Runner`. It interacts with `Runner` to run the Processing.R sketches.
+#### `RLangEditor`
+
+`RLangEditor` is the class that represents the built-in text editor for R mode in the Processing Development Environment(PDE). It extends PDE's `Editor`, builds the mode editor, and initializes all related components, such as a formatter toolbar.
+
+#### `ModeService` and `SketchServiceManager`
+
+`ModeService` is a Remote Method Invocation(RMI) interface, which extends `java.rmi.Remote`. `SketchServiceManager` is the class which implements `ModeService`. `RLangMode` creates a `SketchServiceManager` instance when started. `SketchServiceManager` manages all `SketchServiceRunner`s, and `SketchServiceRunner` runs the real logic of Processing.R sketches.
 
 ## Reference
 
