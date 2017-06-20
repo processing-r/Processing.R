@@ -1,21 +1,13 @@
 package rprocessing.applet;
 
+import org.renjin.script.RenjinScriptEngine;
 import org.renjin.sexp.StringVector;
-
-import processing.core.PApplet;
-import rprocessing.exception.NotFoundException;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
-import javax.script.ScriptException;
 
-import org.renjin.parser.RParser;
-import org.renjin.script.RenjinScriptEngine;
-import org.renjin.sexp.Closure;
-import org.renjin.sexp.ExpressionVector;
-import org.renjin.sexp.FunctionCall;
-import org.renjin.sexp.SEXP;
-import org.renjin.sexp.Symbol;
+import processing.core.PApplet;
+import rprocessing.exception.NotFoundException;
 
 /**
  * BuiltinApplet is the type to refactor the function calls.
