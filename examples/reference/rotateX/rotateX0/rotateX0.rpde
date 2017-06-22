@@ -1,0 +1,12 @@
+P3D <- "processing.opengl.PGraphics3D"
+PI <- pi
+
+settings <- function() {
+    size(100, 100, P3D)
+}
+
+draw <- function() {
+    translate(width/2, height/2)
+    rotateX(PI/3)
+    rect(-26, -26, 52, 52)
+}

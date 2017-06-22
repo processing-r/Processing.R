@@ -1,0 +1,11 @@
+P3D <- "processing.opengl.PGraphics3D"
+
+settings <- function() {
+    size(100, 100, P3D)
+}
+
+draw <- function() {
+    # Translate 30 across, 20 down, and 50 back, or 'away' from the screen.
+    translate(30, 20, -50)
+    rect(0, 0, 55, 55)
+}
