@@ -9,6 +9,7 @@ before_install:
   - .ci/init.sh
 
 install:
+  - sudo apt-get install ant-optional
   - ant info
   - ant try
   - ant package
