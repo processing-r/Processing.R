@@ -23,5 +23,5 @@ generate-build-config ${modes} ${executable} ${core} ${pde}
 
 root=$(dirname "${BASH_SOURCE}")/..
 mkdir -p /home/travis/.ant/lib/
-cp ./lib/test/jacocoant.jar /home/travis/.ant/lib/
+cp ./lib/test/* /home/travis/.ant/lib/
 cd - > /dev/null
