@@ -9,7 +9,7 @@ import test.e2e.core.E2eTestBase;
 public class RotateX0Test extends E2eTestBase {
 
   public RotateX0Test() {
-    coreCodeTemplate = "P3D <- \"processing.opengl.PGraphics3D\"\nPI <- pi\n\nsettings <- function() {\n    size(100, 100, P3D)\n}\n\ndraw <- function() {\n    translate(width/2, height/2)\n    rotateX(PI/3.0)\n    rect(-26, -26, 52, 52)\n    saveFrame(\"%s\")\n    exit()\n}\n";
+    coreCodeTemplate = "P3D <- \"processing.opengl.PGraphics3D\"\nPI <- pi\n\nsettings <- function() {\n    size(100, 100, P3D)\n}\n\ndraw <- function() {\n    translate(width/2, height/2)\n    rotateX(PI/3)\n    rect(-26, -26, 52, 52)\n    saveFrame(\"%s\")\n    exit()\n}\n";
     referenceURI = "https://processing.org/reference/images/rotateX_0.png";
   }
 

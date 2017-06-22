@@ -9,7 +9,7 @@ import test.e2e.core.E2eTestBase;
 public class PushMatrix0Test extends E2eTestBase {
 
   public PushMatrix0Test() {
-    coreCodeTemplate = "fill(255)\nrect(0, 0, 50, 50)  # White rectangle\n\npushMatrix()\ntranslate(30, 20)\nfill(0)  \nrect(0, 0, 50, 50)  # Black rectangle\npopMatrix()\n\nfill(100)  \nrect(15, 10, 50, 50)  # Gray rectangle\n\nsaveFrame(\"%s\")\nexit()\n";
+    coreCodeTemplate = "fill(255)\nrect(0, 0, 50, 50)  # White rectangle\n\npushMatrix()\ntranslate(30, 20)\nfill(0)\nrect(0, 0, 50, 50)  # Black rectangle\npopMatrix()\n\nfill(100)\nrect(15, 10, 50, 50)  # Gray rectangle\n\nsaveFrame(\"%s\")\nexit()\n";
     referenceURI = "https://processing.org/reference/images/pushMatrix_.png";
   }
 

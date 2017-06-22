@@ -9,7 +9,7 @@ import test.e2e.core.E2eTestBase;
 public class Rotate0Test extends E2eTestBase {
 
   public Rotate0Test() {
-    coreCodeTemplate = "PI <- pi\n\ntranslate(width/2, height/2)\nrotate(PI/3.0)\nrect(-26, -26, 52, 52)\n\nsaveFrame(\"%s\")\nexit()\n";
+    coreCodeTemplate = "PI <- pi\n\ntranslate(width/2, height/2)\nrotate(PI/3)\nrect(-26, -26, 52, 52)\n\nsaveFrame(\"%s\")\nexit()\n";
     referenceURI = "https://processing.org/reference/images/rotate_.png";
   }
 

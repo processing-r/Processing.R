@@ -9,7 +9,7 @@ import test.e2e.core.E2eTestBase;
 public class Translate1Test extends E2eTestBase {
 
   public Translate1Test() {
-    coreCodeTemplate = "P3D <- \"processing.opengl.PGraphics3D\"\n\nsettings <- function() {\n    size(100, 100, P3D)\n}\n\ndraw <- function() {\n    # Translate 30 across, 20 down, and\n    # 50 back, or \"away\" from the screen.\n    translate(30, 20, -50)\n    rect(0, 0, 55, 55)\n    saveFrame(\"%s\")\n    exit()\n}\n";
+    coreCodeTemplate = "P3D <- \"processing.opengl.PGraphics3D\"\n\nsettings <- function() {\n    size(100, 100, P3D)\n}\n\ndraw <- function() {\n    # Translate 30 across, 20 down, and 50 back, or 'away' from the screen.\n    translate(30, 20, -50)\n    rect(0, 0, 55, 55)\n    saveFrame(\"%s\")\n    exit()\n}\n";
     referenceURI = "https://processing.org/reference/images/translate_1.png";
   }
 
