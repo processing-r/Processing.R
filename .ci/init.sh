@@ -20,3 +20,7 @@ pde="$HOME/processing/lib/pde.jar"
 
 # Call functions in utils/generator-util.sh
 generate-build-config ${modes} ${executable} ${core} ${pde}
+
+root=$(dirname "${BASH_SOURCE}")/..
+cp ./lib/test/jacocoant.jar /home/travis/.ant/lib/
+cd - > /dev/null
