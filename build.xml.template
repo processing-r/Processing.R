@@ -52,6 +52,12 @@
         </classpath>
     </taskdef>
 
+    <taskdef name="junit" classname="org.apache.tools.ant.taskdefs.optional.junit.JUnitTask">
+        <classpath>
+            <path refid="test-library-classpath" />
+        </classpath>
+    </taskdef>
+
     <target name="info">
         <echo>This is the R mode for Processing, powered by github.com/gaocegege</echo>
     </target>
