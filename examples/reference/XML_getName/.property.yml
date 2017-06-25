@@ -1,6 +1,0 @@
-category: XMLElement
-subcategory: Method
-description: "
-Gets the element's full name, which is returned as a String.
-"
-syntax: ".getName()\n"

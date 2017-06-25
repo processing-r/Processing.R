@@ -1,6 +1,0 @@
-category: XMLElement
-subcategory: Method
-description: "
-Gets a copy of the element's parent.  Returns the parent as another XML object.
-"
-syntax: ".getParent()\n"

@@ -1,6 +1,0 @@
-category: XMLElement
-subcategory: Method
-description: "
-Get the names of all of the element's children, and returns the names as an list of Strings.  This is the same as looping through and calling getName() on each child element individually.
-"
-syntax: ".listChildren()\n"

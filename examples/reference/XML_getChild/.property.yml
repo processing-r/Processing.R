@@ -1,6 +1,0 @@
-category: XMLElement
-subcategory: Method
-description: "
-Returns the first of the element's children that matches the <b>name</b> parameter.  The name or path is a series of elements and sub-elements, separated by slashes.
-"
-syntax: ".getChild(index)\n.getChild(name)\n"
