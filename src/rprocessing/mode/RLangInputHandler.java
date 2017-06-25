@@ -146,7 +146,7 @@ public class RLangInputHandler extends PdeInputHandler {
   private class LineInfo {
     public final int lineNumber;
 
-    // Expressed in units of "python indents", not in number of spaces.
+    // Expressed in units of "R indents", not in number of spaces.
     public final int indent;
 
     // The text content after whatever indent.
