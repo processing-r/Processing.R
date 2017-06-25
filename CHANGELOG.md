@@ -6,8 +6,12 @@
 
 **Closed issues:**
 
+- Write a tech report to introduce the architecture of Processing.R [\#119](https://github.com/gaocegege/Processing.R/issues/119)
+- reference: Can't show functions which have no subcategory [\#117](https://github.com/gaocegege/Processing.R/issues/117)
+- Layout error in documentation [\#112](https://github.com/gaocegege/Processing.R/issues/112)
 - Error when run example/reference [\#106](https://github.com/gaocegege/Processing.R/issues/106)
 - Travis-CI testing and Docker error? [\#101](https://github.com/gaocegege/Processing.R/issues/101)
+- Fail to run in macOS [\#99](https://github.com/gaocegege/Processing.R/issues/99)
 - trigonometry is not in example in PDE [\#96](https://github.com/gaocegege/Processing.R/issues/96)
 - Support description and syntax in reference by .property.yml [\#93](https://github.com/gaocegege/Processing.R/issues/93)
 - Runner.jar blocks although exit is called [\#89](https://github.com/gaocegege/Processing.R/issues/89)
@@ -17,9 +21,19 @@
 - adopt style guide for R code and examples [\#52](https://github.com/gaocegege/Processing.R/issues/52)
 - Package necessary deps when installation [\#43](https://github.com/gaocegege/Processing.R/issues/43)
 - Support more built-in functions  [\#16](https://github.com/gaocegege/Processing.R/issues/16)
+- Add unit test cases into Processing.R [\#10](https://github.com/gaocegege/Processing.R/issues/10)
 
 **Merged pull requests:**
 
+- travis: Fix CI failure [\#129](https://github.com/gaocegege/Processing.R/pull/129) ([gaocegege](https://github.com/gaocegege))
+- reference: Add tranform reference items [\#128](https://github.com/gaocegege/Processing.R/pull/128) ([gaocegege](https://github.com/gaocegege))
+- style: remove useless import [\#127](https://github.com/gaocegege/Processing.R/pull/127) ([hawkingrei](https://github.com/hawkingrei))
+- feat: move the function about mouse to BuiltinApplet [\#126](https://github.com/gaocegege/Processing.R/pull/126) ([hawkingrei](https://github.com/hawkingrei))
+- Add architecture documentation [\#125](https://github.com/gaocegege/Processing.R/pull/125) ([gaocegege](https://github.com/gaocegege))
+- Create CODE\_OF\_CONDUCT.md [\#124](https://github.com/gaocegege/Processing.R/pull/124) ([gaocegege](https://github.com/gaocegege))
+- feat: add mouseX and mouseY [\#122](https://github.com/gaocegege/Processing.R/pull/122) ([hawkingrei](https://github.com/hawkingrei))
+- Feat/add keyword focused [\#121](https://github.com/gaocegege/Processing.R/pull/121) ([hawkingrei](https://github.com/hawkingrei))
+- WIP: Add reference code for `Lights, Camera` [\#115](https://github.com/gaocegege/Processing.R/pull/115) ([gaocegege](https://github.com/gaocegege))
 - README: Add reference [\#113](https://github.com/gaocegege/Processing.R/pull/113) ([gaocegege](https://github.com/gaocegege))
 - Finish shape reference [\#109](https://github.com/gaocegege/Processing.R/pull/109) ([gaocegege](https://github.com/gaocegege))
 - reference: Migrate property from processing.py [\#105](https://github.com/gaocegege/Processing.R/pull/105) ([gaocegege](https://github.com/gaocegege))
