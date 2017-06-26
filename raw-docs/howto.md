@@ -113,7 +113,7 @@ The output is:
 
 The distribution image is available from:
 
--  [gaocegege.com/Processing.R](http://gaocegege.com/Processing.R)
+-  [Processing.R Releases](https://github.com/gaocegege/Processing.R/releases)
 
 ### 4. Docker Image (DEPRECATED)
 
