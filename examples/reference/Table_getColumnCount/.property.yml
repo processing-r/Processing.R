@@ -1,8 +1,0 @@
-category: Table
-subcategory: Method
-description: "
-Returns the total number of columns in a table.
-"
-syntax: "getColumnCount("
-related:
-  - Table_getRowCount

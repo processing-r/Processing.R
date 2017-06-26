@@ -1,9 +1,0 @@
-category: XMLElement
-subcategory: Method
-description: "
-Returns the content of an element. If there is no such content, <b>null</b> is returned.
-"
-syntax: ".getContent()\n.getContent(defaultValue)"
-related:
-  - XML_getIntContent
-  - XML_getFloatContent

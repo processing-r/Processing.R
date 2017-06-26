@@ -1,8 +1,0 @@
-category: Table
-subcategory: Method
-description: "
-Returns the total number of rows in a table.
-"
-syntax: ".getRowCount()"
-related:
-  - Table_getColumnCount

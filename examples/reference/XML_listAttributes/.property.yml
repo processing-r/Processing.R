@@ -1,6 +1,0 @@
-category: XMLElement
-subcategory: Method
-description: "
-Gets all of the specified element's attributes, and returns them as a list of Strings.
-"
-syntax: ".listAttributes()\n"
