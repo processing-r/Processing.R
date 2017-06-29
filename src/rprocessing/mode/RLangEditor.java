@@ -227,21 +227,7 @@ public class RLangEditor extends Editor {
    */
   @Override
   public void handleImportLibrary(String libraryName) {
-    // log("Import " + libraryName);
-    // // make sure the user didn't hide the sketch folder
-    // sketch.ensureExistence();
-    //
-    // Library lib = mode.findLibraryByName(libraryName);
-    // if (lib == null) {
-    // statusError("Unable to locate library: " + libraryName);
-    // return;
-    // }
-    // // could also scan the text in the file to see if each import
-    // // statement is already in there, but if the user has the import
-    // // commented out, then this will be a problem.
-    // StringList list = lib.getImports(); // ask the library for its imports
-    //
-    // sketch.setModified(true);
+    // TODO: Support import specific library.
   }
 
   /**
