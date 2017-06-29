@@ -34,6 +34,7 @@ public class Runner {
   private static final String ARCH;
 
   static {
+    log("Getting the architecture.");
     final int archBits = Integer.parseInt(System.getProperty("sun.arch.data.model"));
     if (PApplet.platform == PConstants.MACOSX) {
       ARCH = "macosx" + archBits;
@@ -61,6 +62,7 @@ public class Runner {
       throw new NotFoundException("The path of your R script is needed as an argument.");
     }
     try {
+      log("Run the runner in Main.");
       sketch = new StandaloneSketch(args);
       runSketchBlocking(sketch, new StreamPrinter(System.out), new StreamPrinter(System.err));
 
@@ -68,7 +70,7 @@ public class Runner {
       // It can't be reproduced, so comment the statement.
       // System.exit(0);
     } catch (final Throwable t) {
-      System.err.println(t);
+      System.err.println("Runner raises an exception: " + t);
       System.exit(-1);
     }
   }
@@ -92,16 +94,14 @@ public class Runner {
     rp.evaluateCoreCode();
 
     final List<File> libDirs = sketch.getLibraryDirectories();
-    LibraryImporter libraryImporter = new LibraryImporter(libDirs, rp.getRenjinEngine());
-
-    final Set<String> libs = new HashSet<>();
-    for (final File dir : libDirs) {
-      searchForExtraStuff(dir, libs);
+    if (libDirs != null) {
+      LibraryImporter libraryImporter = new LibraryImporter(libDirs, rp.getRenjinEngine());
+      final Set<String> libs = new HashSet<>();
+      for (final File dir : libDirs) {
+        searchForExtraStuff(dir, libs);
+      }
+      libraryImporter.loadLibraries(libs);
     }
-    libraryImporter.loadLibraries(libs);
-    // for (final String lib : libs) {
-    // sys.path.insert(0, Py.newString(lib));
-    // }
 
     try {
       // Run Sketch.
