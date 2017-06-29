@@ -1,10 +1,11 @@
 package rprocessing;
 
 import java.io.File;
+import java.util.List;
 
 /**
- *  // Ignore CheckstyleBear (JavadocParagraph)
- * Everything Runner.runSketchBlocking needs to know to be able to run a sketch.
+ * // Ignore CheckstyleBear (JavadocParagraph) Everything Runner.runSketchBlocking needs to know to
+ * be able to run a sketch.
  *
  */
 public interface RunnableSketch {
@@ -40,10 +41,10 @@ public interface RunnableSketch {
   // */
   // public abstract List<File> getPathEntries();
 
-  // /**
-  // * @return Directories to search for Processing libraries
-  // */
-  // public abstract List<File> getLibraryDirectories();
+  /**
+   * @return Directories to search for Processing libraries
+   */
+  public abstract List<File> getLibraryDirectories();
 
   // /**
   // * @return How eagerly we should look for libraries

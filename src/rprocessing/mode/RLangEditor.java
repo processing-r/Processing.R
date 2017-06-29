@@ -226,7 +226,9 @@ public class RLangEditor extends Editor {
    * @see processing.app.ui.Editor#handleImportLibrary(java.lang.String)
    */
   @Override
-  public void handleImportLibrary(String arg0) {}
+  public void handleImportLibrary(String libraryName) {
+    // TODO: Support import specific library.
+  }
 
   /**
    * @see processing.app.ui.Editor#internalCloseRunner()

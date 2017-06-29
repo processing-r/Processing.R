@@ -23,6 +23,7 @@ public class StandaloneSketch implements RunnableSketch {
 
   private final File sketchPath;
   private final String code;
+  private final List<File> libraryDirs;
 
   // private final List<File> libraryDirs;
 
@@ -32,7 +33,7 @@ public class StandaloneSketch implements RunnableSketch {
       return;
     }
     for (final Object o : objs) {
-      System.err.print(String.valueOf(o));
+      System.err.print(StandaloneSketch.class.getSimpleName() + ": " + String.valueOf(o));
     }
     System.err.println();
   }
@@ -52,6 +53,11 @@ public class StandaloneSketch implements RunnableSketch {
       exception.printStackTrace();
     }
     return null;
+  }
+
+  @Override
+  public List<File> getLibraryDirectories() {
+    return libraryDirs;
   }
 
   /**
@@ -96,26 +102,34 @@ public class StandaloneSketch implements RunnableSketch {
     // Read main code in
     this.code = RScriptReader.readText(sketchPath.toPath());
 
-    // populate library directories
+    // TODO: Support library in standalone sketch.
+    this.libraryDirs = null;
     // {
+    // log("Populate library directories.");
     // this.libraryDirs = new ArrayList<>();
-    // final String BUILD_PROPERTIES = "build.properties";
+    // final String buildProperties = "build.properties";
     // final String propsResource;
     // try {
-    // propsResource = URLDecoder.decode(Runner.class.getResource(BUILD_PROPERTIES)
-    // .toString(), "UTF-8");
+    // propsResource =
+    // URLDecoder.decode(Runner.class.getResource(buildProperties).toString(), "UTF-8");
+    // log(propsResource);
     // } catch (final UnsupportedEncodingException e) {
     // throw new RuntimeException("Impossible: " + e);
     // }
     //
-    // final Pattern JAR_RESOURCE = Pattern
-    // .compile("jar:file:(.+?)/processing-py\\.jar!/jycessing/"
-    // + Pattern.quote(BUILD_PROPERTIES));
-    // final Pattern FILE_RESOURCE = Pattern.compile("file:(.+?)/bin/jycessing/"
-    // + Pattern.quote(BUILD_PROPERTIES));
+    // if (propsResource == null) {
+    // log("Could not get build.properties from Runner.");
+    // libraryDirs.add(new File("libraries"));
+    // return;
+    // }
     //
-    // final Matcher jarMatcher = JAR_RESOURCE.matcher(propsResource);
-    // final Matcher fileMatcher = FILE_RESOURCE.matcher(propsResource);
+    // final Pattern jarResource = Pattern
+    // .compile("jar:file:(.+?)/RLangMode\\.jar!/rprocessing/" + Pattern.quote(buildProperties));
+    // final Pattern fileResource =
+    // Pattern.compile("file:(.+?)/bin/rprocessing/" + Pattern.quote(buildProperties));
+    //
+    // final Matcher jarMatcher = jarResource.matcher(propsResource);
+    // final Matcher fileMatcher = fileResource.matcher(propsResource);
     // if (jarMatcher.matches()) {
     // log("We're running from a JAR file.");
     // libraryDirs.add(new File(jarMatcher.group(1), "libraries"));
@@ -147,16 +161,6 @@ public class StandaloneSketch implements RunnableSketch {
     };
   }
 
-  // @Override
-  // public List<File> getLibraryDirectories() {
-  // return libraryDirs;
-  // }
-
-  // @Override
-  // public LibraryPolicy getLibraryPolicy() {
-  // return LibraryPolicy.PROMISCUOUS;
-  // }
-
   @Override
   public String getMainCode() {
     return code;
@@ -166,20 +170,4 @@ public class StandaloneSketch implements RunnableSketch {
   public boolean shouldRun() {
     return true;
   }
-
-  // @Override
-  // public List<File> getPathEntries() {
-  // final List<File> entries = new ArrayList<>();
-  //
-  // // Main sketch folder
-  // entries.add(sketchPath.getParentFile());
-  //
-  // for (final File dir : getLibraryDirectories()) {
-  // // In case the user has added python libraries in their library directories
-  // entries.add(dir);
-  // }
-  //
-  // return entries;
-  // }
-
 }

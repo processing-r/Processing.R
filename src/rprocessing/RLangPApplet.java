@@ -8,12 +8,9 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.concurrent.CountDownLatch;
 
-import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
 import org.renjin.parser.RParser;
-import org.renjin.script.RenjinScriptEngine;
 import org.renjin.sexp.Closure;
 import org.renjin.sexp.ExpressionVector;
 import org.renjin.sexp.FunctionCall;
@@ -310,7 +307,7 @@ public class RLangPApplet extends BuiltinApplet {
     Class closureClass = Closure.class;
     return isSameClass(this.renjinEngine.get(Constant.SIZE_NAME), closureClass);
   }
-  
+
   /**
    * Set Environment variables in R top context.
    */
