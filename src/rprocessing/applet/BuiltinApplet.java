@@ -1,10 +1,10 @@
 package rprocessing.applet;
 
-import org.renjin.script.RenjinScriptEngine;
-import org.renjin.sexp.StringVector;
-
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
+
+import org.renjin.script.RenjinScriptEngine;
+import org.renjin.sexp.StringVector;
 
 import processing.core.PApplet;
 import rprocessing.exception.NotFoundException;
@@ -21,6 +21,10 @@ public class BuiltinApplet extends PApplet {
    */
   /** Engine to interpret R code */
   protected final RenjinScriptEngine renjinEngine;
+
+  public RenjinScriptEngine getRenjinEngine() {
+    return renjinEngine;
+  }
 
   public BuiltinApplet() throws NotFoundException {
     // Create a script engine manager.
@@ -61,7 +65,7 @@ public class BuiltinApplet extends PApplet {
   @Override
   public void focusGained() {
     super.focusGained();
-    this.renjinEngine.put("focused",super.focused);
+    this.renjinEngine.put("focused", super.focused);
   }
 
   /**
@@ -71,7 +75,7 @@ public class BuiltinApplet extends PApplet {
   @Override
   public void focusLost() {
     super.focusLost();
-    this.renjinEngine.put("focused",super.focused);
+    this.renjinEngine.put("focused", super.focused);
   }
 
   @Override
@@ -84,6 +88,6 @@ public class BuiltinApplet extends PApplet {
     this.renjinEngine.put("mouseY", mouseY);
     this.renjinEngine.put("pmouseX", pmouseX);
     this.renjinEngine.put("pmouseY", pmouseY);
-    //this.renjinEngine.put("mouseButton", mouseButton);
+    // this.renjinEngine.put("mouseButton", mouseButton);
   }
 }

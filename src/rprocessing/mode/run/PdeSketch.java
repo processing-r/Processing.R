@@ -6,10 +6,13 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import processing.app.Base;
+import processing.app.Platform;
 import processing.app.Sketch;
 import processing.core.PApplet;
 import rprocessing.RunnableSketch;
 import rprocessing.mode.DisplayType;
+import rprocessing.mode.library.LibraryImporter;
 
 /**
  * A sketch run from the PDE.
@@ -28,8 +31,17 @@ public class PdeSketch implements RunnableSketch, Serializable {
   private final Point location;
   private final LocationType locationType;
   private final DisplayType displayType;
+  private final List<File> libraryDirs;
 
   public final String[] codeFileNames; // unique to PdeSketch - leave as public field?
+
+  private static final boolean VERBOSE = Boolean.parseBoolean(System.getenv("VERBOSE_RLANG_MODE"));
+
+  private static void log(final String msg) {
+    if (VERBOSE) {
+      System.err.println(LibraryImporter.class.getSimpleName() + ": " + msg);
+    }
+  }
 
   public PdeSketch(final Sketch sketch, final File sketchPath, final DisplayType displayType,
       final Point location, final LocationType locationType) {
@@ -48,6 +60,12 @@ public class PdeSketch implements RunnableSketch, Serializable {
       codeFileNames[i] = sketch.getCode(i).getFile().getName();
     }
     this.codeFileNames = codeFileNames;
+
+    final List<File> libraryDirs = new ArrayList<>();
+    libraryDirs.add(Platform.getContentFile("modes/java/libraries"));
+    libraryDirs.add(Base.getSketchbookLibrariesFolder());
+    libraryDirs.add(sketchPath);
+    this.libraryDirs = libraryDirs;
   }
 
   public static enum LocationType {
@@ -62,6 +80,11 @@ public class PdeSketch implements RunnableSketch, Serializable {
   @Override
   public String getMainCode() {
     return mainCode;
+  }
+
+  @Override
+  public List<File> getLibraryDirectories() {
+    return libraryDirs;
   }
 
   @Override
