@@ -193,4 +193,30 @@ vertex = processing$vertex
 
 # Hack
 frameCount = processing$frameCount
+
+# For static functions
+import(rprocessing.RLangPApplet)
+ceil = RLangPApplet$ceil
+constrain = RLangPApplet$constrain
+day = RLangPApplet$day
+hour = RLangPApplet$hour
+degrees = RLangPApplet$degrees
+hex = RLangPApplet$hex
+launch = RLangPApplet$launch
+mag = RLangPApplet$mag
+lerp = RLangPApplet$lerp
+print = RLangPApplet$print
+dist = RLangPApplet$dist
+month = RLangPApplet$month
+minute = RLangPApplet$minute
+norm = RLangPApplet$norm
+pow = RLangPApplet$pow
+second = RLangPApplet$second
+radians = RLangPApplet$radians
+println = RLangPApplet$println
+sq = RLangPApplet$sq
+unbinary = RLangPApplet$unbinary
+unhex = RLangPApplet$unhex
+year = RLangPApplet$year
+map = RLangPApplet$map
 # radians = processing$radians
