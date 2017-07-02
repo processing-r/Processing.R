@@ -219,4 +219,3 @@ unbinary = RLangPApplet$unbinary
 unhex = RLangPApplet$unhex
 year = RLangPApplet$year
 map = RLangPApplet$map
-# radians = processing$radians
