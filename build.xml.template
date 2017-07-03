@@ -30,6 +30,8 @@
     <property name="result.classes.dir" location="${test.build.dir}"/>
     <property name="result.report.dir" location="${test.build.dir}/site/jacoco"/>
     <property name="result.exec.file" location="${test.build.dir}/jacoco.exec"/>
+
+    <property name="renjin-version" value="0.8.2411" />
     
     <!-- Maven deps -->
     <path id="maven-ant-tasks.classpath" path="${build-lib}/maven-ant-tasks-2.1.3.jar" />
@@ -41,6 +43,8 @@
         versionsId="dependency.versions">
         <remoteRepository refid="remote.repository" />
         <dependency groupId="org.renjin.cran" artifactId="foreach" version="1.4.3-b55" />
+        <dependency groupId="org.renjin" artifactId="renjin-script-engine" version="${renjin-version}" />
+        <dependency groupId="org.renjin" artifactId="renjin-cli" version="${renjin-version}" />
     </artifact:dependencies>
     <copy todir="${mode-lib}">
         <fileset refid="dependency.fileset" />
