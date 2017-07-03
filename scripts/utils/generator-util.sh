@@ -30,8 +30,5 @@ function generate-build-config {
   perl -i -pe "s|\@\@executable\@\@|${2}|g" build.xml
   perl -i -pe "s|\@\@core\@\@|${3}|g" build.xml
   perl -i -pe "s|\@\@pde\@\@|${4}|g" build.xml
-
-  # Static path
-  perl -i -pe "s|\@\@renjin\@\@|${renjin}|g" build.xml
   cd - > /dev/null
 }
