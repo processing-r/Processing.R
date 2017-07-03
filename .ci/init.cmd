@@ -22,4 +22,3 @@ perl -i.bak -pe "s|\@\@executable\@\@|%executable%|g" build.xml && del build.xml
 perl -i.bak -pe "s|\@\@processing\@\@|%processing%|g" build.xml && del build.xml.bak
 perl -i.bak -pe "s|\@\@core\@\@|%core%|g" build.xml && del build.xml.bak
 perl -i.bak -pe "s|\@\@pde\@\@|%pde%|g" build.xml && del build.xml.bak
-perl -i.bak -pe "s|\@\@renjin\@\@|%renjin%|g" build.xml && del build.xml.bak
