@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<project name="Processing.R" default="install" basedir="." xmlns:jacoco="antlib:org.jacoco.ant">
+<project name="Processing.R" default="install" basedir="." xmlns:jacoco="antlib:org.jacoco.ant" xmlns:artifact="antlib:org.apache.maven.artifact.ant">
     <property name="mode.name" value="RLangMode" />
 
     <!-- folder to install modes in (probably a folder called "modes" inside your sketchbook folder) -->
@@ -17,6 +17,7 @@
     <property name="try" value="try" />
     <property name="mode-lib" value="lib/mode" />
     <property name="test-lib" value="lib/test" />
+    <property name="build-lib" value="lib/build" />
     <property name="src" value="src" />
     <property name="build" value="build" />
     <property name="bin" value="bin" />
@@ -29,6 +30,27 @@
     <property name="result.classes.dir" location="${test.build.dir}"/>
     <property name="result.report.dir" location="${test.build.dir}/site/jacoco"/>
     <property name="result.exec.file" location="${test.build.dir}/jacoco.exec"/>
+
+    <property name="renjin-version" value="0.8.2411" />
+    
+    <!-- Maven deps -->
+    <path id="maven-ant-tasks.classpath" path="${build-lib}/maven-ant-tasks-2.1.3.jar" />
+    <typedef resource="org/apache/maven/artifact/ant/antlib.xml"
+        uri="antlib:org.apache.maven.artifact.ant"
+        classpathref="maven-ant-tasks.classpath" />
+    <artifact:remoteRepository id="remote.repository" url="https://nexus.bedatadriven.com/content/groups/public/" />
+    <artifact:dependencies filesetId="dependency.fileset"
+        versionsId="dependency.versions">
+        <remoteRepository refid="remote.repository" />
+        <dependency groupId="org.renjin" artifactId="renjin-script-engine" version="${renjin-version}" />
+        <dependency groupId="org.renjin" artifactId="renjin-cli" version="${renjin-version}" />
+    </artifact:dependencies>
+    <copy todir="${mode-lib}">
+        <fileset refid="dependency.fileset" />
+        <mapper classpathref="maven-ant-tasks.classpath"
+            classname="org.apache.maven.artifact.ant.VersionMapper"
+            from="${dependency.versions}" to="flatten" />
+    </copy>
 
     <path id="mode-library-classpath">
         <pathelement location="${processing.classes.pde}"/>
