@@ -1,13 +1,13 @@
 package rprocessing.applet;
 
-import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
-
+import org.renjin.aether.AetherPackageLoader;
+import org.renjin.eval.Session;
+import org.renjin.eval.SessionBuilder;
 import org.renjin.script.RenjinScriptEngine;
+import org.renjin.script.RenjinScriptEngineFactory;
 import org.renjin.sexp.StringVector;
 
 import processing.core.PApplet;
-import rprocessing.exception.NotFoundException;
 
 /**
  * BuiltinApplet is the type to refactor the function calls.
@@ -26,16 +26,11 @@ public class BuiltinApplet extends PApplet {
     return renjinEngine;
   }
 
-  public BuiltinApplet() throws NotFoundException {
-    // Create a script engine manager.
-    ScriptEngineManager manager = new ScriptEngineManager();
-    // Create a Renjin engine.
-    ScriptEngine engine = manager.getEngineByName("Renjin");
-    // Check if the engine has loaded correctly.
-    if (engine == null) {
-      throw new NotFoundException("Renjin Script Engine not found on the classpath.");
-    }
-    this.renjinEngine = (RenjinScriptEngine) engine;
+  public BuiltinApplet() {
+    AetherPackageLoader packageLoader = new AetherPackageLoader();
+    Session session =
+        new SessionBuilder().withDefaultPackages().setPackageLoader(packageLoader).build();
+    this.renjinEngine = new RenjinScriptEngineFactory().getScriptEngine(session);
   }
 
   public void size(double width, double height) {

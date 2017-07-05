@@ -42,7 +42,6 @@
     <artifact:dependencies filesetId="dependency.fileset"
         versionsId="dependency.versions">
         <remoteRepository refid="remote.repository" />
-        <dependency groupId="org.renjin.cran" artifactId="foreach" version="1.4.3-b55" />
         <dependency groupId="org.renjin" artifactId="renjin-script-engine" version="${renjin-version}" />
         <dependency groupId="org.renjin" artifactId="renjin-cli" version="${renjin-version}" />
     </artifact:dependencies>
