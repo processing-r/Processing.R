@@ -59,6 +59,7 @@ public class RSketchError extends Exception {
   }
 
   public static RSketchError toSketchException(Throwable t) {
+    log(t.getClass().toString());
     if (t instanceof RuntimeException && t.getCause() != null) {
       t = t.getCause();
     }
@@ -66,11 +67,17 @@ public class RSketchError extends Exception {
       return (RSketchError) t;
     }
     if (t instanceof EvalException) {
-      final RSketchError e = (RSketchError) t;
+      final RSketchError e = new RSketchError(t.getMessage());
+      log(e.toString());
       return e;
     }
     if (t instanceof ClassCastException) {
       final RSketchError e = (RSketchError) t;
+      return e;
+    }
+    if (t instanceof NullPointerException) {
+      final RSketchError e = (RSketchError) ((NullPointerException) t).getCause();
+      log(e.toString());
       return e;
     }
     log("No exception type detected.");

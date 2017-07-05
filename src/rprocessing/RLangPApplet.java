@@ -142,13 +142,13 @@ public class RLangPApplet extends BuiltinApplet {
     PApplet.runSketch(arguments, this);
     try {
       finishedLatch.await();
-      log("Down");
+      log("RunSketch done.");
     } catch (final InterruptedException interrupted) {
       // Treat an interruption as a request to the applet to terminate.
       exit();
       try {
         finishedLatch.await();
-        log("Down");
+        log("RunSketch interrupted.");
       } catch (final InterruptedException exception) {
         log(exception.toString());
       }
@@ -175,7 +175,9 @@ public class RLangPApplet extends BuiltinApplet {
         surface.setVisible(false);
       }
     }
+    // log(terminalException.toString());
     if (terminalException != null) {
+      log("Throw the exception to PDE.");
       throw terminalException;
     }
   }
@@ -289,6 +291,7 @@ public class RLangPApplet extends BuiltinApplet {
         log("Evaluate the code in static mode.");
       } catch (final Exception exception) {
         log("There is exception when evaluate the code in static mode.");
+        log(exception.toString());
         terminalException = RSketchError.toSketchException(exception);
         exitActual();
       }
