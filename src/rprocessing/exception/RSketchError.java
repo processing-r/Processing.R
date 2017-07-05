@@ -1,5 +1,7 @@
 package rprocessing.exception;
 
+import org.renjin.eval.EvalException;
+
 /**
  * Error type for Processing.R
  * 
@@ -11,6 +13,15 @@ public class RSketchError extends Exception {
   public final String fileName;
   public final int line;
   public final int column;
+
+  private static final boolean VERBOSE = Boolean.parseBoolean(System.getenv("VERBOSE_RLANG_MODE"));
+
+  private static void log(String msg) {
+    if (!VERBOSE) {
+      return;
+    }
+    System.err.println(RSketchError.class.getSimpleName() + ": " + msg);
+  }
 
   public RSketchError(final String message) {
     this(message, null);
@@ -45,5 +56,24 @@ public class RSketchError extends Exception {
       return getMessage() + " at line " + line + " of " + fileName;
     }
     return getMessage() + " at " + line + ":" + column + " in " + fileName;
+  }
+
+  public static RSketchError toSketchException(Throwable t) {
+    if (t instanceof RuntimeException && t.getCause() != null) {
+      t = t.getCause();
+    }
+    if (t instanceof RSketchError) {
+      return (RSketchError) t;
+    }
+    if (t instanceof EvalException) {
+      final RSketchError e = (RSketchError) t;
+      return e;
+    }
+    if (t instanceof ClassCastException) {
+      final RSketchError e = (RSketchError) t;
+      return e;
+    }
+    log("No exception type detected.");
+    return null;
   }
 }

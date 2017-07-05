@@ -7,6 +7,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.script.ScriptException;
+
 import processing.core.PApplet;
 import processing.core.PConstants;
 import rprocessing.exception.NotFoundException;
@@ -89,12 +91,16 @@ public class Runner {
 
     final List<File> libDirs = sketch.getLibraryDirectories();
     if (libDirs != null) {
-      LibraryImporter libraryImporter = new LibraryImporter(libDirs, rp.getRenjinEngine());
-      final Set<String> libs = new HashSet<>();
-      for (final File dir : libDirs) {
-        searchForExtraStuff(dir, libs);
+      try {
+        LibraryImporter libraryImporter = new LibraryImporter(libDirs, rp.getRenjinEngine());
+        final Set<String> libs = new HashSet<>();
+        for (final File dir : libDirs) {
+          searchForExtraStuff(dir, libs);
+        }
+        libraryImporter.injectIntoScope();
+      } catch (ScriptException se) {
+        throw RSketchError.toSketchException(se);
       }
-      libraryImporter.injectIntoScope();
     }
 
     rp.runBlock(args);

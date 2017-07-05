@@ -11,7 +11,6 @@ import java.util.concurrent.CountDownLatch;
 
 import javax.script.ScriptException;
 
-import org.renjin.eval.EvalException;
 import org.renjin.parser.RParser;
 import org.renjin.sexp.Closure;
 import org.renjin.sexp.ExpressionVector;
@@ -88,7 +87,7 @@ public class RLangPApplet extends BuiltinApplet {
     try {
       this.renjinEngine.eval(CORE_TEXT);
     } catch (final ScriptException se) {
-      throw toSketchException(se);
+      throw RSketchError.toSketchException(se);
     }
   }
 
@@ -246,7 +245,7 @@ public class RLangPApplet extends BuiltinApplet {
     Thread.setDefaultUncaughtExceptionHandler(new UncaughtExceptionHandler() {
       @Override
       public void uncaughtException(final Thread t, final Throwable e) {
-        terminalException = toSketchException(e);
+        terminalException = RSketchError.toSketchException(e);
         try {
           log("There is an unexpected exception.");
           handleMethods("dispose");
@@ -290,7 +289,7 @@ public class RLangPApplet extends BuiltinApplet {
         log("Evaluate the code in static mode.");
       } catch (final Exception exception) {
         log("There is exception when evaluate the code in static mode.");
-        terminalException = toSketchException(exception);
+        terminalException = RSketchError.toSketchException(exception);
         exitActual();
       }
     } else if (this.mode == Mode.ACTIVE) {
@@ -370,24 +369,5 @@ public class RLangPApplet extends BuiltinApplet {
   @SuppressWarnings("rawtypes")
   private static boolean isSameClass(Object obj, Class clazz) {
     return obj.getClass().equals(clazz);
-  }
-
-  private static RSketchError toSketchException(Throwable t) {
-    if (t instanceof RuntimeException && t.getCause() != null) {
-      t = t.getCause();
-    }
-    if (t instanceof RSketchError) {
-      return (RSketchError) t;
-    }
-    if (t instanceof EvalException) {
-      final RSketchError e = (RSketchError) t;
-      return e;
-    }
-    if (t instanceof ClassCastException) {
-      final RSketchError e = (RSketchError) t;
-      return e;
-    }
-    log("No exception type detected.");
-    return null;
   }
 }
