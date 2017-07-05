@@ -58,6 +58,7 @@ public class RSketchError extends Exception {
     return getMessage() + " at " + line + ":" + column + " in " + fileName;
   }
 
+  // TODO: Support the line and column.
   public static RSketchError toSketchException(Throwable t) {
     log(t.getClass().toString());
     if (t instanceof RuntimeException && t.getCause() != null) {
@@ -81,6 +82,7 @@ public class RSketchError extends Exception {
       return e;
     }
     log("No exception type detected.");
-    return null;
+    final RSketchError e = new RSketchError(t.getMessage());
+    return e;
   }
 }
