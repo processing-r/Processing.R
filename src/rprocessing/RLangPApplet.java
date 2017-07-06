@@ -4,6 +4,7 @@ import java.awt.Component;
 import java.awt.Window;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.lang.Thread.UncaughtExceptionHandler;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.concurrent.CountDownLatch;
@@ -27,6 +28,7 @@ import processing.javafx.PSurfaceFX;
 import processing.opengl.PSurfaceJOGL;
 import rprocessing.applet.BuiltinApplet;
 import rprocessing.exception.NotFoundException;
+import rprocessing.exception.RSketchError;
 import rprocessing.util.Constant;
 import rprocessing.util.Printer;
 import rprocessing.util.RScriptReader;
@@ -55,6 +57,8 @@ public class RLangPApplet extends BuiltinApplet {
 
   private final CountDownLatch finishedLatch = new CountDownLatch(1);
 
+  private RSketchError terminalException = null;
+
   /**
    * Mode for Processing.
    * 
@@ -79,8 +83,12 @@ public class RLangPApplet extends BuiltinApplet {
     this.mode = this.detectMode();
   }
 
-  public void evaluateCoreCode() throws ScriptException {
-    this.renjinEngine.eval(CORE_TEXT);
+  public void evaluateCoreCode() throws RSketchError {
+    try {
+      this.renjinEngine.eval(CORE_TEXT);
+    } catch (final ScriptException se) {
+      throw RSketchError.toSketchException(se);
+    }
   }
 
   /**
@@ -129,18 +137,18 @@ public class RLangPApplet extends BuiltinApplet {
     this.renjinEngine.put("stdout", stdout);
   }
 
-  public void runBlock(final String[] arguments) {
+  public void runBlock(final String[] arguments) throws RSketchError {
     log("runBlock");
     PApplet.runSketch(arguments, this);
     try {
       finishedLatch.await();
-      log("Down");
+      log("RunSketch done.");
     } catch (final InterruptedException interrupted) {
       // Treat an interruption as a request to the applet to terminate.
       exit();
       try {
         finishedLatch.await();
-        log("Down");
+        log("RunSketch interrupted.");
       } catch (final InterruptedException exception) {
         log(exception.toString());
       }
@@ -167,9 +175,11 @@ public class RLangPApplet extends BuiltinApplet {
         surface.setVisible(false);
       }
     }
-    // if (terminalException != null) {
-    // throw terminalException;
-    // }
+    // log(terminalException.toString());
+    if (terminalException != null) {
+      log("Throw the exception to PDE.");
+      throw terminalException;
+    }
   }
 
   private static void macosxFullScreenToggle(final Window window) {
@@ -228,6 +238,29 @@ public class RLangPApplet extends BuiltinApplet {
   }
 
   /**
+   * @see processing.core.PApplet#start()
+   */
+  @Override
+  public void start() {
+    // I want to quit on runtime exceptions.
+    // Processing just sits there by default.
+    Thread.setDefaultUncaughtExceptionHandler(new UncaughtExceptionHandler() {
+      @Override
+      public void uncaughtException(final Thread t, final Throwable e) {
+        terminalException = RSketchError.toSketchException(e);
+        try {
+          log("There is an unexpected exception.");
+          handleMethods("dispose");
+        } catch (final Exception noop) {
+          // give up
+        }
+        finishedLatch.countDown();
+      }
+    });
+    super.start();
+  }
+
+  /**
    * @see processing.core.PApplet#settings()
    */
   @Override
@@ -253,9 +286,14 @@ public class RLangPApplet extends BuiltinApplet {
     wrapProcessingVariables();
     if (this.mode == Mode.STATIC) {
       try {
+        log("The mode is static, run the program directly.");
         this.renjinEngine.eval(this.programText);
-      } catch (ScriptException exception) {
+        log("Evaluate the code in static mode.");
+      } catch (final Exception exception) {
+        log("There is exception when evaluate the code in static mode.");
         log(exception.toString());
+        terminalException = RSketchError.toSketchException(exception);
+        exitActual();
       }
     } else if (this.mode == Mode.ACTIVE) {
       Object obj = this.renjinEngine.get(Constant.SETUP_NAME);
@@ -265,6 +303,7 @@ public class RLangPApplet extends BuiltinApplet {
     } else {
       System.out.println("The program is in mix mode now.");
     }
+    log("Setup done");
   }
 
   /**

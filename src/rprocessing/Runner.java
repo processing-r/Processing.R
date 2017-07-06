@@ -9,12 +9,10 @@ import java.util.Set;
 
 import javax.script.ScriptException;
 
-import org.renjin.eval.EvalException;
-
 import processing.core.PApplet;
 import processing.core.PConstants;
 import rprocessing.exception.NotFoundException;
-import rprocessing.exception.REvalException;
+import rprocessing.exception.RSketchError;
 import rprocessing.lancher.StandaloneSketch;
 import rprocessing.mode.library.LibraryImporter;
 import rprocessing.util.Printer;
@@ -76,15 +74,13 @@ public class Runner {
   }
 
   public static synchronized void runSketchBlocking(final RunnableSketch sketch,
-      final Printer stdout, final Printer stderr)
-      throws REvalException, NotFoundException, ScriptException {
+      final Printer stdout, final Printer stderr) throws NotFoundException, RSketchError {
     runSketchBlocking(sketch, stdout, stderr, null);
   }
 
   public static synchronized void runSketchBlocking(final RunnableSketch sketch,
       final Printer stdout, final Printer stderr,
-      final SketchPositionListener sketchPositionListener)
-      throws REvalException, NotFoundException, ScriptException {
+      final SketchPositionListener sketchPositionListener) throws NotFoundException, RSketchError {
     final String[] args = sketch.getPAppletArguments();
 
     log("Tring to initialize RLangPApplet.");
@@ -95,21 +91,19 @@ public class Runner {
 
     final List<File> libDirs = sketch.getLibraryDirectories();
     if (libDirs != null) {
-      LibraryImporter libraryImporter = new LibraryImporter(libDirs, rp.getRenjinEngine());
-      final Set<String> libs = new HashSet<>();
-      for (final File dir : libDirs) {
-        searchForExtraStuff(dir, libs);
+      try {
+        LibraryImporter libraryImporter = new LibraryImporter(libDirs, rp.getRenjinEngine());
+        final Set<String> libs = new HashSet<>();
+        for (final File dir : libDirs) {
+          searchForExtraStuff(dir, libs);
+        }
+        libraryImporter.injectIntoScope();
+      } catch (ScriptException se) {
+        throw RSketchError.toSketchException(se);
       }
-      libraryImporter.injectIntoScope();
     }
 
-    try {
-      // Run Sketch.
-      rp.runBlock(args);
-      log("Down");
-    } catch (EvalException ee) {
-      throw new REvalException(ee.getMessage());
-    }
+    rp.runBlock(args);
   }
 
   /**
