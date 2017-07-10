@@ -8,13 +8,14 @@ import org.renjin.script.RenjinScriptEngineFactory;
 import org.renjin.sexp.StringVector;
 
 import processing.core.PApplet;
+import processing.core.PConstants;
 
 /**
  * BuiltinApplet is the type to refactor the function calls.
  * 
  * @author github.com/gaocegege
  */
-public class BuiltinApplet extends PApplet {
+public class BuiltinApplet extends PApplet implements PConstants {
 
   /*
    * TODO: Check for the cast.
