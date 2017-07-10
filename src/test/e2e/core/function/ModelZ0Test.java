@@ -9,7 +9,7 @@ import test.e2e.core.E2eTestBase;
 public class ModelZ0Test extends E2eTestBase {
 
   public ModelZ0Test() {
-    coreCodeTemplate = "P3D <- \"processing.opengl.PGraphics3D\"\n\nsettings <- function() {\n    size(100, 100, P3D)\n}\n\ndraw <- function() {\n    background(0)\n    noStroke()\n    directionalLight(153, 153, 153, 0.5, 0, -1)\n    ambientLight(153, 102, 0)\n    ambient(51, 26, 0)\n    translate(70, 50, 0)\n    sphere(30)\n    saveFrame(\"%s\")\n    exit()\n}\n";
+    coreCodeTemplate = "settings <- function() {\n    size(100, 100, P3D)\n}\n\ndraw <- function() {\n    background(0)\n    noStroke()\n    directionalLight(153, 153, 153, 0.5, 0, -1)\n    ambientLight(153, 102, 0)\n    ambient(51, 26, 0)\n    translate(70, 50, 0)\n    sphere(30)\n    saveFrame(\"%s\")\n    exit()\n}\n";
     referenceURI = "http://py.processing.org/reference/imgs/modelZ0.png";
   }
 

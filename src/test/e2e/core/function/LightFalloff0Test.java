@@ -9,7 +9,7 @@ import test.e2e.core.E2eTestBase;
 public class LightFalloff0Test extends E2eTestBase {
 
   public LightFalloff0Test() {
-    coreCodeTemplate = "P3D <- \"processing.opengl.PGraphics3D\"\nCLOSE <- as.integer(2)\n\nsettings <- function() {\n    size(100, 100, P3D)\n}\n\ndraw <- function() {\n    noStroke()\n    background(0)\n    lightFalloff(1, 0.001, 0)\n    pointLight(150, 250, 150, 50, 50, 50)\n    beginShape()\n    vertex(0, 0, 0)\n    vertex(100, 0, -100)\n    vertex(100, 100, -100)\n    vertex(0, 100, 0)\n    endShape(CLOSE)\n    saveFrame(\"%s\")\n    exit()\n}\n";
+    coreCodeTemplate = "CLOSE <- as.integer(2)\n\nsettings <- function() {\n    size(100, 100, P3D)\n}\n\ndraw <- function() {\n    noStroke()\n    background(0)\n    lightFalloff(1, 0.001, 0)\n    pointLight(150, 250, 150, 50, 50, 50)\n    beginShape()\n    vertex(0, 0, 0)\n    vertex(100, 0, -100)\n    vertex(100, 100, -100)\n    vertex(0, 100, 0)\n    endShape(CLOSE)\n    saveFrame(\"%s\")\n    exit()\n}\n";
     referenceURI = "https://processing.org/reference/images/lightFalloff_.png";
   }
 

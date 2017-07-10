@@ -9,7 +9,7 @@ import test.e2e.core.E2eTestBase;
 public class Box1Test extends E2eTestBase {
 
   public Box1Test() {
-    coreCodeTemplate = "# box 1 https://processing.org/reference/box_.html\n\nP3D <- \"processing.opengl.PGraphics3D\"\n\nsettings <- function() {\n    size(100, 100, P3D)\n}\n\nsetup <- function() {\n    noLoop()\n}\n\ndraw <- function() {\n    translate(58, 48, 0)\n    rotateY(0.5)\n    noFill()\n    box(40)\n    saveFrame(\"%s\")\n    exit()\n}\n";
+    coreCodeTemplate = "# box 1 https://processing.org/reference/box_.html\n\nsettings <- function() {\n    size(100, 100, P3D)\n}\n\nsetup <- function() {\n    noLoop()\n}\n\ndraw <- function() {\n    translate(58, 48, 0)\n    rotateY(0.5)\n    noFill()\n    box(40)\n    saveFrame(\"%s\")\n    exit()\n}\n";
     referenceURI = "https://processing.org/reference/images/box_0.png";
   }
 

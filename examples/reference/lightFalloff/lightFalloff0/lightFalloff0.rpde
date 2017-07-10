@@ -1,4 +1,3 @@
-P3D <- "processing.opengl.PGraphics3D"
 CLOSE <- as.integer(2)
 
 settings <- function() {

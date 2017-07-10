@@ -1,4 +1,3 @@
-P3D <- "processing.opengl.PGraphics3D"
 PI <- pi
 
 settings <- function() {

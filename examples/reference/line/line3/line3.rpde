@@ -2,8 +2,6 @@
 
 # Drawing lines in 3D requires P3D as a parameter to size()
 
-P3D <- "processing.opengl.PGraphics3D"
-
 settings <- function() {
     size(100, 100, P3D)
 }
