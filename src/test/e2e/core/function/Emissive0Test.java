@@ -9,7 +9,7 @@ import test.e2e.core.E2eTestBase;
 public class Emissive0Test extends E2eTestBase {
 
   public Emissive0Test() {
-    coreCodeTemplate = "P3D <- \"processing.opengl.PGraphics3D\"\n\nsettings <- function() {\n    size(100, 100, P3D)\n}\n\ndraw <- function() {\n    background(0)\n    noStroke()\n    background(0)\n    directionalLight(204, 204, 204, 0.5, 0, -1)\n    emissive(0, 26, 51)\n    translate(70, 50, 0)\n    sphere(30)\n    saveFrame(\"%s\")\n    exit()\n}\n";
+    coreCodeTemplate = "settings <- function() {\n    size(100, 100, P3D)\n}\n\ndraw <- function() {\n    background(0)\n    noStroke()\n    background(0)\n    directionalLight(204, 204, 204, 0.5, 0, -1)\n    emissive(0, 26, 51)\n    translate(70, 50, 0)\n    sphere(30)\n    saveFrame(\"%s\")\n    exit()\n}\n";
     referenceURI = "https://processing.org/reference/images/emissive_.png";
   }
 

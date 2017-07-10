@@ -1,8 +1,6 @@
 # curveTightness 1x -- original fails on map, mouseX
 # https://processing.org/reference/curveTightness_.html
 
-P3D <- "processing.opengl.PGraphics3D"
-
 settings <- function() {
     size(100, 100, P3D)
 }

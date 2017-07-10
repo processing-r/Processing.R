@@ -9,7 +9,7 @@ import test.e2e.core.E2eTestBase;
 public class Scale2Test extends E2eTestBase {
 
   public Scale2Test() {
-    coreCodeTemplate = "P3D <- \"processing.opengl.PGraphics3D\"\n\nsettings <- function() {\n    size(100, 100, P3D)\n}\n\ndraw <- function() {\n    noFill()\n    translate(width/2 + 12, height/2)\n    box(20, 20, 20)\n    scale(2.5, 2.5, 2.5)\n    box(20, 20, 20)\n    saveFrame(\"%s\")\n    exit()\n}\n";
+    coreCodeTemplate = "settings <- function() {\n    size(100, 100, P3D)\n}\n\ndraw <- function() {\n    noFill()\n    translate(width/2 + 12, height/2)\n    box(20, 20, 20)\n    scale(2.5, 2.5, 2.5)\n    box(20, 20, 20)\n    saveFrame(\"%s\")\n    exit()\n}\n";
     referenceURI = "https://processing.org/reference/images/scale_2.png";
   }
 

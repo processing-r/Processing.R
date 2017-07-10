@@ -219,3 +219,13 @@ unbinary = RLangPApplet$unbinary
 unhex = RLangPApplet$unhex
 year = RLangPApplet$year
 map = RLangPApplet$map
+
+# For built-in constants
+JAVA2D = RLangPApplet$JAVA2D
+P2D = RLangPApplet$P2D
+P3D = RLangPApplet$P3D
+OPENGL = RLangPApplet$P3D
+FX2D = RLangPApplet$FX2D
+PDF = RLangPApplet$PDF
+SVG = RLangPApplet$SVG
+DXF = RLangPApplet$DXF

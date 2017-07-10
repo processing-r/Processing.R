@@ -9,7 +9,7 @@ import test.e2e.core.E2eTestBase;
 public class Shininess0Test extends E2eTestBase {
 
   public Shininess0Test() {
-    coreCodeTemplate = "P3D <- \"processing.opengl.PGraphics3D\"\n\nsettings <- function() {\n    size(100, 100, P3D)\n}\n\ndraw <- function() {\n    background(0)\n    noStroke()\n    background(0)\n    fill(0, 51, 102)\n    ambientLight(102, 102, 102)\n    lightSpecular(204, 204, 204)\n    directionalLight(102, 102, 102, 0, 0, -1)\n    specular(255, 255, 255)\n    translate(30, 50, 0)\n    shininess(1)\n    sphere(20)  # Left sphere\n    translate(40, 0, 0)\n    shininess(5)\n    sphere(20)  # Right sphere\n    saveFrame(\"%s\")\n    exit()\n}\n";
+    coreCodeTemplate = "settings <- function() {\n    size(100, 100, P3D)\n}\n\ndraw <- function() {\n    background(0)\n    noStroke()\n    background(0)\n    fill(0, 51, 102)\n    ambientLight(102, 102, 102)\n    lightSpecular(204, 204, 204)\n    directionalLight(102, 102, 102, 0, 0, -1)\n    specular(255, 255, 255)\n    translate(30, 50, 0)\n    shininess(1)\n    sphere(20)  # Left sphere\n    translate(40, 0, 0)\n    shininess(5)\n    sphere(20)  # Right sphere\n    saveFrame(\"%s\")\n    exit()\n}\n";
     referenceURI = "https://processing.org/reference/images/shininess_.png";
   }
 

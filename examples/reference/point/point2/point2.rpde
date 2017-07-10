@@ -1,6 +1,5 @@
 # point 2 https://processing.org/reference/point_.html
 
-P3D <- "processing.opengl.PGraphics3D"
 settings <- function() {
     size(100, 100, P3D)
 }
