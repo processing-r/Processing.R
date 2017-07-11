@@ -32,8 +32,6 @@ public class BuiltinApplet extends PApplet implements PConstants {
     Session session =
         new SessionBuilder().withDefaultPackages().setPackageLoader(packageLoader).build();
     this.renjinEngine = new RenjinScriptEngineFactory().getScriptEngine(session);
-    this.renjinEngine.put("key", "0");
-    this.renjinEngine.put("keyCode", 0);
   }
 
   public void size(double width, double height) {
