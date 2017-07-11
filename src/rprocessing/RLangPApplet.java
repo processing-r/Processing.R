@@ -135,6 +135,8 @@ public class RLangPApplet extends BuiltinApplet {
     // This is a trick to be deprecated. It is used to print
     // messages in Processing app console by stdout$print(msg).
     this.renjinEngine.put("stdout", stdout);
+    this.renjinEngine.put("key", "0");
+    this.renjinEngine.put("keyCode", 0);
   }
 
   public void runBlock(final String[] arguments) throws RSketchError {

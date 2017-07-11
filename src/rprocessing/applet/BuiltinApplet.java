@@ -54,6 +54,31 @@ public class BuiltinApplet extends PApplet implements PConstants {
     return PI;
   }
 
+  @Override
+  public void mouseClicked() {
+    wrapMouseVariables();
+  }
+
+  @Override
+  public void mouseMoved() {
+    wrapMouseVariables();
+  }
+
+  @Override
+  public void mousePressed() {
+    wrapMouseVariables();
+  }
+
+  @Override
+  public void mouseReleased() {
+    wrapMouseVariables();
+  }
+
+  @Override
+  public void mouseDragged() {
+    wrapMouseVariables();
+  }
+
   /**
    *
    * @see processing.core.PApplet#focusGained()
@@ -74,16 +99,42 @@ public class BuiltinApplet extends PApplet implements PConstants {
     this.renjinEngine.put("focused", super.focused);
   }
 
-  @Override
-  public void mouseMoved() {
-    wrapMouseVariables();
-  }
-
   protected void wrapMouseVariables() {
     this.renjinEngine.put("mouseX", mouseX);
     this.renjinEngine.put("mouseY", mouseY);
     this.renjinEngine.put("pmouseX", pmouseX);
     this.renjinEngine.put("pmouseY", pmouseY);
     // this.renjinEngine.put("mouseButton", mouseButton);
+  }
+
+  @Override
+  public void keyPressed() {
+    wrapKeyVariables();
+  }
+
+  @Override
+  public void keyReleased() {
+    wrapKeyVariables();
+  }
+
+  @Override
+  public void keyTyped() {
+    wrapKeyVariables();
+  }
+
+  private char lastKey = Character.MIN_VALUE;
+
+  protected void wrapKeyVariables() {
+    if (lastKey != key) {
+      lastKey = key;
+      /*
+       * If key is "CODED", i.e., an arrow key or other non-printable, pass that
+       * value through as-is. If it's printable, convert it to a unicode string,
+       * so that the user can compare key == 'x' instead of key == ord('x').
+       */
+      final char pyKey = key == CODED ? parseChar(Integer.valueOf(key)) : parseChar(key);
+      this.renjinEngine.put("key", pyKey);
+    }
+    this.renjinEngine.put("keyCode", keyCode);
   }
 }
