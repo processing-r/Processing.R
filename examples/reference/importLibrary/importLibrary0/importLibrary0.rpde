@@ -10,8 +10,8 @@ setup <- function() {
 }
 
 draw <- function() {
-    rotateX(-.5)
-    rotateY(-.5)
+    rotateX(-0.5)
+    rotateY(-0.5)
     background(0)
     fill(255, 0, 0)
     box(30)
