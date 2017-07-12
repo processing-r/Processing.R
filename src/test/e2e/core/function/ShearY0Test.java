@@ -9,7 +9,7 @@ import test.e2e.core.E2eTestBase;
 public class ShearY0Test extends E2eTestBase {
 
   public ShearY0Test() {
-    coreCodeTemplate = "PI <- pi\n\nsettings <- function() {\n    size(100, 100)\n}\n\ndraw <- function() {\n    translate(width/4, height/4)\n    shearX(PI/4)\n    rect(0, 0, 30, 30)\n    saveFrame(\"%s\")\n    exit()\n}\n";
+    coreCodeTemplate = "settings <- function() {\n    size(100, 100)\n}\n\ndraw <- function() {\n    translate(width/4, height/4)\n    shearX(PI/4)\n    rect(0, 0, 30, 30)\n    saveFrame(\"%s\")\n    exit()\n}\n";
     referenceURI = "https://processing.org/reference/images/shearY_.png";
   }
 

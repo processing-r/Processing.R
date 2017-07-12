@@ -1,6 +1,3 @@
-CENTER <- as.integer(3)
-CORNER <- as.integer(0)
-
 setup <- function() {
     size(100, 100)
     bot = loadShape("https://raw.githubusercontent.com/processing/processing-docs/master/content/examples/Basics/Shape/LoadDisplaySVG/data/bot1.svg")

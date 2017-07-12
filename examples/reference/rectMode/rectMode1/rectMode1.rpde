@@ -1,6 +1,3 @@
-RADIUS <- as.integer(2)
-CENTER <- as.integer(3)
-
 rectMode(RADIUS)  # Set rectMode to RADIUS
 fill(255)  # Set fill to white
 rect(50, 50, 30, 30)  # Draw white rect using RADIUS mode

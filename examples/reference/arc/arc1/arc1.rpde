@@ -1,11 +1,5 @@
 # arc 1 https://processing.org/reference/arc_.html
 
-# TODO: replace with built-in constants
-PI <- 3.1415
-HALF_PI <- PI/2
-QUARTER_PI <- PI/4
-TWO_PI <- PI * 2
-
 arc(50, 55, 50, 50, 0, HALF_PI)
 noFill()
 arc(50, 55, 60, 60, HALF_PI, PI)

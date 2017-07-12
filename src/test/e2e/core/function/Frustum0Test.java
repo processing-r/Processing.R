@@ -9,7 +9,7 @@ import test.e2e.core.E2eTestBase;
 public class Frustum0Test extends E2eTestBase {
 
   public Frustum0Test() {
-    coreCodeTemplate = "PI <- pi\n\nsettings <- function() {\n    size(100, 100, P3D)\n}\n\ndraw <- function() {\n    noFill()\n    background(204)\n    frustum(-10, 0, 0, 10, 10, 200)\n    rotateY(PI/6)\n    box(45)\n    saveFrame(\"%s\")\n    exit()\n}\n";
+    coreCodeTemplate = "settings <- function() {\n    size(100, 100, P3D)\n}\n\ndraw <- function() {\n    noFill()\n    background(204)\n    frustum(-10, 0, 0, 10, 10, 200)\n    rotateY(PI/6)\n    box(45)\n    saveFrame(\"%s\")\n    exit()\n}\n";
     referenceURI = "https://processing.org/reference/images/frustum_.png";
   }
 

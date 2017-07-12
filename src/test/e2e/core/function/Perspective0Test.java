@@ -9,7 +9,7 @@ import test.e2e.core.E2eTestBase;
 public class Perspective0Test extends E2eTestBase {
 
   public Perspective0Test() {
-    coreCodeTemplate = "PI <- pi\n\nsettings <- function() {\n    size(100, 100, P3D)\n}\n\ndraw <- function() {\n    noFill()\n    fov = PI/3\n    cameraZ = (height/2)/tan(fov/2)\n    perspective(fov, width/height, cameraZ/10, cameraZ * 10)\n    translate(50, 50, 0)\n    rotateX(-PI/6)\n    rotateY(PI/3)\n    box(45)\n    saveFrame(\"%s\")\n    exit()\n}\n";
+    coreCodeTemplate = "settings <- function() {\n    size(100, 100, P3D)\n}\n\ndraw <- function() {\n    noFill()\n    fov = PI/3\n    cameraZ = (height/2)/tan(fov/2)\n    perspective(fov, width/height, cameraZ/10, cameraZ * 10)\n    translate(50, 50, 0)\n    rotateX(-PI/6)\n    rotateY(PI/3)\n    box(45)\n    saveFrame(\"%s\")\n    exit()\n}\n";
     referenceURI = "https://processing.org/reference/images/perspective_.png";
   }
 

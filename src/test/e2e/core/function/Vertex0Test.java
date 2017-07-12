@@ -9,7 +9,7 @@ import test.e2e.core.E2eTestBase;
 public class Vertex0Test extends E2eTestBase {
 
   public Vertex0Test() {
-    coreCodeTemplate = "POINTS <- as.integer(3)\n\nbeginShape(POINTS)\nvertex(30, 20)\nvertex(85, 20)\nvertex(85, 75)\nvertex(30, 75)\nendShape()\n\nsaveFrame(\"%s\")\nexit()\n";
+    coreCodeTemplate = "beginShape(POINTS)\nvertex(30, 20)\nvertex(85, 20)\nvertex(85, 75)\nvertex(30, 75)\nendShape()\n\nsaveFrame(\"%s\")\nexit()\n";
     referenceURI = "https://processing.org/reference/images/vertex_0.png";
   }
 
