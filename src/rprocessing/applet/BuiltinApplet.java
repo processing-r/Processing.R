@@ -42,6 +42,26 @@ public class BuiltinApplet extends PApplet implements PConstants {
     super.size((int) width, (int) height, renderer.asString());
   }
 
+  public void bezierDetail(double detail) {
+    super.bezierDetail((int) detail);
+  }
+
+  public void colorMode(double mode) {
+    super.colorMode((int) mode);
+  }
+
+  public void colorMode(double mode, float max) {
+    super.colorMode((int) mode, max);
+  }
+
+  public void colorMode(double mode, float max1, float max2, float max3) {
+    super.colorMode((int) mode, max1, max2, max3);
+  }
+
+  public void colorMode(double mode, float max1, float max2, float max3, float maxA) {
+    super.colorMode((int) mode, max1, max2, max3, maxA);
+  }
+
   public double frameCount() {
     return super.frameCount;
   }
@@ -128,9 +148,9 @@ public class BuiltinApplet extends PApplet implements PConstants {
     if (lastKey != key) {
       lastKey = key;
       /*
-       * If key is "CODED", i.e., an arrow key or other non-printable, pass that
-       * value through as-is. If it's printable, convert it to a unicode string,
-       * so that the user can compare key == 'x' instead of key == ord('x').
+       * If key is "CODED", i.e., an arrow key or other non-printable, pass that value through
+       * as-is. If it's printable, convert it to a unicode string, so that the user can compare key
+       * == 'x' instead of key == ord('x').
        */
       final char pyKey = key == CODED ? parseChar(Integer.valueOf(key)) : parseChar(key);
       this.renjinEngine.put("key", pyKey);
