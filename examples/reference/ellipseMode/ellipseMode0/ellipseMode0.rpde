@@ -1,6 +1,3 @@
-RADIUS <- as.integer(2)
-CENTER <- as.integer(3)
-
 ellipseMode(RADIUS)  # Set ellipseMode to RADIUS
 fill(255)  # Set fill to white
 ellipse(50, 50, 30, 30)  # Draw white ellipse using RADIUS mode

@@ -1,5 +1,3 @@
-POINTS <- as.integer(3)
-
 beginShape(POINTS)
 vertex(30, 20)
 vertex(85, 20)

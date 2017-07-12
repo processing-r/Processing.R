@@ -9,7 +9,7 @@ import test.e2e.core.E2eTestBase;
 public class RectMode0Test extends E2eTestBase {
 
   public RectMode0Test() {
-    coreCodeTemplate = "CORNERS <- as.integer(1)\nCORNER <- as.integer(0)\n\nrectMode(CORNER)  # Default rectMode is CORNER\nfill(255)  # Set fill to white\nrect(25, 25, 50, 50)  # Draw white rect using CORNER mode\n\nrectMode(CORNERS)  # Set rectMode to CORNERS\nfill(100)  # Set fill to gray\nrect(25, 25, 50, 50)  # Draw gray rect using CORNERS mode\n\nsaveFrame(\"%s\")\nexit()\n";
+    coreCodeTemplate = "rectMode(CORNER)  # Default rectMode is CORNER\nfill(255)  # Set fill to white\nrect(25, 25, 50, 50)  # Draw white rect using CORNER mode\n\nrectMode(CORNERS)  # Set rectMode to CORNERS\nfill(100)  # Set fill to gray\nrect(25, 25, 50, 50)  # Draw gray rect using CORNERS mode\n\nsaveFrame(\"%s\")\nexit()\n";
     referenceURI = "https://processing.org/reference/images/rectMode_0.png";
   }
 

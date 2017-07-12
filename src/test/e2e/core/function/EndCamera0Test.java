@@ -9,7 +9,7 @@ import test.e2e.core.E2eTestBase;
 public class EndCamera0Test extends E2eTestBase {
 
   public EndCamera0Test() {
-    coreCodeTemplate = "PI <- pi\n\nsettings <- function() {\n    size(100, 100, P3D)\n}\n\ndraw <- function() {\n    noFill()\n    \n    beginCamera()\n    camera()\n    rotateX(-PI/6)\n    endCamera()\n    \n    translate(50, 50, 0)\n    rotateY(PI/3)\n    box(45)\n    saveFrame(\"%s\")\n    exit()\n}\n";
+    coreCodeTemplate = "settings <- function() {\n    size(100, 100, P3D)\n}\n\ndraw <- function() {\n    noFill()\n    \n    beginCamera()\n    camera()\n    rotateX(-PI/6)\n    endCamera()\n    \n    translate(50, 50, 0)\n    rotateY(PI/3)\n    box(45)\n    saveFrame(\"%s\")\n    exit()\n}\n";
     referenceURI = "https://processing.org/reference/images/endCamera_.png";
   }
 

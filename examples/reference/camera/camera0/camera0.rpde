@@ -1,5 +1,3 @@
-PI <- pi
-
 settings <- function() {
     size(100, 100, P3D)
 }
