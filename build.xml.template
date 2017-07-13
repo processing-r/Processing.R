@@ -67,6 +67,10 @@
         <condition property="isLinux" value="true">
             <os family="unix" />
         </condition>
+
+        <condition property="isLinux" value="false">
+            <os family="mac" />
+        </condition>
     </target>
 
     <target name="dep" depends="checkos" if="isLinux">
