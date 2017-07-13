@@ -1,4 +1,5 @@
 settings <- function() {
+    # Please install the peasycam before you run the example.
     importLibrary("peasycam")
     size(200, 200, P3D)
 }
