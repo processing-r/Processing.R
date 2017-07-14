@@ -64,8 +64,15 @@
             <os family="windows" />
         </condition>
 
+        <condition property="isMacOS" value="true">
+            <os family="mac" />
+        </condition>
+
         <condition property="isLinux" value="true">
-            <os family="unix" />
+            <and>
+                <isfalse value="${isMacOS}" />
+                <os family="unix" />
+            </and>
         </condition>
     </target>
 
