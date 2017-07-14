@@ -1,124 +1,31 @@
 # HOWTO
 
-## Installation
+The mode could be downloaded from [Processing.R Release Page](https://github.com/gaocegege/Processing.R/releases)
 
-Processing.R is available for the Processing Development Environment (PDE) or stand-alone. It is available in these forms:
+After you download the mode, place it into Processing "modes" directory:
 
-1. a PDE mode, which can be
-   -  added to PDE
-   -  built with its own PDE
-2. a command-line runner -- does not require the PDE
-3. a pre-built image -- OLD
-4. a docker container image -- DEPRECATED
+- macOS: `${HOME}/Documents/Processing/modes`
+- Linux: `${HOME}/sketchbook/modes`
+- Windows: `C:\Users\<user>\Documents\Processing\modes`
 
-Processing.R is *not* currently available via PDE > Add Tool > Modes, however the mode will appear there once installed.
+Now the features in Processing.R include:
 
-### 1. PDE Mode
+## Limitations in Processing.R
 
-**Warning:** Many parts of PDE integration are still incomplete: files cannot be double-clicked or dragged to open so code must be cut-pasted into the window, saved files cannot be reopened except through the recent files dialog list, the run button launches multiple window rather than re-running, stop button does not work, etc.
+Processing.R is in active development as an experimental pre-release version.
 
-1. checkout Processing.R from github
-2. configure `./scripts/generate-ant-file.sh`
-3. build and install mode into PDE using `ant build` (must have ant)
-4. start PDE and select `R Language` from mode drop-down menu
+**Static sketches:** Processing.R does not have a good support for detecting static/active/mix mode. We recommend that all sketches be written in full active mode, defining a separate `settings`, `setup` and `draw`. Even simple sketches should be wrapped in `draw()`. For example, do not write:
 
-#### Configure script
-
-Configure `./scripts/generate-ant-file.sh`:
-
-- `modes`: the destination for installing the mode once it is built.  
-   -  MacOSX: `/Users/[MyUserName]/Documents/Processing/modes/`
-   -  Windows: `%homepath%\Documents\modes\`
-   -  Linux: `${HOME}/sketchbook/modes/`
-- `core` and `pde`: paths to core library and pde.jar. They are be used to build runner and run test cases.
-   -  MacOSX: `/Applications/Processing.app/Contents/Java/core/library` and `/Applications/Processing.app/Contents/Java/pde.jar`
-   -  Linux: `[MyPDE]/core/library` and `[MyPDE]/lib/pde.jar`
-- `executable`: optional argument giving the location of PDE.
-   -  The path is used in `ant run` to start a PDE instance. Leave blank to not launch PDE on `ant run`.
-   -  MacOSX: `/Applications/Processing.app/Contents/MacOS/Processing`
-   -  Linux: `[MyPDE]/processing`
-
-##### A) configure for adding to an existing PDE
-
-For example, to install the mode into a default existing PDE app on a MacOS system, set arguments in `./scripts/generate-ant-file.sh` such as:
-
-```
-modes="/Users/[MyUserName]/Documents/Processing/modes"
-core="/Applications/Processing.app/Contents/Java/core/library"
-pde="/Applications/Processing.app/Contents/Java/pde.jar"
-executable="/Applications/Processing.app/Contents/MacOS/Processing"
+```R
+line(0, 10, 90, 100)
 ```
 
-This will generate build.xml errors (as the core and pde directories only contain the actual jars, not source). However it will work correctly.
+That may cause bugs. Instead, write:
 
-##### B) configure for creating a new PDE
-
-Build the source code of Processing core and pde wherever it is located on the system. For example:
-
-```bash
-$ cd processing/core
-$ ant build
-$ cd processing/app
-$ ant build
+```R
+draw <- function() {
+    line(0, 10, 90, 100)
+}
 ```
 
-Then set the two paths accordingly in `./scripts/generate-ant-file.sh`:
-
-```
-modes="${HOME}/Documents/Processing/modes"
-core="../processing/core/library/"
-pde="../processing/app/pde.jar"
-executable="/Applications/Processing.app/Contents/MacOS/Processing"
-```
-
-#### Install
-
-* Run `./scripts/generate-ant-file.sh` to get a valid build.xml
-* Run `ant install`, the modes will be installed into PDE.
-
-<div align="center">
-	<img src="./img/editor.png" alt="Editor" width="500">
-</div>
-
-<div align="center">
-	<img src="./img/demo.gif" alt="Demo" width="300">
-</div>
-
-
-### 2. Command Line Runner
-
-Processing.R offers a jar, which allows to have a try without the installation of Processing app. 
-
-Run `ant try`, you will get a runner in `try/`, and run `java -jar ./try/RLangMode.jar <your R script>`.
-
-```r
-posAX <- 11
-posAY <- 22
-
-posBX <- 33
-posBY <- 22
-
-processing$line(posAX, posAY, posBX, posBY)
-```
-
-The output is:
-
-<div align="center">
-	<img src="./img/demo.png" alt="Output" width="100">
-</div>
-
-### 3. Image (OLD)
-
-**Warning:** The pre-built distribution may be significantly out of date compared to the latest repository.
-
-The distribution image is available from:
-
--  [Processing.R Releases](https://github.com/gaocegege/Processing.R/releases)
-
-### 4. Docker Image (DEPRECATED)
-
-* `docker pull quay.io/gaocegege/processing.r`
-* `docker run quay.io/gaocegege/processing.r`
-* Open the link of NoVNC in a web browser and the default password is `process`. Input it in the URL and play with Processing.R in a desktop environment:)
-
-See [the demo in vimeo :)](https://vimeo.com/207571123)
+Please try our experimental mode and give us your feedback :) You could leave your comments in [#142](https://github.com/gaocegege/Processing.R/issues/142) or come chat at the [Processing.R gitter channel](https://gitter.im/gaocegege/Processing.R) :tada: 

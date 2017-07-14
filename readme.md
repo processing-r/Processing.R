@@ -23,8 +23,6 @@ Now Processing.R is still in early development stage, not production ready. The 
 
 If you just want to have a try, you could download the packaged software from [Processing.R Release Page](https://github.com/gaocegege/Processing.R/releases)
 
-If you want to compile the source code, see [HOWTO get Processing.R](./raw-docs/howto.md).
-
 ## Feature Preview
 
 <div align="center">
@@ -35,15 +33,60 @@ If you want to compile the source code, see [HOWTO get Processing.R](./raw-docs/
 	<img src="./raw-docs/img/demo.gif" alt="Demo" width="300">
 </div>
 
-## Processing.R Reference
+### Built-in functions in Processing
 
-See [Processing.R Reference](https://processing-r.github.io/Processing.R-docs/) hosted in [Processing-R/Processing.R-docs](https://github.com/Processing-R/Processing.R-docs), which is still incomplete.
+The documentation website is [https://processing-r.github.io/Processing.R-docs/](https://processing-r.github.io/Processing.R-docs/). This documentation is currently incomplete. Most Processing functions are theoretically supported in Processing.R, but many functions have not been tested and some pages have not been edited yet to reflect differences from other Processing modes.
+
+### Libraries in Processing: `importLibrary()`
+
+Processing.R supports importing standard Processing(Java) libraries that enrich the functionality of Processing. The function `importLibrary()` imports new libraries manually. This has been tested with one library: [peasycam](http://mrfeinberg.com/peasycam/), the "dead-simple mouse-driven camera for Processing."
+
+Before trying the example code below, first install the corresponding library `peasycam` -- for example using the PDE Contribution Manager > Library.
+
+```r
+settings <- function() {
+    importLibrary("peasycam")
+    size(200, 200, P3D)
+}
+
+setup <- function() {
+    cam = PeasyCam$new(processing, 100)
+    cam$setMinimumDistance(50)
+    cam$setMaximumDistance(500)
+}
+
+draw <- function() {
+    rotateX(-.5)
+    rotateY(-.5)
+    background(0)
+    fill(255, 0, 0)
+    box(30)
+    pushMatrix()
+    translate(0, 0, 20)
+    fill(0, 0, 255)
+    box(5)
+    popMatrix()
+}
+```
+
+### R Packages: `library()`
+
+Processing.R has limited support for R packages. It will automatically download R packages that are requested using the `library()` function, so you can use packages directly.
+
+Here is an example using the `foreach` package:
+
+```r
+library(foreach)
+
+foreach(i=1:3) %do%
+    print(sqrt(i))
+```
+
+In practice we have only found a few R packages so far that work with Processing.R "out of the box." This is because the package must be pure R  **and** all of its dependencies must also be pure R. There is [renjin list of R packages](http://packages.renjin.org/) which lists their compatibility with the renjin JVM. Any package fully supported in renjin is theoretically supported in Processing.R.s
 
 ## CONTRIBUTING
 
-Feel free to hack on Processing.R! There are some [issues for the new contributors](https://github.com/gaocegege/Processing.R/issues?q=is%3Aissue+is%3Aopen+label%3Afor-new-contributors) to get started with.
-
-Before the contribution, read [the CONTRIBUTING guide](./CONTRIBUTING.md) first :)
+Feel free to hack on Processing.R! [development.md](./raw-docs/development.md) will help you to get involved into the development of Processing.R.
 
 ## CHANGELOG
 
@@ -52,14 +95,6 @@ See [CHANGELOG](./CHANGELOG.md)
 ## AUTHORS
 
 See [AUTHORS](./AUTHORS.md)
-
-## Discussion in Processing Forum
-
-[Idea: R Language Mode for Processing](https://forum.processing.org/two/discussion/21195/gsoc-2017-r-language-mode-for-processing)
-
-## Useful Resources for Development
-
-See [references](./raw-docs/references.md).
 
 ## Acknowledgments
 
