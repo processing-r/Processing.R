@@ -3,7 +3,7 @@
   <br>
 </h1>
 
-<h4 align="center">Processing.R allows the users to write Processing sketches in R.</h4>
+<h4 align="center">Processing.R enables users to write Processing sketches in R.</h4>
 
 <p align="center">
     <a href="https://travis-ci.org/gaocegege/Processing.R"><img src="https://travis-ci.org/gaocegege/Processing.R.svg?branch=master" alt="Travis CI"></a>
@@ -17,13 +17,16 @@
     <a href="https://gitter.im/gaocegege/Processing.R?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge"><img src="https://badges.gitter.im/gaocegege/Processing.R.svg" alt="Gitter"></a>
 </p>
 
-Now Processing.R is still in early development stage, not production ready. The current version will be listed in [Processing.R Release Page](https://github.com/gaocegege/Processing.R/releases). Welcome to report bugs to [issues](https://github.com/gaocegege/Processing.R/issues)!
+## Overview
 
-## Installation
+Processing.R is a mode for Processing that enables users to write Processing sketches using the R language. The mode can be installed in the Processing Development Environment (PDE). It can also run on the command line as a stand-alone jar.
 
-If you just want to have a try, you could download the packaged software from [Processing.R Release Page](https://github.com/gaocegege/Processing.R/releases)
+Processing.R supports:
 
-## Feature Preview
+1. native R programming and syntax
+1. most Processing built-in functions (`draw()`, `rect()`, `box()`, etc.)
+1. importing select Processing(Java) libraries (e.g. "peasycam")
+1. importing select R Packages (e.g. "foreach") 
 
 <div align="center">
 	<img src="./raw-docs/img/editor.png" alt="Editor" width="500">
@@ -33,11 +36,37 @@ If you just want to have a try, you could download the packaged software from [P
 	<img src="./raw-docs/img/demo.gif" alt="Demo" width="300">
 </div>
 
+## Early Development
+
+Processing.R is still in early development -- it is not feature-complete or production-ready. Please try our experimental mode and give us your feedback.
+
+-  Report bugs to [Processing.R Issues](https://github.com/gaocegege/Processing.R/issues)!
+-  Comment on [#142](https://github.com/gaocegege/Processing.R/issues/142)
+-  Chat at the [Processing.R gitter channel](https://gitter.im/gaocegege/Processing.R) :tada:
+
+## Installation
+
+Processing.R is *not* currently available via PDE > Add Tool > Modes, however the mode will appear in the PDE Modes list once installed.
+
+The current release is available from the [Processing.R Release Page](https://github.com/gaocegege/Processing.R/releases). 
+
+After you download the mode, place it into Processing "modes" directory:
+
+- macOS: `${HOME}/Documents/Processing/modes`
+- Linux: `${HOME}/sketchbook/modes`
+- Windows: `C:\Users\<user>\Documents\Processing\modes`
+
+To build the mode from source, see [compilation.md](./raw-docs/devel/compilation.md).
+
 ### Built-in functions in Processing
 
-The documentation website is [https://processing-r.github.io/Processing.R-docs/](https://processing-r.github.io/Processing.R-docs/). This documentation is currently incomplete. Most Processing functions are theoretically supported in Processing.R, but many functions have not been tested and some pages have not been edited yet to reflect differences from other Processing modes.
+Processing.R supports most of the Processing functions as described in the [Processing reference](processing.org/reference/). Processing.R functions are described on the documentation website:
 
-### Libraries in Processing: `importLibrary()`
+-  [https://processing-r.github.io/Processing.R-docs/](https://processing-r.github.io/Processing.R-docs/). 
+
+However, the Processing.R documentation is currently incomplete. Many functions have not been tested or are not accompanied by example sketches. Some reference pages contain materials from Processing.py or Processing(Java) that have not been edited to reflect differences from other Processing modes.
+
+### Processing Libraries: `importLibrary()`
 
 Processing.R supports importing standard Processing(Java) libraries that enrich the functionality of Processing. The function `importLibrary()` imports new libraries manually. This has been tested with one library: [peasycam](http://mrfeinberg.com/peasycam/), the "dead-simple mouse-driven camera for Processing."
 
@@ -83,6 +112,22 @@ foreach(i=1:3) %do%
 ```
 
 In practice we have only found a few R packages so far that work with Processing.R "out of the box." This is because the package must be pure R  **and** all of its dependencies must also be pure R. There is [renjin list of R packages](http://packages.renjin.org/) which lists their compatibility with the renjin JVM. Any package fully supported in renjin is theoretically supported in Processing.R.
+
+## Limitations
+
+**Static sketches:** Processing.R does not have a good support for detecting static/active/mix mode. We recommend that all sketches be written in full active mode, defining a separate `settings`, `setup` and `draw`. Even simple sketches should be wrapped in `draw()`. For example, do not write:
+
+```R
+line(0, 10, 90, 100)
+```
+
+That may cause bugs. Instead, write:
+
+```R
+draw <- function() {
+    line(0, 10, 90, 100)
+}
+```
 
 ## CONTRIBUTING
 
