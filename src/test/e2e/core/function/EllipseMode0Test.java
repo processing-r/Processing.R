@@ -9,7 +9,7 @@ import test.e2e.core.E2eTestBase;
 public class EllipseMode0Test extends E2eTestBase {
 
   public EllipseMode0Test() {
-    coreCodeTemplate = "RADIUS <- as.integer(2)\nCENTER <- as.integer(3)\n\nellipseMode(RADIUS)  # Set ellipseMode to RADIUS\nfill(255)  # Set fill to white\nellipse(50, 50, 30, 30)  # Draw white ellipse using RADIUS mode\n\nellipseMode(CENTER)  # Set ellipseMode to CENTER\nfill(100)  # Set fill to gray\nellipse(50, 50, 30, 30)  # Draw gray ellipse using CENTER mode\n\nsaveFrame(\"%s\")\nexit()\n";
+    coreCodeTemplate = "ellipseMode(RADIUS)  # Set ellipseMode to RADIUS\nfill(255)  # Set fill to white\nellipse(50, 50, 30, 30)  # Draw white ellipse using RADIUS mode\n\nellipseMode(CENTER)  # Set ellipseMode to CENTER\nfill(100)  # Set fill to gray\nellipse(50, 50, 30, 30)  # Draw gray ellipse using CENTER mode\n\nsaveFrame(\"%s\")\nexit()\n";
     referenceURI = "https://processing.org/reference/images/ellipseMode_0.png";
   }
 

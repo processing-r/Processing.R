@@ -1,0 +1,23 @@
+settings <- function() {
+    importLibrary("peasycam")
+    size(200, 200, P3D)
+}
+
+setup <- function() {
+    cam = PeasyCam$new(processing, 100)
+    cam$setMinimumDistance(50)
+    cam$setMaximumDistance(500)
+}
+
+draw <- function() {
+    rotateX(-0.5)
+    rotateY(-0.5)
+    background(0)
+    fill(255, 0, 0)
+    box(30)
+    pushMatrix()
+    translate(0, 0, 20)
+    fill(0, 0, 255)
+    box(5)
+    popMatrix()
+}

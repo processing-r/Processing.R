@@ -1,7 +1,5 @@
 # curvePoint 1 https://processing.org/reference/curvePoint_.html
 
-CENTER <- as.integer(3)
-
 noFill()
 curve(5, 26, 5, 26, 73, 24, 73, 61)
 curve(5, 26, 73, 24, 73, 61, 15, 65)

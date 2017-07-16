@@ -1,0 +1,11 @@
+settings <- function() {
+    size(100, 100, P3D)
+}
+
+draw <- function() {
+    noFill()
+    translate(width/2 + 12, height/2)
+    box(20, 20, 20)
+    scale(2.5, 2.5, 2.5)
+    box(20, 20, 20)
+}

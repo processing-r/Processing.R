@@ -1,6 +1,0 @@
-category: XMLElement
-subcategory: Method
-description: "
-Sets the element's content, which is specified as a String.
-"
-syntax: ".setContent(text)\n"

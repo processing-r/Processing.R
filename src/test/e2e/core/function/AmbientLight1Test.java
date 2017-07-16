@@ -9,7 +9,7 @@ import test.e2e.core.E2eTestBase;
 public class AmbientLight1Test extends E2eTestBase {
 
   public AmbientLight1Test() {
-    coreCodeTemplate = "P3D <- \"processing.opengl.PGraphics3D\"\nPI <- pi\n\nsettings <- function() {\n    size(100, 100, P3D)\n}\n\ndraw <- function() {\n    background(0)\n    noStroke()\n    directionalLight(126, 126, 126, 0, 0, -1)\n    ambientLight(102, 102, 102)\n    translate(32, 50, 0)\n    rotateY(PI/5)\n    box(40)\n    translate(60, 0, 0)\n    sphere(30)\n    saveFrame(\"%s\")\n    exit()\n}\n";
+    coreCodeTemplate = "settings <- function() {\n    size(100, 100, P3D)\n}\n\ndraw <- function() {\n    background(0)\n    noStroke()\n    directionalLight(126, 126, 126, 0, 0, -1)\n    ambientLight(102, 102, 102)\n    translate(32, 50, 0)\n    rotateY(PI/5)\n    box(40)\n    translate(60, 0, 0)\n    sphere(30)\n    saveFrame(\"%s\")\n    exit()\n}\n";
     referenceURI = "https://processing.org/reference/images/ambientLight_1.png";
   }
 

@@ -15,7 +15,7 @@ build.number
 # Processing.R
 bin/
 dist/
-build/
+/build/
 try/
 *.log
 build.xml

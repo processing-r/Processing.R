@@ -1,5 +1,3 @@
-CLOSE <- as.integer(2)
-
 noFill()
 
 beginShape()

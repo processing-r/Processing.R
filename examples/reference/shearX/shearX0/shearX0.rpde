@@ -1,0 +1,9 @@
+settings <- function() {
+    size(100, 100)
+}
+
+draw <- function() {
+    translate(width/4, height/4)
+    shearY(PI/4)
+    rect(0, 0, 30, 30)
+}

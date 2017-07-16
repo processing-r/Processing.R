@@ -9,7 +9,7 @@ import test.e2e.core.E2eTestBase;
 public class EndShape0Test extends E2eTestBase {
 
   public EndShape0Test() {
-    coreCodeTemplate = "CLOSE <- as.integer(2)\n\nnoFill()\n\nbeginShape()\nvertex(20, 20)\nvertex(45, 20)\nvertex(45, 80)\nendShape(CLOSE)\n\nbeginShape()\nvertex(50, 20)\nvertex(75, 20)\nvertex(75, 80)\nendShape()\n\nsaveFrame(\"%s\")\nexit()\n";
+    coreCodeTemplate = "noFill()\n\nbeginShape()\nvertex(20, 20)\nvertex(45, 20)\nvertex(45, 80)\nendShape(CLOSE)\n\nbeginShape()\nvertex(50, 20)\nvertex(75, 20)\nvertex(75, 80)\nendShape()\n\nsaveFrame(\"%s\")\nexit()\n";
     referenceURI = "https://processing.org/reference/images/endShape_.png";
   }
 

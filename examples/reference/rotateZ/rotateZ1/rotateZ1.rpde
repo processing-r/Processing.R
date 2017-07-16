@@ -1,0 +1,10 @@
+settings <- function() {
+    size(100, 100, P3D)
+}
+
+# Not work, no radians
+draw <- function() {
+    translate(width/2, height/2)
+    rotateZ(radians(60))
+    rect(-26, -26, 52, 52)
+}

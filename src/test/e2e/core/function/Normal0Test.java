@@ -9,7 +9,7 @@ import test.e2e.core.E2eTestBase;
 public class Normal0Test extends E2eTestBase {
 
   public Normal0Test() {
-    coreCodeTemplate = "P3D <- \"processing.opengl.PGraphics3D\"\nCLOSE <- as.integer(2)\n\nsettings <- function() {\n    size(100, 100, P3D)\n}\n\ndraw <- function() {\n    noStroke()\n    background(0)\n    pointLight(150, 250, 150, 10, 30, 50)\n    beginShape()\n    normal(0, 0, 1)\n    vertex(20, 20, -10)\n    vertex(80, 20, 10)\n    vertex(80, 80, -10)\n    vertex(20, 80, 10)\n    endShape(CLOSE)\n    saveFrame(\"%s\")\n    exit()\n}\n";
+    coreCodeTemplate = "settings <- function() {\n    size(100, 100, P3D)\n}\n\ndraw <- function() {\n    noStroke()\n    background(0)\n    pointLight(150, 250, 150, 10, 30, 50)\n    beginShape()\n    normal(0, 0, 1)\n    vertex(20, 20, -10)\n    vertex(80, 20, 10)\n    vertex(80, 80, -10)\n    vertex(20, 80, 10)\n    endShape(CLOSE)\n    saveFrame(\"%s\")\n    exit()\n}\n";
     referenceURI = "https://processing.org/reference/images/normal_.png";
   }
 

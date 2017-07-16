@@ -4,16 +4,14 @@ import java.awt.Component;
 import java.awt.Window;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.lang.Thread.UncaughtExceptionHandler;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.concurrent.CountDownLatch;
 
-import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
 import org.renjin.parser.RParser;
-import org.renjin.script.RenjinScriptEngine;
 import org.renjin.sexp.Closure;
 import org.renjin.sexp.ExpressionVector;
 import org.renjin.sexp.FunctionCall;
@@ -30,6 +28,7 @@ import processing.javafx.PSurfaceFX;
 import processing.opengl.PSurfaceJOGL;
 import rprocessing.applet.BuiltinApplet;
 import rprocessing.exception.NotFoundException;
+import rprocessing.exception.RSketchError;
 import rprocessing.util.Constant;
 import rprocessing.util.Printer;
 import rprocessing.util.RScriptReader;
@@ -51,15 +50,14 @@ public class RLangPApplet extends BuiltinApplet {
   /** Program code */
   private final String programText;
 
-  /** Engine to interpret R code */
-  private final RenjinScriptEngine renjinEngine;
-
   private static final String CORE_TEXT =
       RScriptReader.readResourceAsText(Runner.class, "r/core.R");
 
   private final Printer stdout;
 
   private final CountDownLatch finishedLatch = new CountDownLatch(1);
+
+  private RSketchError terminalException = null;
 
   /**
    * Mode for Processing.
@@ -78,15 +76,6 @@ public class RLangPApplet extends BuiltinApplet {
   }
 
   public RLangPApplet(final String programText, final Printer stdout) throws NotFoundException {
-    // Create a script engine manager.
-    ScriptEngineManager manager = new ScriptEngineManager();
-    // Create a Renjin engine.
-    ScriptEngine engine = manager.getEngineByName("Renjin");
-    // Check if the engine has loaded correctly.
-    if (engine == null) {
-      throw new NotFoundException("Renjin Script Engine not found on the classpath.");
-    }
-    this.renjinEngine = (RenjinScriptEngine) engine;
     this.programText = programText;
     this.stdout = stdout;
     this.prePassCode();
@@ -94,8 +83,12 @@ public class RLangPApplet extends BuiltinApplet {
     this.mode = this.detectMode();
   }
 
-  public void evaluateCoreCode() throws ScriptException {
-    this.renjinEngine.eval(CORE_TEXT);
+  public void evaluateCoreCode() throws RSketchError {
+    try {
+      this.renjinEngine.eval(CORE_TEXT);
+    } catch (final ScriptException se) {
+      throw RSketchError.toSketchException(se);
+    }
   }
 
   /**
@@ -142,20 +135,22 @@ public class RLangPApplet extends BuiltinApplet {
     // This is a trick to be deprecated. It is used to print
     // messages in Processing app console by stdout$print(msg).
     this.renjinEngine.put("stdout", stdout);
+    this.renjinEngine.put("key", "0");
+    this.renjinEngine.put("keyCode", 0);
   }
 
-  public void runBlock(final String[] arguments) {
+  public void runBlock(final String[] arguments) throws RSketchError {
     log("runBlock");
     PApplet.runSketch(arguments, this);
     try {
       finishedLatch.await();
-      log("Down");
+      log("RunSketch done.");
     } catch (final InterruptedException interrupted) {
       // Treat an interruption as a request to the applet to terminate.
       exit();
       try {
         finishedLatch.await();
-        log("Down");
+        log("RunSketch interrupted.");
       } catch (final InterruptedException exception) {
         log(exception.toString());
       }
@@ -182,9 +177,11 @@ public class RLangPApplet extends BuiltinApplet {
         surface.setVisible(false);
       }
     }
-    // if (terminalException != null) {
-    // throw terminalException;
-    // }
+    // log(terminalException.toString());
+    if (terminalException != null) {
+      log("Throw the exception to PDE.");
+      throw terminalException;
+    }
   }
 
   private static void macosxFullScreenToggle(final Window window) {
@@ -243,6 +240,29 @@ public class RLangPApplet extends BuiltinApplet {
   }
 
   /**
+   * @see processing.core.PApplet#start()
+   */
+  @Override
+  public void start() {
+    // I want to quit on runtime exceptions.
+    // Processing just sits there by default.
+    Thread.setDefaultUncaughtExceptionHandler(new UncaughtExceptionHandler() {
+      @Override
+      public void uncaughtException(final Thread t, final Throwable e) {
+        terminalException = RSketchError.toSketchException(e);
+        try {
+          log("There is an unexpected exception.");
+          handleMethods("dispose");
+        } catch (final Exception noop) {
+          // give up
+        }
+        finishedLatch.countDown();
+      }
+    });
+    super.start();
+  }
+
+  /**
    * @see processing.core.PApplet#settings()
    */
   @Override
@@ -268,9 +288,14 @@ public class RLangPApplet extends BuiltinApplet {
     wrapProcessingVariables();
     if (this.mode == Mode.STATIC) {
       try {
+        log("The mode is static, run the program directly.");
         this.renjinEngine.eval(this.programText);
-      } catch (ScriptException exception) {
+        log("Evaluate the code in static mode.");
+      } catch (final Exception exception) {
+        log("There is exception when evaluate the code in static mode.");
         log(exception.toString());
+        terminalException = RSketchError.toSketchException(exception);
+        exitActual();
       }
     } else if (this.mode == Mode.ACTIVE) {
       Object obj = this.renjinEngine.get(Constant.SETUP_NAME);
@@ -280,6 +305,7 @@ public class RLangPApplet extends BuiltinApplet {
     } else {
       System.out.println("The program is in mix mode now.");
     }
+    log("Setup done");
   }
 
   /**
@@ -329,11 +355,12 @@ public class RLangPApplet extends BuiltinApplet {
   protected void wrapProcessingVariables() {
     log("Wrap Processing built-in variables into R top context.");
     // TODO: Find some ways to push constants into R.
+    wrapMouseVariables();
     this.renjinEngine.put("width", width);
     this.renjinEngine.put("height", height);
     this.renjinEngine.put("displayWidth", displayWidth);
     this.renjinEngine.put("displayHeight", displayHeight);
-    // this.renjinEngine.put("focused", focused);
+    this.renjinEngine.put("focused", focused);
     // this.renjinEngine.put("keyPressed", keyPressed);
   }
 

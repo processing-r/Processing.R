@@ -93,6 +93,7 @@ expand	FUNCTION1	expand_
 fill	FUNCTION1	fill_
 filter	FUNCTION1	filter_
 FloatDict	KEYWORD5	FloatDict
+focused	KEYWORD4	focused
 add	FUNCTION2	FloatDict_add_
 clear	FUNCTION2	FloatDict_clear_
 div	FUNCTION2	FloatDict_div_

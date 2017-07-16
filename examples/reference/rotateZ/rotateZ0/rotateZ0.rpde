@@ -1,0 +1,9 @@
+settings <- function() {
+    size(100, 100, P3D)
+}
+
+draw <- function() {
+    translate(width/2, height/2)
+    rotateZ(PI/3)
+    rect(-26, -26, 52, 52)
+}
