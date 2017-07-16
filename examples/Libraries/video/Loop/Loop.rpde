@@ -1,0 +1,44 @@
+settings <- function() {
+    # Please install the video before you run the example.
+    importLibrary("video")
+    size(640, 360)
+}
+
+setup <- function() {
+    frameRate(10) # hack -- drop the framerate to give video more time to load
+    # copy transit.mov from video library example into sketch /data folder
+    movie = Movie$new(processing, "transit.mov");
+    movie$loop()
+}
+
+draw <- function() {
+    background(0)
+    movie$read() # hack -- reads regardless of whether the next frame is ready or not
+    image(movie, 0, 0, width, height)
+}
+
+## The video library uses the movieEvent() function
+## to manage when the movie object reads the next frame.
+## However I'm not sure how to redefine this hook
+## in R mode. For the original Java video library example, see:
+##   /libraries/video/examples/Movie/Loop/Loop.pde
+
+## doesn't work
+# movieEvent <- function(m) {
+#     m$read()
+# }
+
+## doesn't work
+# movieEvent <- function() {
+#     movie$read()
+# }
+
+## doesn't work
+# Movie$movieEvent <- function(m) {
+#     m$read()
+# }
+
+## doesn't work
+# Movie$movieEvent <- function() {
+#     movie$read()
+# }
