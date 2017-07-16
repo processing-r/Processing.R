@@ -1,58 +1,54 @@
+/* -*- mode: java; c-basic-offset: 2; indent-tabs-mode: nil -*- */
+
+/*
+ * Part of the Processing project - http://processing.org
+ * 
+ * Copyright (c) 2012-15 The Processing Foundation Copyright (c) 2004-12 Ben Fry and Casey Reas
+ * Copyright (c) 2001-04 Massachusetts Institute of Technology
+ * 
+ * This program is free software; you can redistribute it and/or modify it under the terms of the
+ * GNU General Public License as published by the Free Software Foundation; either version 2 of the
+ * License, or (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without
+ * even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License along with this program; if
+ * not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
+ * 02111-1307 USA
+ */
+
 package rprocessing.mode;
 
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
+import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
-import java.util.Stack;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.Arrays;
 
+import processing.app.Preferences;
 import processing.app.Sketch;
 import processing.app.syntax.JEditTextArea;
 import processing.app.syntax.PdeInputHandler;
 import processing.app.ui.Editor;
 
+
 /**
- * RLangInputHandler sets key bindings used by the PDE.
- * 
- * @author github.com/gaocegege
+ * Filters key events for tab expansion/indent/etc. This is very old code that we'd love to replace
+ * with a smarter parser/formatter, rather than continuing to hack this class.
  */
 public class RLangInputHandler extends PdeInputHandler {
 
-  // ctrl-alt on windows & linux, cmd-alt on os x
-  private static int CTRL_ALT = ActionEvent.ALT_MASK
-      | Toolkit.getDefaultToolkit().getMenuShortcutKeyMask();
+  /** ctrl-alt on windows and linux, cmd-alt on mac os x */
+  static final int CTRL_ALT =
+      ActionEvent.ALT_MASK | Toolkit.getDefaultToolkit().getMenuShortcutKeyMask();
 
-  // Set 4 spaces for one tab.
-  private static final String TAB = "    ";
-  private static final int TAB_SIZE = TAB.length();
-
-  /**
-   * A line is some whitespace followed by a bunch of whatever.
-   */
-  private static final Pattern LINE = Pattern.compile("^(\\s*)(.*)$");
-
-  private static final Pattern INITIAL_WHITESPACE = Pattern.compile("^(\\s*)");
-  /*
-   * This can be fooled by a line like print "He said: #LOLHASHTAG!"
-   */
-  private static final Pattern TERMINAL_COLON = Pattern.compile(":\\s*(#.*)?$");
-  private static final Pattern POP_CONTEXT = Pattern.compile("^\\s*(return|break|continue)\\b");
 
   public RLangInputHandler(Editor editor) {
     super(editor);
   }
 
-  private static boolean isPrintableChar(final char c) {
-    if (c >= 32 && c <= 127) {
-      return true;
-    }
-    if (c == KeyEvent.CHAR_UNDEFINED || Character.isISOControl(c)) {
-      return false;
-    }
-    final Character.UnicodeBlock block = Character.UnicodeBlock.of(c);
-    return block != null && block != Character.UnicodeBlock.SPECIALS;
-  }
 
   /**
    * Intercepts key pressed events for JEditTextArea.
@@ -64,353 +60,360 @@ public class RLangInputHandler extends PdeInputHandler {
    */
   @Override
   public boolean handlePressed(KeyEvent event) {
-    final char c = event.getKeyChar();
-    final int code = event.getKeyCode();
-    final int mods = event.getModifiers();
+    char c = event.getKeyChar();
+    int code = event.getKeyCode();
 
-    final JEditTextArea textArea = editor.getTextArea();
-    final Sketch sketch = editor.getSketch();
+    Sketch sketch = editor.getSketch();
+    JEditTextArea textarea = editor.getTextArea();
 
-    // things that change the content of the text area
-    if (!event.isMetaDown()
-        && (code == KeyEvent.VK_BACK_SPACE
-            || code == KeyEvent.VK_TAB
-            || code == KeyEvent.VK_ENTER
-            || isPrintableChar(c))) {
+    if ((event.getModifiers() & InputEvent.META_MASK) != 0) {
+      // event.consume(); // does nothing
+      return false;
+    }
+
+    if ((code == KeyEvent.VK_BACK_SPACE) || (code == KeyEvent.VK_TAB) || (code == KeyEvent.VK_ENTER)
+        || ((c >= 32) && (c < 128))) {
       sketch.setModified(true);
     }
 
-    if (event.isMetaDown() && code == KeyEvent.VK_UP) {
-      textArea.setCaretPosition(0);
-      textArea.scrollToCaret();
-      return true;
-    }
+    if ((code == KeyEvent.VK_UP) && ((event.getModifiers() & InputEvent.CTRL_MASK) != 0)) {
+      // back up to the last empty line
+      char contents[] = textarea.getText().toCharArray();
+      // int origIndex = textarea.getCaretPosition() - 1;
+      int caretIndex = textarea.getCaretPosition();
 
-    if (event.isMetaDown() && code == KeyEvent.VK_DOWN) {
-      textArea.setCaretPosition(textArea.getDocumentLength());
-      textArea.scrollToCaret();
-      return true;
-    }
+      int index = calcLineStart(caretIndex - 1, contents);
+      // System.out.println("line start " + (int) contents[index]);
+      index -= 2; // step over the newline
+      // System.out.println((int) contents[index]);
+      boolean onlySpaces = true;
+      while (index > 0) {
+        if (contents[index] == 10) {
+          if (onlySpaces) {
+            index++;
+            break;
+          } else {
+            onlySpaces = true; // reset
+          }
+        } else if (contents[index] != ' ') {
+          onlySpaces = false;
+        }
+        index--;
+      }
+      // if the first char, index will be -2
+      if (index < 0)
+        index = 0;
 
-    // ctrl-alt-[arrow] switches sketch tab
-    if ((mods & CTRL_ALT) == CTRL_ALT) {
-      if (code == KeyEvent.VK_LEFT) {
-        sketch.handlePrevCode();
-        return true;
-      } else if (code == KeyEvent.VK_RIGHT) {
-        sketch.handleNextCode();
+      if ((event.getModifiers() & InputEvent.SHIFT_MASK) != 0) {
+        textarea.setSelectionStart(caretIndex);
+        textarea.setSelectionEnd(index);
+      } else {
+        textarea.setCaretPosition(index);
+      }
+      event.consume();
+      // return true;
+
+    } else if ((code == KeyEvent.VK_DOWN) && ((event.getModifiers() & InputEvent.CTRL_MASK) != 0)) {
+      char contents[] = textarea.getText().toCharArray();
+      int caretIndex = textarea.getCaretPosition();
+
+      int index = caretIndex;
+      int lineStart = 0;
+      boolean onlySpaces = false; // don't count this line
+      while (index < contents.length) {
+        if (contents[index] == 10) {
+          if (onlySpaces) {
+            index = lineStart; // this is it
+            break;
+          } else {
+            lineStart = index + 1;
+            onlySpaces = true; // reset
+          }
+        } else if (contents[index] != ' ') {
+          onlySpaces = false;
+        }
+        index++;
+      }
+
+      if ((event.getModifiers() & InputEvent.SHIFT_MASK) != 0) {
+        textarea.setSelectionStart(caretIndex);
+        textarea.setSelectionEnd(index);
+      } else {
+        textarea.setCaretPosition(index);
+      }
+      event.consume();
+      // return true;
+
+    } else if (c == 9) {
+      if ((event.getModifiers() & InputEvent.SHIFT_MASK) != 0) {
+        // if shift is down, the user always expects an outdent
+        // http://code.google.com/p/processing/issues/detail?id=458
+        editor.handleOutdent();
+
+      } else if (textarea.isSelectionActive()) {
+        editor.handleIndent();
+
+      } else if (Preferences.getBoolean("editor.tabs.expand")) {
+        int tabSize = Preferences.getInteger("editor.tabs.size");
+        textarea.setSelectedText(spaces(tabSize));
+        event.consume();
+
+      } else { // !Preferences.getBoolean("editor.tabs.expand")
+        textarea.setSelectedText("\t");
+        event.consume();
+      }
+
+    } else if (code == 10 || code == 13) { // auto-indent
+      if (Preferences.getBoolean("editor.indent")) {
+        char contents[] = textarea.getText().toCharArray();
+        int tabSize = Preferences.getInteger("editor.tabs.size");
+
+        // this is the previous character
+        // (i.e. when you hit return, it'll be the last character
+        // just before where the newline will be inserted)
+        int origIndex = textarea.getCaretPosition() - 1;
+
+        // if the previous thing is a brace (whether prev line or
+        // up farther) then the correct indent is the number of spaces
+        // on that line + 'indent'.
+        // if the previous line is not a brace, then just use the
+        // identical indentation to the previous line
+
+        // calculate the amount of indent on the previous line
+        // this will be used *only if the prev line is not an indent*
+        int spaceCount = calcSpaceCount(origIndex, contents);
+
+        // If the last character was a left curly brace, then indent.
+        // For 0122, walk backwards a bit to make sure that the there isn't a
+        // curly brace several spaces (or lines) back. Also moved this before
+        // calculating extraCount, since it'll affect that as well.
+        int index2 = origIndex;
+        while ((index2 >= 0) && Character.isWhitespace(contents[index2])) {
+          index2--;
+        }
+        if (index2 != -1) {
+          // still won't catch a case where prev stuff is a comment
+          if (contents[index2] == '{') {
+            // intermediate lines be damned,
+            // use the indent for this line instead
+            spaceCount = calcSpaceCount(index2, contents);
+            spaceCount += tabSize;
+          }
+        }
+
+        // now before inserting this many spaces, walk forward from
+        // the caret position and count the number of spaces,
+        // so that the number of spaces aren't duplicated again
+        int index = origIndex + 1;
+        int extraCount = 0;
+        while ((index < contents.length) && (contents[index] == ' ')) {
+          // spaceCount--;
+          extraCount++;
+          index++;
+        }
+        int braceCount = 0;
+        while ((index < contents.length) && (contents[index] != '\n')) {
+          if (contents[index] == '}') {
+            braceCount++;
+          }
+          index++;
+        }
+
+        // Hitting return on a line with spaces *after* the caret
+        // can cause trouble. For 0099, was ignoring the case, but this is
+        // annoying, so in 0122 we're trying to fix that.
+        spaceCount -= extraCount;
+
+        if (spaceCount < 0) {
+          // for rev 0122, actually delete extra space
+          // textarea.setSelectionStart(origIndex + 1);
+          textarea.setSelectionEnd(textarea.getSelectionStop() - spaceCount);
+          textarea.setSelectedText("\n");
+          textarea.setCaretPosition(textarea.getCaretPosition() + extraCount + spaceCount);
+        } else {
+          String insertion = "\n" + spaces(spaceCount);
+          textarea.setSelectedText(insertion);
+          textarea.setCaretPosition(textarea.getCaretPosition() + extraCount);
+        }
+
+        // not gonna bother handling more than one brace
+        if (braceCount > 0) {
+          int sel = textarea.getSelectionStart();
+          // sel - tabSize will be -1 if start/end parens on the same line
+          // http://dev.processing.org/bugs/show_bug.cgi?id=484
+          if (sel - tabSize >= 0) {
+            textarea.select(sel - tabSize, sel);
+            String s = spaces(tabSize);
+            // if these are spaces that we can delete
+            if (textarea.getSelectedText().equals(s)) {
+              textarea.setSelectedText("");
+            } else {
+              textarea.select(sel, sel);
+            }
+          }
+        }
+      } else {
+        // Enter/Return was being consumed by somehow even if false
+        // was returned, so this is a band-aid to simply fire the event again.
+        // http://dev.processing.org/bugs/show_bug.cgi?id=1073
+        textarea.setSelectedText(String.valueOf(c));
+      }
+      // mark this event as already handled (all but ignored)
+      event.consume();
+      // return true;
+
+    } else if (c == '}') {
+      if (Preferences.getBoolean("editor.indent")) {
+        // first remove anything that was there (in case this multiple
+        // characters are selected, so that it's not in the way of the
+        // spaces for the auto-indent
+        if (textarea.getSelectionStart() != textarea.getSelectionStop()) {
+          textarea.setSelectedText("");
+        }
+
+        // if this brace is the only thing on the line, outdent
+        char contents[] = textarea.getText().toCharArray();
+        // index to the character to the left of the caret
+        int prevCharIndex = textarea.getCaretPosition() - 1;
+
+        // backup from the current caret position to the last newline,
+        // checking for anything besides whitespace along the way.
+        // if there's something besides whitespace, exit without
+        // messing any sort of indenting.
+        int index = prevCharIndex;
+        boolean finished = false;
+        while ((index != -1) && (!finished)) {
+          if (contents[index] == 10) {
+            finished = true;
+            index++;
+          } else if (contents[index] != ' ') {
+            // don't do anything, this line has other stuff on it
+            return false;
+          } else {
+            index--;
+          }
+        }
+        if (!finished)
+          return false; // brace with no start
+        int lineStartIndex = index;
+
+        int pairedSpaceCount = calcBraceIndent(prevCharIndex, contents); // , 1);
+        if (pairedSpaceCount == -1)
+          return false;
+
+        textarea.setSelectionStart(lineStartIndex);
+        textarea.setSelectedText(spaces(pairedSpaceCount));
+
+        // mark this event as already handled
+        event.consume();
         return true;
       }
-    }
-
-    final int thisLine = textArea.getCaretLine();
-    final int thisPos = textArea.getCaretPosition();
-
-    switch (code) {
-      case KeyEvent.VK_BACK_SPACE:
-        if (thisPos == textArea.getLineStartOffset(thisLine)) {
-          // Let the user backspace onto the previous line.
-          break;
-        }
-        final LineInfo currentLine = new LineInfo(thisLine);
-        if (currentLine.caretInText) {
-          // The caret is in the text; let the text editor handle this backspace.
-          break;
-        }
-        // The caret is not in the text; treat it as a request to unindent.
-        indent(-1);
-        return true;
-
-      case KeyEvent.VK_ESCAPE:
-        textArea.selectNone();
-        ((RLangEditor) editor).handleStop();
-        return true;
-
-      case KeyEvent.VK_TAB:
-        indent(event.isShiftDown() ? -1 : 1);
-        return true;
-
-      case KeyEvent.VK_ENTER: // return
-        final String text = textArea.getText(); // text
-        textArea.setSelectedText(newline());
-        break;
-      default:
-        return false;
     }
     return false;
   }
 
-  /**
-   * Everything we need to know about a line in the text editor.
-   */
-  private class LineInfo {
-    public final int lineNumber;
 
-    // Expressed in units of "R indents", not in number of spaces.
-    public final int indent;
+  @Override
+  public boolean handleTyped(KeyEvent event) {
+    char c = event.getKeyChar();
 
-    // The text content after whatever indent.
-    public final String text;
-
-    // Whether or not the caret happens to be positioned in the text portion of the line.
-    public final boolean caretInText;
-
-    LineInfo(final int lineNumber) {
-      this.lineNumber = lineNumber;
-
-      final JEditTextArea textArea = editor.getTextArea();
-      final Matcher m = LINE.matcher(textArea.getLineText(lineNumber));
-      if (!m.matches()) {
-        throw new AssertionError("How can a line have less than nothing in it?");
+    if ((event.getModifiers() & InputEvent.CTRL_MASK) != 0) {
+      // on linux, ctrl-comma (prefs) being passed through to the editor
+      if (c == KeyEvent.VK_COMMA) {
+        event.consume();
+        return true;
       }
-      final String space = m.group(1);
-      text = m.group(2);
-      final int caretLinePos =
-          textArea.getCaretPosition() - textArea.getLineStartOffset(lineNumber);
-      caretInText = caretLinePos > space.length();
-      // Calculate the current indent measured in tab stops of TAB_SIZE spaces.
-      int currentIndent = 0;
-      int spaceCounter = 0;
-      for (int i = 0; i < space.length(); i++) {
-        spaceCounter++;
-        // A literal tab character advances to the next tab stop, as does the TAB_SIZEth space
-        // character in a row.
-        if (spaceCounter % TAB_SIZE == 0 || space.charAt(i) == '\t') {
-          currentIndent++;
-          spaceCounter = 0;
-        }
+      // https://github.com/processing/processing/issues/3847
+      if (c == KeyEvent.VK_SPACE) {
+        event.consume();
+        return true;
       }
-      indent = currentIndent;
     }
-
-    @Override
-    public String toString() {
-      return String.format("<Line %d, indent %d, {%s}>", lineNumber, indent, text);
-    }
+    return false;
   }
 
+
   /**
-   * Maybe change the indent of the current selection. If sign is positive, then increase the
-   * indent; otherwise, decrease it.
-   * <p>
-   * If the last non-comment, non-blank line ends with ":", then the maximum indent for the current
-   * line is one greater than the indent of that ":"-bearing line. Otherwise, the maximum indent is
-   * equal to the indent of the last non-comment line.
-   * <p>
-   * The minimum indent is 0.
-   * 
-   * @param sign The direction in which to modify the indent of the current line.
+   * Return the index for the first character on this line.
    */
-  public void indent(final int sign) {
-    final JEditTextArea textArea = editor.getTextArea();
-
-    final int startLine = textArea.getSelectionStartLine();
-    final int stopLine = textArea.getSelectionStopLine();
-    final int selectionStart = textArea.getSelectionStart();
-    final int selectionStop = textArea.getSelectionStop();
-
-    final LineInfo currentLine = new LineInfo(startLine);
-    final int currentCaret = textArea.getCaretPosition();
-    final int startLineEndRelativePos = textArea.getLineStopOffset(startLine) - selectionStart;
-    final int stopLineEndRelativePos = textArea.getLineStopOffset(stopLine) - selectionStop;
-    final int newIndent;
-
-    if (sign > 0) {
-      // Find previous non-blank non-comment line.
-      LineInfo candidate = null;
-      for (int i = startLine - 1; i >= 0; i--) {
-        candidate = new LineInfo(i);
-        if (candidate.text.length() > 0 && !candidate.text.startsWith("#")) {
-          break;
-        }
-      }
-      if (candidate == null) {
-        newIndent = 0;
+  protected int calcLineStart(int index, char contents[]) {
+    // backup from the current caret position to the last newline,
+    // so that we can figure out how far this line was indented
+    /* int spaceCount = 0; */
+    boolean finished = false;
+    while ((index != -1) && (!finished)) {
+      if ((contents[index] == 10) || (contents[index] == 13)) {
+        finished = true;
+        // index++; // maybe ?
       } else {
-        final String trimmed = candidate.text.trim();
-        if (trimmed.endsWith(":") || trimmed.endsWith("(")) {
-          newIndent = Math.min(candidate.indent + 1, currentLine.indent + 1);
-        } else {
-          newIndent = Math.min(candidate.indent, currentLine.indent + 1);
-        }
+        index--; // new
       }
-    } else {
-      newIndent = Math.max(0, currentLine.indent - 1);
     }
-
-    final int deltaIndent = newIndent - currentLine.indent;
-
-    for (int i = startLine; i <= stopLine; i++) {
-      indentLineBy(i, deltaIndent);
-    }
-    textArea.setSelectionStart(getAbsoluteCaretPositionRelativeToLineEnd(startLine,
-        startLineEndRelativePos));
-    textArea.setSelectionEnd(getAbsoluteCaretPositionRelativeToLineEnd(stopLine,
-        stopLineEndRelativePos));
+    // add one because index is either -1 (the start of the document)
+    // or it's the newline character for the previous line
+    return index + 1;
   }
 
-  private int getAbsoluteCaretPositionRelativeToLineEnd(final int line,
-      final int lineEndRelativePosition) {
-    final JEditTextArea textArea = editor.getTextArea();
-
-    return Math.max(textArea.getLineStopOffset(line) - lineEndRelativePosition,
-        textArea.getLineStartOffset(line));
-  }
-
-  private void indentLineBy(final int line, final int deltaIndent) {
-    final JEditTextArea textArea = editor.getTextArea();
-
-    final LineInfo currentLine = new LineInfo(line);
-    final int newIndent = Math.max(0, currentLine.indent + deltaIndent);
-
-    final StringBuilder sb = new StringBuilder();
-    for (int i = 0; i < newIndent; i++) {
-      sb.append(TAB);
-    }
-    sb.append(currentLine.text);
-
-    textArea.select(textArea.getLineStartOffset(line), textArea.getLineStopOffset(line) - 1);
-    textArea.setSelectedText(sb.toString());
-    textArea.selectNone();
-  }
-
-  private boolean isOpen(final char c) {
-    return c == '(' || c == '[' || c == '{';
-  }
-
-  private boolean isClose(final char c) {
-    return c == ')' || c == ']' || c == '}';
-  }
 
   /**
-   * Search for an unterminated paren or bracket. If found, return its index in the given text.
-   * Otherwise return -1.
-   * <p>
-   * Ignores syntax errors, treating (foo] as a valid construct.
-   * <p>
-   * Assumes that the text contains no surrogate characters.
-   * 
-   * @param cursor The current cursor position in the given text.
-   * @param text The text to search for an unterminated paren or bracket.
-   * @return The index of the unterminated paren, or -1.
+   * Calculate the number of spaces on this line.
    */
-  private int indexOfUnclosedParen() {
-    final JEditTextArea textArea = editor.getTextArea();
+  protected int calcSpaceCount(int index, char contents[]) {
+    index = calcLineStart(index, contents);
 
-    final int cursor = textArea.getCaretPosition();
-    final String text = textArea.getText();
-    final Stack<Integer> stack = new Stack<Integer>();
-    int column = 0;
-    for (int i = 0; i < cursor; i++) {
-      final char c = text.charAt(i);
-      if (isOpen(c)) {
-        stack.push(column);
-      } else if (isClose(c)) {
-        if (stack.size() == 0) {
-          // Syntax error; bail.
-          return -1;
-        }
-        stack.pop();
-      }
-
-      if (c == '\n') {
-        column = 0;
-      } else {
-        column++;
-      }
+    int spaceCount = 0;
+    // now walk forward and figure out how many spaces there are
+    while ((index < contents.length) && (index >= 0) && (contents[index++] == ' ')) {
+      spaceCount++;
     }
-    return stack.size() > 0 ? stack.pop() : -1;
+    return spaceCount;
   }
 
-  private String indentOf(final String line) {
-    final Matcher m = INITIAL_WHITESPACE.matcher(line);
-    if (!m.find()) {
-      throw new AssertionError("How can there be nothing?");
-    }
-    return m.group();
-  }
 
-  private String getInitialWhitespace() {
-    final JEditTextArea textArea = editor.getTextArea();
-    final String text = textArea.getText();
-    final int cursor = textArea.getCaretPosition();
-    final int lineNumber = textArea.getLineOfOffset(cursor);
-    final int lineStart = textArea.getLineStartOffset(lineNumber);
-    final int lineEnd = textArea.getLineStopOffset(lineNumber);
-    final String line = textArea.getLineText(lineNumber);
-
-    final String defaultIndent = indentOf(line);
-
-    // Search for an unmatched closing paren on this line.
-    int balance = 0;
-    for (int i = cursor - 1; i >= lineStart; i--) {
-      if (isClose(text.charAt(i))) {
-        balance++;
-      } else if (isOpen(text.charAt(i))) {
-        balance--;
-      }
-    }
-    if (balance == 0) {
-      return defaultIndent;
-    }
-    if (balance > 0) {
-      int index = lineStart - 1;
-      while (balance > 0 && index >= 0) {
-        if (isClose(text.charAt(index))) {
-          balance++;
-        } else if (isOpen(text.charAt(index))) {
-          balance--;
+  /**
+   * Walk back from 'index' until the brace that seems to be the beginning of the current block, and
+   * return the number of spaces found on that line.
+   */
+  protected int calcBraceIndent(int index, char[] contents) {
+    // now that we know things are ok to be indented, walk
+    // backwards to the last { to see how far its line is indented.
+    // this isn't perfect cuz it'll pick up commented areas,
+    // but that's not really a big deal and can be fixed when
+    // this is all given a more complete (proper) solution.
+    int braceDepth = 1;
+    boolean finished = false;
+    while ((index != -1) && (!finished)) {
+      if (contents[index] == '}') {
+        // aww crap, this means we're one deeper
+        // and will have to find one more extra {
+        braceDepth++;
+        // if (braceDepth == 0) {
+        // finished = true;
+        // }
+        index--;
+      } else if (contents[index] == '{') {
+        braceDepth--;
+        if (braceDepth == 0) {
+          finished = true;
         }
         index--;
+      } else {
+        index--;
       }
-      if (balance != 0) {
-        // Syntax error
-        return defaultIndent;
-      }
-      return indentOf(textArea.getLineText(textArea.getLineOfOffset(index)));
     }
-    final int parenColumn = indexOfUnclosedParen();
-    if (parenColumn > -1) {
-      return nSpaces(parenColumn + 1);
-    }
-    return defaultIndent;
+    // never found a proper brace, be safe and don't do anything
+    if (!finished)
+      return -1;
+
+    // check how many spaces on the line with the matching open brace
+    // int pairedSpaceCount = calcSpaceCount(index, contents);
+    return calcSpaceCount(index, contents);
   }
 
-  private String newline() {
-    final JEditTextArea textArea = editor.getTextArea();
 
-    final int cursor = textArea.getCaretPosition();
-    if (cursor <= 1) {
-      return "\n";
-    }
-
-    final int lineNumber = textArea.getLineOfOffset(cursor);
-    final int lineStart = textArea.getLineStartOffset(lineNumber);
-    final String line = textArea.getLineText(lineNumber);
-    final String initialWhitespace = getInitialWhitespace();
-
-    final String lineTextBeforeCursor = line.substring(0, cursor - lineStart);
-    if (Pattern.matches("\\s*", lineTextBeforeCursor)) {
-      return "\n" + initialWhitespace;
-    }
-
-    if (TERMINAL_COLON.matcher(line).find()) {
-      return "\n" + initialWhitespace + TAB;
-    }
-    // TODO: popping context on return should return to the indent of the last def.
-    if (POP_CONTEXT.matcher(line).find()) {
-      final int currentIndentLength = initialWhitespace.length();
-      final int spaceCount = Math.max(0, currentIndentLength - 4);
-      return "\n" + nSpaces(spaceCount);
-    }
-    return "\n" + initialWhitespace;
-  }
-
-  private static final String nSpaces(final int n) {
-    final StringBuilder sb = new StringBuilder(n);
-    for (int i = 0; i < n; i++) {
-      sb.append(' ');
-    }
-    return sb.toString();
+  static private String spaces(int count) {
+    char[] c = new char[count];
+    Arrays.fill(c, ' ');
+    return new String(c);
   }
 }
