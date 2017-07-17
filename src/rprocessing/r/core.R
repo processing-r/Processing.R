@@ -283,3 +283,12 @@ ARC = RLangPApplet$ARC
 
 SPHERE = RLangPApplet$SPHERE
 BOX = RLangPApplet$BOX
+
+CODED = RLangPApplet$CODED
+UP = RLangPApplet$UP
+DOWN = RLangPApplet$DOWN
+LEFT = RLangPApplet$LEFT
+RIGHT = RLangPApplet$RIGHT
+ALT = RLangPApplet$ALT
+CONTROL = RLangPApplet$CONTROL
+SHIFT = RLangPApplet$SHIFT
