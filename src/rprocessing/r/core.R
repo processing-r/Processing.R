@@ -1,3 +1,5 @@
+import(rprocessing.RLangPApplet)
+
 alpha = processing$alpha
 ambient = processing$ambient
 ambientLight = processing$ambientLight
