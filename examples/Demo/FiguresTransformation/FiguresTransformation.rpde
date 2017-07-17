@@ -1,8 +1,8 @@
 import(rprocessing.RLangPApplet)
 
-HALF_PI <- pi / 2
+HALF_PI <- pi/2
 TWO_PI <- pi * 2
-QUARTER_PI <- pi / 4
+QUARTER_PI <- pi/4
 PI <- pi
 DIAMETER <- as.integer(3)
 RADIUS <- as.integer(2)
@@ -19,11 +19,8 @@ fps <- 60
 # Figure radius
 figureRadius <- 70
 
-# Colors
-# leftColor <- #28B78D
-# rightColor <- #243743
-# leftColor <- color(40,183,141)
-# rightColor <- color(36,55,67)
+# Colors leftColor <- #28B78D rightColor <- #243743 leftColor <-
+# color(40,183,141) rightColor <- color(36,55,67)
 
 # Figures
 left <- 0
@@ -34,113 +31,114 @@ settings <- function() {
 }
 
 setup <- function() {
-  size(640, 640)
-  rectMode(DIAMETER)
-  ellipseMode(RADIUS)
-  frameRate(60)
-  noStroke()
-  
-  left = getFigure()
-  runs = runs + 1
-  right = getFigure()
+    size(640, 640)
+    rectMode(DIAMETER)
+    ellipseMode(RADIUS)
+    frameRate(60)
+    noStroke()
+    
+    left = getFigure()
+    runs = runs + 1
+    right = getFigure()
 }
 
 draw <- function() {
-  # Progress of animation
-  p = time/duration
-  
-  # Is even run
-  even = (runs %% 2 == 0)
-  
-  translate(width/2, height/2)
-  if (runs %% 4 == 0) {
-      rotate(HALF_PI*p)
-  } else if (runs %% 4 == 1) {
-      rotate(HALF_PI*(p+1))
-  } else if (runs %% 4 == 2) {
-      rotate(HALF_PI*(p+2))
-  } else {
-      rotate(HALF_PI*(p+3))
-  }
-#   rotate(HALF_PI*p + (runs%4==0?0:runs%4==1?HALF_PI:runs%4==2?PI:3*HALF_PI))
-  
-  # Current position
-  x = 0
-  if (even) {
-      x = width/3*sin(PI*p)
-  } else {
-      x = -1*width/3*sin(PI*p)
-  }
-#   x = (even?1:-1) * width/3*sin(PI*p)
-  # Rotation of figure
-  angle = TWO_PI*p
-  
-  # Draw spaces
-  fill(40,183,141)
-  rect(x-width/2, 0, width, height*2)
-  fill(36,55,67)
-  rect(x+width/2, 0, width, height*2)
-  
-  fill(40,183,141)
-  print(x)
-  # If figure in left space
-  if (x < 0) {
-    # Change right figure
-    if (!even) {
-      right = getFigure()
+    # Progress of animation
+    p = time/duration
+    
+    # Is even run
+    even = (runs%%2 == 0)
+    
+    translate(width/2, height/2)
+    if (runs%%4 == 0) {
+        rotate(HALF_PI * p)
+    } else if (runs%%4 == 1) {
+        rotate(HALF_PI * (p + 1))
+    } else if (runs%%4 == 2) {
+        rotate(HALF_PI * (p + 2))
+    } else {
+        rotate(HALF_PI * (p + 3))
     }
+    # rotate(HALF_PI*p + (runs%4==0?0:runs%4==1?HALF_PI:runs%4==2?PI:3*HALF_PI))
     
-    # Draw figure
-    pushMatrix()
-    translate(-x, 0)
-    rotate(angle)
-    drawFigure(left, p)
-    popMatrix()
-    
-    # Draw splash
-    pushMatrix()
-    translate(x, 0)
-    # Draw wave
-    drawWave(p, 1)
-    # Draw drops
-    drawDrops(p, 1)
-    popMatrix()
-  }
-  
-  fill(36,55,67)
-  # If figure in right space
-  if (x > 0) {
+    # Current position
+    x = 0
     if (even) {
-      left = getFigure()
+        x = width/3 * sin(PI * p)
+    } else {
+        x = -1 * width/3 * sin(PI * p)
+    }
+    # x = (even?1:-1) * width/3*sin(PI*p) Rotation of figure
+    angle = TWO_PI * p
+    
+    # Draw spaces
+    fill(40, 183, 141)
+    rect(x - width/2, 0, width, height * 2)
+    fill(36, 55, 67)
+    rect(x + width/2, 0, width, height * 2)
+    
+    fill(40, 183, 141)
+    print(x)
+    # If figure in left space
+    if (x < 0) {
+        # Change right figure
+        if (!even) {
+            right = getFigure()
+        }
+        
+        # Draw figure
+        pushMatrix()
+        translate(-x, 0)
+        rotate(angle)
+        drawFigure(left, p)
+        popMatrix()
+        
+        # Draw splash
+        pushMatrix()
+        translate(x, 0)
+        # Draw wave
+        drawWave(p, 1)
+        # Draw drops
+        drawDrops(p, 1)
+        popMatrix()
     }
     
-    # Draw figure
-    pushMatrix()
-    translate(-x, 0)
-    rotate(angle)
-    drawFigure(right, p)
-    popMatrix()
+    fill(36, 55, 67)
+    # If figure in right space
+    if (x > 0) {
+        if (even) {
+            left = getFigure()
+        }
+        
+        # Draw figure
+        pushMatrix()
+        translate(-x, 0)
+        rotate(angle)
+        drawFigure(right, p)
+        popMatrix()
+        
+        # Draw splash
+        pushMatrix()
+        translate(x, 0)
+        # Draw wave
+        drawWave(p, -1)
+        # Draw drops
+        drawDrops(p, -1)
+        popMatrix()
+    }
     
-    # Draw splash
-    pushMatrix()
-    translate(x, 0)
-    # Draw wave
-    drawWave(p, -1)
-    # Draw drops
-    drawDrops(p, -1)
-    popMatrix()
-  }
-  
-  # Increase current time
-  time = time + 1000/fps
-  # Reset time
-  if (time >= duration) {
-    time = time - duration
-    runs = runs + 1
-  }
+    # Increase current time
+    time = time + 1000/fps
+    # Reset time
+    if (time >= duration) {
+        time = time - duration
+        runs = runs + 1
+    }
 }
 
-getFigure <- function() { return (runs %% 4) }
+getFigure <- function() {
+    return(runs%%4)
+}
 
 drawFigure <- function(figure, p) {
     t = 0
@@ -149,79 +147,81 @@ drawFigure <- function(figure, p) {
     } else {
         t = 2 * (1 - p)
     }
-#   t = 2*(p<=0.5?p:1-p)
-  radius = figureRadius*0.5*(1+t)
-  if (figure == 0) {
-      drawCircle(t, radius)
-  } else if (figure == 1) {
-      drawSquare(t, radius)
-  } else if (figure == 2) {
-      drawTriangle(t, radius)
-  } else if (figure == 3 ) {
-      drawHeart(t, radius)
-  }
+    # t = 2*(p<=0.5?p:1-p)
+    radius = figureRadius * 0.5 * (1 + t)
+    if (figure == 0) {
+        drawCircle(t, radius)
+    } else if (figure == 1) {
+        drawSquare(t, radius)
+    } else if (figure == 2) {
+        drawTriangle(t, radius)
+    } else if (figure == 3) {
+        drawHeart(t, radius)
+    }
 }
 
 drawCircle <- function(p, radius) {
-  ellipse(0, 0, radius, radius)
+    ellipse(0, 0, radius, radius)
 }
 
 drawTriangle <- function(t, radius) {
-  beginShape()
-  angle = 0
-  while (angle < TWO_PI) {
-      r = cos(PI/3)/cos(angle %% (TWO_PI/3)-PI/3)
-      x = radius*cos(angle)*(1+t*(r-1))
-      y = radius*sin(angle)*(1+t*(r-1))
-      vertex(x, y)
-      angle = angle + 0.05
-  }
-  endShape()
+    beginShape()
+    angle = 0
+    while (angle < TWO_PI) {
+        r = cos(PI/3)/cos(angle%%(TWO_PI/3) - PI/3)
+        x = radius * cos(angle) * (1 + t * (r - 1))
+        y = radius * sin(angle) * (1 + t * (r - 1))
+        vertex(x, y)
+        angle = angle + 0.05
+    }
+    endShape()
 }
 
 drawSquare <- function(t, radius) {
-  beginShape()
-  angle = 0
-  while (angle < TWO_PI) {
-      r = 1/cos(((angle+QUARTER_PI) %% (HALF_PI)-QUARTER_PI))
-    x = radius*cos(angle)*(1+t*(r-1))
-    y = radius*sin(angle)*(1+t*(r-1))
-    vertex(x, y)
-    angle = angle + 0.05
-  }
-  endShape()
+    beginShape()
+    angle = 0
+    while (angle < TWO_PI) {
+        r = 1/cos(((angle + QUARTER_PI)%%(HALF_PI) - QUARTER_PI))
+        x = radius * cos(angle) * (1 + t * (r - 1))
+        y = radius * sin(angle) * (1 + t * (r - 1))
+        vertex(x, y)
+        angle = angle + 0.05
+    }
+    endShape()
 }
 
 drawHeart <- function(t, radius) {
-  beginShape()
-  angle = 0
-  while (angle < TWO_PI) {
-      circleX = cos(angle-PI/2)
-    circleY = sin(angle-PI/2)
-    heartX = sin(angle) * 2^3
-    heartY = (-13*cos(angle)+5*cos(2*angle)+2*cos(3*angle)+cos(4*angle))/17
-    vertex(radius*lerp(circleX,heartX,t), radius*lerp(circleY,heartY,t))
-    angle = angle + 0.05
-  }
-  endShape()
+    beginShape()
+    angle = 0
+    while (angle < TWO_PI) {
+        circleX = cos(angle - PI/2)
+        circleY = sin(angle - PI/2)
+        heartX = sin(angle) * 2^3
+        heartY = (-13 * cos(angle) + 5 * cos(2 * angle) + 2 * cos(3 * angle) + cos(4 * 
+            angle))/17
+        vertex(radius * lerp(circleX, heartX, t), radius * lerp(circleY, heartY, 
+            t))
+        angle = angle + 0.05
+    }
+    endShape()
 }
 
 drawWave <- function(p, dir) {
-  beginShape()
-  a = -PI/2
-  while (a < 3*PI/2) {
-      va = 0
-      if (p > 0.5) {
-          va = 0.5
-      } else {
-          va = p
-      }
-    wx = dir*figureRadius*0.5*(sin(va*TWO_PI)*(sin(a)+1))-dir
-    wy = map(a, 0, PI, -figureRadius, figureRadius)
-    vertex(wx, wy)
-    a = a + RLangPApplet$radians(2)
-  }
-  endShape()
+    beginShape()
+    a = -PI/2
+    while (a < 3 * PI/2) {
+        va = 0
+        if (p > 0.5) {
+            va = 0.5
+        } else {
+            va = p
+        }
+        wx = dir * figureRadius * 0.5 * (sin(va * TWO_PI) * (sin(a) + 1)) - dir
+        wy = map(a, 0, PI, -figureRadius, figureRadius)
+        vertex(wx, wy)
+        a = a + RLangPApplet$radians(2)
+    }
+    endShape()
 }
 
 drawDrops <- function(p, dir) {
@@ -233,20 +233,20 @@ drawDrops <- function(p, dir) {
             va = 0
         }
         a = map(i, 0, 10, -HALF_PI, HALF_PI) + va
-        r = lerp(0, 5*figureRadius, p)
-        k = 2*(1-p)
+        r = lerp(0, 5 * figureRadius, p)
+        k = 2 * (1 - p)
         
         pushMatrix()
-        translate(r*cos(a), r*sin(a))
-        rotate(a-HALF_PI)
+        translate(r * cos(a), r * sin(a))
+        rotate(a - HALF_PI)
         for (j in c(rep(0, 5))) {
-            ellipse(0,j*2*k,j*k,j*k)
+            ellipse(0, j * 2 * k, j * k, j * k)
         }
         popMatrix()
     }
 }
 
 map <- function(value, start1, stop1, start2, stop2) {
-    val = start2 + (stop2 - start2) * ((value - start1) / (stop1 - start1))
+    val = start2 + (stop2 - start2) * ((value - start1)/(stop1 - start1))
     val
 }
