@@ -17,8 +17,7 @@ import processing.core.PConstants;
  */
 public class BuiltinApplet extends PApplet implements PConstants {
 
-  private static final boolean VERBOSE = Boolean.parseBoolean(System
-      .getenv("VERBOSE_RLANG_MODE"));
+  private static final boolean VERBOSE = Boolean.parseBoolean(System.getenv("VERBOSE_RLANG_MODE"));
 
   /*
    * TODO: Check for the cast.
@@ -40,8 +39,7 @@ public class BuiltinApplet extends PApplet implements PConstants {
   public BuiltinApplet() {
     AetherPackageLoader packageLoader = new AetherPackageLoader();
     Session session =
-        new SessionBuilder().withDefaultPackages().setPackageLoader(packageLoader)
-            .build();
+        new SessionBuilder().withDefaultPackages().setPackageLoader(packageLoader).build();
     this.renjinEngine = new RenjinScriptEngineFactory().getScriptEngine(session);
   }
 
@@ -78,14 +76,6 @@ public class BuiltinApplet extends PApplet implements PConstants {
   public void colorMode(double mode, float max1, float max2, float max3, float maxA) {
     this.logWarningsforCast();
     super.colorMode((int) mode, max1, max2, max3, maxA);
-  }
-
-  public double frameCount() {
-    return super.frameCount;
-  }
-
-  public boolean getFocused() {
-    return super.focused;
   }
 
   public double getPI() {

@@ -308,6 +308,12 @@ public class RLangPApplet extends BuiltinApplet {
     log("Setup done");
   }
 
+  @Override
+  public void handleDraw() {
+    super.handleDraw();
+    this.renjinEngine.put("frameCount", this.frameCount);
+  }
+
   /**
    * Call the draw function in R script.
    * 

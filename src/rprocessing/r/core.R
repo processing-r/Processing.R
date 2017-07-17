@@ -193,9 +193,6 @@ triangle = processing$triangle
 updatePixels = processing$updatePixels
 vertex = processing$vertex
 
-# Hack
-frameCount = processing$frameCount
-
 # For static functions
 import(rprocessing.RLangPApplet)
 ceil = RLangPApplet$ceil
