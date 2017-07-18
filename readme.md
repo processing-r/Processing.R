@@ -113,22 +113,6 @@ foreach(i=1:3) %do%
 
 In practice we have only found a few R packages so far that work with Processing.R "out of the box." This is because the package must be pure R  **and** all of its dependencies must also be pure R. There is [renjin list of R packages](http://packages.renjin.org/) which lists their compatibility with the renjin JVM. Any package fully supported in renjin is theoretically supported in Processing.R.
 
-## Limitations
-
-**Static sketches:** Processing.R does not have a good support for detecting static/active/mix mode. We recommend that all sketches be written in full active mode, defining a separate `settings`, `setup` and `draw`. Even simple sketches should be wrapped in `draw()`. For example, do not write:
-
-```R
-line(0, 10, 90, 100)
-```
-
-That may cause bugs. Instead, write:
-
-```R
-draw <- function() {
-    line(0, 10, 90, 100)
-}
-```
-
 ## CONTRIBUTING
 
 Feel free to hack on Processing.R! [development.md](./raw-docs/development.md) will help you to get involved into the development of Processing.R.
