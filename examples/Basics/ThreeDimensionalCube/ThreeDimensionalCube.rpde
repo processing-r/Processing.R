@@ -9,7 +9,7 @@ setup <- function() {
 
 draw <- function() {
     frames <- 24 * 3
-    t <- frameCount()/frames
+    t <- frameCount/frames
     
     background(1)
     
