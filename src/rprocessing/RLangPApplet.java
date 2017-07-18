@@ -6,7 +6,9 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.lang.Thread.UncaughtExceptionHandler;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
 import javax.script.ScriptException;
@@ -49,6 +51,7 @@ public class RLangPApplet extends BuiltinApplet {
 
   /** Program code */
   private final String programText;
+  private ExpressionVector expressionVector;
 
   private static final String CORE_TEXT =
       RScriptReader.readResourceAsText(Runner.class, "r/core.R");
@@ -58,6 +61,9 @@ public class RLangPApplet extends BuiltinApplet {
   private final CountDownLatch finishedLatch = new CountDownLatch(1);
 
   private RSketchError terminalException = null;
+
+  private boolean hasSize = false;
+  private SEXP sizeFunction = null;
 
   /**
    * Mode for Processing.
@@ -98,19 +104,26 @@ public class RLangPApplet extends BuiltinApplet {
     SEXP source = RParser.parseSource(this.programText + "\n", "inline-string");
     if (isSameClass(source, ExpressionVector.class)) {
       ExpressionVector ev = (ExpressionVector) source;
-      for (int i = 0; i < ev.length(); ++i) {
-        /**
-         * There is a bug, see https://github.com/gaocegege/Processing.R/issues/7 For example,
-         * processing$line() is also a function call in renjin engine. To solve this problem, add a
-         * hack to make sure the function is "<-".
-         */
+      List<SEXP> sexps = new ArrayList<SEXP>();
+      for (int i = ev.length() - 1; i >= 0; --i) {
         if (isSameClass(ev.get(i), FunctionCall.class)
-            && isSameClass(((FunctionCall) ev.get(i)).getFunction(), Symbol.class)
-            && ((Symbol) ((FunctionCall) ev.get(i)).getFunction()).getPrintName().equals("<-")) {
-          this.renjinEngine.getTopLevelContext().evaluate(ev.get(i),
-              this.renjinEngine.getTopLevelContext().getEnvironment());
+            && isSameClass(((FunctionCall) ev.get(i)).getFunction(), Symbol.class)) {
+          if (((Symbol) ((FunctionCall) ev.get(i)).getFunction()).getPrintName().equals("<-")) {
+            this.renjinEngine.getTopLevelContext().evaluate(ev.get(i),
+                this.renjinEngine.getTopLevelContext().getEnvironment());
+            sexps.add(ev.get(i));
+          } else if (((Symbol) ((FunctionCall) ev.get(i)).getFunction()).getPrintName()
+              .equals(Constant.SIZE_NAME)) {
+            log("size function is defined in global namespace.");
+            hasSize = true;
+            sizeFunction = ev.get(i);
+          } else {
+            sexps.add(ev.get(i));
+          }
         }
       }
+
+      expressionVector = new ExpressionVector(sexps);
     }
   }
 
@@ -267,12 +280,13 @@ public class RLangPApplet extends BuiltinApplet {
    */
   @Override
   public void settings() {
+    if (mode == Mode.MIXED || mode == Mode.STATIC) {
+      this.renjinEngine.getTopLevelContext().evaluate(this.sizeFunction,
+          this.renjinEngine.getTopLevelContext().getEnvironment());
+    }
     Object obj = this.renjinEngine.get(Constant.SETTINGS_NAME);
     if (obj.getClass().equals(Closure.class)) {
       ((Closure) obj).doApply(this.renjinEngine.getTopLevelContext());
-    } else if (mode == Mode.STATIC) {
-      // TODO: Implement Static Mode.
-      // Set size and something else.
     }
   }
 
@@ -289,6 +303,8 @@ public class RLangPApplet extends BuiltinApplet {
     if (this.mode == Mode.STATIC) {
       try {
         log("The mode is static, run the program directly.");
+        // The code includes size function but it would not raise a error, I don't know what happens
+        // although it works well.
         this.renjinEngine.eval(this.programText);
         log("Evaluate the code in static mode.");
       } catch (final Exception exception) {
@@ -304,6 +320,10 @@ public class RLangPApplet extends BuiltinApplet {
       }
     } else {
       System.out.println("The program is in mix mode now.");
+      Object obj = this.renjinEngine.get(Constant.SETUP_NAME);
+      if (obj.getClass().equals(Closure.class)) {
+        ((Closure) obj).doApply(this.renjinEngine.getTopLevelContext());
+      }
     }
     log("Setup done");
   }
@@ -349,10 +369,8 @@ public class RLangPApplet extends BuiltinApplet {
    * 
    * @return
    */
-  @SuppressWarnings("rawtypes")
   private boolean isMixMode() {
-    Class closureClass = Closure.class;
-    return isSameClass(this.renjinEngine.get(Constant.SIZE_NAME), closureClass);
+    return hasSize;
   }
 
   /**
