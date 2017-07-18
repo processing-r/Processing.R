@@ -8,6 +8,7 @@
 <p align="center">
     <a href="https://travis-ci.org/gaocegege/Processing.R"><img src="https://travis-ci.org/gaocegege/Processing.R.svg?branch=master" alt="Travis CI"></a>
     <a href="https://ci.appveyor.com/project/gaocegege/processing-r/branch/master"><img src="https://ci.appveyor.com/api/projects/status/9lq6psaw9c18ins8/branch/master?svg=true" alt="appveyor"></a>
+<a href="https://app.fossa.io/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fgaocegege%2FProcessing.R?ref=badge_shield" alt="FOSSA Status"><img src="https://app.fossa.io/api/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fgaocegege%2FProcessing.R.svg?type=shield"/></a>
     <a href="https://quay.io/repository/gaocegege/processing.r"><img src="https://img.shields.io/badge/docker-deprecated-yellowgreen.svg" alt=""></a>
     <!--<a href="https://quay.io/repository/gaocegege/processing.r"><img src="https://quay.io/repository/gaocegege/processing.r/status" alt="Docker Repository on Quay" title="Docker Repository on Quay"></a>-->
     <a href="https://www.codacy.com/app/gaocegege/Processing-R?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=gaocegege/Processing.R&amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/33ebc49f6f764fffb7ea7bf617edf902" alt="Codacy Badge"></a>
@@ -130,3 +131,7 @@ See [AUTHORS](./AUTHORS.md)
 * Thanks [processing](https://github.com/processing/processing) for the Processing Development Environment(PDE).
 * Thanks [renjin](https://github.com/bedatadriven/renjin) for its awesome JVM-based interpreter for the R language.
 * Thanks [Jeremy Douglass](https://github.com/jeremydouglass) for mentoring me in Google Summer of Code 2017.
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fgaocegege%2FProcessing.R.svg?type=large)](https://app.fossa.io/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fgaocegege%2FProcessing.R?ref=badge_large)
