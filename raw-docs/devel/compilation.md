@@ -106,7 +106,7 @@ posAY <- 22
 posBX <- 33
 posBY <- 22
 
-processing$line(posAX, posAY, posBX, posBY)
+line(posAX, posAY, posBX, posBY)
 ```
 
 The output is:
