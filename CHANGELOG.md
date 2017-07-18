@@ -1,12 +1,74 @@
 # Change Log
 
-## [Unreleased](https://github.com/gaocegege/Processing.R/tree/HEAD)
-
-[Full Changelog](https://github.com/gaocegege/Processing.R/compare/v1.0.2...HEAD)
+## [v1.0.4](https://github.com/gaocegege/Processing.R/tree/v1.0.4) (2017-07-18)
+[Full Changelog](https://github.com/gaocegege/Processing.R/compare/v1.0.4-alpha...v1.0.4)
 
 **Closed issues:**
 
-- Remove Python-specific reference terms from reference import [\#120](https://github.com/gaocegege/Processing.R/issues/120)
+- Fix the wrong indent in PDE editor [\#164](https://github.com/gaocegege/Processing.R/issues/164)
+- howto.md: Document the new way [\#159](https://github.com/gaocegege/Processing.R/issues/159)
+- Rename the examples about package and library [\#156](https://github.com/gaocegege/Processing.R/issues/156)
+- R package example code [\#151](https://github.com/gaocegege/Processing.R/issues/151)
+- Library example code and test case [\#149](https://github.com/gaocegege/Processing.R/issues/149)
+- Cannot build with gcc-bridge on macOS 10.12.5 [\#147](https://github.com/gaocegege/Processing.R/issues/147)
+- renjin: Unable to build in x86 architecture [\#140](https://github.com/gaocegege/Processing.R/issues/140)
+- Add wrapper to cast double into int and print warnings in PDE console [\#108](https://github.com/gaocegege/Processing.R/issues/108)
+- `map` function call meets error [\#107](https://github.com/gaocegege/Processing.R/issues/107)
+- Refactor the logic about frameCount [\#81](https://github.com/gaocegege/Processing.R/issues/81)
+- support static sketches with size\(\) [\#51](https://github.com/gaocegege/Processing.R/issues/51)
+- Support render keywords in size\(\) [\#50](https://github.com/gaocegege/Processing.R/issues/50)
+- Support Constants \(math\) from Processing [\#49](https://github.com/gaocegege/Processing.R/issues/49)
+- size fails in setup [\#39](https://github.com/gaocegege/Processing.R/issues/39)
+- Redirect STDERR to Processing console [\#24](https://github.com/gaocegege/Processing.R/issues/24)
+
+**Merged pull requests:**
+
+- core.R: Add print [\#176](https://github.com/gaocegege/Processing.R/pull/176) ([gaocegege](https://github.com/gaocegege))
+- README: Remove limitations [\#173](https://github.com/gaocegege/Processing.R/pull/173) ([gaocegege](https://github.com/gaocegege))
+- ThreeDimensionalCube: Fix frameCount [\#172](https://github.com/gaocegege/Processing.R/pull/172) ([gaocegege](https://github.com/gaocegege))
+- RLangPApplet: Support static mode [\#171](https://github.com/gaocegege/Processing.R/pull/171) ([gaocegege](https://github.com/gaocegege))
+- Add built-in variables pixelWidth and pixelHeight [\#169](https://github.com/gaocegege/Processing.R/pull/169) ([gaocegege](https://github.com/gaocegege))
+- focused: Add example [\#168](https://github.com/gaocegege/Processing.R/pull/168) ([gaocegege](https://github.com/gaocegege))
+- Examples/importLibrary [\#167](https://github.com/gaocegege/Processing.R/pull/167) ([jeremydouglass](https://github.com/jeremydouglass))
+- RLangInputHandler: Replacing python with java [\#165](https://github.com/gaocegege/Processing.R/pull/165) ([gaocegege](https://github.com/gaocegege))
+- BuiltinApplet: Add warnings for casting [\#162](https://github.com/gaocegege/Processing.R/pull/162) ([gaocegege](https://github.com/gaocegege))
+- docs: Add development [\#161](https://github.com/gaocegege/Processing.R/pull/161) ([gaocegege](https://github.com/gaocegege))
+- build.xml: Add macOS specific check [\#158](https://github.com/gaocegege/Processing.R/pull/158) ([gaocegege](https://github.com/gaocegege))
+- examples: Rename examples of library and package [\#157](https://github.com/gaocegege/Processing.R/pull/157) ([gaocegege](https://github.com/gaocegege))
+- \*: Add cast from double to int [\#155](https://github.com/gaocegege/Processing.R/pull/155) ([gaocegege](https://github.com/gaocegege))
+- Remove hack of built-in constants [\#154](https://github.com/gaocegege/Processing.R/pull/154) ([gaocegege](https://github.com/gaocegege))
+- build.xml: Add OS specific code [\#153](https://github.com/gaocegege/Processing.R/pull/153) ([gaocegege](https://github.com/gaocegege))
+- RLangMode: Add examples of R packages [\#152](https://github.com/gaocegege/Processing.R/pull/152) ([gaocegege](https://github.com/gaocegege))
+- Add reference and library example [\#150](https://github.com/gaocegege/Processing.R/pull/150) ([gaocegege](https://github.com/gaocegege))
+- feat: add keyboard event [\#148](https://github.com/gaocegege/Processing.R/pull/148) ([hawkingrei](https://github.com/hawkingrei))
+- Add built-in constants [\#146](https://github.com/gaocegege/Processing.R/pull/146) ([gaocegege](https://github.com/gaocegege))
+- badge: Deprecate docker [\#145](https://github.com/gaocegege/Processing.R/pull/145) ([gaocegege](https://github.com/gaocegege))
+- badge: Remove codacy coverage badge [\#144](https://github.com/gaocegege/Processing.R/pull/144) ([gaocegege](https://github.com/gaocegege))
+- demo: Add a demo [\#118](https://github.com/gaocegege/Processing.R/pull/118) ([gaocegege](https://github.com/gaocegege))
+- Pop error or exception to PDE [\#85](https://github.com/gaocegege/Processing.R/pull/85) ([gaocegege](https://github.com/gaocegege))
+
+## [v1.0.4-alpha](https://github.com/gaocegege/Processing.R/tree/v1.0.4-alpha) (2017-07-05)
+[Full Changelog](https://github.com/gaocegege/Processing.R/compare/v1.0.3...v1.0.4-alpha)
+
+**Closed issues:**
+
+- LibraryImporter: Fix ad-hoc code [\#136](https://github.com/gaocegege/Processing.R/issues/136)
+- Support packages \(libraries\) in R [\#17](https://github.com/gaocegege/Processing.R/issues/17)
+- Add pre-processer into Processing.R [\#9](https://github.com/gaocegege/Processing.R/issues/9)
+
+**Merged pull requests:**
+
+- ci: Remove renjin specific config [\#138](https://github.com/gaocegege/Processing.R/pull/138) ([gaocegege](https://github.com/gaocegege))
+- LibraryImporter: Fix ad-hoc code [\#137](https://github.com/gaocegege/Processing.R/pull/137) ([gaocegege](https://github.com/gaocegege))
+- core.R: Support static functions in PApplet [\#134](https://github.com/gaocegege/Processing.R/pull/134) ([gaocegege](https://github.com/gaocegege))
+- Support Processing libraries [\#133](https://github.com/gaocegege/Processing.R/pull/133) ([gaocegege](https://github.com/gaocegege))
+- Support Package in R [\#83](https://github.com/gaocegege/Processing.R/pull/83) ([gaocegege](https://github.com/gaocegege))
+
+## [v1.0.3](https://github.com/gaocegege/Processing.R/tree/v1.0.3) (2017-06-26)
+[Full Changelog](https://github.com/gaocegege/Processing.R/compare/v1.0.2...v1.0.3)
+
+**Closed issues:**
+
 - Write a tech report to introduce the architecture of Processing.R [\#119](https://github.com/gaocegege/Processing.R/issues/119)
 - reference: Can't show functions which have no subcategory [\#117](https://github.com/gaocegege/Processing.R/issues/117)
 - Layout error in documentation [\#112](https://github.com/gaocegege/Processing.R/issues/112)
@@ -27,7 +89,7 @@
 
 **Merged pull requests:**
 
-- patch: Remove python-specific refenrence items [\#132](https://github.com/gaocegege/Processing.R/pull/132) ([gaocegege](https://github.com/gaocegege))
+- patch: Remove python-specific reference items [\#132](https://github.com/gaocegege/Processing.R/pull/132) ([gaocegege](https://github.com/gaocegege))
 - docs: Remove table, xml and primitive [\#130](https://github.com/gaocegege/Processing.R/pull/130) ([gaocegege](https://github.com/gaocegege))
 - travis: Fix CI failure [\#129](https://github.com/gaocegege/Processing.R/pull/129) ([gaocegege](https://github.com/gaocegege))
 - reference: Add tranform reference items [\#128](https://github.com/gaocegege/Processing.R/pull/128) ([gaocegege](https://github.com/gaocegege))
@@ -37,7 +99,7 @@
 - Create CODE\_OF\_CONDUCT.md [\#124](https://github.com/gaocegege/Processing.R/pull/124) ([gaocegege](https://github.com/gaocegege))
 - feat: add mouseX and mouseY [\#122](https://github.com/gaocegege/Processing.R/pull/122) ([hawkingrei](https://github.com/hawkingrei))
 - Feat/add keyword focused [\#121](https://github.com/gaocegege/Processing.R/pull/121) ([hawkingrei](https://github.com/hawkingrei))
-- WIP: Add reference code for `Lights, Camera` [\#115](https://github.com/gaocegege/Processing.R/pull/115) ([gaocegege](https://github.com/gaocegege))
+- Add reference code for `Lights, Camera` [\#115](https://github.com/gaocegege/Processing.R/pull/115) ([gaocegege](https://github.com/gaocegege))
 - README: Add reference [\#113](https://github.com/gaocegege/Processing.R/pull/113) ([gaocegege](https://github.com/gaocegege))
 - Finish shape reference [\#109](https://github.com/gaocegege/Processing.R/pull/109) ([gaocegege](https://github.com/gaocegege))
 - reference: Migrate property from processing.py [\#105](https://github.com/gaocegege/Processing.R/pull/105) ([gaocegege](https://github.com/gaocegege))
