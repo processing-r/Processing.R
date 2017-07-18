@@ -292,3 +292,5 @@ RIGHT = RLangPApplet$RIGHT
 ALT = RLangPApplet$ALT
 CONTROL = RLangPApplet$CONTROL
 SHIFT = RLangPApplet$SHIFT
+
+print = stdout$print
