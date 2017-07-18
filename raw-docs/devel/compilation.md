@@ -117,17 +117,22 @@ The output is:
 
 ## Docker Image (DEPRECATED)
 
-The docker image of Processing.R is currently deprecated.
+[![Docker Repository on Quay](https://quay.io/repository/gaocegege/processing.r/status "Docker Repository on Quay")](https://quay.io/repository/gaocegege/processing.r)
 
-Docker containers provide a lightweight virtual environments that package up Linux applications with everything that they need to run.
+**NOTICE:** The docker image of Processing.R is currently deprecated, since graphic card is not fully supported in Docker. 3D sketches couldn't work in the docker container.
+
+Docker containers provide a lightweight virtual environment that package up Linux applications with everything that they need to run.
 
 In order to install a docker image and then launch a docker container of Processing.R running in a virtual Linux desktop environment:
 
 1. install docker on your system
 1. `docker pull quay.io/gaocegege/processing.r`
 1. `docker run quay.io/gaocegege/processing.r`
-1. open the link of NoVNC in a web browser.
-1. input the default password `process`in the URL
+1. open the link of NoVNC `http://<IP of the container>:6901/vnc_auto.html?password=process` in a web browser.
 1. play with Processing.R in a desktop environment :)
 
-See [the demo in vimeo](https://vimeo.com/207571123)
+See the video in vimeo:
+
+<div align="center">
+	<a href="https://vimeo.com/225961911"><img src="../img/video.png" alt="Demo in Vimeo" width="600"></a>
+</div>
