@@ -131,6 +131,8 @@ In order to install a docker image and then launch a docker container of Process
 1. open the link of NoVNC `http://<IP of the container>:6901/vnc_auto.html?password=process` in a web browser.
 1. play with Processing.R in a desktop environment :)
 
+See the video in vimeo:
+
 <div align="center">
 	<a href="https://vimeo.com/225961911"><img src="../img/video.png" alt="Demo in Vimeo" width="600"></a>
 </div>
