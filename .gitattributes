@@ -1,0 +1,3 @@
+raw-docs/* linguist-documentation
+*.rpde linguist-language=R
+lib/* linguist-vendored
