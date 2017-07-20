@@ -4,9 +4,11 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import processing.app.Platform;
 import processing.core.PApplet;
 import rprocessing.RunnableSketch;
 import rprocessing.Runner;
@@ -103,44 +105,26 @@ public class StandaloneSketch implements RunnableSketch {
     this.code = RScriptReader.readText(sketchPath.toPath());
 
     // TODO: Support library in standalone sketch.
-    this.libraryDirs = null;
-    // {
-    // log("Populate library directories.");
-    // this.libraryDirs = new ArrayList<>();
-    // final String buildProperties = "build.properties";
-    // final String propsResource;
-    // try {
-    // propsResource =
-    // URLDecoder.decode(Runner.class.getResource(buildProperties).toString(), "UTF-8");
-    // log(propsResource);
-    // } catch (final UnsupportedEncodingException e) {
-    // throw new RuntimeException("Impossible: " + e);
-    // }
-    //
-    // if (propsResource == null) {
-    // log("Could not get build.properties from Runner.");
-    // libraryDirs.add(new File("libraries"));
-    // return;
-    // }
-    //
-    // final Pattern jarResource = Pattern
-    // .compile("jar:file:(.+?)/RLangMode\\.jar!/rprocessing/" + Pattern.quote(buildProperties));
-    // final Pattern fileResource =
-    // Pattern.compile("file:(.+?)/bin/rprocessing/" + Pattern.quote(buildProperties));
-    //
-    // final Matcher jarMatcher = jarResource.matcher(propsResource);
-    // final Matcher fileMatcher = fileResource.matcher(propsResource);
-    // if (jarMatcher.matches()) {
-    // log("We're running from a JAR file.");
-    // libraryDirs.add(new File(jarMatcher.group(1), "libraries"));
-    // } else if (fileMatcher.matches()) {
-    // log("We're running from class files.");
-    // libraryDirs.add(new File(fileMatcher.group(1), "libraries"));
-    // } else {
-    // log("WARNING: I can't find my libraries directory!");
-    // libraryDirs.add(new File("libraries"));
-    // }
-    // }
+    final List<File> libraryDirs = new ArrayList<>();
+    libraryDirs.add(getLibraryDir());
+    log(getLibraryDir());
+    libraryDirs.add(sketchPath);
+    this.libraryDirs = libraryDirs;
+  }
+
+  private File getLibraryDir() {
+    if (Platform.isMacOS()) {
+      String home = System.getProperty("user.home");
+      return new File(home + "/Documents/Processing/libraries");
+    } else if (Platform.isLinux()) {
+      String home = System.getProperty("user.home");
+      return new File(home + "/sketchbook/libraries");
+    } else if (Platform.isWindows()) {
+      String home = System.getProperty("user.home");
+      return new File(home + "\\Documents\\Processing\\modes");
+    }
+    log("Operating System is not supported now.");
+    return null;
   }
 
   @Override
