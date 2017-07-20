@@ -89,7 +89,6 @@
             <remoteRepository refid="remote.repository" />
             <dependency groupId="org.renjin" artifactId="renjin-script-engine" version="${renjin-version}" />
             <dependency groupId="org.renjin" artifactId="renjin-cli" version="${renjin-version}" />
-            <dependency groupId="commons-cli" artifactId="commons-cli" version="1.4" />
         </artifact:dependencies>
         <copy todir="${mode-lib}">
             <fileset refid="dependency.fileset" />
