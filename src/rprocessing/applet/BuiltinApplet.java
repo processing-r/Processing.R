@@ -58,6 +58,31 @@ public class BuiltinApplet extends PApplet implements PConstants {
     super.bezierDetail((int) detail);
   }
 
+  public void curveDetail(double detail) {
+    this.logWarningsforCast();
+    super.curveDetail((int) detail);
+  }
+
+  public void sphereDetail(double res) {
+    this.logWarningsforCast();
+    super.sphereDetail((int) res);
+  }
+
+  public void sphereDetail(double ures, double vres) {
+    this.logWarningsforCast();
+    super.sphereDetail((int) ures, (int) vres);
+  }
+
+  public void noiseDetail(double lod) {
+    this.logWarningsforCast();
+    super.noiseDetail((int) lod);
+  }
+
+  public void noiseDetail(double lod, double falloff) {
+    this.logWarningsforCast();
+    super.noiseDetail((int) lod, (float) falloff);
+  }
+
   public void colorMode(double mode) {
     this.logWarningsforCast();
     super.colorMode((int) mode);
