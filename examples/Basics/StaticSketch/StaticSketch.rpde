@@ -1,0 +1,5 @@
+size(250, 150)
+background(255, 192, 192)
+line(0, 0, width, height/2)
+line(0, 0, width/2, height)
+ellipse(width - 60, height - 60, 100, 100)
