@@ -1,0 +1,28 @@
+settings <- function() {
+  # Please install the minim library before you run the example.
+  importLibrary("minim")
+  size(512, 200)
+}
+
+setup <- function() {
+  minim = Minim$new(processing);  
+  player = minim$loadFile("groove.mp3");
+  player$play()
+}
+
+draw <- function() {
+  background(0)
+  stroke(255)
+  for (i in 0:player$bufferSize()-1) {
+    x1 = map( i, 0, player$bufferSize(), 0, width )
+    x2 = map( i+1, 0, player$bufferSize(), 0, width )
+    # `left` and `right` are object fields of type AudioBuffer - not accessible from renjin
+    # http://code.compartmental.net/minim/audioplayer_class_audioplayer.html
+    # line( x1, 50 + player$left$get(i)*50, x2, 50 + player$left$get(i+1)*50 )
+    # line( x1, 150 + player$right$get(i)*50, x2, 150 + player$right$get(i+1)*50 )
+    line( x1, 100, x2, 100)
+  }
+  posx = map(player$position(), 0, player$length(), 0, width);
+  stroke(0,200,0);
+  line(posx, 0, posx, height);
+}
