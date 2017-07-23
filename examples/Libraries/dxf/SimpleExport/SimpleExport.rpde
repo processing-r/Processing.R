@@ -1,0 +1,39 @@
+# Simple DXF Export Non-interactive -- saves DXF data on frame 2, then pauses
+# loop.
+
+settings <- function() {
+    # Please install the DXF library before you run the example.
+    importLibrary("dxf")
+    size(400, 400, P3D)
+}
+
+setup <- function() {
+    background(255)
+    noStroke()
+    sphereDetail(12)
+}
+
+draw <- function() {
+    if (frameCount > 1) {
+        beginRaw(DXF, "output.dxf")  # Start recording to the file
+    }
+    lights()
+    background(0)
+    translate(width/3, height/3, -200)
+    rotateZ(map(mouseY, 0, height, 0, PI))
+    rotateY(map(mouseX, 0, width, 0, HALF_PI))
+    for (y in -2:1) {
+        for (x in -2:1) {
+            for (z in -2:1) {
+                pushMatrix()
+                translate(120 * x, 120 * y, -120 * z)
+                sphere(30)
+                popMatrix()
+            }
+        }
+    }
+    if (frameCount > 1) {
+        endRaw()
+        noLoop()
+    }
+}
