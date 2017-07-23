@@ -1,28 +1,28 @@
 settings <- function() {
-  # Please install the Processing Sound library before you run the example.
-  importLibrary("sound")
-  size(640, 360)
-  sine <- SinOsc$new(processing)
+    # Please install the Processing Sound library before you run the example.
+    importLibrary("sound")
+    size(640, 360)
+    sine <- SinOsc$new(processing)
 }
 
 setup <- function() {
-  freq <- 400
-  amp <- 0.5
-  pos <- 0
-  background(255)
-  sine$play()
+    freq <- 400
+    amp <- 0.5
+    pos <- 0
+    background(255)
+    sine$play()
 }
 
 draw <- function() {
-  # Map mouseY from 0.0 to 1.0 for amplitude
-  amp <- map(mouseY, 0, height, 1.0, 0.0)
-  sine$amp(amp)
-  
-  # Map mouseX from 20Hz to 1000Hz for frequency  
-  freq <- map(mouseX, 0, width, 80.0, 1000.0)
-  sine$freq(freq)
-  
-  # Map mouseX from -1.0 to 1.0 for left to right 
-  pos <- map(mouseX, 0, width, -1.0, 1.0)
-  sine$pan(pos)
+    # Map mouseY from 0.0 to 1.0 for amplitude
+    amp <- map(mouseY, 0, height, 1, 0)
+    sine$amp(amp)
+    
+    # Map mouseX from 20Hz to 1000Hz for frequency
+    freq <- map(mouseX, 0, width, 80, 1000)
+    sine$freq(freq)
+    
+    # Map mouseX from -1.0 to 1.0 for left to right
+    pos <- map(mouseX, 0, width, -1, 1)
+    sine$pan(pos)
 }
