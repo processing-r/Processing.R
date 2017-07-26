@@ -284,10 +284,7 @@ public class RLangPApplet extends BuiltinApplet {
       this.renjinEngine.getTopLevelContext().evaluate(this.sizeFunction,
           this.renjinEngine.getTopLevelContext().getEnvironment());
     }
-    Object obj = this.renjinEngine.get(Constant.SETTINGS_NAME);
-    if (obj.getClass().equals(Closure.class)) {
-      ((Closure) obj).doApply(this.renjinEngine.getTopLevelContext());
-    }
+    applyFunction(Constant.SETTINGS_NAME);
   }
 
   /**
@@ -320,10 +317,7 @@ public class RLangPApplet extends BuiltinApplet {
       }
     } else {
       System.out.println("The program is in mix mode now.");
-      Object obj = this.renjinEngine.get(Constant.SETUP_NAME);
-      if (obj.getClass().equals(Closure.class)) {
-        ((Closure) obj).doApply(this.renjinEngine.getTopLevelContext());
-      }
+      applyFunction(Constant.SETUP_NAME);
     }
     log("Setup done");
   }
@@ -341,10 +335,7 @@ public class RLangPApplet extends BuiltinApplet {
    */
   @Override
   public void draw() {
-    Object obj = this.renjinEngine.get(Constant.DRAW_NAME);
-    if (obj.getClass().equals(Closure.class)) {
-      ((Closure) obj).doApply(this.renjinEngine.getTopLevelContext());
-    }
+    applyFunction(Constant.DRAW_NAME);
   }
 
   /*
@@ -388,6 +379,105 @@ public class RLangPApplet extends BuiltinApplet {
     this.renjinEngine.put("pixelWidth", pixelWidth);
     this.renjinEngine.put("pixelHeight", pixelHeight);
     // this.renjinEngine.put("keyPressed", keyPressed);
+  }
+
+  @Override
+  public void mouseClicked() {
+    wrapMouseVariables();
+    applyFunction(Constant.MOUSECLICKED_NAME);
+  }
+
+  @Override
+  public void mouseMoved() {
+    wrapMouseVariables();
+    applyFunction(Constant.MOUSEMOVED_NAME);
+  }
+
+  @Override
+  public void mousePressed() {
+    wrapMouseVariables();
+    applyFunction(Constant.MOUSEPRESSED_NAME);
+  }
+
+  @Override
+  public void mouseReleased() {
+    wrapMouseVariables();
+    applyFunction(Constant.MOUSERELEASED_NAME);
+  }
+
+  @Override
+  public void mouseDragged() {
+    wrapMouseVariables();
+    applyFunction(Constant.MOUSEDRAGGED_NAME);
+  }
+
+  /**
+   *
+   * @see processing.core.PApplet#focusGained()
+   */
+  @Override
+  public void focusGained() {
+    super.focusGained();
+    this.renjinEngine.put("focused", super.focused);
+  }
+
+  /**
+   *
+   * @see processing.core.PApplet#focusLost()
+   */
+  @Override
+  public void focusLost() {
+    super.focusLost();
+    this.renjinEngine.put("focused", super.focused);
+  }
+
+  private void wrapMouseVariables() {
+    this.renjinEngine.put("mouseX", mouseX);
+    this.renjinEngine.put("mouseY", mouseY);
+    this.renjinEngine.put("pmouseX", pmouseX);
+    this.renjinEngine.put("pmouseY", pmouseY);
+    // this.renjinEngine.put("mouseButton", mouseButton);
+  }
+
+  private void applyFunction(String name) {
+    Object obj = this.renjinEngine.get(name);
+    if (obj.getClass().equals(Closure.class)) {
+      ((Closure) obj).doApply(this.renjinEngine.getTopLevelContext());
+    }
+  }
+
+  @Override
+  public void keyPressed() {
+    wrapKeyVariables();
+    applyFunction(Constant.KEYPRESSED_NAME);
+  }
+
+  @Override
+  public void keyReleased() {
+    wrapKeyVariables();
+    applyFunction(Constant.KEYRELEASED_NAME);
+  }
+
+  @Override
+  public void keyTyped() {
+    wrapKeyVariables();
+    applyFunction(Constant.KEYTYPED_NAME);
+  }
+
+  private char lastKey = Character.MIN_VALUE;
+
+  protected void wrapKeyVariables() {
+    if (lastKey != key) {
+      lastKey = key;
+      /*
+       * If key is "CODED", i.e., an arrow key or other non-printable, pass that value through
+       * as-is. If it's printable, convert it to a unicode string, so that the user can compare key
+       * == 'x' instead of key == ord('x').
+       */
+      final char pyKey = key == CODED ? parseChar(Integer.valueOf(key)) : parseChar(key);
+      this.renjinEngine.put("key", pyKey);
+    }
+    this.renjinEngine.put("keyCode", keyCode);
   }
 
   /**
