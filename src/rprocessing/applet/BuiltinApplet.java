@@ -83,26 +83,6 @@ public class BuiltinApplet extends PApplet implements PConstants {
     super.noiseDetail((int) lod, (float) falloff);
   }
 
-  public void colorMode(double mode) {
-    this.logWarningsforCast();
-    super.colorMode((int) mode);
-  }
-
-  public void colorMode(double mode, float max) {
-    this.logWarningsforCast();
-    super.colorMode((int) mode, max);
-  }
-
-  public void colorMode(double mode, float max1, float max2, float max3) {
-    this.logWarningsforCast();
-    super.colorMode((int) mode, max1, max2, max3);
-  }
-
-  public void colorMode(double mode, float max1, float max2, float max3, float maxA) {
-    this.logWarningsforCast();
-    super.colorMode((int) mode, max1, max2, max3, maxA);
-  }
-
   public double getPI() {
     return PI;
   }
