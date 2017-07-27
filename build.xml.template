@@ -2,16 +2,19 @@
 <project name="Processing.R" default="install" basedir="." xmlns:jacoco="antlib:org.jacoco.ant" xmlns:artifact="antlib:org.apache.maven.artifact.ant">
     <property name="mode.name" value="RLangMode" />
 
-    <!-- folder to install modes in (probably a folder called "modes" inside your sketchbook folder) -->
+    <!-- Folder to install modes in (probably a folder called "modes" inside your sketchbook folder) -->
     <property name="processing.modes" value="@@modes@@" />
 
-    <!-- path to your processing executable. -->
+    <!-- Path to your processing executable. -->
     <property name="processing.executable" value="@@executable@@" />
 
-    <!-- location of processing jars (core.jar, pde.jar, ..) -->
+    <!-- Location of processing jars (core.jar, pde.jar, ..) -->
     <property name="processing.classes.core" value="@@core@@" />
     <property name="processing.classes.pde" value="@@pde@@" />
-    <property name="java.target.version" value="1.8" />
+
+    <!-- Version of the mode -->
+    <property name="processing.r.version" value="@@version@@" />
+    <property name="processing.r.commit.id" value="@@commitid@@" />
 
     <!-- Folder -->
     <property name="try" value="try" />
@@ -27,14 +30,16 @@
     <!-- Test -->
     <property name="test.build.dir" value="test-output" />
     <property name="test.src.dir" value="src" />
-    <property name="result.classes.dir" location="${test.build.dir}"/>
-    <property name="result.report.dir" location="${test.build.dir}/site/jacoco"/>
-    <property name="result.exec.file" location="${test.build.dir}/jacoco.exec"/>
+    <property name="result.classes.dir" location="${test.build.dir}" />
+    <property name="result.report.dir" location="${test.build.dir}/site/jacoco" />
+    <property name="result.exec.file" location="${test.build.dir}/jacoco.exec" />
 
+    <!-- Version control of dependencies -->
     <property name="renjin-version" value="0.8.2411" />
+    <property name="java.target.version" value="1.8" />
 
     <path id="mode-library-classpath">
-        <pathelement location="${processing.classes.pde}"/>
+        <pathelement location="${processing.classes.pde}" />
         <fileset dir="${processing.classes.core}">
             <include name="*.jar" />
         </fileset>
@@ -58,6 +63,14 @@
     <target name="info">
         <echo>This is the R mode for Processing, powered by github.com/gaocegege</echo>
     </target>
+
+    <target name="bumpversion">
+    <propertyfile file="src/rprocessing/build.properties" comment="R mode build number">
+        <entry key="build.date" type="date" value="now"/>
+    </propertyfile>
+    <property file="src/rprocessing/build.properties" prefix="processing.r"/>
+  	<echo message="Bumped to version ${processing.r.version}-${processing.r.commit.id}."></echo>
+  </target>
 
     <target name="checkos">
         <condition property="isWindows" value="true">
@@ -126,7 +139,7 @@
         </jar>
     </target>
 
-    <target name="package" depends="build">
+    <target name="package" depends="build,bumpversion">
         <delete dir="${dist}" />
         <property name="bundle" value="${dist}/${mode.name}" />
         <mkdir dir="${bundle}" />
@@ -143,8 +156,8 @@
             <fileset dir="examples/" />
         </copy>
         <!-- TODO: Configure the version in bash script. -->
-        <replaceregexp file="${bundle}/mode.properties" flags="g" match="@@version@@" replace="11" />
-        <replaceregexp file="${bundle}/mode.properties" flags="g" match="@@pretty-version@@" replace="1" />
+        <replaceregexp file="${bundle}/mode.properties" flags="g" match="@@mode-version@@" replace="${processing.r.version}" />
+        <replaceregexp file="${bundle}/mode.properties" flags="g" match="@@pretty-version@@" replace="Version ${processing.r.version}, commit ${processing.r.commit.id}, built ${processing.r.build.date}" />
     </target>
 
     <target name="install" depends="package">

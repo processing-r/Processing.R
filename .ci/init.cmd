@@ -9,7 +9,8 @@ REM # Those paths are important to build runner.jar.
 set processing="c:\\projects\\processing-3.3"
 set core="c:\\projects\\processing-3.3\\core\\library"
 set pde="c:\\projects\\processing-3.3\\lib\\pde.jar"
-set renjin="lib\\renjin-script-engine-0.8.2194-jar-with-dependencies.jar"
+set version="appveyor"
+set commitid="mock-in-appveyor"
 
 set processingr="c:\projects\Processing.R"
 
@@ -22,3 +23,5 @@ perl -i.bak -pe "s|\@\@executable\@\@|%executable%|g" build.xml && del build.xml
 perl -i.bak -pe "s|\@\@processing\@\@|%processing%|g" build.xml && del build.xml.bak
 perl -i.bak -pe "s|\@\@core\@\@|%core%|g" build.xml && del build.xml.bak
 perl -i.bak -pe "s|\@\@pde\@\@|%pde%|g" build.xml && del build.xml.bak
+perl -i.bak -pe "s|\@\@version\@\@|%version%|g" build.xml && del build.xml.bak
+perl -i.bak -pe "s|\@\@commitid\@\@|%commitid%|g" build.xml && del build.xml.bak
