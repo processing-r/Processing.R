@@ -285,3 +285,8 @@ CONTROL = RLangPApplet$CONTROL
 SHIFT = RLangPApplet$SHIFT
 
 print = stdout$print
+
+RGB = RLangPApplet$RGB
+ARGB = RLangPApplet$ARGB
+HSB = RLangPApplet$HSB
+ALPHA = RLangPApplet$ALPHA
