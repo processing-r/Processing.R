@@ -21,6 +21,7 @@ try/
 build.xml
 *.ucls
 *.graffle
+build.properties
 
 # Demo
 *.mov
