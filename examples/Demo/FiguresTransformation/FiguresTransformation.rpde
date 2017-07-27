@@ -1,12 +1,3 @@
-import(rprocessing.RLangPApplet)
-
-HALF_PI <- pi/2
-TWO_PI <- pi * 2
-QUARTER_PI <- pi/4
-PI <- pi
-DIAMETER <- as.integer(3)
-RADIUS <- as.integer(2)
-
 # Current time of animation
 time <- 0
 # Animation duration
@@ -219,7 +210,7 @@ drawWave <- function(p, dir) {
         wx = dir * figureRadius * 0.5 * (sin(va * TWO_PI) * (sin(a) + 1)) - dir
         wy = map(a, 0, PI, -figureRadius, figureRadius)
         vertex(wx, wy)
-        a = a + RLangPApplet$radians(2)
+        a = a + radians(2)
     }
     endShape()
 }
