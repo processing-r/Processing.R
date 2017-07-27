@@ -17,6 +17,7 @@ executable="/mock-user/Processing"
 processing="$HOME/processing"
 core="$HOME/processing/core/library"
 pde="$HOME/processing/lib/pde.jar"
+version="travis-ci"
 
 # Call functions in utils/generator-util.sh
-generate-build-config ${modes} ${executable} ${core} ${pde}
+generate-build-config ${modes} ${executable} ${core} ${pde} ${version}

@@ -10,6 +10,7 @@ executable="/mock-user/Processing"
 # Those paths are important to build runner.jar.
 core="/code/processing/core/library"
 pde="/code/processing/lib/pde.jar"
+version="docker"
 
 # Call functions in utils/generator-util.sh
-generate-build-config ${modes} ${executable} ${core} ${pde}
+generate-build-config ${modes} ${executable} ${core} ${pde} ${version}
