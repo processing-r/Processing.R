@@ -402,7 +402,6 @@ public class RLangPApplet extends BuiltinApplet {
 
   @Override
   public void mousePressed() {
-    log(1);
     wrapMouseVariables();
     applyFunction(Constant.MOUSEPRESSED_NAME);
   }
