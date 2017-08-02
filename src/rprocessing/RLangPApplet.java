@@ -444,6 +444,7 @@ public class RLangPApplet extends BuiltinApplet {
     this.renjinEngine.put("pmouseX", pmouseX);
     this.renjinEngine.put("pmouseY", pmouseY);
     this.renjinEngine.put("mouseButton", mouseButton);
+    this.renjinEngine.put("mousePressed", mousePressed);
   }
 
   private void applyFunction(String name) {

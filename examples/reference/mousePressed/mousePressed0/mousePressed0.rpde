@@ -1,0 +1,10 @@
+# Click within the image to change the value of the rectangle
+
+draw <- function() {
+    if (mousePressed == TRUE) {
+        fill(0)
+    } else {
+        fill(255)
+    }
+    rect(25, 25, 50, 50)
+}
