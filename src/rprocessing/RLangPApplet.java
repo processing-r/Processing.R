@@ -26,6 +26,7 @@ import processing.awt.PSurfaceAWT;
 import processing.core.PApplet;
 import processing.core.PConstants;
 import processing.core.PSurface;
+import processing.event.MouseEvent;
 import processing.javafx.PSurfaceFX;
 import processing.opengl.PSurfaceJOGL;
 import rprocessing.applet.BuiltinApplet;
@@ -382,6 +383,12 @@ public class RLangPApplet extends BuiltinApplet {
   }
 
   @Override
+  protected void handleMouseEvent(MouseEvent event) {
+    super.handleMouseEvent(event);
+    wrapMouseVariables();
+  }
+
+  @Override
   public void mouseClicked() {
     wrapMouseVariables();
     applyFunction(Constant.MOUSECLICKED_NAME);
@@ -436,7 +443,7 @@ public class RLangPApplet extends BuiltinApplet {
     this.renjinEngine.put("mouseY", mouseY);
     this.renjinEngine.put("pmouseX", pmouseX);
     this.renjinEngine.put("pmouseY", pmouseY);
-    // this.renjinEngine.put("mouseButton", mouseButton);
+    this.renjinEngine.put("mouseButton", mouseButton);
   }
 
   private void applyFunction(String name) {
