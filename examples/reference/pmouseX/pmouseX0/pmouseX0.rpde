@@ -1,0 +1,11 @@
+# Move the mouse quickly to see the difference between the current and previous
+# position
+
+draw <- function() {
+    background(204)
+    line(mouseX, 20, pmouseX, 80)
+    print(mouseX)
+    print(":")
+    print(pmouseX)
+    print("\n")
+}

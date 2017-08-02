@@ -1,0 +1,15 @@
+# Move the mouse across the image to change its value
+
+value <- 0
+
+draw <- function() {
+    fill(value)
+    rect(25, 25, 50, 50)
+}
+
+mouseMoved <- function() {
+    value = value + 5
+    if (value > 255) {
+        value = 0
+    }
+}
