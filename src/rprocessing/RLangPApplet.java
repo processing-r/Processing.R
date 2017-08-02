@@ -402,6 +402,7 @@ public class RLangPApplet extends BuiltinApplet {
 
   @Override
   public void mousePressed() {
+    log(1);
     wrapMouseVariables();
     applyFunction(Constant.MOUSEPRESSED_NAME);
   }
@@ -444,7 +445,6 @@ public class RLangPApplet extends BuiltinApplet {
     this.renjinEngine.put("pmouseX", pmouseX);
     this.renjinEngine.put("pmouseY", pmouseY);
     this.renjinEngine.put("mouseButton", mouseButton);
-    this.renjinEngine.put("mousePressed", mousePressed);
   }
 
   private void applyFunction(String name) {

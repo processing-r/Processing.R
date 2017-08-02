@@ -1,0 +1,13 @@
+# Not Supported Now!
+
+setup <- function() {
+    size(100, 100)
+}
+
+draw <- function() {
+}
+
+mouseWheel <- function(event) {
+    e = event$getCount()
+    println(e)
+}
