@@ -1,5 +1,4 @@
-# Drag (click and hold) your mouse across the image to change the value of the
-# rectangle
+# Move the mouse across the image to change its value
 
 value <- 0
 
@@ -8,7 +7,7 @@ draw <- function() {
     rect(25, 25, 50, 50)
 }
 
-mouseDragged <- function() {
+mouseMoved <- function() {
     value = value + 5
     if (value > 255) {
         value = 0
