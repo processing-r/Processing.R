@@ -1,9 +1,17 @@
 category: Structure
 subcategory: 
 description: "
-    The keyword <b>def</b> introduces a function definition. It is followed by a function name, and a paranthesized list of parameters.  
+The names in an argument list can be back-quoted non-standard names.
+
+If value is missing, NULL is returned. If it is a single expression, the value of the evaluated expression is returned. (The expression is evaluated as soon as return is called, in the evaluation frame of the function and before any on.exit expression is evaluated.)
+
+If the end of a function is reached without calling return, the value of the last evaluated expression is returned.
 "
-syntax: "	def functionName():\n	    statements"
+syntax: "function( arglist ) expr \nreturn(value)"
 parameters:
-  - label: ''
-    description: ""
+  - label: 'arglist'
+    description: "Empty or one or more name or name=expression terms"
+  - label: 'expr'
+    description: 'An expression'
+  - label: 'value'
+    description: 'An expression'
