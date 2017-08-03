@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-# Usage: deploy.sh <version>
+# Usage: deploy.sh <version> <full version>
 
 ROOT=$(dirname "${BASH_SOURCE}")/..
-numberOfParams=1
+numberOfParams=2
 
 # Timestamped log, e.g. log "started to build the binary".
 #
@@ -33,8 +33,9 @@ function deploy {
   # Get commit ID.
   commitid=$(git log -n1 --format="%h")
   version=${1}
+  full_version=${2}
   date=`date "+%Y/%m/%d %R"`
-  pretty_version="Version ${version}, commit ${commitid}, built ${date}"
+  pretty_version="Version ${full_version}, commit ${commitid}, built ${date}"
 
   perl -i -pe "s|\@\@mode-version\@\@|${version}|g" docs/RLangMode.txt
   perl -i -pe "s|\@\@pretty-version\@\@|${pretty_version}|g" docs/RLangMode.txt
