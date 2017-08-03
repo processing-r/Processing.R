@@ -1,0 +1,9 @@
+name = R Language Mode
+authorList = [Processing.R Authors](https://github.com/gaocegege/Processing.R/blob/master/AUTHORS.md)
+url = https://github.com/gaocegege/Processing.R
+sentence = Processing in R Language
+paragraph =
+version = v1.0.4
+prettyVersion = Version v1.0.4, commit 5a0c982, built 2017/08/03 17:18
+maxVersion = 0
+minVersion = 260
