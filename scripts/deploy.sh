@@ -35,12 +35,11 @@ function deploy {
   version=${1}
   full_version=${2}
   date=`date "+%Y/%m/%d %R"`
-  pretty_version="Version ${full_version}, commit ${commitid}, built ${date}"
 
   perl -i -pe "s|\@\@mode-version\@\@|${version}|g" docs/RLangMode.txt
-  perl -i -pe "s|\@\@pretty-version\@\@|${pretty_version}|g" docs/RLangMode.txt
+  perl -i -pe "s|\@\@pretty-version\@\@|${full_version}|g" docs/RLangMode.txt
 
-  scripts/generate-ant-file.sh.backup
+  scripts/generate-ant-file.sh
   ant package
   cd dist/
   zip -r RLangMode.zip RLangMode/
