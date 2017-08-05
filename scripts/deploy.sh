@@ -14,7 +14,7 @@ function log {
 }
 
 function help {
-  log "Usage: deploy.sh <version>"
+  log "Usage: deploy.sh <version> <full version>"
 }
 
 function deploy {

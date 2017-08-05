@@ -14,7 +14,6 @@
 
     <!-- Version of the mode -->
     <property name="processing.r.version" value="@@version@@" />
-    <property name="processing.r.commit.id" value="@@commitid@@" />
 
     <!-- Folder -->
     <property name="try" value="try" />
@@ -149,7 +148,7 @@
         </copy>
         <!-- TODO: Configure the version in bash script. -->
         <replaceregexp file="${bundle}/mode.properties" flags="g" match="@@mode-version@@" replace="${processing.r.version}" />
-        <replaceregexp file="${bundle}/mode.properties" flags="g" match="@@pretty-version@@" replace="{processing.r.version}" />
+        <replaceregexp file="${bundle}/mode.properties" flags="g" match="@@pretty-version@@" replace="${processing.r.version}" />
     </target>
 
     <target name="install" depends="package">

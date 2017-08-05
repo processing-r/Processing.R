@@ -3,7 +3,7 @@ settings <- function() {
 }
 
 setup <- function() {
-    colorMode(1, 1)
+    colorMode(RGB, 1)
     frameRate(24)
 }
 

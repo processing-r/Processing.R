@@ -118,6 +118,6 @@ public class RLangMode extends Mode {
    */
   @Override
   public String getTitle() {
-    return "R Language";
+    return "R";
   }
 }
