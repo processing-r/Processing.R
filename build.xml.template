@@ -64,14 +64,6 @@
         <echo>This is the R mode for Processing, powered by github.com/gaocegege</echo>
     </target>
 
-    <target name="bumpversion">
-    <propertyfile file="src/rprocessing/build.properties" comment="R mode build number">
-        <entry key="build.date" type="date" value="now"/>
-    </propertyfile>
-    <property file="src/rprocessing/build.properties" prefix="processing.r"/>
-  	<echo message="Bumped to version ${processing.r.version}-${processing.r.commit.id}."></echo>
-  </target>
-
     <target name="checkos">
         <condition property="isWindows" value="true">
             <os family="windows" />
@@ -139,7 +131,7 @@
         </jar>
     </target>
 
-    <target name="package" depends="build,bumpversion">
+    <target name="package" depends="build">
         <delete dir="${dist}" />
         <property name="bundle" value="${dist}/${mode.name}" />
         <mkdir dir="${bundle}" />
@@ -157,7 +149,7 @@
         </copy>
         <!-- TODO: Configure the version in bash script. -->
         <replaceregexp file="${bundle}/mode.properties" flags="g" match="@@mode-version@@" replace="${processing.r.version}" />
-        <replaceregexp file="${bundle}/mode.properties" flags="g" match="@@pretty-version@@" replace="Version ${processing.r.version}, commit ${processing.r.commit.id}, built ${processing.r.build.date}" />
+        <replaceregexp file="${bundle}/mode.properties" flags="g" match="@@pretty-version@@" replace="{processing.r.version}" />
     </target>
 
     <target name="install" depends="package">
