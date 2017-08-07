@@ -1,0 +1,41 @@
+category: Structure
+subcategory: 
+description: "
+These operators are generic. You can write methods to handle indexing of specific classes of objects, see InternalMethods as well as [.data.frame and [.factor. The descriptions here apply only to the default methods. Note that separate methods are required for the replacement functions [<-, [[<- and $<- for use when indexing occurs on the assignment side of an expression.<br />
+<br />
+The most important distinction between [, [[ and $ is that the [ can select more than one element whereas the other two select a single element.<br />
+<br />
+The default methods work somewhat differently for atomic vectors, matrices/arrays and for recursive (list-like, see is.recursive) objects. $ is only valid for recursive objects, and is only discussed in the section below on recursive objects.<br />
+<br />
+Subsetting (except by an empty index) will drop all attributes except names, dim and dimnames.<br />
+<br />
+Indexing can occur on the right-hand-side of an expression for extraction, or on the left-hand-side for replacement. When an index expression appears on the left side of an assignment (known as subassignment) then that part of x is set to the value of the right hand side of the assignment. In this case no partial matching of character indices is done, and the left-hand-side is coerced as needed to accept the values. For vectors, the answer will be of the higher of the types of x and value in the hierarchy raw < logical < integer < double < complex < character < list < expression. Attributes are preserved (although names, dim and dimnames will be adjusted suitably). Subassignment is done sequentially, so if an index is specified more than once the latest assigned value for an index will result.<br />
+<br />
+It is an error to apply any of these operators to an object which is not subsettable (e.g., a function).<br />
+"
+syntax: "x[i]\nx[i, j, ... , drop = TRUE]\nx[[i, exact = TRUE]]\nx[[i, j, ..., exact = TRUE]]\nx$name\ngetElement(object, name)\n\nx[i] <- value\nx[i, j, ...] <- value\nx[[i]] <- value\nx$name <- value
+"
+parameters:
+  - label: 'x, object'
+    description: "object from which to extract element(s) or in which to replace element(s)."
+  - label: 'i, j, ...'
+    description: "	
+indices specifying elements to extract or replace. Indices are numeric or character vectors or empty (missing) or NULL. Numeric values are coerced to integer as by as.integer (and hence truncated towards zero). Character vectors will be matched to the names of the object (or for matrices/arrays, the dimnames): see ‘Character indices’ below for further details.<br />
+<br />
+For [-indexing only: i, j, ... can be logical vectors, indicating elements/slices to select. Such vectors are recycled if necessary to match the corresponding extent. i, j, ... can also be negative integers, indicating elements/slices to leave out of the selection.<br />
+<br />
+When indexing arrays by [ a single argument i can be a matrix with as many columns as there are dimensions of x; the result is then a vector with elements corresponding to the sets of indices in each row of i.<br />
+<br />
+An index value of NULL is treated as if it were integer(0).<br />"
+  - label: 'name'
+    description: "A literal character string or a name (possibly backtick quoted). For extraction, this is normally (see under ‘Environments’) partially matched to the names of the object."
+  - label: 'drop'
+    description: "For matrices and arrays. If TRUE the result is coerced to the lowest possible dimension (see the examples). This only works for extracting elements, not for the replacement."
+  - label: 'x, object'
+    description: "object from which to extract element(s) or in which to replace element(s)."
+  - label: 'exact'
+    description: "Controls possible partial matching of [[ when extracting by a character vector (for most objects, but see under ‘Environments’). The default is no partial matching. Value NA allows partial matching but issues a warning when it occurs. Value FALSE allows partial matching without any warning."
+  - label: 'value'
+    description: "typically an array-like R object of a similar class as x."
+
+

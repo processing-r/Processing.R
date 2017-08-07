@@ -1,9 +1,0 @@
-category: Structure
-subcategory: 
-description: "
-    The keyword <b>def</b> introduces a function definition. It is followed by a function name, and a paranthesized list of parameters.  
-"
-syntax: "	def functionName():\n	    statements"
-parameters:
-  - label: ''
-    description: ""

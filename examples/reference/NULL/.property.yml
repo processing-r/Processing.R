@@ -1,0 +1,5 @@
+category: Structure
+subcategory: 
+description: " NULL is often used to represent the absences of a value.
+"
+syntax: "x = NULL"

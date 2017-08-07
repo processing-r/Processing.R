@@ -1,0 +1,8 @@
+category: Structure
+subcategory: 
+description: "
+Reserved word representing the logical value \"FALSE\".
+"
+syntax: ""
+related:
+  - TRUE

@@ -1,0 +1,8 @@
+category: Structure
+subcategory: 
+description: "
+Reserved word representing the logical value \"TRUE\". 
+"
+syntax: "	x = TRUE\n	y ==TRUE"
+related:
+  - FALSE
