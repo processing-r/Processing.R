@@ -1,9 +1,0 @@
-category: Structure
-subcategory: 
-description: "
-When pass is executed, nothing happens. Pass is useful when a statement is required syntactically -- as in the above function doNothing.
-"
-syntax: "<c>pass</c>"
-parameters:
-  - label: ''
-    description: ""
