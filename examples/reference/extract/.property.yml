@@ -13,17 +13,7 @@ Indexing can occur on the right-hand-side of an expression for extraction, or on
 
 It is an error to apply any of these operators to an object which is not subsettable (e.g., a function).
 "
-syntax: "x[i]
-x[i, j, ... , drop = TRUE]
-x[[i, exact = TRUE]]
-x[[i, j, ..., exact = TRUE]]
-x$name
-getElement(object, name)
-
-x[i] <- value
-x[i, j, ...] <- value
-x[[i]] <- value
-x$name <- value
+syntax: "x[i]\nx[i, j, ... , drop = TRUE]\nx[[i, exact = TRUE]]\nx[[i, j, ..., exact = TRUE]]\nx$name\ngetElement(object, name)\n\nx[i] <- value\nx[i, j, ...] <- value\nx[[i]] <- value\nx$name <- value
 "
 parameters:
   - label: 'x, object'
