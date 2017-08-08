@@ -1,0 +1,21 @@
+category: Control
+subcategory: 
+description: "
+break breaks out of a for, while or repeat loop; control is transferred to the first statement outside the inner-most loop. next halts the processing of the current iteration and advances the looping index. Both break and next apply only to the innermost of nested loops.<br />
+<br />
+Note that it is a common mistake to forget to put braces ({ .. }) around your statements, e.g., after if(..) or for(....). In particular, you should not have a newline between } and else to avoid a syntax error in entering a if ... else construct at the keyboard or via source. For that reason, one (somewhat extreme) attitude of defensive programming is to always use braces, e.g., for if clauses.<br />
+<br />
+The seq in a for loop is evaluated at the start of the loop; changing it subsequently does not affect the loop. If seq has length zero the body of the loop is skipped. Otherwise the variable var is assigned in turn the value of each element of seq. You can assign to var within the body of the loop, but this will not affect the next iteration. When the loop terminates, var remains as a variable containing its latest value.<br />
+"
+syntax: "if(cond) expr\nif(cond) cons.expr  else  alt.expr\n\nfor(var in seq) expr\nwhile(cond) expr\nrepeat expr\nbreak\nnext\n"
+parameters:
+  - label: 'cond'
+    description: "A length-one logical vector that is not NA. Conditions of length greater than one are currently accepted with a warning, but only the first element is used. An error is signalled instead when the environment variable _R_CHECK_LENGTH_1_CONDITION_ is set to true. Other types are coerced to logical if possible, ignoring any class."
+  - label: 'var'
+    description: "A syntactical name for a variable."
+  - label: 'seq'
+    description: "An expression evaluating to a vector (including a list and an expression) or to a pairlist or NULL. A factor value will be coerced to a character vector."
+  - label: 'expr, cons.expr, alt.expr'
+    description: "An expression in a formal sense. This is either a simple expression or a so called compound expression, usually of the form { expr1 ; expr2 }."
+related:
+  - for

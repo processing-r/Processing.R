@@ -1,9 +1,0 @@
-category: Control
-subcategory: Conditionals
-description: "
-Ends the execution of a structure such as <b>for</b>, or <b>while</b> and jumps to the next statement after.
-"
-syntax: "	for i in xrange(10):\n	    statements\n	    if (condition):\n	        <b>break</b>\n\n	while (i &lt; 10):\n	    statements\n	    if (condition):\n	        <b>break</b>\n"
-related:
-  - for
-  - while

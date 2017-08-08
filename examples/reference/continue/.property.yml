@@ -1,9 +1,0 @@
-category: Control
-subcategory: Conditionals
-description: "
-When run inside of a <b>for</b> or <b>while</b>, it skips the remainder of the block and starts the next iteration.
-"
-syntax: "	for i in xrange(10):\n		if (test):\n		    <b>continue</b>\n	    statements\n	    \n	while (condition):\n		if (test):\n		    <b>continue</b>\n	    statements\n"
-related:
-  - for
-  - while
