@@ -1,0 +1,7 @@
+d = day()  # Values from 1 - 31
+m = month()  # Values from 1 - 12
+y = year()  # 2003, 2004, 2005, etc.
+
+text(toString(d), 10, 28)
+text(toString(m), 10, 56)
+text(toString(y), 10, 84)
