@@ -1,0 +1,2 @@
+img = loadImage("laDefense.jpg")
+background(img)

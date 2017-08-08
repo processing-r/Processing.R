@@ -9,6 +9,7 @@ import org.renjin.sexp.StringVector;
 
 import processing.core.PApplet;
 import processing.core.PConstants;
+import processing.core.PGraphics;
 
 /**
  * BuiltinApplet is the type to refactor the function calls.
@@ -81,6 +82,21 @@ public class BuiltinApplet extends PApplet implements PConstants {
   public void noiseDetail(double lod, double falloff) {
     this.logWarningsforCast();
     super.noiseDetail((int) lod, (float) falloff);
+  }
+
+  public PGraphics createGraphics(double w, double h) {
+    this.logWarningsforCast();
+    return super.createGraphics((int) w, (int) h);
+  }
+
+  public PGraphics createGraphics(double w, double h, String renderer) {
+    this.logWarningsforCast();
+    return super.createGraphics((int) w, (int) h, renderer);
+  }
+
+  public PGraphics createGraphics(double w, double h, String renderer, String path) {
+    this.logWarningsforCast();
+    return super.createGraphics((int) w, (int) h, renderer, path);
   }
 
   public double getPI() {
