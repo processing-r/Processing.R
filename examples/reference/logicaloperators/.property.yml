@@ -1,0 +1,20 @@
+category: Control
+subcategory: 
+description: "
+! indicates logical negation (NOT).<br />
+<br />
+& and && indicate logical AND and | and || indicate logical OR. The shorter form performs elementwise comparisons in much the same way as arithmetic operators. The longer form evaluates left to right examining only the first element of each vector. Evaluation proceeds only until the result is determined. The longer form is appropriate for programming control-flow and typically preferred in if clauses.<br />
+<br />
+xor indicates elementwise exclusive OR.<br />
+<br />
+isTRUE(x) is an abbreviation of identical(TRUE, x), and so is true if and only if x is a length-one logical vector whose only element is TRUE and which has no attributes (not even names).<br />
+<br />
+Numeric and complex vectors will be coerced to logical values, with zero being false and all non-zero values being true. Raw vectors are handled without any coercion for !, &, | and xor, with these operators being applied bitwise (so ! is the 1s-complement).<br />
+<br />
+The operators !, & and | are generic functions: methods can be written for them individually or via the Ops (or S4 Logic, see below) group generic function. (See Ops for how dispatch is computed.)<br />
+<br />
+NA is a valid logical object. Where a component of x or y is NA, the result will be NA if the outcome is ambiguous. In other words NA & TRUE evaluates to NA, but NA & FALSE evaluates to FALSE. See the examples below.<br />"
+syntax: "! x\nx & y\nx && y\nx | y\nx || y\nxor(x, y)\n\nisTRUE(x)\n"
+parameters:
+  - label: 'x, y'
+    description: "raw or logical or ‘number-like’ vectors (i.e., of types double (class numeric), integer and complex)), or objects for which methods have been written."
