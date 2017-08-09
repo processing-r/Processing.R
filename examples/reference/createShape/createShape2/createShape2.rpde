@@ -1,0 +1,20 @@
+settings <- function() {
+    size(100, 100)
+}
+
+setup <- function() {
+    # Creating the PShape as a square. The numeric arguments are similar to rect().
+    s = createShape()
+    s$beginShape()
+    s$fill(0, 0, 255)
+    s$noStroke()
+    s$vertex(0, 0)
+    s$vertex(0, 50)
+    s$vertex(50, 50)
+    s$vertex(50, 0)
+    s$endShape(CLOSE)
+}
+
+draw <- function() {
+    shape(s, 25, 25)
+}
