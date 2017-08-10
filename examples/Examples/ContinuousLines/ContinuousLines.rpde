@@ -1,0 +1,15 @@
+settings <- function() {
+    size(640, 360)
+}
+
+setup <- function() {
+    background(102)
+}
+
+draw <- function() {
+    stroke(255)
+    if (mousePressedVar == TRUE) {
+        line(mouseX, mouseY, pmouseX, pmouseY)
+        
+    }
+}
