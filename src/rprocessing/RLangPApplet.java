@@ -443,7 +443,8 @@ public class RLangPApplet extends BuiltinApplet {
     this.renjinEngine.put("mouseY", mouseY);
     this.renjinEngine.put("pmouseX", pmouseX);
     this.renjinEngine.put("pmouseY", pmouseY);
-    this.renjinEngine.put("mouseButton", mouseButton);
+    this.renjinEngine.put("mouseButtonVar", mouseButton);
+    this.renjinEngine.put("mousePressedVar", mousePressed);
   }
 
   private void applyFunction(String name) {
@@ -485,6 +486,7 @@ public class RLangPApplet extends BuiltinApplet {
       this.renjinEngine.put("key", pyKey);
     }
     this.renjinEngine.put("keyCode", keyCode);
+    this.renjinEngine.put("keyPressedVar", keyPressed);
   }
 
   /**
