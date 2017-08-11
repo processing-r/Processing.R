@@ -1,0 +1,12 @@
+# Click within the image and press the left and right mouse buttons to change the
+# value of the rectangle
+draw <- function() {
+    if (mousePressedVar && (mouseButtonVar == LEFT)) {
+        fill(0)
+    } else if (mousePressedVar && (mouseButtonVar == RIGHT)) {
+        fill(255)
+    } else {
+        fill(126)
+    }
+    rect(25, 25, 50, 50)
+}
