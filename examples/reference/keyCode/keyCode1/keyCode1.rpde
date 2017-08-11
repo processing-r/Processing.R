@@ -1,0 +1,19 @@
+fillVal <- 126
+
+draw <- function() {
+    fill(fillVal)
+    rect(25, 25, 50, 50)
+}
+
+keyPressed <- function() {
+    # See https://github.com/gaocegege/Processing.R/issues/209
+    if (key == CODED) {
+        if (keyCode == UP) {
+            fillVal = 255
+        } else if (keyCode == DOWN) {
+            fillVal = 0
+        }
+    } else {
+        fillVal = 126
+    }
+}
