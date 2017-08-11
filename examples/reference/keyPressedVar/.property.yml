@@ -1,0 +1,11 @@
+category: Input
+subcategory: Keyboard
+description: "
+The Boolean system variable <b>keyPressed</b> is <b>TRUE</b> if any key is pressed and <b>FALSE</b> if no keys are pressed.
+"
+syntax: ""
+related:
+  - key
+  - keyCode
+  - keyPressed
+  - keyReleased
