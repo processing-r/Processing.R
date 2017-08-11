@@ -1,0 +1,22 @@
+# Run this program to learn how each of these functions relate to the others.
+
+draw <- function() {
+}  # Empty draw() needed to keep the program running
+
+keyPressed <- function() {
+    print("keyPressed")
+    print(keyCode)
+    print(key)
+}
+
+keyTyped <- function() {
+    print("keyTyped")
+    print(keyCode)
+    print(key)
+}
+
+keyReleased <- function() {
+    print("keyReleased")
+    print(keyCode)
+    print(key)
+}
