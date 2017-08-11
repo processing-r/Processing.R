@@ -26,6 +26,7 @@ import processing.awt.PSurfaceAWT;
 import processing.core.PApplet;
 import processing.core.PConstants;
 import processing.core.PSurface;
+import processing.event.KeyEvent;
 import processing.event.MouseEvent;
 import processing.javafx.PSurfaceFX;
 import processing.opengl.PSurfaceJOGL;
@@ -370,8 +371,10 @@ public class RLangPApplet extends BuiltinApplet {
    */
   protected void wrapProcessingVariables() {
     log("Wrap Processing built-in variables into R top context.");
-    // TODO: Find some ways to push constants into R.
-    wrapMouseVariables();
+
+    this.wrapMouseVariables();
+    this.wrapKeyVariables();
+
     this.renjinEngine.put("width", width);
     this.renjinEngine.put("height", height);
     this.renjinEngine.put("displayWidth", displayWidth);
@@ -379,7 +382,6 @@ public class RLangPApplet extends BuiltinApplet {
     this.renjinEngine.put("focused", focused);
     this.renjinEngine.put("pixelWidth", pixelWidth);
     this.renjinEngine.put("pixelHeight", pixelHeight);
-    // this.renjinEngine.put("keyPressed", keyPressed);
   }
 
   @Override
@@ -455,6 +457,12 @@ public class RLangPApplet extends BuiltinApplet {
   }
 
   @Override
+  protected void handleKeyEvent(KeyEvent event) {
+    super.handleKeyEvent(event);
+    wrapKeyVariables();
+  }
+
+  @Override
   public void keyPressed() {
     wrapKeyVariables();
     applyFunction(Constant.KEYPRESSED_NAME);
@@ -472,19 +480,8 @@ public class RLangPApplet extends BuiltinApplet {
     applyFunction(Constant.KEYTYPED_NAME);
   }
 
-  private char lastKey = Character.MIN_VALUE;
-
   protected void wrapKeyVariables() {
-    if (lastKey != key) {
-      lastKey = key;
-      /*
-       * If key is "CODED", i.e., an arrow key or other non-printable, pass that value through
-       * as-is. If it's printable, convert it to a unicode string, so that the user can compare key
-       * == 'x' instead of key == ord('x').
-       */
-      final char pyKey = key == CODED ? parseChar(Integer.valueOf(key)) : parseChar(key);
-      this.renjinEngine.put("key", pyKey);
-    }
+    this.renjinEngine.put("key", String.valueOf(key));
     this.renjinEngine.put("keyCode", keyCode);
     this.renjinEngine.put("keyPressedVar", keyPressed);
   }
