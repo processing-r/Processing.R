@@ -5,9 +5,9 @@ draw <- function() {
 }
 
 mousePressed <- function() {
-    if (mouseButton == LEFT) {
+    if (mouseButtonVar == LEFT) {
         fill(0)
-    } else if (mouseButton == RIGHT) {
+    } else if (mouseButtonVar == RIGHT) {
         fill(255)
     } else {
         fill(126)

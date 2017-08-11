@@ -1,7 +1,7 @@
 # Click within the image to change the value of the rectangle
 
 draw <- function() {
-    if (mousePressed == TRUE) {
+    if (mousePressedVar == TRUE) {
         fill(0)
     } else {
         fill(255)

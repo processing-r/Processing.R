@@ -102,7 +102,7 @@ public class RLangMode extends Mode {
   public File[] getExampleCategoryFolders() {
     return new File[] {new File(examplesFolder, "Basics"), new File(examplesFolder, "Libraries"),
         new File(examplesFolder, "reference"), new File(examplesFolder, "R Packages"),
-        new File(examplesFolder, "Demo")};
+        new File(examplesFolder, "Examples")};
   }
 
   /**

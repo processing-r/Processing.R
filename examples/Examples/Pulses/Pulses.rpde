@@ -1,0 +1,26 @@
+angle <- 0
+
+settings <- function() {
+    size(640, 360)
+}
+
+setup <- function() {
+    background(102)
+    noStroke()
+    fill(0, 102)
+}
+
+draw <- function() {
+    if (mousePressedVar == TRUE) {
+        angle <- angle + 5
+        val = cos(radians(angle)) * 12
+        for (a in c(0, 75, 150, 225, 300)) {
+            xoff = cos(radians(a)) * val
+            yoff = sin(radians(a)) * val
+            fill(0)
+            ellipse(mouseX + xoff, mouseY + yoff, val, val)
+        }
+        fill(255)
+        ellipse(mouseX, mouseY, 2, 2)
+    }
+}
