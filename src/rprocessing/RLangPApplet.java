@@ -121,11 +121,6 @@ public class RLangPApplet extends BuiltinApplet {
             log("size function is defined in global namespace.");
             hasSize = true;
             sizeFunction = ev.get(i);
-          } else if (((Symbol) ((FunctionCall) ev.get(i)).getFunction()).getPrintName()
-              .equals("=")) {
-            this.renjinEngine.getTopLevelContext().evaluate(ev.get(i),
-                this.renjinEngine.getTopLevelContext().getEnvironment());
-            sexps.add(ev.get(i));
           } else {
             sexps.add(ev.get(i));
           }
