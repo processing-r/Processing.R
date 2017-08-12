@@ -8,7 +8,6 @@ import processing.core.PApplet;
 import processing.core.PConstants;
 import rprocessing.Runner;
 import rprocessing.SketchPositionListener;
-import rprocessing.exception.REvalException;
 import rprocessing.exception.RMIRuntimeException;
 import rprocessing.exception.RSketchError;
 import rprocessing.mode.RLangMode;
@@ -132,12 +131,7 @@ public class SketchRunner implements SketchService {
             modeService.handleSketchException(id, exception);
           } catch (final Exception exception) {
             log("Sketch runner caught Exception:" + exception);
-            if (exception.getCause() != null && exception.getCause() instanceof REvalException) {
-              modeService.handleSketchException(id,
-                  convertREvalError((REvalException) exception.getCause()));
-            } else {
-              modeService.handleSketchException(id, exception);
-            }
+            modeService.handleSketchException(id, convertREvalError(exception));
           } finally {
             log("Handling sketch stoppage...");
             modeService.handleSketchStopped(id);
@@ -228,8 +222,8 @@ public class SketchRunner implements SketchService {
     }
   }
 
-  private static void launch(final String id, final ModeService modeService) throws RMIProblem,
-      RemoteException {
+  private static void launch(final String id, final ModeService modeService)
+      throws RMIProblem, RemoteException {
     final SketchRunner sketchRunner = new SketchRunner(id, modeService);
     final SketchService stub = (SketchService) RMIUtils.export(sketchRunner);
     log("Calling mode's handleReady().");
@@ -247,7 +241,7 @@ public class SketchRunner implements SketchService {
     }));
   }
 
-  private SketchException convertREvalError(final REvalException exception) {
+  private SketchException convertREvalError(final Exception exception) {
     return new SketchException(exception.getMessage());
   }
 }

@@ -106,6 +106,7 @@ public class RLangPApplet extends BuiltinApplet {
     SEXP source = RParser.parseSource(this.programText + "\n", "inline-string");
     if (isSameClass(source, ExpressionVector.class)) {
       ExpressionVector ev = (ExpressionVector) source;
+      // Stores the expressions except size().
       List<SEXP> sexps = new ArrayList<SEXP>();
       for (int i = ev.length() - 1; i >= 0; --i) {
         if (isSameClass(ev.get(i), FunctionCall.class)
@@ -116,6 +117,7 @@ public class RLangPApplet extends BuiltinApplet {
             sexps.add(ev.get(i));
           } else if (((Symbol) ((FunctionCall) ev.get(i)).getFunction()).getPrintName()
               .equals(Constant.SIZE_NAME)) {
+            // size function is defined in global namespace.
             log("size function is defined in global namespace.");
             hasSize = true;
             sizeFunction = ev.get(i);
