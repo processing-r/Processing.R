@@ -7,7 +7,8 @@ modes="${HOME}/Documents/Processing/modes"
 executable="/Applications/Processing.app/Contents/MacOS/Processing"
 core="/Applications/Processing.app/Contents/Java/core/library"
 pde="/Applications/Processing.app/Contents/Java/pde.jar"
-version="v1.0.4"
+version="local"
+pretty_version="pretty-local"
 
 # Call functions in utils/generator-util.sh
-generate-build-config ${modes} ${executable} ${core} ${pde} ${version}
+generate-build-config ${modes} ${executable} ${core} ${pde} ${version} ${pretty_version}

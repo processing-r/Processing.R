@@ -13,7 +13,7 @@ function help {
 }
 
 function generate-build-config {
-  local numberOfParams=5
+  local numberOfParams=6
   local root=$(dirname "${BASH_SOURCE}")/../..
 
   if [[ $# -ne ${numberOfParams} ]]; then
@@ -34,6 +34,7 @@ function generate-build-config {
   perl -i -pe "s|\@\@core\@\@|${3}|g" build.xml
   perl -i -pe "s|\@\@pde\@\@|${4}|g" build.xml
   perl -i -pe "s|\@\@version\@\@|${5}|g" build.xml
+  perl -i -pe "s|\@\@pretty\@\@|${6}|g" build.xml
   perl -i -pe "s|\@\@commitid\@\@|${commitid}|g" build.xml
   cd - > /dev/null
 }

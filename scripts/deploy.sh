@@ -39,7 +39,17 @@ function deploy {
   perl -i -pe "s|\@\@mode-version\@\@|${version}|g" docs/RLangMode.txt
   perl -i -pe "s|\@\@pretty-version\@\@|${full_version}|g" docs/RLangMode.txt
 
-  scripts/generate-ant-file.sh
+  source "$(dirname "${BASH_SOURCE}")/utils/generator-util.sh"
+
+  # Path to be changed
+  modes="${HOME}/Documents/Processing/modes"
+  executable="/Applications/Processing.app/Contents/MacOS/Processing"
+  core="/Applications/Processing.app/Contents/Java/core/library"
+  pde="/Applications/Processing.app/Contents/Java/pde.jar"
+
+  # Call functions in utils/generator-util.sh
+  generate-build-config ${modes} ${executable} ${core} ${pde} ${version} ${full_version}
+
   ant package
   cd dist/
   zip -r RLangMode.zip RLangMode/
