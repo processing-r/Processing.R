@@ -329,7 +329,7 @@ public class RLangPApplet extends BuiltinApplet {
   @Override
   public void handleDraw() {
     super.handleDraw();
-    this.renjinEngine.put("frameCount", this.frameCount);
+    this.wrapFrameVariables();
   }
 
   /**
@@ -366,6 +366,11 @@ public class RLangPApplet extends BuiltinApplet {
    */
   private boolean isMixMode() {
     return hasSize;
+  }
+
+  protected void wrapFrameVariables() {
+    this.renjinEngine.put("frameRateVar", frameRate);
+    this.renjinEngine.put("frameCount", frameCount);
   }
 
   /**
