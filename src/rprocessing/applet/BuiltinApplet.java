@@ -99,8 +99,9 @@ public class BuiltinApplet extends PApplet implements PConstants {
     return super.createGraphics((int) w, (int) h, renderer, path);
   }
 
-  public double getPI() {
-    return PI;
+  public void pixelDensity(double density) {
+    this.logWarningsforCast();
+    super.pixelDensity((int) density);
   }
 
   private void logWarningsforCast() {
