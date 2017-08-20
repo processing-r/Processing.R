@@ -18,6 +18,7 @@ processing="$HOME/processing"
 core="$HOME/processing/core/library"
 pde="$HOME/processing/lib/pde.jar"
 version="travis-ci"
+pretty="pretty-travis-ci"
 
 # Call functions in utils/generator-util.sh
-generate-build-config ${modes} ${executable} ${core} ${pde} ${version}
+generate-build-config ${modes} ${executable} ${core} ${pde} ${version} ${pretty}
