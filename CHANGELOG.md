@@ -1,5 +1,62 @@
 # Change Log
 
+## [Unreleased](https://github.com/gaocegege/Processing.R/tree/HEAD)
+
+[Full Changelog](https://github.com/gaocegege/Processing.R/compare/v1.0.5...HEAD)
+
+**Closed issues:**
+
+- Cast more functions from double to int [\#184](https://github.com/gaocegege/Processing.R/issues/184)
+
+## [v1.0.5](https://github.com/gaocegege/Processing.R/tree/v1.0.5) (2017-08-20)
+[Full Changelog](https://github.com/gaocegege/Processing.R/compare/v1.0.4...v1.0.5)
+
+**Closed issues:**
+
+- frameRate variable named to match others [\#214](https://github.com/gaocegege/Processing.R/issues/214)
+- docs--broken reference link [\#213](https://github.com/gaocegege/Processing.R/issues/213)
+- Redirect all errors to PDE console [\#211](https://github.com/gaocegege/Processing.R/issues/211)
+- Credits in Processing.R reference docs [\#206](https://github.com/gaocegege/Processing.R/issues/206)
+- Conflict between mousePressed and mousPressed\(\) [\#194](https://github.com/gaocegege/Processing.R/issues/194)
+- Implement complete print logic [\#174](https://github.com/gaocegege/Processing.R/issues/174)
+- libraryImport video example: can't define movieEvent hook [\#166](https://github.com/gaocegege/Processing.R/issues/166)
+- Support the event function [\#163](https://github.com/gaocegege/Processing.R/issues/163)
+- example: Add example for focus. [\#160](https://github.com/gaocegege/Processing.R/issues/160)
+- Support built-in variables [\#98](https://github.com/gaocegege/Processing.R/issues/98)
+- Support Reading and Creating built-in functions [\#86](https://github.com/gaocegege/Processing.R/issues/86)
+- Support Processing libraries [\#58](https://github.com/gaocegege/Processing.R/issues/58)
+
+**Merged pull requests:**
+
+- BuiltinApplet: Add pixelDensity [\#217](https://github.com/gaocegege/Processing.R/pull/217) ([gaocegege](https://github.com/gaocegege))
+- Update frameRate [\#216](https://github.com/gaocegege/Processing.R/pull/216) ([gaocegege](https://github.com/gaocegege))
+- SketchRunner: Redirect all errors to PDE console [\#212](https://github.com/gaocegege/Processing.R/pull/212) ([gaocegege](https://github.com/gaocegege))
+- src: Refactor the logic about key [\#210](https://github.com/gaocegege/Processing.R/pull/210) ([gaocegege](https://github.com/gaocegege))
+- Fix mousePressed and add examples [\#208](https://github.com/gaocegege/Processing.R/pull/208) ([gaocegege](https://github.com/gaocegege))
+- lib: Update [\#207](https://github.com/gaocegege/Processing.R/pull/207) ([gaocegege](https://github.com/gaocegege))
+- reference: Add the missing images [\#205](https://github.com/gaocegege/Processing.R/pull/205) ([gaocegege](https://github.com/gaocegege))
+- reference: Add missing test.yml [\#204](https://github.com/gaocegege/Processing.R/pull/204) ([gaocegege](https://github.com/gaocegege))
+- reference: Add Color [\#203](https://github.com/gaocegege/Processing.R/pull/203) ([gaocegege](https://github.com/gaocegege))
+- reference: Add time [\#202](https://github.com/gaocegege/Processing.R/pull/202) ([gaocegege](https://github.com/gaocegege))
+- reference: Update control [\#201](https://github.com/gaocegege/Processing.R/pull/201) ([gaocegege](https://github.com/gaocegege))
+- core.R: Add all constants in Processing [\#200](https://github.com/gaocegege/Processing.R/pull/200) ([gaocegege](https://github.com/gaocegege))
+- \*: Fix the name of the mode [\#198](https://github.com/gaocegege/Processing.R/pull/198) ([gaocegege](https://github.com/gaocegege))
+- \*: Update the version [\#197](https://github.com/gaocegege/Processing.R/pull/197) ([gaocegege](https://github.com/gaocegege))
+- \*: Add deploy script [\#196](https://github.com/gaocegege/Processing.R/pull/196) ([gaocegege](https://github.com/gaocegege))
+- reference: Refactor docs about structure [\#195](https://github.com/gaocegege/Processing.R/pull/195) ([gaocegege](https://github.com/gaocegege))
+- reference: Add all items in mouse [\#193](https://github.com/gaocegege/Processing.R/pull/193) ([gaocegege](https://github.com/gaocegege))
+- Example: Add data [\#192](https://github.com/gaocegege/Processing.R/pull/192) ([gaocegege](https://github.com/gaocegege))
+- core.R: Add colorMode specific constants [\#191](https://github.com/gaocegege/Processing.R/pull/191) ([gaocegege](https://github.com/gaocegege))
+- demo: Fix the demo [\#190](https://github.com/gaocegege/Processing.R/pull/190) ([gaocegege](https://github.com/gaocegege))
+- ignore: Ignore build.properties [\#189](https://github.com/gaocegege/Processing.R/pull/189) ([gaocegege](https://github.com/gaocegege))
+- \*: Add version in PDE [\#188](https://github.com/gaocegege/Processing.R/pull/188) ([gaocegege](https://github.com/gaocegege))
+- \*: Fix the callback function [\#187](https://github.com/gaocegege/Processing.R/pull/187) ([gaocegege](https://github.com/gaocegege))
+- Examples/importLibrary: sound and DXF [\#183](https://github.com/gaocegege/Processing.R/pull/183) ([jeremydouglass](https://github.com/jeremydouglass))
+- example: Add more cases [\#182](https://github.com/gaocegege/Processing.R/pull/182) ([gaocegege](https://github.com/gaocegege))
+- build.xml: Remove useless dep [\#180](https://github.com/gaocegege/Processing.R/pull/180) ([gaocegege](https://github.com/gaocegege))
+- \*: Support libraries in cli runner [\#179](https://github.com/gaocegege/Processing.R/pull/179) ([gaocegege](https://github.com/gaocegege))
+- Refactor the documentation about docker [\#177](https://github.com/gaocegege/Processing.R/pull/177) ([gaocegege](https://github.com/gaocegege))
+
 ## [v1.0.4](https://github.com/gaocegege/Processing.R/tree/v1.0.4) (2017-07-18)
 [Full Changelog](https://github.com/gaocegege/Processing.R/compare/v1.0.4-alpha...v1.0.4)
 
@@ -180,17 +237,14 @@
 ## [v0.0.2](https://github.com/gaocegege/Processing.R/tree/v0.0.2) (2016-09-08)
 [Full Changelog](https://github.com/gaocegege/Processing.R/compare/v0.0.1...v0.0.2)
 
-**Closed issues:**
-
-- Mode: Active, Mix and Static [\#5](https://github.com/gaocegege/Processing.R/issues/5)
-
 ## [v0.0.1](https://github.com/gaocegege/Processing.R/tree/v0.0.1) (2016-09-06)
 **Closed issues:**
 
+- Demo [\#1](https://github.com/gaocegege/Processing.R/issues/1)
+- Mode: Active, Mix and Static [\#5](https://github.com/gaocegege/Processing.R/issues/5)
 - settings function [\#4](https://github.com/gaocegege/Processing.R/issues/4)
 - setup function [\#3](https://github.com/gaocegege/Processing.R/issues/3)
 - draw function [\#2](https://github.com/gaocegege/Processing.R/issues/2)
-- Demo [\#1](https://github.com/gaocegege/Processing.R/issues/1)
 
 
 
