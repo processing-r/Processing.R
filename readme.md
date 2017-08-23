@@ -46,15 +46,7 @@ Processing.R is still in early development -- it is not feature-complete or prod
 
 ## Installation
 
-Processing.R is *not* currently available via PDE > Add Tool > Modes, however the mode will appear in the PDE Modes list once installed.
-
-The current release is available from the [Processing.R Release Page](https://github.com/gaocegege/Processing.R/releases). 
-
-After you download the mode, place it into Processing "modes" directory:
-
-- macOS: `${HOME}/Documents/Processing/modes`
-- Linux: `${HOME}/sketchbook/modes`
-- Windows: `C:\Users\<user>\Documents\Processing\modes`
+Processing.R is currently available via PDE > Add Tool > Modes, you could install the mode in PDE.
 
 To build the mode from source, see [compilation.md](./raw-docs/devel/compilation.md).
 
@@ -62,7 +54,7 @@ To build the mode from source, see [compilation.md](./raw-docs/devel/compilation
 
 Processing.R supports most of the Processing functions as described in the [Processing reference](processing.org/reference/). Processing.R functions are described on the documentation website:
 
--  [https://processing-r.github.io/Processing.R-docs/](https://processing-r.github.io/Processing.R-docs/). 
+-  [https://processing-r.github.io/reference](https://processing-r.github.io/reference). 
 
 However, the Processing.R documentation is currently incomplete. Many functions have not been tested or are not accompanied by example sketches. Some reference pages contain materials from Processing.py or Processing(Java) that have not been edited to reflect differences from other Processing modes.
 
@@ -112,6 +104,10 @@ foreach(i=1:3) %do%
 ```
 
 In practice we have only found a few R packages so far that work with Processing.R "out of the box." This is because the package must be pure R  **and** all of its dependencies must also be pure R. There is [renjin list of R packages](http://packages.renjin.org/) which lists their compatibility with the renjin JVM. Any package fully supported in renjin is theoretically supported in Processing.R.
+
+## Documentation
+
+See [https://processing-r.github.io/](https://processing-r.github.io/). The documentation is generated from [https://github.com/processing-r/Processing.R-docs-tools](https://github.com/processing-r/Processing.R-docs-tools).
 
 ## CONTRIBUTING
 
