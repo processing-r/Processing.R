@@ -1,0 +1,3 @@
+a = PI/3
+t = tan(a)
+at = atan(t)

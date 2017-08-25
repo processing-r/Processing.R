@@ -1,0 +1,22 @@
+category: Math
+subcategory:
+description: "
+Each element of an integer vector has 32 bits.<br />
+<br />
+Pairwise operations can result in integer NA.<br />
+<br />
+Shifting is done assuming the values represent unsigned integers.<br />
+"
+syntax: "bitwNot(a)\n
+bitwAnd(a, b)\n
+bitwOr(a, b)\n
+bitwXor(a, b)\n
+
+bitwShiftL(a, n)\n
+bitwShiftR(a, n)\n
+"
+parameters:
+  - label: 'a, b'
+    description: "integer vectors; numeric vectors are coerced to integer vectors."
+  - label: 'n'
+    description: "non-negative integer vector of values up to 31."

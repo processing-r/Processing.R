@@ -1,0 +1,4 @@
+for (y in 0:100) {
+    x = randomGaussian() * 15
+    line(50, y, 50 + x, y)
+}

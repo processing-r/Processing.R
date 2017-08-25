@@ -1,0 +1,3 @@
+a = PI/3
+s = sin(a)
+as = asin(s)

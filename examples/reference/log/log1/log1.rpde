@@ -1,0 +1,10 @@
+setup <- function() {
+    i = 12
+    print(log(i))
+    print(log10(i))
+}
+
+# Calculates the base-10 logarithm of a number
+log10 <- function(x) {
+    return(log(x)/log(10))
+}

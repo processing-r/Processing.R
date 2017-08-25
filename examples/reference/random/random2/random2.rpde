@@ -1,0 +1,4 @@
+for (i in 0:100) {
+    r = random(-50, 50)
+    print(r)
+}

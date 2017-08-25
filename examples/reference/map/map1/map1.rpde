@@ -1,0 +1,4 @@
+size(200, 200)
+value = 25
+m = map(value, 0, 100, 0, width)
+ellipse(m, 200, 10, 10)

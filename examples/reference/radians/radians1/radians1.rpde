@@ -1,0 +1,2 @@
+deg = 45
+rad = radians(deg)

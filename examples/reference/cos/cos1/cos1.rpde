@@ -1,0 +1,6 @@
+a = 0
+inc = TWO_PI/25
+for (i in 0:24) {
+    line(i * 4, 50, i * 4, 50 + cos(a) * 40)
+    a = a + inc
+}

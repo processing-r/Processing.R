@@ -1,0 +1,4 @@
+a = abs(153)  # Sets 'a' to 153
+b = abs(-15)  # Sets 'b' to 15
+c = abs(12.234)  # Sets 'c' to 12.234
+d = abs(-9.23)  # Sets 'd' to 9.23 

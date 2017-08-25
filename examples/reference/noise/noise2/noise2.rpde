@@ -1,0 +1,10 @@
+noiseScale <- 0.02
+
+draw <- function() {
+    background(0)
+    for (x in 0:width) {
+        noiseVal = noise((mouseX + x) * noiseScale, mouseY * noiseScale)
+        stroke(noiseVal * 255)
+        line(x, mouseY + noiseVal * 80, x, height)
+    }
+}

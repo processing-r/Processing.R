@@ -1,0 +1,3 @@
+a = PI
+c = cos(a)
+ac = acos(c)

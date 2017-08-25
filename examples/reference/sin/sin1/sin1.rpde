@@ -1,0 +1,7 @@
+a = 0
+inc = TWO_PI/25
+
+for (i in seq(0, 100, 4)) {
+    line(i, 50, i, 50 + sin(a) * 40)
+    a = a + inc
+}

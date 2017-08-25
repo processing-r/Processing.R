@@ -1,0 +1,3 @@
+value = -10
+n = norm(value, 0, 100)
+print(n)

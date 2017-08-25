@@ -1,0 +1,2 @@
+rad = PI/4
+deg = degrees(rad)

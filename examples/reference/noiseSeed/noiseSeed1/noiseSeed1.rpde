@@ -1,0 +1,12 @@
+xoff <- 0
+
+setup <- function() {
+    noiseSeed(0)
+    stroke(0, 10)
+}
+
+draw <- function() {
+    xoff = xoff + 0.01
+    n = noise(xoff) * width
+    line(n, 0, n, height)
+}
