@@ -1,0 +1,3 @@
+value = 20
+n = norm(value, 0, 50)
+print(n)

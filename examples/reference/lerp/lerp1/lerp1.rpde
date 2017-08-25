@@ -1,0 +1,12 @@
+a = 20
+b = 80
+c = lerp(a, b, 0.2)
+d = lerp(a, b, 0.5)
+e = lerp(a, b, 0.8)
+beginShape(POINTS)
+vertex(a, 50)
+vertex(b, 50)
+vertex(c, 50)
+vertex(d, 50)
+vertex(e, 50)
+endShape()

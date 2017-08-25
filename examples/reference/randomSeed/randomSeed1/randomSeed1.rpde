@@ -1,0 +1,6 @@
+randomSeed(0)
+for (i in 0:100) {
+    r = random(0, 255)
+    stroke(r)
+    line(i, 0, i, 100)
+}

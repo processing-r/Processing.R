@@ -1,0 +1,7 @@
+a = 0
+inc = TWO_PI/50
+
+for (i in seq(0, 100, 2)) {
+    line(i, 50, i, 50 + tan(a) * 2)
+    a = a + inc
+}

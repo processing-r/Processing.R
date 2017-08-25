@@ -1,0 +1,3 @@
+a = max(5, 9)  # Sets 'a' to 9
+b = max(-4, -12)  # Sets 'b' to -4
+c = max(12.3, 230.24)  # Sets 'c' to 230.24
