@@ -6,7 +6,23 @@
 
 **Closed issues:**
 
+- Fix broken and missing links in README.md [\#219](https://github.com/gaocegege/Processing.R/issues/219)
+- Announce mode [\#215](https://github.com/gaocegege/Processing.R/issues/215)
+- Add tutorials [\#186](https://github.com/gaocegege/Processing.R/issues/186)
 - Cast more functions from double to int [\#184](https://github.com/gaocegege/Processing.R/issues/184)
+- When there are exceptions, fail to close the applets [\#143](https://github.com/gaocegege/Processing.R/issues/143)
+- PDE mode installation \(automatic\) [\#59](https://github.com/gaocegege/Processing.R/issues/59)
+- Get in touch with Processing "modes" community [\#56](https://github.com/gaocegege/Processing.R/issues/56)
+- Get in touch with R community [\#34](https://github.com/gaocegege/Processing.R/issues/34)
+- The Big One: Proposal in GSoC 2017 [\#28](https://github.com/gaocegege/Processing.R/issues/28)
+
+**Merged pull requests:**
+
+- reference: Add all math items [\#223](https://github.com/gaocegege/Processing.R/pull/223) ([gaocegege](https://github.com/gaocegege))
+- \*: Add reference for images [\#222](https://github.com/gaocegege/Processing.R/pull/222) ([gaocegege](https://github.com/gaocegege))
+- reference: Add constants [\#221](https://github.com/gaocegege/Processing.R/pull/221) ([gaocegege](https://github.com/gaocegege))
+- README: Fix links [\#220](https://github.com/gaocegege/Processing.R/pull/220) ([gaocegege](https://github.com/gaocegege))
+- scripts: Fix a bug about version [\#218](https://github.com/gaocegege/Processing.R/pull/218) ([gaocegege](https://github.com/gaocegege))
 
 ## [v1.0.5](https://github.com/gaocegege/Processing.R/tree/v1.0.5) (2017-08-20)
 [Full Changelog](https://github.com/gaocegege/Processing.R/compare/v1.0.4...v1.0.5)

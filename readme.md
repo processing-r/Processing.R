@@ -17,6 +17,8 @@
     <a href="https://gitter.im/gaocegege/Processing.R?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge"><img src="https://badges.gitter.im/gaocegege/Processing.R.svg" alt="Gitter"></a>
 </p>
 
+***This project was proposed by Ce Gao and released to PDE Contributions Manager at the conclusion of his Google Summer of Code 2017 project.***
+
 ## Overview
 
 Processing.R is a mode for Processing that enables users to write Processing sketches using the R language. The mode can be installed in the Processing Development Environment (PDE). It can also run on the command line as a stand-alone jar.
