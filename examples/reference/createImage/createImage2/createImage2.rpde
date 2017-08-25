@@ -1,0 +1,10 @@
+img = createImage(66, 66, ARGB)
+img$loadPixels()
+for (i in 0:65) {
+    for (j in 0:65) {
+        img$set(i, j, color(0, 90, 102, i * 2))
+    }
+}
+img$updatePixels()
+image(img, 17, 17)
+image(img, 34, 34)

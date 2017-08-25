@@ -1,0 +1,33 @@
+category: Math
+subcategory:
+description: "
+The unary and binary arithmetic operators are generic functions: methods can be written for them individually or via the Ops group generic function. (See Ops for how dispatch is computed.)
+
+If applied to arrays the result will be an array if this is sensible (for example it will not if the recycling rule has been invoked).
+
+Logical vectors will be coerced to integer or numeric vectors, FALSE having value zero and TRUE having value one.
+
+1 ^ y and y ^ 0 are 1, always. x ^ y should also give the proper limit result when either (numeric) argument is infinite (one of Inf or -Inf).
+
+Objects such as arrays or time-series can be operated on this way provided they are conformable.
+
+For double arguments, %% can be subject to catastrophic loss of accuracy if x is much larger than y, and a warning is given if this is detected.
+
+%% and x %/% y can be used for non-integer y, e.g. 1 %/% 0.2, but the results are subject to representation error and so may be platform-dependent. Because the IEC 60059 representation of 0.2 is a binary fraction slightly larger than 0.2, the answer to 1 %/% 0.2 should be 4 but most platforms give 5.
+
+Users are sometimes surprised by the value returned, for example why (-8)^(1/3) is NaN. For double inputs, R makes use of IEC 60559 arithmetic on all platforms, together with the C system function pow for the ^ operator. The relevant standards define the result in many corner cases. In particular, the result in the example above is mandated by the C99 standard. On many Unix-alike systems the command man pow gives details of the values in a large number of corner cases.
+
+Arithmetic on type double in R is supposed to be done in ‘round to nearest, ties to even’ mode, but this does depend on the compiler and FPU being set up correctly. 
+"
+syntax: "+ x\n
+- x\n
+x + y\n
+x - y\n
+x * y\n
+x / y\n
+x ^ y\n
+x %% y\n
+x %/% y\n"
+parameters:
+  - label: 'x, y'
+    description: "numeric or complex vectors or objects which can be coerced to such, or other objects for which methods have been written."
