@@ -9,7 +9,7 @@ import test.e2e.core.E2eTestBase;
 public class Shape0Test extends E2eTestBase {
 
   public Shape0Test() {
-    coreCodeTemplate = "setup <- function() {\n    s = loadShape(\"https://raw.githubusercontent.com/processing/processing-docs/master/content/examples/Basics/Shape/LoadDisplaySVG/data/bot1.svg\")\n}\n\ndraw <- function() {\n    shape(s, 10, 10, 80, 80)\n    saveFrame(\"%s\")\n    exit()\n}\n";
+    coreCodeTemplate = "setup <- function() {\n    s = loadShape(paste(\"https://raw.githubusercontent.com\", \"/gaocegege/Processing.R/master/raw-docs\", \n        \"/img/examples/bot1.svg\", sep = \"\"))\n}\n\ndraw <- function() {\n    shape(s, 10, 10, 80, 80)\n    saveFrame(\"%s\")\n    exit()\n}\n";
     referenceURI = "https://processing.org/reference/images/shape_1.png";
   }
 
