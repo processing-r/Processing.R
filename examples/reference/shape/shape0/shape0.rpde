@@ -1,5 +1,6 @@
 setup <- function() {
-    s = loadShape("https://raw.githubusercontent.com/processing/processing-docs/master/content/examples/Basics/Shape/LoadDisplaySVG/data/bot1.svg")
+    s = loadShape(paste("https://raw.githubusercontent.com", "/gaocegege/Processing.R/master/raw-docs", 
+        "/img/examples/bot1.svg", sep = ""))
 }
 
 draw <- function() {
