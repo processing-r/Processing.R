@@ -15,10 +15,6 @@ install:
   - ant package
 
 script:
+  - docker run -v=$(pwd):/app --workdir=/app coala/base coala --ci
   # See https://askubuntu.com/a/693533
   - xvfb-run -a -s "-screen 0 1024x768x24" ant report
-  - docker run -v=$(pwd):/app --workdir=/app coala/base coala --ci
-
-after_success:
-  - curl https://secure.central.sonatype.com/maven2/com/codacy/codacy-coverage-reporter/1.0.13/codacy-coverage-reporter-1.0.13-assembly.jar > codacy-coverage-reporter-assembly.jar
-  - java -cp codacy-coverage-reporter-assembly.jar com.codacy.CodacyCoverageReporter -l Java -r test-output/site/jacoco/report.xml
