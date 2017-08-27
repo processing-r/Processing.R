@@ -9,7 +9,7 @@ import test.e2e.core.E2eTestBase;
 public class CreateImage1Test extends E2eTestBase {
 
   public CreateImage1Test() {
-    coreCodeTemplate = "img = createImage(66, 66, RGB)\nimg$loadPixels()\nfor (i in 0:65) {\n    for (j in 0:65) {\n        img$set(i, j, color(0, 9, 102))\n    }\n}\nimg.updatePixels()\nimage(img, 17, 17)\n\nsaveFrame(\"%s\")\nexit()\n";
+    coreCodeTemplate = "img = createImage(66, 66, RGB)\nimg$loadPixels()\nfor (i in 0:65) {\n    for (j in 0:65) {\n        img$set(i, j, color(0, 9, 102))\n    }\n}\nimg$updatePixels()\nimage(img, 17, 17)\n\nsaveFrame(\"%s\")\nexit()\n";
     referenceURI = "https://processing.org/reference/images/createImage_0.png";
   }
 
