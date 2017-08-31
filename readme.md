@@ -43,8 +43,7 @@ Processing.R supports:
 Processing.R is still in early development -- it is not feature-complete or production-ready. Please try our experimental mode and give us your feedback.
 
 -  Report bugs to [Processing.R Issues](https://github.com/gaocegege/Processing.R/issues)!
--  Comment on [#142](https://github.com/gaocegege/Processing.R/issues/142)
--  Chat at the [Processing.R gitter channel](https://gitter.im/gaocegege/Processing.R) :tada:
+-  Chat at the [Processing.R gitter channel](https://gitter.im/gaocegege/Processing.R)
 
 ## Installation
 
