@@ -33,4 +33,9 @@ public class Constant {
   public static final String KEYRELEASED_NAME = "keyReleased";
 
   public static final String KEYTYPED_NAME = "keyTyped";
+
+  /** The URL of the homepage */
+  public static final String PROCESSINGR_URL = "https://processing-r.github.io/";
+
+  public static final String REFERENCE_NAME = "reference/";
 }
