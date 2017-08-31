@@ -36,6 +36,7 @@ import rprocessing.mode.run.PdeSketch;
 import rprocessing.mode.run.PdeSketch.LocationType;
 import rprocessing.mode.run.SketchServiceManager;
 import rprocessing.mode.run.SketchServiceRunner;
+import rprocessing.util.Constant;
 
 /**
  * RLangEditor is the editor abstraction in R mode, which builds a editor and initialize all related
@@ -348,6 +349,32 @@ public class RLangEditor extends Editor {
         handleSave(true);
       } else {
         statusNotice("Export canceled, changes must first be saved.");
+      }
+    }
+  }
+
+  /**
+   * Get the reference from web, not local.
+   * 
+   * @see processing.app.ui.Editor#handleFindReference()
+   */
+  @Override
+  protected void handleFindReference() {
+    String ref = referenceCheck(true);
+    if (ref != null) {
+      // Remove _.
+      if (ref.charAt(ref.length() - 1) == '_') {
+        ref = ref.substring(0, ref.length() - 1);
+      }
+      // Get the reference from the home page, not in local.
+      String item = new String(Constant.PROCESSINGR_URL + Constant.REFERENCE_NAME + ref + ".html");
+      Platform.openURL(item);
+    } else {
+      String text = textarea.getSelectedText().trim();
+      if (text.length() == 0) {
+        statusNotice(Language.text("editor.status.find_reference.select_word_first"));
+      } else {
+        statusNotice(Language.interpolate("editor.status.find_reference.not_available", text));
       }
     }
   }
