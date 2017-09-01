@@ -3,7 +3,8 @@ settings <- function() {
 }
 
 setup <- function() {
-    # Creating the PShape as a square. The numeric arguments are similar to rect().
+    # Creating the PShape as a square. The numeric arguments are
+    # similar to rect().
     s = createShape()
     s$beginShape(TRIANGLE_STRIP)
     s$vertex(30, 75)

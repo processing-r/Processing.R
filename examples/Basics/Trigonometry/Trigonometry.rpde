@@ -42,14 +42,15 @@ draw <- function() {
         angle2 <- angle2 - frequency2
     }
     
-    # Send small ellipse along sine curve to illustrate relationship of circle to
-    # wave
+    # Send small ellipse along sine curve to illustrate relationship
+    # of circle to wave
     noStroke()
     ellipse(width/8 + radius + x, py, 5, 5)
     angle <- angle - frequency
     x <- x + 1
     
-    # When little ellipse reaches end of window, set the variables back to 0
+    # When little ellipse reaches end of window, set the variables
+    # back to 0
     if (x >= width - 60) {
         x <- 0
         angle <- 0
@@ -59,6 +60,6 @@ draw <- function() {
     stroke(50)
     line(px, py, width/8 + radius + x, py)
     
-    # Output calculations to screen text('y <- sin x', 35, 185) text('px <- ' + px,
-    # 105, 185) text('py <- ' + py, 215, 185)
+    # Output calculations to screen text('y <- sin x', 35, 185)
+    # text('px <- ' + px, 105, 185) text('py <- ' + py, 215, 185)
 }

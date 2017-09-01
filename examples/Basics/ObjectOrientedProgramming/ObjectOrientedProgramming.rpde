@@ -40,7 +40,8 @@ setup <- function() {
     for (i in 1:cols - 1) {
         for (j in 1:rows - 1) {
             # There is no 0 in a list.
-            grid[[1 + i * cols + j]] = Cell(i * 20, j * 20, 20, 20, i + j)
+            grid[[1 + i * cols + j]] = Cell(i * 20, j * 20, 20, 20, 
+                i + j)
         }
     }
 }

@@ -1,4 +1,5 @@
-# bezierVertex 2 https://processing.org/reference/bezierVertex_.html
+# bezierVertex 2
+# https://processing.org/reference/bezierVertex_.html
 
 beginShape()
 vertex(30, 20)

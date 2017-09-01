@@ -12,7 +12,8 @@ draw <- function() {
     ct = cos(PI/9)
     st = sin(PI/9)
     # Matrix for rotation around the Y axis
-    applyMatrix(ct, 0, st, 0, 0, 1, 0, 0, -st, 0, ct, 0, 0, 0, 0, 1)
+    applyMatrix(ct, 0, st, 0, 0, 1, 0, 0, -st, 0, ct, 0, 0, 0, 0, 
+        1)
     stroke(255)
     box(50)
 }

@@ -3,7 +3,8 @@ settings <- function() {
 }
 
 setup <- function() {
-    # Creating the PShape as a square. The numeric arguments are similar to rect().
+    # Creating the PShape as a square. The numeric arguments are
+    # similar to rect().
     square = createShape(RECT, 0, 0, 50, 50)
     square$setFill(color(0, 0, 255))
     square$setStroke(FALSE)
