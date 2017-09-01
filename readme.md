@@ -108,6 +108,10 @@ In practice we have only found a few R packages so far that work with Processing
 
 ## Documentation
 
+<a href="https://www.netlify.com">
+  <img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg"/>
+</a>
+
 See [https://processing-r.github.io/](https://processing-r.github.io/). The documentation is generated from [https://github.com/processing-r/Processing.R-docs-tools](https://github.com/processing-r/Processing.R-docs-tools).
 
 ## CONTRIBUTING
