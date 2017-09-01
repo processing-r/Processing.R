@@ -1,4 +1,5 @@
-# Run this program to learn how each of these functions relate to the others.
+# Run this program to learn how each of these functions relate to
+# the others.
 
 draw <- function() {
 }  # Empty draw() needed to keep the program running

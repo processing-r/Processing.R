@@ -1,5 +1,5 @@
-# Simple DXF Export Non-interactive -- saves DXF data on frame 2, then pauses
-# loop.
+# Simple DXF Export Non-interactive -- saves DXF data on frame 2,
+# then pauses loop.
 
 settings <- function() {
     # Please install the DXF library before you run the example.

@@ -1,5 +1,6 @@
 settings <- function() {
-    # Please install the Processing Sound library before you run the example.
+    # Please install the Processing Sound library before you run the
+    # example.
     importLibrary("sound")
     size(640, 360)
     sine <- SinOsc$new(processing)

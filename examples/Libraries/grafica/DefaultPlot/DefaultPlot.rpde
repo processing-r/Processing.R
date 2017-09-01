@@ -9,7 +9,8 @@ settings <- function() {
 setup <- function() {
     background(150)
     nPoints <- 100
-    ## expected constructor, doesn't work points <- GPointsArray$new(nPoints)
+    ## expected constructor, doesn't work points <-
+    ## GPointsArray$new(nPoints)
     points <- GPointsArray$new()
     for (i in 1:nPoints) {
         points$add(i, 10 * noise(0.1 * i))

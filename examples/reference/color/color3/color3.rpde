@@ -1,7 +1,7 @@
 noStroke()  # Don't draw a stroke around shapes
 
-# If no colorMode is specified, then the default of RGB with scale of 0-255 is
-# used.
+# If no colorMode is specified, then the default of RGB with scale
+# of 0-255 is used.
 c = color(50, 55, 100)  # Create a color for 'c'
 fill(c)  # Use color variable 'c' as fill color
 rect(0, 10, 45, 80)  # Draw left rect

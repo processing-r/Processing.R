@@ -1,5 +1,5 @@
-# Drag (click and hold) your mouse across the image to change the value of the
-# rectangle
+# Drag (click and hold) your mouse across the image to change the
+# value of the rectangle
 
 value <- 0
 

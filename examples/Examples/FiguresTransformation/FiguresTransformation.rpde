@@ -50,7 +50,8 @@ draw <- function() {
     } else {
         rotate(HALF_PI * (p + 3))
     }
-    # rotate(HALF_PI*p + (runs%4==0?0:runs%4==1?HALF_PI:runs%4==2?PI:3*HALF_PI))
+    # rotate(HALF_PI*p +
+    # (runs%4==0?0:runs%4==1?HALF_PI:runs%4==2?PI:3*HALF_PI))
     
     # Current position
     x = 0
@@ -188,10 +189,10 @@ drawHeart <- function(t, radius) {
         circleX = cos(angle - PI/2)
         circleY = sin(angle - PI/2)
         heartX = sin(angle) * 2^3
-        heartY = (-13 * cos(angle) + 5 * cos(2 * angle) + 2 * cos(3 * angle) + cos(4 * 
-            angle))/17
-        vertex(radius * lerp(circleX, heartX, t), radius * lerp(circleY, heartY, 
-            t))
+        heartY = (-13 * cos(angle) + 5 * cos(2 * angle) + 2 * cos(3 * 
+            angle) + cos(4 * angle))/17
+        vertex(radius * lerp(circleX, heartX, t), radius * lerp(circleY, 
+            heartY, t))
         angle = angle + 0.05
     }
     endShape()
@@ -207,7 +208,8 @@ drawWave <- function(p, dir) {
         } else {
             va = p
         }
-        wx = dir * figureRadius * 0.5 * (sin(va * TWO_PI) * (sin(a) + 1)) - dir
+        wx = dir * figureRadius * 0.5 * (sin(va * TWO_PI) * (sin(a) + 
+            1)) - dir
         wy = map(a, 0, PI, -figureRadius, figureRadius)
         vertex(wx, wy)
         a = a + radians(2)

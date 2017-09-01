@@ -1,4 +1,5 @@
-# quadraticVertex 2 https://processing.org/reference/quadraticVertex_.html
+# quadraticVertex 2
+# https://processing.org/reference/quadraticVertex_.html
 
 noFill()
 strokeWeight(4)

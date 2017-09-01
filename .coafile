@@ -8,4 +8,4 @@ ignore = src/test/*.java, src/rprocessing/TreeCopier.java, src/rprocessing/mode/
 [R]
 bears = FormatRBear
 files = examples/**/*.rpde
-r_max_expression_length = 80
+r_max_expression_length = 65

@@ -1,4 +1,5 @@
-# bezierVertex 1 https://processing.org/reference/bezierVertex_.html
+# bezierVertex 1
+# https://processing.org/reference/bezierVertex_.html
 
 noFill()
 beginShape()
