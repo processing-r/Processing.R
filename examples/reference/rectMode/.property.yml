@@ -13,7 +13,7 @@ The default mode is <b>rectMode(CORNER)</b>, which interprets the first two para
 <br />
 The parameter must be written in ALL CAPS because Processing is a case-sensitive language.
 "
-syntax: "ectMode(mode"
+syntax: "rectMode(mode)"
 parameters:
   - label: 'mode'
     description: "int: either CORNER, CORNERS, CENTER, or RADIUS"
