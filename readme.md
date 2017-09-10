@@ -17,8 +17,6 @@
     <a href="https://github.com/gaocegege/Processing.R/blob/master/raw-docs/devel/compilation.md#docker-image-deprecated"><img src="https://img.shields.io/badge/docker-deprecated-yellowgreen.svg" alt=""></a>
 </p>
 
-***This project was proposed by Ce Gao and released to PDE Contributions Manager at the conclusion of his Google Summer of Code 2017 project.***
-
 ## Overview
 
 Processing.R is a mode for Processing that enables users to write Processing sketches using the R language. The mode can be installed in the Processing Development Environment (PDE). It can also run on the command line as a stand-alone jar.
