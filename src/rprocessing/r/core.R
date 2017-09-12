@@ -425,3 +425,4 @@ ENABLE_ASYNC_SAVEFRAME = RLangPApplet$ENABLE_ASYNC_SAVEFRAME
 HINT_COUNT = RLangPApplet$HINT_COUNT
 
 print = stdout$print
+println = stdout$println

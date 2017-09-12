@@ -15,4 +15,10 @@ public class StreamPrinter implements Printer {
     stream.print(String.valueOf(o));
     stream.flush();
   }
+
+  @Override
+  public void println(final Object o) {
+    stream.println(String.valueOf(o));
+    stream.flush();
+  }
 }
