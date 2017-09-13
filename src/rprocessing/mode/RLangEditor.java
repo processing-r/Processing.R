@@ -126,7 +126,17 @@ public class RLangEditor extends Editor {
   @Override
   public JMenu buildHelpMenu() {
     final JMenu menu = new JMenu("Help");
-    menu.add(new JMenuItem(new AbstractAction("Contribute to R Language Mode") {
+    menu.add(new JMenuItem(new AbstractAction("About Processing.R") {
+
+      /**  */
+      private static final long serialVersionUID = 1L;
+
+      @Override
+      public void actionPerformed(final ActionEvent e) {
+        Platform.openURL("https://processing-r.github.io/");
+      }
+    }));
+    menu.add(new JMenuItem(new AbstractAction("Contribute to Processing.R") {
       /**  */
       private static final long serialVersionUID = 2312501910971341647L;
 
@@ -135,6 +145,19 @@ public class RLangEditor extends Editor {
         Platform.openURL("http://github.com/gaocegege/Processing.R");
       }
     }));
+
+    JMenuItem item = new JMenuItem("Tutorials");
+    item.setEnabled(false);
+    menu.add(item);
+
+    item = new JMenuItem("Getting Started");
+    item.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        Platform.openURL("https://processing-r.github.io/tutorials/gettingstarted/");
+      }
+    });
+    menu.add(item);
     return menu;
   }
 
