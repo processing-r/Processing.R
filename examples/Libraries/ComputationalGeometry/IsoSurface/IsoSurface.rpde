@@ -1,0 +1,29 @@
+iso <- 0
+
+settings <- function() {
+    # Please install the peasycam before you run the example.
+    importLibrary("ComputationalGeometry")
+    size(250, 250, P3D)
+}
+
+setup <- function() {
+    iso = IsoSurface$new(processing, PVector$new(0, 0, 0), PVector$new(100, 
+        100, 100), as.integer(8))
+    for (i in 0:9) {
+        pt = PVector$new(random(100), random(100), random(100))
+        iso$addPoint(pt)
+    }
+}
+
+draw <- function() {
+    camera(150, 150, 150, 50, 50, 40, 0, 0, -1)
+    lights()
+    background(220)
+    
+    noFill()
+    stroke(0, 10)
+    iso$plotVoxels()
+    
+    fill(255, 255, 0)
+    iso$plot(mouseX/10000)
+}
