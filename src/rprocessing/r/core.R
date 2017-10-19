@@ -1,4 +1,5 @@
 import(rprocessing.RLangPApplet)
+import(processing.core.PVector)
 
 alpha = processing$alpha
 ambient = processing$ambient
