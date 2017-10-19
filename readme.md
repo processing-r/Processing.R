@@ -33,7 +33,11 @@ Processing.R supports:
 </div>
 
 <div align="center">
-	<img src="./raw-docs/img/demo.gif" alt="Demo" width="300">
+	<img src="./raw-docs/img/demo.gif" alt="Demo" width="200">
+</div>
+
+<div align="center">
+	<img src="./raw-docs/img/demo-geo.gif" alt="Demo" width="200">
 </div>
 
 ## Early Development
