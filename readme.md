@@ -31,14 +31,18 @@ Processing.R supports:
 <div align="center">
 	<img src="./raw-docs/img/editor.png" alt="Editor" width="500">
 </div>
+<br>
+<p align="center">
+<img src="./raw-docs/img/noise.gif" height=150></img>
+<img src="./raw-docs/img/plot.png" height=150></img>
+<img src="./raw-docs/img/math.gif" height=150></img>
+</p>
 
-<div align="center">
-	<img src="./raw-docs/img/demo.gif" alt="Demo" width="200">
-</div>
-
-<div align="center">
-	<img src="./raw-docs/img/demo-geo.gif" alt="Demo" width="200">
-</div>
+<p align="center">
+<img src="./raw-docs/img/demo-geo.gif" height=150></img>
+<img src="./raw-docs/img/demo.gif" height=150></img>
+<img src="./raw-docs/img/people.gif" height=150></img>
+</p>
 
 ## Early Development
 
