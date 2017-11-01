@@ -1,0 +1,90 @@
+mesh <- 0
+tree <- 0
+render <- 0
+rnds <- 0
+randomRay <- 0
+bias <- 0
+growing <- 0
+counter <- 0
+
+settings <- function() {
+    # Please install the peasycam before you run the example.
+    importLibrary("hemesh")
+    fullScreen(P3D)
+    smooth(as.integer(8))
+}
+
+setup <- function() {
+    render <- WB_Render$new(processing)
+    rnds <- WB_RandomOnSphere$new()
+    creator <- HEC_Beethoven$new()
+    creator$setScale(5)$setZAngle(PI/3)
+    mesh <- HE_Mesh$new(creator)
+    mesh$simplify(HES_TriDec$new()$setGoal(0.5))
+    tree <- WB_AABBTree$new(mesh, as.integer(10))
+    
+    growing <- TRUE
+    counter <- 0
+    bias <- rnds$nextVector()
+}
+
+createMesh <- function() {
+    creator <- HEC_Beethoven$new()
+    creator$setScale(5)$setZAngle(PI/3)
+    mesh <- HE_Mesh$new(creator)
+    mesh$simplify(HES_TriDec$new()$setGoal(0.5))
+    tree <- WB_AABBTree$new(mesh, as.integer(10))
+    
+    growing <- TRUE
+    counter <- 0
+    bias <- rnds$nextVector()
+}
+
+
+draw <- function() {
+    background(20)
+    directionalLight(255, 255, 255, 1, 1, -1)
+    directionalLight(127, 127, 127, -1, -1, 1)
+    translate(width/2, height/2, 0)
+    rotateY(map(mouseX, 0, width, -PI, PI))
+    rotateX(map(mouseY, 0, height, PI, -PI))
+    
+    # hint(DISABLE_DEPTH_TEST)
+    noLights()
+    fill(255)
+    noStroke()
+    pushMatrix()
+    scale(1.8)
+    render$drawFaces(mesh)
+    popMatrix()
+    
+    # # hint(ENABLE_DEPTH_TEST) directionalLight(255, 255, 255, 1, 1,
+    # -1) directionalLight(127, 127, 127, -1, -1, 1) scale(1.6)
+    # fill(255) noStroke() render$drawFaces(mesh) noFill() stroke(0,
+    # 50) render$drawEdges(mesh)
+    
+    
+    # if (growing) { for (i in 0:5) { grow() counter <- counter + 1 }
+    # }
+    
+    # if (counter == 500) { mesh$subdivide(HES_CatmullClark$new())
+    # growing <- false counter <- counter + 1 }
+}
+
+grow <- function() {
+    rayOrigin <- WB_Point$new(bias)$mulSelf(-500)
+    rayDirection <- bias$add(random(-0.3, 0.3), random(-0.3, 0.3), 
+        random(-0.3, 0.3))
+    randomRay <- WB_Ray$new(rayOrigin, rayDirection)
+    fi <- HET_MeshOp$getFurthestIntersection(tree, randomRay)
+    point <- 0
+    # if (!is.null(fi)) { print(fi$point) point <- fi$point
+    # point$addMulSelf(120, randomRay$getDirection())
+    # HEM_TriSplit$splitFaceTri(mesh, fi$face, point) tree <-
+    # WB_AABBTree$new(mesh, 10) stroke(255,0,0)
+    # render$drawRay(randomRay,1500) }
+}
+
+mousePressed <- function() {
+    createMesh()
+}

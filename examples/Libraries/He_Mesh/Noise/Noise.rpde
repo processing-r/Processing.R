@@ -1,0 +1,36 @@
+n1 <- 0
+n2 <- 0
+n3 <- 0
+
+settings <- function() {
+    size(800, 800)
+    importLibrary("hemesh")
+}
+
+setup <- function() {
+    # Perlin Noise, implementation from Processing core
+    n1 = WB_PNoise$new()$setDetail(as.integer(8), 0.5)
+    n1$setScale(0.005)
+    
+    # Simplex noise
+    n2 = WB_SNoise$new()
+    n2$setScale(0.01)
+    
+    # Open simplex noise
+    n3 = WB_OSNoise$new()
+    n3$setScale(0.02)
+}
+
+draw <- function() {
+    background(255)
+    stroke(0)
+    for (i in 0:width) {
+        point(i, 200 - 100 * n1$value1D(i + frameCount))
+        point(i, 400 - 100 * n2$value1D(i + frameCount))
+        point(i, 600 - 100 * n3$value1D(i + frameCount))
+    }
+    stroke(255, 0, 0)
+    line(0, 200, width, 200)
+    line(0, 400, width, 400)
+    line(0, 600, width, 600)
+}
