@@ -33,13 +33,14 @@ Processing.R supports:
 </div>
 <br>
 <p align="center">
-<img src="./raw-docs/img/noise.gif" height=150></img>
+<img src="./raw-docs/img/life.gif" height=150></img>
 <img src="./raw-docs/img/plot.png" height=150></img>
-<img src="./raw-docs/img/math.gif" height=150></img>
+<img src="./raw-docs/img/noise.gif" height=150></img>
 </p>
 
 <p align="center">
 <img src="./raw-docs/img/demo-geo.gif" height=150></img>
+<img src="./raw-docs/img/math.gif" height=150></img>
 <img src="./raw-docs/img/demo.gif" height=150></img>
 <img src="./raw-docs/img/people.gif" height=150></img>
 </p>
