@@ -1,0 +1,58 @@
+# Load the table before the sketch is run
+settings <- function() {
+    # Please install the grafica library before you run the example.
+    importLibrary("grafica")
+    size(750, 450)
+}
+
+setup <- function() {
+
+    table <- loadTable("https://raw.githubusercontent.com/jagracar/grafica/master/examples/LifeExpectancy/data/data.csv", "header")
+    # Save the data in an array and calculate the point sizes
+    points <- GPointsArray$new()
+    # Create the plot
+    plot <- GPlot$new(processing)
+    pointSizes <- plot$getMainLayer()$getPointSizes()
+
+    print(table)
+    for (row in 0:(table$getRowCount() - 1)) {
+        data <- table$getRow(row)
+
+        country <- data$getString("country")
+        income <- data$getFloat("income")
+        health <- data$getFloat("health")
+        population <- data$getInt("population")
+        points$add(GPoint$new(income, health, country))
+
+        scaleFactor <- width / 750
+        pointSizes <- c(pointSizes, 2 * sqrt(population / (200000 * PI)) * scaleFactor)
+    }
+
+    plot$setOuterDim(width, height)
+    plot$setTitleText("Life expectancy connection to average income")
+    plot$getXAxis()$setAxisLabelText("Personal income ($/year)")
+    plot$getYAxis()$setAxisLabelText("Life expectancy (years)")
+    plot$setLogScale("x")
+    plot$setPoints(points)
+    plot$setPointSizes(pointSizes)
+    plot$activatePointLabels()
+    plot$activatePanning()
+    plot$activateZooming(1.1, CENTER, CENTER)
+}
+
+# Execute the sketch
+draw <- function() {
+    # Clean the canvas
+    background(255)
+
+    # Draw the plot
+    plot$beginDraw()
+    plot$drawBox()
+    plot$drawXAxis()
+    plot$drawYAxis()
+    plot$drawTitle()
+    plot$drawGridLines(GPlot$BOTH)
+    plot$drawPoints()
+    plot$drawLabels()
+    plot$endDraw()
+}
