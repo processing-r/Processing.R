@@ -1,33 +1,40 @@
 # Change Log
 
-## [Unreleased](https://github.com/gaocegege/Processing.R/tree/HEAD)
-
-[Full Changelog](https://github.com/gaocegege/Processing.R/compare/v1.0.5...HEAD)
+## [v1.0.6](https://github.com/gaocegege/Processing.R/tree/v1.0.6) (2017-11-01)
+[Full Changelog](https://github.com/gaocegege/Processing.R/compare/v1.0.5...v1.0.6)
 
 **Closed issues:**
 
+- Support Table in R [\#244](https://github.com/gaocegege/Processing.R/issues/244)
+- Support PVector [\#241](https://github.com/gaocegege/Processing.R/issues/241)
 - Docs: Tutorials do not list author [\#239](https://github.com/gaocegege/Processing.R/issues/239)
 - println\(\) not working [\#236](https://github.com/gaocegege/Processing.R/issues/236)
-- Allow failure in macOS to solve the queueing problem [\#229](https://github.com/gaocegege/Processing.R/issues/229)
 - Fix broken and missing links in README.md [\#219](https://github.com/gaocegege/Processing.R/issues/219)
 - Announce mode [\#215](https://github.com/gaocegege/Processing.R/issues/215)
-- Import netlify to CI the reference docs [\#199](https://github.com/gaocegege/Processing.R/issues/199)
 - Add tutorials [\#186](https://github.com/gaocegege/Processing.R/issues/186)
 - Cast more functions from double to int [\#184](https://github.com/gaocegege/Processing.R/issues/184)
-- When there are exceptions, fail to close the applets [\#143](https://github.com/gaocegege/Processing.R/issues/143)
-- Welcome to have a try on Processing.R [\#142](https://github.com/gaocegege/Processing.R/issues/142)
 - Replace ant with maven or gradle [\#139](https://github.com/gaocegege/Processing.R/issues/139)
 - Fix ad-hoc examples in documentation [\#110](https://github.com/gaocegege/Processing.R/issues/110)
 - Support CI in macOS via Travis CI [\#82](https://github.com/gaocegege/Processing.R/issues/82)
 - PDE mode installation \(automatic\) [\#59](https://github.com/gaocegege/Processing.R/issues/59)
 - Get in touch with Processing "modes" community [\#56](https://github.com/gaocegege/Processing.R/issues/56)
-- Documentation: PDE reference folder in mode [\#55](https://github.com/gaocegege/Processing.R/issues/55)
 - Get in touch with R community [\#34](https://github.com/gaocegege/Processing.R/issues/34)
 - Replace the timezone [\#30](https://github.com/gaocegege/Processing.R/issues/30)
 - The Big One: Proposal in GSoC 2017 [\#28](https://github.com/gaocegege/Processing.R/issues/28)
+- Allow failure in macOS to solve the queueing problem [\#229](https://github.com/gaocegege/Processing.R/issues/229)
+- Import netlify to CI the reference docs [\#199](https://github.com/gaocegege/Processing.R/issues/199)
+- When there are exceptions, fail to close the applets [\#143](https://github.com/gaocegege/Processing.R/issues/143)
+- Welcome to have a try on Processing.R [\#142](https://github.com/gaocegege/Processing.R/issues/142)
+- Documentation: PDE reference folder in mode [\#55](https://github.com/gaocegege/Processing.R/issues/55)
 
 **Merged pull requests:**
 
+- \*: Add example image [\#248](https://github.com/gaocegege/Processing.R/pull/248) ([gaocegege](https://github.com/gaocegege))
+- hemesh: Add a new example [\#247](https://github.com/gaocegege/Processing.R/pull/247) ([gaocegege](https://github.com/gaocegege))
+- img: Add life [\#246](https://github.com/gaocegege/Processing.R/pull/246) ([gaocegege](https://github.com/gaocegege))
+- \*: Add table and advanced exmaple for grafica [\#245](https://github.com/gaocegege/Processing.R/pull/245) ([gaocegege](https://github.com/gaocegege))
+- examples: Add ComputationalGeometry [\#243](https://github.com/gaocegege/Processing.R/pull/243) ([gaocegege](https://github.com/gaocegege))
+- core.R: Add support for PVector [\#242](https://github.com/gaocegege/Processing.R/pull/242) ([gaocegege](https://github.com/gaocegege))
 - RLangEditor: Add about and tutorials [\#238](https://github.com/gaocegege/Processing.R/pull/238) ([gaocegege](https://github.com/gaocegege))
 - \*: Support println [\#237](https://github.com/gaocegege/Processing.R/pull/237) ([gaocegege](https://github.com/gaocegege))
 - rectMode: Typo fix [\#233](https://github.com/gaocegege/Processing.R/pull/233) ([gaocegege](https://github.com/gaocegege))
