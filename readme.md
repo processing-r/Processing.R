@@ -122,6 +122,10 @@ In practice we have only found a few R packages so far that work with Processing
 
 See [https://processing-r.github.io/](https://processing-r.github.io/). The documentation is generated from [https://github.com/processing-r/Processing.R-docs-tools](https://github.com/processing-r/Processing.R-docs-tools).
 
+## Papers
+
+- [Short Paper about Processing.R](./raw-docs/paper/processing-r.pdf)
+
 ## CONTRIBUTING
 
 Feel free to hack on Processing.R! [development.md](./raw-docs/development.md) will help you to get involved into the development of Processing.R.
