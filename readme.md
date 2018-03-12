@@ -5,6 +5,9 @@
 
 <h4 align="center">Processing.R enables users to write Processing sketches in R.</h4>
 
+<p align="center">Current Maintainer: <a href="https://github.com/jeremydouglass">@jeremydouglass</a> from
+U. California Santa Barbara</p>
+
 <p align="center">
     <a href="https://travis-ci.org/gaocegege/Processing.R"><img src="https://travis-ci.org/gaocegege/Processing.R.svg?branch=master" alt="Travis CI"></a>
     <a href="https://ci.appveyor.com/project/gaocegege/processing-r/branch/master"><img src="https://ci.appveyor.com/api/projects/status/9lq6psaw9c18ins8/branch/master?svg=true" alt="appveyor"></a>
@@ -26,7 +29,7 @@ Processing.R supports:
 1. native R programming and syntax
 1. most Processing built-in functions (`draw()`, `rect()`, `box()`, etc.)
 1. importing select Processing(Java) libraries (e.g. "peasycam")
-1. importing select R Packages (e.g. "foreach") 
+1. importing select R Packages (e.g. "foreach")
 
 <div align="center">
 	<img src="./raw-docs/img/editor.png" alt="Editor" width="500">
@@ -63,7 +66,7 @@ To build the mode from source, see [compilation.md](./raw-docs/devel/compilation
 
 Processing.R supports most of the Processing functions as described in the [Processing reference](processing.org/reference/). Processing.R functions are described on the documentation website:
 
--  [https://processing-r.github.io/reference](https://processing-r.github.io/reference). 
+-  [https://processing-r.github.io/reference](https://processing-r.github.io/reference).
 
 However, the Processing.R documentation is currently incomplete. Many functions have not been tested or are not accompanied by example sketches. Some reference pages contain materials from Processing.py or Processing(Java) that have not been edited to reflect differences from other Processing modes.
 
