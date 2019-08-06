@@ -64,7 +64,7 @@ public class Runner {
       sketch = new StandaloneSketch(args);
       runSketchBlocking(sketch, new StreamPrinter(System.out), new StreamPrinter(System.err));
 
-      // See https://github.com/gaocegege/Processing.R/issues/89
+      // See https://github.com/processing-r/Processing.R/issues/89
       // It can't be reproduced, so comment the statement.
       // System.exit(0);
     } catch (final Throwable t) {

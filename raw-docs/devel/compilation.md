@@ -1,4 +1,4 @@
-The following instructions cover compiling Processing.R from source rather than downloading the latest [release](https://github.com/gaocegege/Processing.R/releases).
+The following instructions cover compiling Processing.R from source rather than downloading the latest [release](https://github.com/processing-r/Processing.R/releases).
 Processing.R is available for the Processing Development Environment (PDE) or stand-alone, in these forms:
 
 1. a PDE mode, which can be

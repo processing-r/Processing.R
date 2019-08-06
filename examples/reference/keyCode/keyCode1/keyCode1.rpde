@@ -6,7 +6,7 @@ draw <- function() {
 }
 
 keyPressed <- function() {
-    # See https://github.com/gaocegege/Processing.R/issues/209
+    # See https://github.com/processing-r/Processing.R/issues/209
     if (key == CODED) {
         if (keyCode == UP) {
             fillVal = 255

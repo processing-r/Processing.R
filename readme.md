@@ -15,9 +15,9 @@ U. California Santa Barbara</p>
     <a href="https://www.codacy.com/app/gaocegege/Processing-R?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=gaocegege/Processing.R&amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/33ebc49f6f764fffb7ea7bf617edf902" alt="Codacy Badge"></a>
     <!--<a href="https://www.codacy.com/app/gaocegege/Processing-R?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=gaocegege/Processing.R&amp;utm_campaign=Badge_Coverage"><img src="https://api.codacy.com/project/badge/Coverage/33ebc49f6f764fffb7ea7bf617edf902" alt="Codacy Badge"></a>-->
     <a href="https://stackshare.io/gaocegege/processing-r"><img src="https://img.shields.io/badge/tech-stack-0690fa.svg?style=flat" alt="StackShare"></a>
-    <a href="https://github.com/gaocegege/Processing.R/releases"><img src="https://img.shields.io/github/release/gaocegege/Processing.R.svg" alt="GitHub Release"></a>
+    <a href="https://github.com/processing-r/Processing.R/releases"><img src="https://img.shields.io/github/release/gaocegege/Processing.R.svg" alt="GitHub Release"></a>
     <a href="https://gitter.im/gaocegege/Processing.R?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge"><img src="https://badges.gitter.im/gaocegege/Processing.R.svg" alt="Gitter"></a>
-    <a href="https://github.com/gaocegege/Processing.R/blob/master/raw-docs/devel/compilation.md#docker-image-deprecated"><img src="https://img.shields.io/badge/docker-deprecated-yellowgreen.svg" alt=""></a>
+    <a href="https://github.com/processing-r/Processing.R/blob/master/raw-docs/devel/compilation.md#docker-image-deprecated"><img src="https://img.shields.io/badge/docker-deprecated-yellowgreen.svg" alt=""></a>
 </p>
 
 ## Overview
@@ -53,7 +53,7 @@ Processing.R supports:
 
 Processing.R is still in early development -- it is not feature-complete or production-ready. Please try our experimental mode and give us your feedback.
 
--  Report bugs to [Processing.R Issues](https://github.com/gaocegege/Processing.R/issues)!
+-  Report bugs to [Processing.R Issues](https://github.com/processing-r/Processing.R/issues)!
 -  Chat at the [Processing.R gitter channel](https://gitter.im/gaocegege/Processing.R)
 
 ## Installation
