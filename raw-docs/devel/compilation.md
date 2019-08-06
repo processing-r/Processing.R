@@ -1,13 +1,18 @@
-The following instructions cover compiling Processing.R from source rather than downloading the latest [release](https://github.com/processing-r/Processing.R/releases).
-Processing.R is available for the Processing Development Environment (PDE) or stand-alone, in these forms:
+# Compiling Processing.R
+
+The latest release of Processing.R may be installed:
+
+1. Into the Processing Development Environment (PDE) via the Contributions Manager: PDE > Add Tool > Modes > Processing.R.
+1. By downloading the latest [release](https://github.com/processing-r/Processing.R/releases). This may be used stand-alone or installed into PDE by adding to the Processing Libraries folder and restarting PDE. The mode will appear in the PDE Modes list once installed.
+1. **By compiling / building from source**
+
+The following instructions cover compiling Processing.R from source. It may be built in several ways:
 
 1. a PDE mode, which can be
     - added to the PDE
     - built with its own PDE
 1. a command-line runner -- does not require the PDE
 1. a docker container image -- DEPRECATED
-
-Processing.R is *not* currently available via PDE > Add Tool > Modes, however the mode will appear in the PDE Modes list once installed.
 
 ## PDE Mode
 
