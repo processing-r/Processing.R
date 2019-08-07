@@ -35,7 +35,7 @@ class TestCaseGenerator(object):
         if os.path.isfile(yaml_file) is not True:
             return
         with open(yaml_file, 'r') as f:
-            config = yaml.load(f.read())
+            config = yaml.safe_load(f.read())
             print(config)
             builder.set_reference_url(config['test']['reference'])
 
