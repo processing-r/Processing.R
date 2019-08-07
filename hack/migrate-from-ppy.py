@@ -29,7 +29,7 @@ class Migrator(object):
 
     def render(self, tree):
         property_template = jinja2.Environment(
-            loader=jinja2.FileSystemLoader(
+            autoescape=True, loader=jinja2.FileSystemLoader(
                 property_template_dir), trim_blocks='true')\
                 .get_template(property_template_file_name)
         subcategory = ''
