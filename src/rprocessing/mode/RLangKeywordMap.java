@@ -80,15 +80,16 @@ public class RLangKeywordMap extends KeywordMap {
 
   // private members
   class Keyword {
+
+    public char[] keyword;
+    public byte id;
+    public Keyword next;
+
     public Keyword(final char[] keyword, final byte id, final Keyword next) {
       this.keyword = keyword;
       this.id = id;
       this.next = next;
     }
-
-    public char[] keyword;
-    public byte id;
-    public Keyword next;
   }
 
 }

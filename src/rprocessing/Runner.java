@@ -159,8 +159,8 @@ public class Runner {
       for (final File d : dirs) {
         searchForExtraStuff(d, entries);
       }
-    } else {
-      // log("No dirs in ", dir);
+    // } else {
+    //   log("No dirs in ", dir);
     }
   }
 }

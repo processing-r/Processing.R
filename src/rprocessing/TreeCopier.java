@@ -43,19 +43,19 @@ import java.nio.file.attribute.FileTime;
 
 class TreeCopier implements FileVisitor<Path> {
 
+  private final Path source;
+  private final Path target;
+
   /**
    * Copy source file to target location.
    */
-  static void copyFile(final Path source, final Path target) {
+  private static void copyFile(final Path source, final Path target) {
     try {
       Files.copy(source, target, COPY_ATTRIBUTES, REPLACE_EXISTING);
     } catch (final IOException ioException) {
       System.err.format("Unable to copy: %s: %s%n", source, ioException);
     }
   }
-
-  private final Path source;
-  private final Path target;
 
   TreeCopier(final Path source, final Path target) {
     this.source = source;

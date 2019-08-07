@@ -59,7 +59,8 @@ public class RSketchError extends Exception {
   }
 
   // TODO: Support the line and column.
-  public static RSketchError toSketchException(Throwable t) {
+  public static RSketchError toSketchException(Throwable terr) {
+    Throwable t = terr;
     log(t.getClass().toString());
     if (t instanceof RuntimeException && t.getCause() != null) {
       t = t.getCause();

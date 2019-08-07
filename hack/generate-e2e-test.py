@@ -72,7 +72,7 @@ class TemplateBuilder(object):
     def set_core_code(self, code):
         self.coreCode = code
         return self
-    
+
     def set_reference_url(self, url):
         self.referenceURL = url
         return self
