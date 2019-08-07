@@ -11,7 +11,7 @@ build: off
 
 install:
   - curl -L http://download.processing.org/processing-3.3-windows64.zip > c:\projects\processing.zip
-  - curl -L http://apache.claz.org//ant/binaries/apache-ant-1.10.1-bin.zip > c:\projects\apache-ant.zip
+  - curl -L https://archive.apache.org/dist/ant/binaries/apache-ant-1.10.1-bin.zip > c:\projects\apache-ant.zip
   - cd c:\projects && unzip c:\projects\processing.zip && unzip c:\projects\apache-ant.zip
   - set PATH=%PATH%;C:\projects\apache-ant-1.10.1\bin
   - cd c:\projects\Processing.R
