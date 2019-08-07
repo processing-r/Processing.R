@@ -12,7 +12,7 @@ class Generator(object):
     def __init__(self):
         self.output_dir = e2e_test_dir
         self.reference_dir = reference_dir
-    
+
     def generate(self):
         for dirname in os.listdir(self.reference_dir):
             item_dir = os.path.join(self.reference_dir, dirname)
