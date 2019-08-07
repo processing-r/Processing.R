@@ -5,9 +5,9 @@ sudo apt-get install ant-optional;
 source "$(dirname "${BASH_SOURCE}")/../scripts/utils/generator-util.sh"
 
 # Download Processing.
-curl -L http://download.processing.org/processing-3.3-linux64.tgz > ${HOME}/processing.tgz && \
+curl -L http://download.processing.org/processing-3.5.3-linux64.tgz > ${HOME}/processing.tgz && \
     tar xvf ${HOME}/processing.tgz -C ${HOME} > /dev/null && \
-    mv ${HOME}/processing-3.3 ${HOME}/processing && \
+    mv ${HOME}/processing-3.5.3 ${HOME}/processing && \
     rm -rf ${HOME}/processing.tgz
 
 # Paths

@@ -1,4 +1,4 @@
-REM Maintainer Ce Gao(gaocegege) <github.com/gaocegege>
+REM Maintainer Jeremy Douglass <github.com/jeremydouglass>
 
 REM # Paths
 REM # Those paths are not needed when building runner.jar,
@@ -6,9 +6,9 @@ REM # but will be used in the future to package the mode.
 set modes="c:\\mock-user\\modes"
 set executable="c:\\mock-user\\Processing"
 REM # Those paths are important to build runner.jar.
-set processing="c:\\projects\\processing-3.3"
-set core="c:\\projects\\processing-3.3\\core\\library"
-set pde="c:\\projects\\processing-3.3\\lib\\pde.jar"
+set processing="c:\\projects\\processing-3.5.3"
+set core="c:\\projects\\processing-3.5.3\\core\\library"
+set pde="c:\\projects\\processing-3.5.3\\lib\\pde.jar"
 set version="appveyor"
 set commitid="mock-in-appveyor"
 
