@@ -1,6 +1,6 @@
 import click
 import os
-from lxml import etree
+from defusedxml import ElementTree as etree
 import jinja2
 
 property_file_name = '.property.yml'
