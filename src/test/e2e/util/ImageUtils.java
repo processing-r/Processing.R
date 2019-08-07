@@ -14,7 +14,8 @@ import processing.core.PImage;
  * @author github.com/gaocegege
  */
 public class ImageUtils {
-  public static float DiffImage(File actualFile, URL testURL) throws IOException {
+  
+  public static float diffImage(File actualFile, URL testURL) throws IOException {
     PImage actualImage = new PImage(ImageIO.read(actualFile));
     PImage testImage = new PImage(ImageIO.read(testURL));
 
