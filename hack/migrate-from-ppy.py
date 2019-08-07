@@ -1,9 +1,7 @@
 import click
 import os
-import lxml
 from lxml import etree
 import jinja2
-import copy
 
 property_file_name = '.property.yml'
 property_template_dir = 'hack/templates'
