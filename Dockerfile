@@ -5,10 +5,12 @@ RUN mkdir -p /code/runner
 
 # Install base package.
 RUN apt-get update && \
-    apt-get install -y \
+    apt-get install -y --no-install-recommends \
     curl \
-    ant
-
+    ant \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+  
 # Download Processing.
 # Dev operation: copy processing into the image.
 # COPY processing-3.3.3-linux64.tgz /code/processing.tgz
