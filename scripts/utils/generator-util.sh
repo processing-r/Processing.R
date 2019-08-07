@@ -5,7 +5,7 @@
 # Input:
 #   $1 Log string.
 function log {
-  echo -e "[`date`] ${1}"
+  echo -e "[$(date)] ${1}"
 }
 
 function help {

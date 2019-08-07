@@ -10,7 +10,7 @@ numberOfParams=2
 # Input:
 #   $1 Log string.
 function log {
-  echo -e "[`date`] ${1}"
+  echo -e "[$(date)] ${1}"
 }
 
 function help {
@@ -34,7 +34,7 @@ function deploy {
   commitid=$(git log -n1 --format="%h")
   version=${1}
   full_version=${2}
-  date=`date "+%Y/%m/%d %R"`
+  date=$(date "+%Y/%m/%d %R")
 
   perl -i -pe "s|\@\@mode-version\@\@|${version}|g" docs/RLangMode.txt
   perl -i -pe "s|\@\@pretty-version\@\@|${full_version}|g" docs/RLangMode.txt
