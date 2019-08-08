@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 
 # Usage: deploy.sh <version> <full version>
+#
+# Example:
+#        cd scripts
+#        ./deploy.sh 107 v1.0.7
+#
+# Requires jdk8, which may be set with JAVA_HOME env variables.
+# See RELEASE.md for details on using this script.
 
 ROOT=$(dirname "${BASH_SOURCE}")/..
 numberOfParams=2
@@ -39,7 +46,7 @@ function deploy {
   perl -i -pe "s|\@\@mode-version\@\@|${version}|g" docs/RLangMode.txt
   perl -i -pe "s|\@\@pretty-version\@\@|${full_version}|g" docs/RLangMode.txt
 
-  source "$(dirname "${BASH_SOURCE}")/utils/generator-util.sh"
+  source "scripts/utils/generator-util.sh"
 
   # Path to be changed
   modes="${HOME}/Documents/Processing/modes"
