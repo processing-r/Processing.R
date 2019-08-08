@@ -23,7 +23,7 @@ public abstract class E2eTestBase {
   }
 
   protected float diffImage(File file, String fileURL) throws MalformedURLException, IOException {
-    return ImageUtils.DiffImage(file, new URL(fileURL));
+    return ImageUtils.diffImage(file, new URL(fileURL));
   }
 
   protected float diffImageWithProcessingReference(File file, String referenceURL)

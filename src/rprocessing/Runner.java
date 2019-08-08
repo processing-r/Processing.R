@@ -131,8 +131,8 @@ public class Runner {
     });
     if (dlls != null && dlls.length > 0) {
       entries.add(dir.getAbsolutePath());
-    } else {
-      // log("No DLLs in ", dir);
+    // } else {
+    //     log("No DLLs in ", dir);
     }
 
     final File[] jars = dir.listFiles(new FilenameFilter() {
@@ -145,8 +145,8 @@ public class Runner {
       for (final File jar : jars) {
         entries.add(jar.getAbsolutePath());
       }
-    } else {
-      // log("No JARs in ", dir);
+    // } else {
+    //     log("No JARs in ", dir);
     }
 
     final File[] dirs = dir.listFiles(new FileFilter() {
@@ -159,8 +159,8 @@ public class Runner {
       for (final File d : dirs) {
         searchForExtraStuff(d, entries);
       }
-    } else {
-      // log("No dirs in ", dir);
+    // } else {
+    //   log("No dirs in ", dir);
     }
   }
 }

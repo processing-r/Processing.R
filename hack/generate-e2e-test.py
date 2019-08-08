@@ -12,7 +12,7 @@ class Generator(object):
     def __init__(self):
         self.output_dir = e2e_test_dir
         self.reference_dir = reference_dir
-    
+
     def generate(self):
         for dirname in os.listdir(self.reference_dir):
             item_dir = os.path.join(self.reference_dir, dirname)
@@ -35,7 +35,7 @@ class TestCaseGenerator(object):
         if os.path.isfile(yaml_file) is not True:
             return
         with open(yaml_file, 'r') as f:
-            config = yaml.load(f.read())
+            config = yaml.safe_load(f.read())
             print(config)
             builder.set_reference_url(config['test']['reference'])
 
@@ -72,7 +72,7 @@ class TemplateBuilder(object):
     def set_core_code(self, code):
         self.coreCode = code
         return self
-    
+
     def set_reference_url(self, url):
         self.referenceURL = url
         return self
