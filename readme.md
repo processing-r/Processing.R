@@ -16,14 +16,17 @@ U. California Santa Barbara</p>
 
 ## Overview
 
-Processing.R is a mode for Processing that enables users to write Processing sketches using the R language. The mode can be installed in the Processing Development Environment (PDE). It can also run on the command line as a stand-alone jar.
+Processing.R is a mode for Processing that enables users to write Processing
+sketches using the R language. The mode can be installed in the Processing
+Development Environment (PDE). It can also run on the command line as a
+stand-alone jar.
 
 Processing.R supports:
 
-1. native R programming and syntax
-1. most Processing built-in functions (`draw()`, `rect()`, `box()`, etc.)
-1. importing select Processing(Java) libraries (e.g. "peasycam")
-1. importing select R Packages (e.g. "foreach")
+1.  native R programming and syntax
+2.  most Processing built-in functions (`draw()`, `rect()`, `box()`, etc.)
+3.  importing select Processing(Java) libraries (e.g. "peasycam")
+4.  importing select R Packages (e.g. "foreach")
 
 <div align="center">
 	<img src="./raw-docs/img/editor.png" alt="Editor" width="500">
@@ -45,29 +48,41 @@ Processing.R supports:
 
 ## Early Development
 
-Processing.R is still in early development -- it is not feature-complete or production-ready. Please try our experimental mode and give us your feedback.
+Processing.R is still in early development -- it is not feature-complete or
+production-ready. Please try our experimental mode and give us your feedback.
 
--  Report bugs to [Processing.R Issues](https://github.com/processing-r/Processing.R/issues)!
+-   Report bugs to [Processing.R Issues](https://github.com/processing-r/Processing.R/issues)!
 
 ## Installation
 
-Processing.R is currently available via PDE > Add Tool > Modes, you could install the mode in PDE.
+Processing.R is currently available via PDE > Add Tool > Modes, you could
+install the mode in PDE.
 
 To build the mode from source, see [compilation.md](./raw-docs/devel/compilation.md).
 
 ### Built-in functions in Processing
 
-Processing.R supports most of the Processing functions as described in the [Processing reference](processing.org/reference/). Processing.R functions are described on the documentation website:
+Processing.R supports most of the Processing functions as described in the
+[Processing reference](processing.org/reference/). Processing.R functions are
+described on the documentation website:
 
--  [https://processing-r.github.io/reference](https://processing-r.github.io/reference).
+-   [https://processing-r.github.io/reference](https://processing-r.github.io/reference).
 
-However, the Processing.R documentation is currently incomplete. Many functions have not been tested or are not accompanied by example sketches. Some reference pages contain materials from Processing.py or Processing(Java) that have not been edited to reflect differences from other Processing modes.
+However, the Processing.R documentation is currently incomplete. Many functions
+have not been tested or are not accompanied by example sketches. Some reference
+pages contain materials from Processing.py or Processing(Java) that have not
+been edited to reflect differences from other Processing modes.
 
 ### Processing Libraries: `importLibrary()`
 
-Processing.R supports importing standard Processing(Java) libraries that enrich the functionality of Processing. The function `importLibrary()` imports new libraries manually. This has been tested with one library: [peasycam](http://mrfeinberg.com/peasycam/), the "dead-simple mouse-driven camera for Processing."
+Processing.R supports importing standard Processing(Java) libraries that enrich
+the functionality of Processing. The function `importLibrary()` imports new
+libraries manually. This has been tested with one library:
+[peasycam](http://mrfeinberg.com/peasycam/), the "dead-simple mouse-driven
+camera for Processing."
 
-Before trying the example code below, first install the corresponding library `peasycam` -- for example using the PDE Contribution Manager > Library.
+Before trying the example code below, first install the corresponding library
+`peasycam` -- for example using the PDE Contribution Manager > Library.
 
 ```r
 settings <- function() {
@@ -97,7 +112,9 @@ draw <- function() {
 
 ### R Packages: `library()`
 
-Processing.R has limited support for R packages. It will automatically download R packages that are requested using the `library()` function, so you can use packages directly.
+Processing.R has limited support for R packages. It will automatically download
+R packages that are requested using the `library()` function, so you can use
+packages directly.
 
 Here is an example using the `foreach` package:
 
@@ -108,7 +125,12 @@ foreach(i=1:3) %do%
     print(sqrt(i))
 ```
 
-In practice we have only found a few R packages so far that work with Processing.R "out of the box." This is because the package must be pure R  **and** all of its dependencies must also be pure R. There is [renjin list of R packages](http://packages.renjin.org/) which lists their compatibility with the renjin JVM. Any package fully supported in renjin is theoretically supported in Processing.R.
+In practice we have only found a few R packages so far that work with
+Processing.R "out of the box." This is because the package must be pure R
+**and** all of its dependencies must also be pure R. There is
+[renjin list of R packages](http://packages.renjin.org/) which lists their
+compatibility with the renjin JVM. Any package fully supported in renjin is
+theoretically supported in Processing.R.
 
 ## Documentation
 
@@ -116,15 +138,17 @@ In practice we have only found a few R packages so far that work with Processing
   <img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg"/>
 </a>
 
-See [https://processing-r.github.io/](https://processing-r.github.io/). The documentation is generated from [https://github.com/processing-r/Processing.R-docs-tools](https://github.com/processing-r/Processing.R-docs-tools).
+See [https://processing-r.github.io/](https://processing-r.github.io/). The
+documentation is generated from [https://github.com/processing-r/Processing.R-docs-tools](https://github.com/processing-r/Processing.R-docs-tools).
 
 ## Papers
 
-- [Short Paper about Processing.R](./raw-docs/paper/processing-r.pdf)
+-   [Short Paper about Processing.R](./raw-docs/paper/processing-r.pdf)
 
 ## CONTRIBUTING
 
-Feel free to hack on Processing.R! [development.md](./raw-docs/development.md) will help you to get involved into the development of Processing.R.
+Feel free to hack on Processing.R! [development.md](./raw-docs/development.md)
+will help you to get involved into the development of Processing.R.
 
 ## CHANGELOG
 
@@ -136,6 +160,11 @@ See [AUTHORS](./AUTHORS.md)
 
 ## Acknowledgments
 
-* Thanks [processing](https://github.com/processing/processing) for the Processing Development Environment(PDE).
-* Thanks [renjin](https://github.com/bedatadriven/renjin) for its awesome JVM-based interpreter for the R language.
-* Thanks [Jeremy Douglass](https://github.com/jeremydouglass) for mentoring me in Google Summer of Code 2017.
+-   Thanks [processing](https://github.com/processing/processing) for the
+    Processing Development Environment(PDE).
+
+-   Thanks [renjin](https://github.com/bedatadriven/renjin) for its awesome
+    JVM-based interpreter for the R language.
+
+-   Thanks [Jeremy Douglass](https://github.com/jeremydouglass) for mentoring
+    me in Google Summer of Code 2017.
