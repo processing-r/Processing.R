@@ -36,7 +36,7 @@ public class SketchRunner implements SketchService {
   public SketchRunner(final String id, final ModeService modeService) {
     this.id = id;
     this.modeService = modeService;
-    if (PApplet.platform == PConstants.MACOS) {
+    if (PApplet.platform == PConstants.MACOSX) {
       try {
         OSXAdapter.setQuitHandler(this, this.getClass().getMethod("preventUserQuit"));
       } catch (final Throwable e) {

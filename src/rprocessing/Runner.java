@@ -34,7 +34,7 @@ public class Runner {
   static {
     log("Getting the architecture.");
     final int archBits = Integer.parseInt(System.getProperty("sun.arch.data.model"));
-    if (PApplet.platform == PConstants.MACOS) {
+    if (PApplet.platform == PConstants.MACOSX) {
       ARCH = "macosx" + archBits;
     } else if (PApplet.platform == PConstants.WINDOWS) {
       ARCH = "macosx" + archBits;

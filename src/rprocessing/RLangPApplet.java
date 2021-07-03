@@ -177,7 +177,7 @@ public class RLangPApplet extends BuiltinApplet {
       }
     } finally {
       Thread.setDefaultUncaughtExceptionHandler(null);
-      if (PApplet.platform == PConstants.MACOS
+      if (PApplet.platform == PConstants.MACOSX
           && Arrays.asList(arguments).contains("fullScreen")) {
         // Frame should be OS-X fullscreen, and it won't stop being that unless the jvm
         // exits or we explicitly tell it to minimize.
