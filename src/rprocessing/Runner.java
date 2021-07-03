@@ -20,7 +20,7 @@ import rprocessing.util.StreamPrinter;
 
 /**
  * R script runner
- * 
+ *
  * @author github.com/gaocegege
  */
 public class Runner {
@@ -34,7 +34,7 @@ public class Runner {
   static {
     log("Getting the architecture.");
     final int archBits = Integer.parseInt(System.getProperty("sun.arch.data.model"));
-    if (PApplet.platform == PConstants.MACOSX) {
+    if (PApplet.platform == PConstants.MACOS) {
       ARCH = "macosx" + archBits;
     } else if (PApplet.platform == PConstants.WINDOWS) {
       ARCH = "macosx" + archBits;
