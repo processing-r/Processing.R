@@ -1,10 +1,12 @@
 package rprocessing;
 
 import java.awt.Component;
+import java.awt.Frame;
 import java.awt.Window;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.lang.Thread.UncaughtExceptionHandler;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -39,7 +41,7 @@ import rprocessing.util.RScriptReader;
 
 /**
  * RlangPApplet PApplet for R language, powered by Renjin.
- * 
+ *
  * @author github.com/gaocegege
  */
 public class RLangPApplet extends BuiltinApplet {
@@ -62,6 +64,8 @@ public class RLangPApplet extends BuiltinApplet {
 
   private final CountDownLatch finishedLatch = new CountDownLatch(1);
 
+  private Field frameField;
+
   private RSketchError terminalException = null;
 
   private boolean hasSize = false;
@@ -69,7 +73,7 @@ public class RLangPApplet extends BuiltinApplet {
 
   /**
    * Mode for Processing.
-   * 
+   *
    * @author github.com/gaocegege
    */
   private enum Mode {
@@ -107,7 +111,7 @@ public class RLangPApplet extends BuiltinApplet {
     if (isSameClass(source, ExpressionVector.class)) {
       ExpressionVector ev = (ExpressionVector) source;
       // Stores the expressions except size().
-      List<SEXP> sexps = new ArrayList<SEXP>();
+      List<SEXP> sexps = new ArrayList<>();
       for (int i = ev.length() - 1; i >= 0; --i) {
         if (isSameClass(ev.get(i), FunctionCall.class)
             && isSameClass(((FunctionCall) ev.get(i)).getFunction(), Symbol.class)) {
@@ -179,7 +183,16 @@ public class RLangPApplet extends BuiltinApplet {
         // exits or we explicitly tell it to minimize.
         // (If it's disposed, it'll leave a gray blank window behind it.)
         log("Disabling fullscreen.");
-        macosxFullScreenToggle(frame);
+        if (frameField != null) {
+          try {
+            Frame frame = (Frame) frameField.get(this);
+            // This is probably a holdover from Processing 2.x
+            // and likely shouldn't be used anymore. [fry 210703]
+            macosxFullScreenToggle(frame);
+          } catch (Exception e) {
+            // safe enough to ignore; this was a workaround
+          }
+        }
       }
       if (surface instanceof PSurfaceFX) {
         // Sadly, JavaFX is an abomination, and there's no way to run an FX sketch more than once,
@@ -215,14 +228,32 @@ public class RLangPApplet extends BuiltinApplet {
     }
   }
 
+  // method to find the frame field, rather than relying on an Exception
+  private Field getFrameField() {
+    for (Field field : getClass().getFields()) {
+      if (field.getName().equals("frame")) {
+        return field;
+      }
+    }
+    return null;
+  }
+
   /**
-   * 
+   *
    * @see processing.core.PApplet#initSurface()
    */
   @Override
   protected PSurface initSurface() {
     final PSurface s = super.initSurface();
-    this.frame = null; // eliminate a memory leak from 2.x compat hack
+    frameField = getFrameField();
+    if (frameField != null) {
+      try {
+        // eliminate a memory leak from 2.x compat hack
+        frameField.set(this, null);
+      } catch (Exception e) {
+        // safe enough to ignore; this was a workaround
+      }
+    }
     // s.setTitle(pySketchPath.getFileName().toString().replaceAll("\\..*$", ""));
     if (s instanceof PSurfaceAWT) {
       final PSurfaceAWT surf = (PSurfaceAWT) s;
@@ -293,7 +324,7 @@ public class RLangPApplet extends BuiltinApplet {
 
   /**
    * Evaluate the program code.
-   * 
+   *
    * @see processing.core.PApplet#setup()
    */
   @Override
@@ -334,7 +365,7 @@ public class RLangPApplet extends BuiltinApplet {
 
   /**
    * Call the draw function in R script.
-   * 
+   *
    * @see processing.core.PApplet#draw()
    */
   @Override
@@ -348,7 +379,7 @@ public class RLangPApplet extends BuiltinApplet {
 
   /**
    * Detect whether the program is in active mode.
-   * 
+   *
    * @return
    */
   @SuppressWarnings("rawtypes")
@@ -361,7 +392,7 @@ public class RLangPApplet extends BuiltinApplet {
 
   /**
    * Detect whether the program is in mix mode. After: isActiveMode()
-   * 
+   *
    * @return
    */
   private boolean isMixMode() {
@@ -495,7 +526,7 @@ public class RLangPApplet extends BuiltinApplet {
 
   /**
    * Return whether the object has same class with clazz.
-   * 
+   *
    * @param obj
    * @param clazz
    * @return

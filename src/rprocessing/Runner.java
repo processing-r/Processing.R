@@ -20,7 +20,7 @@ import rprocessing.util.StreamPrinter;
 
 /**
  * R script runner
- * 
+ *
  * @author github.com/gaocegege
  */
 public class Runner {

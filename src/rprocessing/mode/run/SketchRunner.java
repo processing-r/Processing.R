@@ -15,7 +15,7 @@ import rprocessing.mode.run.RMIUtils.RMIProblem;
 import rprocessing.util.Printer;
 
 /**
- * 
+ *
  * @author github.com/gaocegege
  */
 public class SketchRunner implements SketchService {
@@ -61,7 +61,7 @@ public class SketchRunner implements SketchService {
    * <p>
    * But if we've received a shutdown request from the {@link SketchServiceProcess} on the PDE VM,
    * then we permit the quit to proceed.
-   * 
+   *
    * @return true iff the SketchRunner should quit.
    */
   public boolean preventUserQuit() {
